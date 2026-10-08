@@ -1,0 +1,41 @@
+# Secrets: never commit a real key
+.env
+.env.*
+!.env.example
+
+# Local development notes and credit log
+.dev/
+
+# Virtual environments
+.venv/
+venv/
+.venv-*/
+
+# Python bytecode and build output
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Tool caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.hypothesis/
+
+# Coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# GhostCite output written by local runs (the cache itself lives in the user cache dir)
+ghostcite-report.*
+*.sarif
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

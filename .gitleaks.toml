@@ -1,0 +1,13 @@
+# gitleaks configuration: the default rule set plus a rule for SerpApi keys, which the
+# defaults do not cover. Used by the pre-commit hook and by CI.
+title = "GhostCite secret scanning"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "serpapi-api-key"
+description = "SerpApi private API key (64 hex characters)"
+regex = '''(?i)(?:serp_?api|api_key)[\w"']{0,20}\s*[=:]\s*["']?([0-9a-f]{64})(?:[^0-9a-f]|$)'''
+secretGroup = 1
+keywords = ["serpapi", "serp_api", "api_key"]

@@ -1,0 +1,55 @@
+# Install once with `python tasks.py install` (or `pre-commit install`).
+# CI runs the same hooks via `pre-commit run --all-files`.
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+      - id: detect-private-key
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.8
+    hooks:
+      - id: ruff-check
+        args: ["--fix"]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v2.3.1
+    hooks:
+      - id: mypy
+        # Type-check the whole project with the settings in pyproject.toml, exactly like CI,
+        # instead of only the staged files (which would miss cross-module breakage).
+        pass_filenames: false
+        args: []
+        additional_dependencies:
+          - serpapi==1.1.2
+          - pydantic==2.13.5
+          - pypdf==6.19.0
+          - bibtexparser==2.0.1
+          - rapidfuzz==3.14.6
+          - typer==0.27.2
+          - rich==15.0.0
+          - fastapi==0.141.1
+          - uvicorn==0.53.0
+          - jinja2==3.1.6
+          - python-multipart==0.0.32
+          - python-dotenv==1.2.3
+          - platformdirs==4.11.12
+          - pytest==9.1.1
+          - pytest-socket==0.8.1
+          - hypothesis==6.168.1
+          - jsonschema==4.26.0
+          - httpx2==2.13.1
+          - requests==2.34.2
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks

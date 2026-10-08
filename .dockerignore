@@ -1,0 +1,15 @@
+.env
+.env.*
+.dev/
+.git/
+.venv/
+.venv-*/
+**/__pycache__/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.hypothesis/
+.coverage
+htmlcov/
+dist/
+build/
