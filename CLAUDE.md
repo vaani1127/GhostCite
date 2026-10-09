@@ -33,7 +33,7 @@ Context: SerpApi India Hackathon 2026, track "Knowledge & Public Interest", dead
 
 ## Credits (hard cap: 120 live searches for the whole project)
 - Before each live run: estimate the cost, check the Account API (counts only), and append `date | purpose | estimated | actual` to `.dev/credits.log` (gitignored). If a run would exceed the cap, stop and ask the user.
-- Planned: smoke test ≤ 5 (Checkpoint 3), eval ≈ 102 (Checkpoint 6), demo bundle 0 (reuses the eval cache). Tune only on cached data.
+- Used so far: 7 (Checkpoint 3 smoke test, including one timed-out request that was still billed). Planned: eval ≈ 102 (Checkpoint 6), demo bundle 0 (reuses the eval cache). Tune only on cached data. Client-side timeouts can be billed, which is why `SearchClient.credits_used` counts them.
 - If `SERPAPI_API_KEY` is missing when a live run is needed, stop and tell the user exactly what to do.
 
 ## Approved amendments

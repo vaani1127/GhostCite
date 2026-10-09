@@ -1,0 +1,628 @@
+{
+  "description": "Real CVPR paper; exact-title strategy.",
+  "strategy": "scholar_exact_title",
+  "params": {
+    "engine": "google_scholar",
+    "q": "\"Deep residual learning for image recognition\"",
+    "hl": "en",
+    "num": "10"
+  },
+  "response": {
+    "search_metadata": {
+      "id": "6ac86574a26f5670a49b6fba",
+      "status": "Success",
+      "created_at": "2026-10-09 03:54:28 UTC",
+      "processed_at": "2026-10-09 03:54:28 UTC",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=%22Deep+residual+learning+for+image+recognition%22&hl=en&num=10",
+      "total_time_taken": 0.49
+    },
+    "search_parameters": {
+      "engine": "google_scholar",
+      "q": "\"Deep residual learning for image recognition\"",
+      "hl": "en",
+      "num": "10"
+    },
+    "search_information": {
+      "organic_results_state": "Results for exact spelling",
+      "total_results": 318000,
+      "time_taken_displayed": 0.17,
+      "query_displayed": "\"Deep residual learning for image recognition\""
+    },
+    "organic_results": [
+      {
+        "position": 1,
+        "title": "Deep residual learning for image recognition",
+        "result_id": "LrPNPdmMzoAJ",
+        "link": "https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html",
+        "snippet": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. …",
+        "publication_info": {
+          "summary": "K He, X Zhang, S Ren, J Sun - … of the IEEE conference on computer …, 2016 - cv-foundation.org",
+          "authors": [
+            {
+              "name": "K He",
+              "link": "https://scholar.google.com/citations?user=DhtAFkwAAAAJ&hl=en&oi=sra",
+              "author_id": "DhtAFkwAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=DhtAFkwAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "X Zhang",
+              "link": "https://scholar.google.com/citations?user=yuB-cfoAAAAJ&hl=en&oi=sra",
+              "author_id": "yuB-cfoAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=yuB-cfoAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "S Ren",
+              "link": "https://scholar.google.com/citations?user=AUhj438AAAAJ&hl=en&oi=sra",
+              "author_id": "AUhj438AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=AUhj438AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "J Sun",
+              "link": "https://scholar.google.com/citations?user=ALVSZAYAAAAJ&hl=en&oi=sra",
+              "author_id": "ALVSZAYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=ALVSZAYAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "cv-foundation.org",
+            "file_format": "PDF",
+            "link": "https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=LrPNPdmMzoAJ",
+          "cited_by": {
+            "total": 344109,
+            "link": "https://scholar.google.com/scholar?cites=9281510746729853742&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "9281510746729853742",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=9281510746729853742&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:LrPNPdmMzoAJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3ALrPNPdmMzoAJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 42,
+            "link": "https://scholar.google.com/scholar?cluster=9281510746729853742&hl=en&as_sdt=0,5",
+            "cluster_id": "9281510746729853742",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=9281510746729853742&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:LrPNPdmMzoAJ:scholar.google.com/+%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 2,
+        "title": "Deep residual learning for image recognition: A survey",
+        "result_id": "72APmbLcL3YJ",
+        "type": "Html",
+        "link": "https://www.mdpi.com/2076-3417/12/18/8972",
+        "snippet": "… In summary, deep residual learning for image recognition has been shown to be an effective method for image classification tasks. However, similar architectures have not yet been …",
+        "publication_info": {
+          "summary": "M Shafiq, Z Gu - Applied sciences, 2022 - mdpi.com",
+          "authors": [
+            {
+              "name": "M Shafiq",
+              "link": "https://scholar.google.com/citations?user=R7zAIlgAAAAJ&hl=en&oi=sra",
+              "author_id": "R7zAIlgAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=R7zAIlgAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "Z Gu",
+              "link": "https://scholar.google.com/citations?user=gtth-roAAAAJ&hl=en&oi=sra",
+              "author_id": "gtth-roAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=gtth-roAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "HTML",
+            "link": null
+          },
+          {
+            "title": "mdpi.com",
+            "file_format": "HTML",
+            "link": "https://www.mdpi.com/2076-3417/12/18/8972"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=72APmbLcL3YJ",
+          "html_version": "https://www.mdpi.com/2076-3417/12/18/8972",
+          "cited_by": {
+            "total": 1455,
+            "link": "https://scholar.google.com/scholar?cites=8516268080011108591&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "8516268080011108591",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=8516268080011108591&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:72APmbLcL3YJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3A72APmbLcL3YJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 7,
+            "link": "https://scholar.google.com/scholar?cluster=8516268080011108591&hl=en&as_sdt=0,5",
+            "cluster_id": "8516268080011108591",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=8516268080011108591&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:72APmbLcL3YJ:scholar.google.com/+%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 3,
+        "title": "Study of residual networks for image recognition",
+        "result_id": "2AjkGP4A5KUJ",
+        "link": "https://link.springer.com/chapter/10.1007/978-3-030-80126-7_53",
+        "snippet": "… Deep residual learning for image recognition. In: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2016) 10. Li, S., Kar, P.: …",
+        "publication_info": {
+          "summary": "MS Ebrahimi, HK Abadi - Intelligent Computing: Proceedings of the 2021 …, 2021 - Springer",
+          "authors": [
+            {
+              "name": "MS Ebrahimi",
+              "link": "https://scholar.google.com/citations?user=kjtKHsYAAAAJ&hl=en&oi=sra",
+              "author_id": "kjtKHsYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=kjtKHsYAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "HK Abadi"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "arxiv.org",
+            "file_format": "PDF",
+            "link": "https://arxiv.org/pdf/1805.00325"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=2AjkGP4A5KUJ",
+          "cited_by": {
+            "total": 95,
+            "link": "https://scholar.google.com/scholar?cites=11953680402287429848&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "11953680402287429848",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=11953680402287429848&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:2AjkGP4A5KUJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3A2AjkGP4A5KUJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 4,
+            "link": "https://scholar.google.com/scholar?cluster=11953680402287429848&hl=en&as_sdt=0,5",
+            "cluster_id": "11953680402287429848",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=11953680402287429848&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 4,
+        "title": "Deep residual network for image recognition",
+        "result_id": "_kiNtInaAkoJ",
+        "link": "https://ieeexplore.ieee.org/abstract/document/9792645/",
+        "snippet": "Training of a neural network is easier than it goes deeper. Deeper architecture makes neural networks more difficult to train because of vanishing gradient and complexity problems, and …",
+        "publication_info": {
+          "summary": "SS Saini, P Rawat - 2022 IEEE International Conference on …, 2022 - ieeexplore.ieee.org",
+          "authors": [
+            {
+              "name": "SS Saini"
+            },
+            {
+              "name": "P Rawat"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "researchgate.net",
+            "file_format": "PDF",
+            "link": "https://www.researchgate.net/profile/Priyanka-Rawat-7/publication/361283094_Deep_Residual_Network_for_Image_Recognition/links/6821c92460241d5140293e75/Deep-Residual-Network-for-Image-Recognition.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=_kiNtInaAkoJ",
+          "cited_by": {
+            "total": 44,
+            "link": "https://scholar.google.com/scholar?cites=5333065193734621438&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "5333065193734621438",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=5333065193734621438&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:_kiNtInaAkoJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3A_kiNtInaAkoJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 3,
+            "link": "https://scholar.google.com/scholar?cluster=5333065193734621438&hl=en&as_sdt=0,5",
+            "cluster_id": "5333065193734621438",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=5333065193734621438&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 5,
+        "title": "Deep residual network in network",
+        "result_id": "GyCnFH92pWAJ",
+        "link": "https://onlinelibrary.wiley.com/doi/abs/10.1155/2021/6659083",
+        "snippet": "… , deep residual network in network, which takes its name from the deep network in the network article [1] in conjunction with the famous “deep residual learning for image recognition” [14…",
+        "publication_info": {
+          "summary": "H Alaeddine, M Jihene - Computational intelligence and …, 2021 - Wiley Online Library",
+          "authors": [
+            {
+              "name": "H Alaeddine"
+            },
+            {
+              "name": "M Jihene"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "wiley.com",
+            "file_format": "PDF",
+            "link": "https://onlinelibrary.wiley.com/doi/pdf/10.1155/2021/6659083"
+          },
+          {
+            "title": "Full View",
+            "link": "https://scholar.google.com/scholar?output=instlink&q=info:GyCnFH92pWAJ:scholar.google.com/&hl=en&as_sdt=0,5&scillfp=11821606792983157915&oi=lle"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=GyCnFH92pWAJ",
+          "cited_by": {
+            "total": 109,
+            "link": "https://scholar.google.com/scholar?cites=6964102686977761307&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "6964102686977761307",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=6964102686977761307&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:GyCnFH92pWAJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3AGyCnFH92pWAJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 9,
+            "link": "https://scholar.google.com/scholar?cluster=6964102686977761307&hl=en&as_sdt=0,5",
+            "cluster_id": "6964102686977761307",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=6964102686977761307&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 6,
+        "title": "Deep residual learning for image recognition",
+        "result_id": "KJO0iKPxV-kJ",
+        "type": "Html",
+        "link": "https://www.academia.edu/download/63464157/Deep_Residual_Learning_for_Image_Recognition20200529-87478-574gcx.pdf",
+        "snippet": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. …",
+        "publication_info": {
+          "summary": "F Tian - 2015 - academia.edu",
+          "authors": [
+            {
+              "name": "F Tian"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "HTML",
+            "link": null
+          },
+          {
+            "title": "academia.edu",
+            "file_format": "HTML",
+            "link": "https://www.academia.edu/download/63464157/Deep_Residual_Learning_for_Image_Recognition20200529-87478-574gcx.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=KJO0iKPxV-kJ",
+          "html_version": "https://www.academia.edu/download/63464157/Deep_Residual_Learning_for_Image_Recognition20200529-87478-574gcx.pdf",
+          "cited_by": {
+            "total": 17,
+            "link": "https://scholar.google.com/scholar?cites=16814173418486534952&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "16814173418486534952",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=16814173418486534952&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:KJO0iKPxV-kJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3AKJO0iKPxV-kJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 3,
+            "link": "https://scholar.google.com/scholar?cluster=16814173418486534952&hl=en&as_sdt=0,5",
+            "cluster_id": "16814173418486534952",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=16814173418486534952&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:KJO0iKPxV-kJ:scholar.google.com/+%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 7,
+        "title": "FPGA accelerates deep residual learning for image recognition",
+        "result_id": "_nlzAkMg5RsJ",
+        "link": "https://ieeexplore.ieee.org/abstract/document/8284852/",
+        "snippet": "Deep learning is greatly promoting the fast development of artificial intelligence. In the image classification area, the recognition rate and inference performance become the main …",
+        "publication_info": {
+          "summary": "X Li, L Ding, L Wang, F Cao - 2017 IEEE 2nd Information …, 2017 - ieeexplore.ieee.org",
+          "authors": [
+            {
+              "name": "X Li"
+            },
+            {
+              "name": "L Ding"
+            },
+            {
+              "name": "L Wang"
+            },
+            {
+              "name": "F Cao"
+            }
+          ]
+        },
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=_nlzAkMg5RsJ",
+          "cited_by": {
+            "total": 93,
+            "link": "https://scholar.google.com/scholar?cites=2010048280866814462&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "2010048280866814462",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=2010048280866814462&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:_nlzAkMg5RsJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3A_nlzAkMg5RsJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 2,
+            "link": "https://scholar.google.com/scholar?cluster=2010048280866814462&hl=en&as_sdt=0,5",
+            "cluster_id": "2010048280866814462",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=2010048280866814462&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 8,
+        "title": "Deep residual learning",
+        "result_id": "GlOy8AWg-RsJ",
+        "type": "Pdf",
+        "link": "http://web.cs.ucdavis.edu/~yjlee/teaching/ecs289g-fall2016/xiaoyun.pdf",
+        "snippet": "… “Deep Residual Learning for Image Recognition”. arXiv 2015… “Deep Residual Learning for Image Recognition”. arXiv 2015… “Deep Residual Learning for Image Recognition”. arXiv 2015. …",
+        "publication_info": {
+          "summary": "K He, X Zhang, S Ren, J Sun - IEEE TPAMI, 2017 - cs.ucdavis.edu",
+          "authors": [
+            {
+              "name": "K He"
+            },
+            {
+              "name": "X Zhang"
+            },
+            {
+              "name": "S Ren",
+              "link": "https://scholar.google.com/citations?user=AUhj438AAAAJ&hl=en&oi=sra",
+              "author_id": "AUhj438AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=AUhj438AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "J Sun"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "ucdavis.edu",
+            "file_format": "PDF",
+            "link": "http://web.cs.ucdavis.edu/~yjlee/teaching/ecs289g-fall2016/xiaoyun.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=GlOy8AWg-RsJ",
+          "cited_by": {
+            "total": 11,
+            "link": "https://scholar.google.com/scholar?cites=2015818255598506778&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "2015818255598506778",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=2015818255598506778&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:GlOy8AWg-RsJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3AGlOy8AWg-RsJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 4,
+            "link": "https://scholar.google.com/scholar?cluster=2015818255598506778&hl=en&as_sdt=0,5",
+            "cluster_id": "2015818255598506778",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=2015818255598506778&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:GlOy8AWg-RsJ:scholar.google.com/+%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 9,
+        "title": "Revolutionizing Image Recognition and Beyond with Deep Residual Networks",
+        "result_id": "q7rPIRc1ShkJ",
+        "link": "https://link.springer.com/chapter/10.1007/978-981-97-2053-8_33",
+        "snippet": "… A circle-spoke diagram presents 6 different factors of deep residual learning for image recognition. These are deep residual learning for image recognition, image recognition, …",
+        "publication_info": {
+          "summary": "P Baraneedharan, A Nithyasri, P Keerthana - International Conference on …, 2023 - Springer",
+          "authors": [
+            {
+              "name": "P Baraneedharan",
+              "link": "https://scholar.google.com/citations?user=aHEOhZYAAAAJ&hl=en&oi=sra",
+              "author_id": "aHEOhZYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=aHEOhZYAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "A Nithyasri"
+            },
+            {
+              "name": "P Keerthana"
+            }
+          ]
+        },
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=q7rPIRc1ShkJ",
+          "cited_by": {
+            "total": 3,
+            "link": "https://scholar.google.com/scholar?cites=1822327372692568747&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "1822327372692568747",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=1822327372692568747&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:q7rPIRc1ShkJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3Aq7rPIRc1ShkJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 2,
+            "link": "https://scholar.google.com/scholar?cluster=1822327372692568747&hl=en&as_sdt=0,5",
+            "cluster_id": "1822327372692568747",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=1822327372692568747&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 10,
+        "title": "Deep Residual Learning for Image and Video Recognition",
+        "result_id": "q5g57fAFQIMJ",
+        "type": "Pdf",
+        "link": "https://www.researchgate.net/profile/Abu-Rayhan-11/publication/373300187_DEEP_RESIDUAL_LEARNING_FOR_IMAGE_AND_VIDEO_RECOGNITION/links/64e5966f0453074fbda7ab7d/DEEP-RESIDUAL-LEARNING-FOR-IMAGE-AND-VIDEO-RECOGNITION.pdf",
+        "snippet": "Deep Residual Learning has emerged as a transformative architecture in the field of computer vision, revolutionizing image and video recognition tasks. This paper presents a …",
+        "publication_info": {
+          "summary": "A Rayhan, R Kinzler, R Rayhan - Preprint, 2023 - researchgate.net",
+          "authors": [
+            {
+              "name": "A Rayhan",
+              "link": "https://scholar.google.com/citations?user=DLT9tYoAAAAJ&hl=en&oi=sra",
+              "author_id": "DLT9tYoAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=DLT9tYoAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "R Kinzler"
+            },
+            {
+              "name": "R Rayhan",
+              "link": "https://scholar.google.com/citations?user=tlgWPAkAAAAJ&hl=en&oi=sra",
+              "author_id": "tlgWPAkAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=tlgWPAkAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "researchgate.net",
+            "file_format": "PDF",
+            "link": "https://www.researchgate.net/profile/Abu-Rayhan-11/publication/373300187_DEEP_RESIDUAL_LEARNING_FOR_IMAGE_AND_VIDEO_RECOGNITION/links/64e5966f0453074fbda7ab7d/DEEP-RESIDUAL-LEARNING-FOR-IMAGE-AND-VIDEO-RECOGNITION.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=q5g57fAFQIMJ",
+          "cited_by": {
+            "total": 3,
+            "link": "https://scholar.google.com/scholar?cites=9457565749808306347&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "9457565749808306347",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=9457565749808306347&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:q5g57fAFQIMJ:scholar.google.com/&scioq=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3Aq5g57fAFQIMJ%3Ascholar.google.com%2F",
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:q5g57fAFQIMJ:scholar.google.com/+%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5"
+        }
+      }
+    ],
+    "related_searches": [
+      {
+        "query": "image steganalysis deep residual learning",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=1&q=image+steganalysis+deep+residual+learning&qst=br"
+      },
+      {
+        "query": "image classification deep residual learning",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=2&q=image+classification+deep+residual+learning&qst=br"
+      },
+      {
+        "query": "deep residual networks",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=3&q=deep+residual+networks&qst=br"
+      },
+      {
+        "query": "residual learning framework",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=4&q=residual+learning+framework&qst=br"
+      },
+      {
+        "query": "weighted residuals very deep networks",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=5&q=weighted+residuals+very+deep+networks&qst=br"
+      },
+      {
+        "query": "image classification wide residual networks",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=6&q=image+classification+wide+residual+networks&qst=br"
+      },
+      {
+        "query": "image steganography deep convolutional neural networks",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=7&q=image+steganography+deep+convolutional+neural+networks&qst=br"
+      },
+      {
+        "query": "hyperparameter optimization deep residual learning",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=8&q=hyperparameter+optimization+deep+residual+learning&qst=br"
+      },
+      {
+        "query": "computer vision residual learning",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=9&q=computer+vision+residual+learning&qst=br"
+      },
+      {
+        "query": "image recognition residual networks",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=10&q=image+recognition+residual+networks&qst=br"
+      },
+      {
+        "query": "deep neural networks residual learning",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=11&q=deep+neural+networks+residual+learning&qst=br"
+      },
+      {
+        "query": "visual recognition residual network",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=12&q=visual+recognition+residual+network&qst=br"
+      },
+      {
+        "query": "image classification residual attention network",
+        "link": "https://scholar.google.com/scholar?hl=en&as_sdt=0,5&qsp=13&q=image+classification+residual+attention+network&qst=br"
+      }
+    ],
+    "pagination": {
+      "current": 1,
+      "next": "https://scholar.google.com/scholar?start=10&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+      "other_pages": {
+        "2": "https://scholar.google.com/scholar?start=10&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+        "3": "https://scholar.google.com/scholar?start=20&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+        "4": "https://scholar.google.com/scholar?start=30&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+        "5": "https://scholar.google.com/scholar?start=40&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+        "6": "https://scholar.google.com/scholar?start=50&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+        "7": "https://scholar.google.com/scholar?start=60&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+        "8": "https://scholar.google.com/scholar?start=70&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+        "9": "https://scholar.google.com/scholar?start=80&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5",
+        "10": "https://scholar.google.com/scholar?start=90&q=%22Deep+residual+learning+for+image+recognition%22&hl=en&as_sdt=0,5"
+      }
+    },
+    "serpapi_pagination": {
+      "current": 1,
+      "next_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=10",
+      "next": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=10",
+      "other_pages": {
+        "2": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=10",
+        "3": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=20",
+        "4": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=30",
+        "5": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=40",
+        "6": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=50",
+        "7": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=60",
+        "8": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=70",
+        "9": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=80",
+        "10": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=%22Deep+residual+learning+for+image+recognition%22&start=90"
+      }
+    }
+  }
+}

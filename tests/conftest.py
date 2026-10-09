@@ -12,10 +12,16 @@ from __future__ import annotations
 from pathlib import Path
 
 import pytest
+from hypothesis import settings
 
 from ghostcite.settings import API_KEY_ENV, CACHE_DIR_ENV
 
 FIXTURES = Path(__file__).parent / "fixtures"
+
+# Per-example time limits make property tests flaky under coverage tracing and on shared
+# CI runners. Correctness, not speed, is what these tests check.
+settings.register_profile("ghostcite", deadline=None)
+settings.load_profile("ghostcite")
 
 
 @pytest.fixture(autouse=True)

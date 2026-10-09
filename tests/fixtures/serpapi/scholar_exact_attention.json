@@ -1,0 +1,593 @@
+{
+  "description": "Real, highly cited conference paper; exact-title strategy.",
+  "strategy": "scholar_exact_title",
+  "params": {
+    "engine": "google_scholar",
+    "q": "\"Attention is all you need\"",
+    "hl": "en",
+    "num": "10"
+  },
+  "response": {
+    "search_metadata": {
+      "id": "6ac86573827031e78246fce7",
+      "status": "Success",
+      "created_at": "2026-10-09 03:54:27 UTC",
+      "processed_at": "2026-10-09 03:54:27 UTC",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=%22Attention+is+all+you+need%22&hl=en&num=10",
+      "total_time_taken": 0.98
+    },
+    "search_parameters": {
+      "engine": "google_scholar",
+      "q": "\"Attention is all you need\"",
+      "hl": "en",
+      "num": "10"
+    },
+    "search_information": {
+      "organic_results_state": "Results for exact spelling",
+      "total_results": 466000,
+      "time_taken_displayed": 0.21,
+      "query_displayed": "\"Attention is all you need\""
+    },
+    "organic_results": [
+      {
+        "position": 1,
+        "title": "Attention is all you need",
+        "result_id": "5Gohgn6QFikJ",
+        "link": "https://proceedings.neurips.cc/paper_files/paper/7181-attention-is",
+        "snippet": "The dominant sequence transduction models are based on complex recurrent orconvolutional neural networks in an encoder and decoder configuration. The best performing such …",
+        "publication_info": {
+          "summary": "A Vaswani, N Shazeer, N Parmar… - Advances in neural …, 2017 - proceedings.neurips.cc",
+          "authors": [
+            {
+              "name": "A Vaswani",
+              "link": "https://scholar.google.com/citations?user=oR9sCGYAAAAJ&hl=en&oi=sra",
+              "author_id": "oR9sCGYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oR9sCGYAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "N Shazeer",
+              "link": "https://scholar.google.com/citations?user=wsGvgA8AAAAJ&hl=en&oi=sra",
+              "author_id": "wsGvgA8AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=wsGvgA8AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "N Parmar",
+              "link": "https://scholar.google.com/citations?user=q2YXPSgAAAAJ&hl=en&oi=sra",
+              "author_id": "q2YXPSgAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=q2YXPSgAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "neurips.cc",
+            "file_format": "PDF",
+            "link": "https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf?src_trk=em66c5166b7bad47.12959706424423622"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=5Gohgn6QFikJ",
+          "cited_by": {
+            "total": 274507,
+            "link": "https://scholar.google.com/scholar?cites=2960712678066186980&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "2960712678066186980",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=2960712678066186980&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:5Gohgn6QFikJ:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3A5Gohgn6QFikJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 26,
+            "link": "https://scholar.google.com/scholar?cluster=2960712678066186980&hl=en&as_sdt=0,26",
+            "cluster_id": "2960712678066186980",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C26&cluster=2960712678066186980&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:5Gohgn6QFikJ:scholar.google.com/+%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26"
+        }
+      },
+      {
+        "position": 2,
+        "title": "Is Attention All You Need?",
+        "result_id": "QEhbjTxy5DIJ",
+        "link": "https://link.springer.com/chapter/10.1007/978-3-031-84300-6_13",
+        "snippet": "… Attention is All You Need [61] introduced the transformer, a general-purpose architecture for … From the standpoint of neuroscience, Attention is All You Need represents a puzzle: is it …",
+        "publication_info": {
+          "summary": "P Mineault - From Human Attention to Computational Attention: A …, 2025 - Springer",
+          "authors": [
+            {
+              "name": "P Mineault",
+              "link": "https://scholar.google.com/citations?user=gpQg9uQAAAAJ&hl=en&oi=sra",
+              "author_id": "gpQg9uQAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=gpQg9uQAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=QEhbjTxy5DIJ",
+          "cited_by": {
+            "total": 15,
+            "link": "https://scholar.google.com/scholar?cites=3667181600981600320&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "3667181600981600320",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=3667181600981600320&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:QEhbjTxy5DIJ:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3AQEhbjTxy5DIJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 3,
+            "link": "https://scholar.google.com/scholar?cluster=3667181600981600320&hl=en&as_sdt=0,26",
+            "cluster_id": "3667181600981600320",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C26&cluster=3667181600981600320&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 3,
+        "title": "Tensor product attention is all you need",
+        "result_id": "aqnvuPb5wZEJ",
+        "link": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/a301ec7cb9e07dc050403e2eb11d0041-Abstract-Conference.html",
+        "snippet": "Scaling language models to handle longer input sequences typically necessitates large key-value (KV) caches, resulting in substantial memory overhead during inference. In this paper, …",
+        "publication_info": {
+          "summary": "Y Zhang, Y Liu, H Yuan, Z Qin… - Advances in Neural …, 2026 - proceedings.neurips.cc",
+          "authors": [
+            {
+              "name": "Y Zhang",
+              "link": "https://scholar.google.com/citations?user=ZGeaK6QAAAAJ&hl=en&oi=sra",
+              "author_id": "ZGeaK6QAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=ZGeaK6QAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "Y Liu",
+              "link": "https://scholar.google.com/citations?user=mFvOVkMAAAAJ&hl=en&oi=sra",
+              "author_id": "mFvOVkMAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=mFvOVkMAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "H Yuan",
+              "link": "https://scholar.google.com/citations?user=8foZzX4AAAAJ&hl=en&oi=sra",
+              "author_id": "8foZzX4AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=8foZzX4AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "Z Qin",
+              "link": "https://scholar.google.com/citations?user=IcBRtycAAAAJ&hl=en&oi=sra",
+              "author_id": "IcBRtycAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=IcBRtycAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "neurips.cc",
+            "file_format": "PDF",
+            "link": "https://proceedings.neurips.cc/paper_files/paper/2025/file/a301ec7cb9e07dc050403e2eb11d0041-Paper-Conference.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=aqnvuPb5wZEJ",
+          "cited_by": {
+            "total": 57,
+            "link": "https://scholar.google.com/scholar?cites=10502950644064692586&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "10502950644064692586",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=10502950644064692586&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:aqnvuPb5wZEJ:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3AaqnvuPb5wZEJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 8,
+            "link": "https://scholar.google.com/scholar?cluster=10502950644064692586&hl=en&as_sdt=0,26",
+            "cluster_id": "10502950644064692586",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C26&cluster=10502950644064692586&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:aqnvuPb5wZEJ:scholar.google.com/+%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26"
+        }
+      },
+      {
+        "position": 4,
+        "title": "Attention is all you need? When responsiveness short-circuits responsibility",
+        "result_id": "Ldld3hkekvcJ",
+        "link": "https://link.springer.com/article/10.1007/s00146-025-02700-4",
+        "snippet": "When researchers introduced the Transformer architec‑ture in 2017, they titled their paper “Attention Is All You Need”(Vaswani et al. 2017). That phrase, originally meant to describe a …",
+        "publication_info": {
+          "summary": "E Sezgin - AI & SOCIETY, 2026 - Springer",
+          "authors": [
+            {
+              "name": "E Sezgin",
+              "link": "https://scholar.google.com/citations?user=sAoz5GcAAAAJ&hl=en&oi=sra",
+              "author_id": "sAoz5GcAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=sAoz5GcAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "springer.com",
+            "file_format": "PDF",
+            "link": "https://link.springer.com/content/pdf/10.1007/s00146-025-02700-4.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=Ldld3hkekvcJ",
+          "cited_by": {
+            "total": 1,
+            "link": "https://scholar.google.com/scholar?cites=17839354170421664045&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "17839354170421664045",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=17839354170421664045&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:Ldld3hkekvcJ:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3ALdld3hkekvcJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 4,
+            "link": "https://scholar.google.com/scholar?cluster=17839354170421664045&hl=en&as_sdt=0,26",
+            "cluster_id": "17839354170421664045",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C26&cluster=17839354170421664045&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 5,
+        "title": "Transmla: Multi-head latent attention is all you need",
+        "result_id": "fdPtg3sENccJ",
+        "link": "https://arxiv.org/abs/2502.07864",
+        "snippet": "In this paper, we present TransMLA, a framework that seamlessly converts any GQA-based pre-trained model into an MLA-based model. Our approach enables direct compatibility with …",
+        "publication_info": {
+          "summary": "F Meng, P Tang, X Tang, Z Yao, X Sun… - arXiv preprint arXiv …, 2025 - arxiv.org",
+          "authors": [
+            {
+              "name": "F Meng",
+              "link": "https://scholar.google.com/citations?user=xvfuhRUAAAAJ&hl=en&oi=sra",
+              "author_id": "xvfuhRUAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=xvfuhRUAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "P Tang",
+              "link": "https://scholar.google.com/citations?user=UYRV6y0AAAAJ&hl=en&oi=sra",
+              "author_id": "UYRV6y0AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=UYRV6y0AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "X Tang",
+              "link": "https://scholar.google.com/citations?user=CcdcmGQAAAAJ&hl=en&oi=sra",
+              "author_id": "CcdcmGQAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=CcdcmGQAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "Z Yao",
+              "link": "https://scholar.google.com/citations?user=f3Eo9S0AAAAJ&hl=en&oi=sra",
+              "author_id": "f3Eo9S0AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=f3Eo9S0AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "X Sun",
+              "link": "https://scholar.google.com/citations?user=IUtix9IAAAAJ&hl=en&oi=sra",
+              "author_id": "IUtix9IAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=IUtix9IAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "arxiv.org",
+            "file_format": "PDF",
+            "link": "https://arxiv.org/pdf/2502.07864"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=fdPtg3sENccJ",
+          "cited_by": {
+            "total": 54,
+            "link": "https://scholar.google.com/scholar?cites=14354384315854214013&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "14354384315854214013",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=14354384315854214013&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:fdPtg3sENccJ:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3AfdPtg3sENccJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 2,
+            "link": "https://scholar.google.com/scholar?cluster=14354384315854214013&hl=en&as_sdt=0,26",
+            "cluster_id": "14354384315854214013",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C26&cluster=14354384315854214013&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:fdPtg3sENccJ:scholar.google.com/+%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26"
+        }
+      },
+      {
+        "position": 6,
+        "title": "Attention is all you need (in the brain): semantic contextualization in human hippocampus",
+        "result_id": "LyTqLUAYuKoJ",
+        "link": "https://www.biorxiv.org/content/10.1101/2025.06.23.661103.abstract",
+        "snippet": "In natural language, word meanings are contextualized, that is, modified by meanings of nearby words. Inspired by self-attention mechanisms in transformer-based large language …",
+        "publication_info": {
+          "summary": "KA Katlowitz, JL Belanger, T Ismail, AG Chavez… - bioRxiv, 2025 - biorxiv.org",
+          "authors": [
+            {
+              "name": "KA Katlowitz",
+              "link": "https://scholar.google.com/citations?user=mQoTh9oAAAAJ&hl=en&oi=sra",
+              "author_id": "mQoTh9oAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=mQoTh9oAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "JL Belanger",
+              "link": "https://scholar.google.com/citations?user=8RCoKNUAAAAJ&hl=en&oi=sra",
+              "author_id": "8RCoKNUAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=8RCoKNUAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "T Ismail",
+              "link": "https://scholar.google.com/citations?user=oF2H80gAAAAJ&hl=en&oi=sra",
+              "author_id": "oF2H80gAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oF2H80gAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "AG Chavez",
+              "link": "https://scholar.google.com/citations?user=yR1IOY4AAAAJ&hl=en&oi=sra",
+              "author_id": "yR1IOY4AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=yR1IOY4AAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "biorxiv.org",
+            "file_format": "PDF",
+            "link": "https://www.biorxiv.org/content/biorxiv/early/2025/06/24/2025.06.23.661103.full.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=LyTqLUAYuKoJ",
+          "cited_by": {
+            "total": 16,
+            "link": "https://scholar.google.com/scholar?cites=12301609046089802799&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "12301609046089802799",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=12301609046089802799&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:LyTqLUAYuKoJ:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3ALyTqLUAYuKoJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 5,
+            "link": "https://scholar.google.com/scholar?cluster=12301609046089802799&hl=en&as_sdt=0,26",
+            "cluster_id": "12301609046089802799",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C26&cluster=12301609046089802799&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:LyTqLUAYuKoJ:scholar.google.com/+%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26"
+        }
+      },
+      {
+        "position": 7,
+        "title": "Revolutionizing Vision: A Deep Dive into “Attention Is All You Need” and Its Impact on AI and Machine Learning",
+        "result_id": "U5ran8El3vsJ",
+        "type": "Pdf",
+        "link": "https://www.researchgate.net/profile/Anthony-Paul-2/publication/394854371_Revolutionizing_Vision_A_Deep_Dive_into_Attention_Is_All_You_Need_and_Its_Impact_on_AI_and_Machine_Learning/links/68a90aed1bee4d42a2421f20/Revolutionizing-Vision-A-Deep-Dive-into-Attention-Is-All-You-Need-and-Its-Impact-on-AI-and-Machine-Learning.pdf",
+        "snippet": "… qualitative and analytical methods to examine the technical composition, evolution, and real-world implications of the Transformer architecture in the paper \"Attention Is All You Need\". …",
+        "publication_info": {
+          "summary": "AL Paul - researchgate.net",
+          "authors": [
+            {
+              "name": "AL Paul"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "researchgate.net",
+            "file_format": "PDF",
+            "link": "https://www.researchgate.net/profile/Anthony-Paul-2/publication/394854371_Revolutionizing_Vision_A_Deep_Dive_into_Attention_Is_All_You_Need_and_Its_Impact_on_AI_and_Machine_Learning/links/68a90aed1bee4d42a2421f20/Revolutionizing-Vision-A-Deep-Dive-into-Attention-Is-All-You-Need-and-Its-Impact-on-AI-and-Machine-Learning.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=U5ran8El3vsJ",
+          "cited_by": {
+            "total": 1,
+            "link": "https://scholar.google.com/scholar?cites=18148985061890497107&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "18148985061890497107",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=18148985061890497107&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:U5ran8El3vsJ:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3AU5ran8El3vsJ%3Ascholar.google.com%2F",
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:U5ran8El3vsJ:scholar.google.com/+%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26"
+        }
+      },
+      {
+        "position": 8,
+        "title": "Attention is all you need until you need retention",
+        "result_id": "he-44SI9mh4J",
+        "link": "https://arxiv.org/abs/2501.09166",
+        "snippet": "… This section extends the “Attention Is All You Need” framework by adding a Retention Layer that stores and recalls patterns across time—akin to social learning concept of retention [19]. …",
+        "publication_info": {
+          "summary": "MM Yaslioglu - arXiv preprint arXiv:2501.09166, 2025 - arxiv.org",
+          "authors": [
+            {
+              "name": "MM Yaslioglu",
+              "link": "https://scholar.google.com/citations?user=l82NJcwAAAAJ&hl=en&oi=sra",
+              "author_id": "l82NJcwAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=l82NJcwAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "arxiv.org",
+            "file_format": "PDF",
+            "link": "https://arxiv.org/pdf/2501.09166"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=he-44SI9mh4J",
+          "cited_by": {
+            "total": 6,
+            "link": "https://scholar.google.com/scholar?cites=2205142187576455045&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "2205142187576455045",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=2205142187576455045&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:he-44SI9mh4J:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3Ahe-44SI9mh4J%3Ascholar.google.com%2F",
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:he-44SI9mh4J:scholar.google.com/+%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26"
+        }
+      },
+      {
+        "position": 9,
+        "title": "Attention is all you need in speech separation",
+        "result_id": "BwvwD2whQ64J",
+        "link": "https://ieeexplore.ieee.org/abstract/document/9413901/",
+        "snippet": "Recurrent Neural Networks (RNNs) have long been the dominant architecture in sequence-to-sequence learning. RNNs, however, are inherently sequential models that do not allow …",
+        "publication_info": {
+          "summary": "C Subakan, M Ravanelli, S Cornell… - ICASSP 2021-2021 …, 2021 - ieeexplore.ieee.org",
+          "authors": [
+            {
+              "name": "C Subakan",
+              "link": "https://scholar.google.com/citations?user=zXzV-0UAAAAJ&hl=en&oi=sra",
+              "author_id": "zXzV-0UAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=zXzV-0UAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "M Ravanelli",
+              "link": "https://scholar.google.com/citations?user=-6Pj3IYAAAAJ&hl=en&oi=sra",
+              "author_id": "-6Pj3IYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=-6Pj3IYAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "S Cornell",
+              "link": "https://scholar.google.com/citations?user=A3lfL0QAAAAJ&hl=en&oi=sra",
+              "author_id": "A3lfL0QAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=A3lfL0QAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "arxiv.org",
+            "file_format": "PDF",
+            "link": "https://arxiv.org/pdf/2010.13154"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=BwvwD2whQ64J",
+          "cited_by": {
+            "total": 1143,
+            "link": "https://scholar.google.com/scholar?cites=12556916934046649095&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "12556916934046649095",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=12556916934046649095&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:BwvwD2whQ64J:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3ABwvwD2whQ64J%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 8,
+            "link": "https://scholar.google.com/scholar?cluster=12556916934046649095&hl=en&as_sdt=0,26",
+            "cluster_id": "12556916934046649095",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C26&cluster=12556916934046649095&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 10,
+        "title": "Moral attention is all you need",
+        "result_id": "Gw9Y36Qw-mIJ",
+        "link": "https://www.tandfonline.com/doi/abs/10.1080/14746700.2025.2472118",
+        "snippet": "What do artificial intelligence (AI) developers need from moral theology? Moral theology situates human response to revelation within a broad social, religious, and cultural context. …",
+        "publication_info": {
+          "summary": "M Graves - Theology and Science, 2025 - Taylor & Francis",
+          "authors": [
+            {
+              "name": "M Graves",
+              "link": "https://scholar.google.com/citations?user=haKJSxAAAAAJ&hl=en&oi=sra",
+              "author_id": "haKJSxAAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=haKJSxAAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "tandfonline.com",
+            "file_format": "PDF",
+            "link": "https://www.tandfonline.com/doi/pdf/10.1080/14746700.2025.2472118"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=Gw9Y36Qw-mIJ",
+          "cited_by": {
+            "total": 10,
+            "link": "https://scholar.google.com/scholar?cites=7132066444574461723&as_sdt=5,26&sciodt=0,26&hl=en",
+            "cites_id": "7132066444574461723",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C26&cites=7132066444574461723&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:Gw9Y36Qw-mIJ:scholar.google.com/&scioq=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=related%3AGw9Y36Qw-mIJ%3Ascholar.google.com%2F"
+        }
+      }
+    ],
+    "pagination": {
+      "current": 1,
+      "next": "https://scholar.google.com/scholar?start=10&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+      "other_pages": {
+        "2": "https://scholar.google.com/scholar?start=10&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+        "3": "https://scholar.google.com/scholar?start=20&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+        "4": "https://scholar.google.com/scholar?start=30&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+        "5": "https://scholar.google.com/scholar?start=40&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+        "6": "https://scholar.google.com/scholar?start=50&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+        "7": "https://scholar.google.com/scholar?start=60&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+        "8": "https://scholar.google.com/scholar?start=70&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+        "9": "https://scholar.google.com/scholar?start=80&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26",
+        "10": "https://scholar.google.com/scholar?start=90&q=%22Attention+is+all+you+need%22&hl=en&as_sdt=0,26"
+      }
+    },
+    "serpapi_pagination": {
+      "current": 1,
+      "next_link": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=10",
+      "next": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=10",
+      "other_pages": {
+        "2": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=10",
+        "3": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=20",
+        "4": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=30",
+        "5": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=40",
+        "6": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=50",
+        "7": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=60",
+        "8": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=70",
+        "9": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=80",
+        "10": "https://serpapi.com/search.json?as_sdt=0%2C26&engine=google_scholar&hl=en&num=10&q=%22Attention+is+all+you+need%22&start=90"
+      }
+    }
+  }
+}

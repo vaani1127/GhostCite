@@ -1,0 +1,35 @@
+{
+  "description": "Invented title that should not exist; exact-title strategy.",
+  "strategy": "scholar_exact_title",
+  "params": {
+    "engine": "google_scholar",
+    "q": "\"Quantum gradient folding for multilingual citation graphs\"",
+    "hl": "en",
+    "num": "10"
+  },
+  "response": {
+    "search_metadata": {
+      "id": "6ac86575e6590e89722b16f8",
+      "status": "Success",
+      "created_at": "2026-10-09 03:54:29 UTC",
+      "processed_at": "2026-10-09 03:54:29 UTC",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=%22Quantum+gradient+folding+for+multilingual+citation+graphs%22&hl=en&num=10",
+      "total_time_taken": 0.45
+    },
+    "search_parameters": {
+      "engine": "google_scholar",
+      "q": "\"Quantum gradient folding for multilingual citation graphs\"",
+      "hl": "en",
+      "num": "10"
+    },
+    "search_information": {
+      "organic_results_state": "Fully empty",
+      "query_displayed": "\"Quantum gradient folding for multilingual citation graphs\""
+    },
+    "error": "Google hasn't returned any results for this query.",
+    "profiles": {
+      "link": "https://www.google.com/search?hl=en&q=%22Quantum+gradient+folding+for+multilingual+citation+graphs%22",
+      "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=%22Quantum+gradient+folding+for+multilingual+citation+graphs%22"
+    }
+  }
+}

@@ -1,0 +1,636 @@
+{
+  "description": "Real paper cited with a slightly wrong title; title + author strategy.",
+  "strategy": "scholar_title_author",
+  "params": {
+    "engine": "google_scholar",
+    "q": "Attention is all we need for sequence transduction author:\"Vaswani\"",
+    "hl": "en",
+    "num": "10"
+  },
+  "response": {
+    "search_metadata": {
+      "id": "6ac86576c2bb99a87eda722f",
+      "status": "Success",
+      "created_at": "2026-10-09 03:54:30 UTC",
+      "processed_at": "2026-10-09 03:54:30 UTC",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=Attention+is+all+we+need+for+sequence+transduction+author%3A%22Vaswani%22&hl=en&num=10",
+      "total_time_taken": 1.22
+    },
+    "search_parameters": {
+      "engine": "google_scholar",
+      "q": "Attention is all we need for sequence transduction author:\"Vaswani\"",
+      "hl": "en",
+      "num": "10"
+    },
+    "search_information": {
+      "organic_results_state": "Results for exact spelling",
+      "total_results": 17,
+      "time_taken_displayed": 0.19,
+      "query_displayed": "Attention is all we need for sequence transduction author:\"Vaswani\""
+    },
+    "organic_results": [
+      {
+        "position": 1,
+        "title": "Attention is all you need",
+        "result_id": "5Gohgn6QFikJ",
+        "link": "https://proceedings.neurips.cc/paper_files/paper/7181-attention-is",
+        "snippet": "… Similarly to other sequence transduction models, we use learned embeddings to convert … in a typical sequence transduction encoder or decoder. Motivating our use of self-attention we …",
+        "publication_info": {
+          "summary": "A Vaswani, N Shazeer, N Parmar… - Advances in neural …, 2017 - proceedings.neurips.cc",
+          "authors": [
+            {
+              "name": "A Vaswani",
+              "link": "https://scholar.google.com/citations?user=oR9sCGYAAAAJ&hl=en&oi=sra",
+              "author_id": "oR9sCGYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oR9sCGYAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "N Shazeer",
+              "link": "https://scholar.google.com/citations?user=wsGvgA8AAAAJ&hl=en&oi=sra",
+              "author_id": "wsGvgA8AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=wsGvgA8AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "N Parmar",
+              "link": "https://scholar.google.com/citations?user=q2YXPSgAAAAJ&hl=en&oi=sra",
+              "author_id": "q2YXPSgAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=q2YXPSgAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "neurips.cc",
+            "file_format": "PDF",
+            "link": "https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf?src_trk=em66c5166b7bad47.12959706424423622"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=5Gohgn6QFikJ",
+          "cited_by": {
+            "total": 274507,
+            "link": "https://scholar.google.com/scholar?cites=2960712678066186980&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "2960712678066186980",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=2960712678066186980&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:5Gohgn6QFikJ:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3A5Gohgn6QFikJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 26,
+            "link": "https://scholar.google.com/scholar?cluster=2960712678066186980&hl=en&as_sdt=0,5",
+            "cluster_id": "2960712678066186980",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=2960712678066186980&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:5Gohgn6QFikJ:scholar.google.com/+Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 2,
+        "title": "Attention is all you need study notes",
+        "result_id": "XgA0_X3oveMJ",
+        "type": "Citation",
+        "snippet": "",
+        "publication_info": {
+          "summary": "A Vaswani, N Shazeer, N Parmar, J Uszkoreit, L Jones… - Attention Is All You Need …, 2023",
+          "authors": [
+            {
+              "name": "A Vaswani",
+              "link": "https://scholar.google.com/citations?user=oR9sCGYAAAAJ&hl=en&oi=sra",
+              "author_id": "oR9sCGYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oR9sCGYAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "N Shazeer",
+              "link": "https://scholar.google.com/citations?user=wsGvgA8AAAAJ&hl=en&oi=sra",
+              "author_id": "wsGvgA8AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=wsGvgA8AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "N Parmar",
+              "link": "https://scholar.google.com/citations?user=q2YXPSgAAAAJ&hl=en&oi=sra",
+              "author_id": "q2YXPSgAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=q2YXPSgAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "J Uszkoreit",
+              "link": "https://scholar.google.com/citations?user=mOG0bwsAAAAJ&hl=en&oi=sra",
+              "author_id": "mOG0bwsAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=mOG0bwsAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "L Jones",
+              "link": "https://scholar.google.com/citations?user=_3_P5VwAAAAJ&hl=en&oi=sra",
+              "author_id": "_3_P5VwAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=_3_P5VwAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=XgA0_X3oveMJ",
+          "cited_by": {
+            "total": 7,
+            "link": "https://scholar.google.com/scholar?cites=16410528245024555102&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "16410528245024555102",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=16410528245024555102&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:XgA0_X3oveMJ:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3AXgA0_X3oveMJ%3Ascholar.google.com%2F"
+        }
+      },
+      {
+        "position": 3,
+        "title": "Preventing occludin tight-junction disruption via inhibition of microRNA-193b-5p attenuates viral load and influenza-induced lung injury",
+        "result_id": "fINBeUjLmj8J",
+        "link": "https://www.cell.com/molecular-therapy-family/molecular-therapy/fulltext/S1525-0016(23)00322-2",
+        "snippet": "… , we determined the effect of the LV on IRG expression by stimulating cells transduced with … Lipid nanoparticles have gained much attention for the successful delivery of therapeutic …",
+        "publication_info": {
+          "summary": "CM Vaswani, AK Varkouhi, S Gupta, AM Ektesabi… - Molecular Therapy, 2023 - cell.com",
+          "authors": [
+            {
+              "name": "CM Vaswani"
+            },
+            {
+              "name": "AK Varkouhi",
+              "link": "https://scholar.google.com/citations?user=LysMWNUAAAAJ&hl=en&oi=sra",
+              "author_id": "LysMWNUAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=LysMWNUAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "S Gupta",
+              "link": "https://scholar.google.com/citations?user=RqY3VyMAAAAJ&hl=en&oi=sra",
+              "author_id": "RqY3VyMAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=RqY3VyMAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "AM Ektesabi",
+              "link": "https://scholar.google.com/citations?user=Z0sDZIIAAAAJ&hl=en&oi=sra",
+              "author_id": "Z0sDZIIAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=Z0sDZIIAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "cell.com",
+            "file_format": "PDF",
+            "link": "https://www.cell.com/molecular-therapy-family/molecular-therapy/pdfExtended/S1525-0016(23)00322-2"
+          },
+          {
+            "title": "Full View",
+            "link": "https://scholar.google.com/scholar?output=instlink&q=info:fINBeUjLmj8J:scholar.google.com/&hl=en&as_sdt=0,5&scillfp=17906282631610744810&oi=lle"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=fINBeUjLmj8J",
+          "cited_by": {
+            "total": 35,
+            "link": "https://scholar.google.com/scholar?cites=4583199082935321468&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "4583199082935321468",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=4583199082935321468&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:fINBeUjLmj8J:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3AfINBeUjLmj8J%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 12,
+            "link": "https://scholar.google.com/scholar?cluster=4583199082935321468&hl=en&as_sdt=0,5",
+            "cluster_id": "4583199082935321468",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=4583199082935321468&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 4,
+        "title": "Stand-alone self-attention in vision models",
+        "result_id": "RIjcTeeRDd8J",
+        "link": "https://proceedings.neurips.cc/paper_files/paper/8302-stand-alone-self-attention-in-vision-models",
+        "snippet": "… Attention was introduced by [45] for the encoder-decoder in a neural sequence transduction … The ability of attention to learn to focus on important regions within a context has made it a …",
+        "publication_info": {
+          "summary": "…, A Vaswani, I Bello, A Levskaya… - Advances in neural …, 2019 - proceedings.neurips.cc",
+          "authors": [
+            {
+              "name": ""
+            },
+            {
+              "name": "A Vaswani",
+              "link": "https://scholar.google.com/citations?user=oR9sCGYAAAAJ&hl=en&oi=sra",
+              "author_id": "oR9sCGYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oR9sCGYAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "I Bello",
+              "link": "https://scholar.google.com/citations?user=mY6p8gcAAAAJ&hl=en&oi=sra",
+              "author_id": "mY6p8gcAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=mY6p8gcAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "A Levskaya",
+              "link": "https://scholar.google.com/citations?user=dN9QZfEAAAAJ&hl=en&oi=sra",
+              "author_id": "dN9QZfEAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=dN9QZfEAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "neurips.cc",
+            "file_format": "PDF",
+            "link": "https://proceedings.neurips.cc/paper_files/paper/2019/file/3416a75f4cea9109507cacd8e2f2aefc-Paper.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=RIjcTeeRDd8J",
+          "cited_by": {
+            "total": 1771,
+            "link": "https://scholar.google.com/scholar?cites=16072663067784939588&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "16072663067784939588",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=16072663067784939588&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:RIjcTeeRDd8J:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3ARIjcTeeRDd8J%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 7,
+            "link": "https://scholar.google.com/scholar?cluster=16072663067784939588&hl=en&as_sdt=0,5",
+            "cluster_id": "16072663067784939588",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=16072663067784939588&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:RIjcTeeRDd8J:scholar.google.com/+Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 5,
+        "title": "Stand-alone self-attention in vision models",
+        "result_id": "BeXgNajeD7AJ",
+        "link": "https://openreview.net/forum?id=rJgYQ4BlUH",
+        "snippet": "… Attention was introduced by [45] for the encoder-decoder in a neural sequence transduction … The ability of attention to learn to focus on important regions within a context has made it a …",
+        "publication_info": {
+          "summary": "…, P Ramachandran, A Vaswani, I Bello, A Levskaya… - 2019 - openreview.net",
+          "authors": [
+            {
+              "name": ""
+            },
+            {
+              "name": "P Ramachandran",
+              "link": "https://scholar.google.com/citations?user=ktKXDuMAAAAJ&hl=en&oi=sra",
+              "author_id": "ktKXDuMAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=ktKXDuMAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "A Vaswani",
+              "link": "https://scholar.google.com/citations?user=oR9sCGYAAAAJ&hl=en&oi=sra",
+              "author_id": "oR9sCGYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oR9sCGYAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "I Bello",
+              "link": "https://scholar.google.com/citations?user=mY6p8gcAAAAJ&hl=en&oi=sra",
+              "author_id": "mY6p8gcAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=mY6p8gcAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "A Levskaya",
+              "link": "https://scholar.google.com/citations?user=dN9QZfEAAAAJ&hl=en&oi=sra",
+              "author_id": "dN9QZfEAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=dN9QZfEAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "openreview.net",
+            "file_format": "PDF",
+            "link": "https://openreview.net/pdf?id=rJgYQ4BlUH"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=BeXgNajeD7AJ",
+          "cited_by": {
+            "total": 202,
+            "link": "https://scholar.google.com/scholar?cites=12686603489365779717&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "12686603489365779717",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=12686603489365779717&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:BeXgNajeD7AJ:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3ABeXgNajeD7AJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 2,
+            "link": "https://scholar.google.com/scholar?cluster=12686603489365779717&hl=en&as_sdt=0,5",
+            "cluster_id": "12686603489365779717",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=12686603489365779717&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:BeXgNajeD7AJ:scholar.google.com/+Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 6,
+        "title": "Pharmacologic inhibition of BAF chromatin remodeling complexes as a therapeutic approach to transcription factor-dependent cancers",
+        "result_id": "7SWUIFQsO58J",
+        "link": "https://www.biorxiv.org/content/10.1101/2023.09.11.557162.abstract",
+        "snippet": "… We decided to focus on uveal melanoma (UM) given that every one of the cell lines of this … (j) 92-1 cells were transduced with lentivirus with constitutive expression of empty vector or …",
+        "publication_info": {
+          "summary": "RC Centore, LMM Soares, S Topal, RG Vaswani… - bioRxiv, 2023 - biorxiv.org",
+          "authors": [
+            {
+              "name": "RC Centore"
+            },
+            {
+              "name": "LMM Soares",
+              "link": "https://scholar.google.com/citations?user=PBcKPHIAAAAJ&hl=en&oi=sra",
+              "author_id": "PBcKPHIAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=PBcKPHIAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "S Topal",
+              "link": "https://scholar.google.com/citations?user=qV05wc8AAAAJ&hl=en&oi=sra",
+              "author_id": "qV05wc8AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=qV05wc8AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "RG Vaswani"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "biorxiv.org",
+            "file_format": "PDF",
+            "link": "https://www.biorxiv.org/content/biorxiv/early/2025/07/28/2023.09.11.557162.full.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=7SWUIFQsO58J",
+          "cited_by": {
+            "total": 16,
+            "link": "https://scholar.google.com/scholar?cites=11473813215491925485&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "11473813215491925485",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=11473813215491925485&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:7SWUIFQsO58J:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3A7SWUIFQsO58J%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 4,
+            "link": "https://scholar.google.com/scholar?cluster=11473813215491925485&hl=en&as_sdt=0,5",
+            "cluster_id": "11473813215491925485",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=11473813215491925485&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:7SWUIFQsO58J:scholar.google.com/+Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 7,
+        "title": "The best of both worlds: Combining recent advances in neural machine translation",
+        "result_id": "a_Nz7EYrNBsJ",
+        "link": "https://aclanthology.org/P18-1008/",
+        "snippet": "… ditions on the encoded input sequence through an attention mechanism, and generates the … very small standard deviation, which is similar to what we observed on the En-Fr task. Table …",
+        "publication_info": {
+          "summary": "…, N Shazeer, N Parmar, A Vaswani… - Proceedings of the …, 2018 - aclanthology.org",
+          "authors": [
+            {
+              "name": ""
+            },
+            {
+              "name": "N Shazeer",
+              "link": "https://scholar.google.com/citations?user=wsGvgA8AAAAJ&hl=en&oi=sra",
+              "author_id": "wsGvgA8AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=wsGvgA8AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "N Parmar",
+              "link": "https://scholar.google.com/citations?user=q2YXPSgAAAAJ&hl=en&oi=sra",
+              "author_id": "q2YXPSgAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=q2YXPSgAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "A Vaswani",
+              "link": "https://scholar.google.com/citations?user=oR9sCGYAAAAJ&hl=en&oi=sra",
+              "author_id": "oR9sCGYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oR9sCGYAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "aclanthology.org",
+            "file_format": "PDF",
+            "link": "https://aclanthology.org/P18-1008.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=a_Nz7EYrNBsJ",
+          "cited_by": {
+            "total": 603,
+            "link": "https://scholar.google.com/scholar?cites=1960239321427735403&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "1960239321427735403",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=1960239321427735403&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:a_Nz7EYrNBsJ:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3Aa_Nz7EYrNBsJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 6,
+            "link": "https://scholar.google.com/scholar?cluster=1960239321427735403&hl=en&as_sdt=0,5",
+            "cluster_id": "1960239321427735403",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=1960239321427735403&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:a_Nz7EYrNBsJ:scholar.google.com/+Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 8,
+        "title": "Pre-Clinical Studies of MicroRNA-Based Therapies for Sepsis: A Scoping Review",
+        "result_id": "Yz6azHXgc0IJ",
+        "type": "Html",
+        "link": "https://www.mdpi.com/2673-9801/4/1/2",
+        "snippet": "… We specifically excluded papers that did not focus on microRNAs as the targets of therapy, … -2, interface with the extracellular environment to transduce chemical or physical signals as a …",
+        "publication_info": {
+          "summary": "AM Ektesabi, J Simone, C Vaswani, GW Tan, Y Wang… - Oxygen, 2024 - mdpi.com",
+          "authors": [
+            {
+              "name": "AM Ektesabi",
+              "link": "https://scholar.google.com/citations?user=Z0sDZIIAAAAJ&hl=en&oi=sra",
+              "author_id": "Z0sDZIIAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=Z0sDZIIAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "J Simone"
+            },
+            {
+              "name": "C Vaswani"
+            },
+            {
+              "name": "GW Tan"
+            },
+            {
+              "name": "Y Wang"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "HTML",
+            "link": null
+          },
+          {
+            "title": "mdpi.com",
+            "file_format": "HTML",
+            "link": "https://www.mdpi.com/2673-9801/4/1/2"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=Yz6azHXgc0IJ",
+          "html_version": "https://www.mdpi.com/2673-9801/4/1/2",
+          "cited_by": {
+            "total": 1,
+            "link": "https://scholar.google.com/scholar?cites=4788417625373425251&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "4788417625373425251",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=4788417625373425251&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:Yz6azHXgc0IJ:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3AYz6azHXgc0IJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 3,
+            "link": "https://scholar.google.com/scholar?cluster=4788417625373425251&hl=en&as_sdt=0,5",
+            "cluster_id": "4788417625373425251",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=4788417625373425251&engine=google_scholar&hl=en"
+          },
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:Yz6azHXgc0IJ:scholar.google.com/+Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5"
+        }
+      },
+      {
+        "position": 9,
+        "title": "A complete proteomic profile of human and bovine milk exosomes by liquid chromatography mass spectrometry",
+        "result_id": "XNIrolZZXIMJ",
+        "link": "https://www.tandfonline.com/doi/abs/10.1080/14789450.2021.1980389",
+        "snippet": "… We have recently published a method to successfully isolate exosomes from both human and bovine milk with a high purity [14]. In the current study, we have … signal transduction and …",
+        "publication_info": {
+          "summary": "KM Vaswani, H Peiris, Y Qin Koh, RJ Hill… - Expert Review of …, 2021 - Taylor & Francis",
+          "authors": [
+            {
+              "name": "KM Vaswani"
+            },
+            {
+              "name": "H Peiris",
+              "link": "https://scholar.google.com/citations?user=L__4clcAAAAJ&hl=en&oi=sra",
+              "author_id": "L__4clcAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=L__4clcAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "Y Qin Koh"
+            },
+            {
+              "name": "RJ Hill",
+              "link": "https://scholar.google.com/citations?user=oEhmXBoAAAAJ&hl=en&oi=sra",
+              "author_id": "oEhmXBoAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oEhmXBoAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=XNIrolZZXIMJ",
+          "cited_by": {
+            "total": 52,
+            "link": "https://scholar.google.com/scholar?cites=9465538745448780380&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "9465538745448780380",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=9465538745448780380&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:XNIrolZZXIMJ:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3AXNIrolZZXIMJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 6,
+            "link": "https://scholar.google.com/scholar?cluster=9465538745448780380&hl=en&as_sdt=0,5",
+            "cluster_id": "9465538745448780380",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=9465538745448780380&engine=google_scholar&hl=en"
+          }
+        }
+      },
+      {
+        "position": 10,
+        "title": "Brain cancer receptors and targeting strategies",
+        "result_id": "AEiRLPWJ9lUJ",
+        "link": "https://link.springer.com/chapter/10.1007/978-3-030-29168-6_2",
+        "snippet": "… inactive and require linkage with certain components of cell to generate signal transduction. … Among many approaches, receptor-mediated endocytosis which is the focus of this chapter …",
+        "publication_info": {
+          "summary": "R John, H Vaswani, P Dandekar… - … Intracellular Drug Delivery …, 2019 - Springer",
+          "authors": [
+            {
+              "name": "R John",
+              "link": "https://scholar.google.com/citations?user=1guLLaAAAAAJ&hl=en&oi=sra",
+              "author_id": "1guLLaAAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=1guLLaAAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "H Vaswani"
+            },
+            {
+              "name": "P Dandekar",
+              "link": "https://scholar.google.com/citations?user=cZEHHykAAAAJ&hl=en&oi=sra",
+              "author_id": "cZEHHykAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=cZEHHykAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=AEiRLPWJ9lUJ",
+          "cited_by": {
+            "total": 2,
+            "link": "https://scholar.google.com/scholar?cites=6194290023602407424&as_sdt=2005&sciodt=0,5&hl=en",
+            "cites_id": "6194290023602407424",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=6194290023602407424&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:AEiRLPWJ9lUJ:scholar.google.com/&scioq=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=related%3AAEiRLPWJ9lUJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 3,
+            "link": "https://scholar.google.com/scholar?cluster=6194290023602407424&hl=en&as_sdt=0,5",
+            "cluster_id": "6194290023602407424",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=6194290023602407424&engine=google_scholar&hl=en"
+          }
+        }
+      }
+    ],
+    "pagination": {
+      "current": 1,
+      "next": "https://scholar.google.com/scholar?start=10&q=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5",
+      "other_pages": {
+        "2": "https://scholar.google.com/scholar?start=10&q=Attention+is+all+we+need+for+sequence+transduction+author:%22Vaswani%22&hl=en&as_sdt=0,5"
+      }
+    },
+    "serpapi_pagination": {
+      "current": 1,
+      "next_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=Attention+is+all+we+need+for+sequence+transduction+author%3A%22Vaswani%22&start=10",
+      "next": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=Attention+is+all+we+need+for+sequence+transduction+author%3A%22Vaswani%22&start=10",
+      "other_pages": {
+        "2": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=10&q=Attention+is+all+we+need+for+sequence+transduction+author%3A%22Vaswani%22&start=10"
+      }
+    }
+  }
+}

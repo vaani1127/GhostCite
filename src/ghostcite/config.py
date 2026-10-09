@@ -90,6 +90,27 @@ class SearchConfig:
     """Pace live calls to at most 80% of the account's hourly limit. This leaves room
     for other clients of the same key and avoids relying on 429 retries."""
 
+    language: str = "en"
+    """Interface language (``hl``). Fixing it keeps cache keys and result formats stable
+    across machines with different locales."""
+
+    google_country: str = "in"
+    """Country (``gl``) for Google web fallback searches. Without it SerpApi picks a proxy
+    location per request, and results (even their language) vary between runs. India
+    is chosen because the fallback exists mainly for Indian books and theses."""
+
+    max_query_chars: int = 256
+    """Google ignores words beyond about 32. Long titles are cut at a word boundary, which
+    also keeps cache keys short."""
+
+    fallback_entry_types: frozenset[str] = frozenset(
+        {"book", "inbook", "incollection", "phdthesis", "mastersthesis", "thesis", "techreport",
+         "report", "manual", "booklet"}
+    )  # fmt: skip
+    """Work types that Google Scholar indexes poorly, which get a third, plain Google web
+    search. Journal and conference papers never use it, so fabricated papers cost at
+    most two credits."""
+
 
 @dataclass(frozen=True, slots=True)
 class MatchConfig:

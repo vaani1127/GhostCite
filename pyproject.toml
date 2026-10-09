@@ -107,7 +107,7 @@ convention = "google"
 python_version = "3.11"
 strict = true
 mypy_path = "src"
-files = ["src", "tests", "tasks.py"]
+files = ["src", "tests", "scripts", "tasks.py"]
 plugins = ["pydantic.mypy"]
 warn_unreachable = true
 

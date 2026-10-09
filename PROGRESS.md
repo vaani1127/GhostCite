@@ -26,13 +26,18 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
   non-ASCII characters and re-escape the code lines (ruff RUF001 flags ambiguous ones).
 
 ## Checkpoint 3 — search
-- [ ] cache.py, budget.py, ratelimit.py, account.py (preflight)
-- [ ] backends (live/cache/demo), client.py (retry, redaction, offline)
-- [ ] parsers/scholar.py, parsers/google.py
-- [ ] planner.py
-- [ ] Mocked tests
-- [ ] Live smoke test (≤ 5 searches), sanitized fixtures, credits.log
-- [ ] Gates green → STOP
+- [x] cache.py, budget.py (incl. CombinedBudget for web), ratelimit.py (token bucket), account.py (preflight)
+- [x] backends.py (LiveTransport, DemoBundle), client.py (retry, redaction, offline), sanitize.py
+- [x] parsers/scholar.py, parsers/google.py (incl. Knowledge Graph candidate)
+- [x] planner.py (exact title, then title + author:, then Google fallback for books/theses with gl=in)
+- [x] Mocked tests
+- [x] Live smoke test: 5 fixtures in tests/fixtures/serpapi, credits.log updated. **7 credits used in total** (6 for the first run, because a timed-out request was still billed; 1 to re-record the Google fixture with gl=in)
+- [x] Gates green → STOP (350 tests, 99.60% coverage)
+  Findings from real data (all fixed and tested): `markdown_endpoint` and thumbnail links under serpapi.com/searches/ are
+  now sanitized; Scholar venues can start with "…"; Google needs `gl` for stable results; timeouts can be
+  billed, so `credits_used` counts them and retries re-reserve budget.
+  For Checkpoint 6: the demo-bundle builder must run `sanitize_response` on export (older local cache entries predate
+  the stricter sanitizer).
 
 ## Checkpoint 4 — match, verdict, reports, CLI
 - [ ] match/normalize.py, match/score.py (fallback cap)
@@ -62,4 +67,4 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
 - [ ] STOP
 
 ## Credits used
-See `.dev/credits.log` (gitignored). Running total: 0 / 120.
+See `.dev/credits.log` (gitignored). Running total: 7 / 120 (account: 243 left).
