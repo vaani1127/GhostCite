@@ -96,7 +96,16 @@ def _detect_numbering(lines: Sequence[SourceLine]) -> re.Pattern[str] | None:
         for name, marker in _MARKERS.items()
     }
     name, run = max(runs.items(), key=lambda item: item[1])
-    return _MARKERS[name] if run >= _MIN_RUN else None
+    if run >= _MIN_RUN:
+        return _MARKERS[name]
+    # A single pasted reference ("[1] A. Vaswani ...") is numbered too, so its marker
+    # must be stripped. It counts only when the very first line opens with marker 0 or 1.
+    first = next((line.text for line in lines if line.text.strip()), "")
+    for marker in _MARKERS.values():
+        match = marker.match(first)
+        if match is not None and int(match.group(1)) <= 1:
+            return marker
+    return None
 
 
 def _split_numbered(lines: Sequence[SourceLine], marker: re.Pattern[str]) -> list[RawReference]:

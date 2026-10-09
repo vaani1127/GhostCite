@@ -12,7 +12,7 @@ from ghostcite.models import RunMode, Verdict
 from ghostcite.pipeline import Progress, check_document, dedupe_key
 from ghostcite.search.backends import DemoBundle
 from ghostcite.search.budget import SearchBudget
-from ghostcite.search.cache import SqliteCache
+from ghostcite.search.cache import SqliteCache, cache_key
 from ghostcite.search.client import SearchClient
 from tests.conftest import FIXTURES
 from tests.helpers import (
@@ -50,7 +50,10 @@ def test_live_run_gives_the_expected_verdicts(cache: SqliteCache) -> None:
         Verdict.VERIFIED,
     ]
     wrong_year = report.results[2]
-    assert wrong_year.reason == "Title matches, but year is 2017, not 2019."
+    assert wrong_year.reason == (
+        "Title matches, but year is 2017, not 2019."
+        " (Google Scholar lists this work with 26 versions; this may be a different version.)"
+    )
     assert wrong_year.best_match is not None
     assert wrong_year.best_match.candidate.cited_by == 274507
     book = report.results[4]
@@ -166,3 +169,72 @@ def test_dedupe_key_for_untitled_references() -> None:
     keys = {dedupe_key(r) for r in document.references}
     assert len(keys) == 1
     assert next(iter(keys)).startswith("raw:")
+
+
+def test_reworded_title_found_by_the_author_query_is_a_mismatch(cache: SqliteCache) -> None:
+    # Strategy 1 (exact reworded title) finds nothing; strategy 2 (title + author:Vaswani)
+    # returns the real paper, which is in the middle band.
+    reworded = (
+        '[1] A. Vaswani, N. Shazeer, "Attention is all we need for sequence transduction," '
+        "NeurIPS, 2017."
+    )
+    transport = FixtureTransport()
+    report = check_document(load_text(reworded), _live(cache, transport), mode=RunMode.LIVE)
+    result = report.results[0]
+    assert result.verdict is Verdict.METADATA_MISMATCH
+    assert result.reason == (
+        "Title differs from the closest real paper: 'Attention is all you need' (2017)."
+    )
+    assert result.best_match is not None
+    assert len(transport.calls) == 2
+
+
+def test_reworded_title_by_other_authors_is_not_found_but_shows_the_closest(
+    cache: SqliteCache,
+) -> None:
+    # Answer Zhou's author query with the recorded response for the same reworded title,
+    # which contains the real Vaswani paper.
+    title = "Attention is all we need for sequence transduction"
+    query = {"engine": "google_scholar", "hl": "en", "num": "10"}
+    recorded = recorded_responses()[cache_key({**query, "q": f'{title} author:"Vaswani"'})]
+    zhou = cache_key({**query, "q": f'{title} author:"Zhou"'})
+    transport = FixtureTransport(extra={zhou: recorded})
+    reworded = f'[1] Q. Zhou, "{title}," NeurIPS, 2017.'
+    report = check_document(load_text(reworded), _live(cache, transport), mode=RunMode.LIVE)
+    result = report.results[0]
+    assert result.verdict is Verdict.NOT_FOUND
+    assert result.best_match is not None  # the closest candidate stays visible in reports
+
+
+FASTER_RCNN = (
+    'S. Ren, K. He, R. Girshick, J. Sun, "Faster R-CNN: Towards real-time object detection with '
+    'region proposal networks," {venue}, {year}.'
+)
+
+
+@pytest.mark.parametrize(
+    ("venue", "year", "chosen_year"),
+    [
+        ("IEEE Transactions on Pattern Analysis and Machine Intelligence", 2016, 2016),
+        ("Advances in Neural Information Processing Systems", 2015, 2015),
+    ],
+)
+def test_each_version_of_a_twice_published_paper_is_verified(
+    cache: SqliteCache, venue: str, year: int, chosen_year: int
+) -> None:
+    text = "[1] " + FASTER_RCNN.format(venue=venue, year=year)
+    report = check_document(load_text(text), _live(cache, FixtureTransport()), mode=RunMode.LIVE)
+    result = report.results[0]
+    assert result.verdict is Verdict.VERIFIED, result.reason
+    assert result.best_match is not None
+    assert result.best_match.candidate.year == chosen_year
+
+
+def test_wrong_year_on_a_versioned_paper_mentions_the_versions(cache: SqliteCache) -> None:
+    text = "[1] " + FASTER_RCNN.format(venue="NeurIPS", year=2018)
+    report = check_document(load_text(text), _live(cache, FixtureTransport()), mode=RunMode.LIVE)
+    result = report.results[0]
+    assert result.verdict is Verdict.METADATA_MISMATCH
+    assert result.reason.endswith(
+        "(Google Scholar lists this work with 20 versions; this may be a different version.)"
+    )

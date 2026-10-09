@@ -2,12 +2,19 @@
 
 The rules, in order:
 
-1. No usable title                                   → UNPARSEABLE (nothing searched)
-2. Best title ≥ ``title_match``, no field mismatch    → VERIFIED
-3. Best title ≥ ``title_match``, some field mismatch  → METADATA_MISMATCH
-4. Title in the ambiguous band, authors and year agree → METADATA_MISMATCH (garbled title)
-5. Otherwise, all planned searches ran                → NOT_FOUND
-6. Otherwise (budget ran out, or offline cache miss)  → SKIPPED_BUDGET
+1. No usable title                                     -> UNPARSEABLE (nothing searched)
+2. Title matches (same words, similarity >= title_match),
+   no field disagrees on the best-agreeing version     -> VERIFIED
+3. Title matches, some field disagrees                 -> METADATA_MISMATCH
+   (with a note when Scholar lists several versions and only year/venue differ)
+4. Middle band: the title is a reworded version of a real paper's
+   (overlap >= title_reject) and the first author and year (+-1) agree
+                                                       -> METADATA_MISMATCH ("Title differs ...")
+5. Otherwise, all planned searches ran                  -> NOT_FOUND (closest candidate shown)
+6. Otherwise (budget ran out, or offline cache miss)    -> SKIPPED_BUDGET
+
+Thresholds are never relaxed to verify a reworded title: a slightly changed title of
+a real paper is a classic hallucination signature, so it lands in rule 4 or 5.
 
 The same evidence always produces the same verdict and reason. No model is involved.
 """
@@ -18,6 +25,7 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 
 from ghostcite.config import MATCH, SCORE, VERDICT, MatchConfig, ScoreConfig, VerdictConfig
+from ghostcite.match.score import in_middle_band, title_status
 from ghostcite.models import (
     Engine,
     FieldMatch,
@@ -29,6 +37,8 @@ from ghostcite.models import (
 )
 
 _JUDGED_FIELDS = (FieldName.AUTHORS, FieldName.YEAR, FieldName.VENUE)
+_VERSION_FIELDS = (FieldName.YEAR, FieldName.VENUE)
+"""Fields that legitimately differ between versions of one work (preprint vs journal)."""
 _MAX_NAMES_SHOWN = 3
 
 
@@ -123,15 +133,20 @@ def decide(
     *,
     complete: bool,
     incomplete_reason: str,
+    versions: int | None = None,
     match_cfg: MatchConfig = MATCH,
     cfg: VerdictConfig = VERDICT,
 ) -> Decision:
-    """Apply the rules above to the best candidate found for a reference."""
+    """Apply the rules above to the best candidate found for a reference.
+
+    ``versions`` is the largest version count Scholar reports for any title-matching
+    candidate. It only adds a note to year/venue mismatches.
+    """
     if not fields.title:
         return unparseable()
     title = _title_score(best) if best is not None else 0.0
 
-    if best is not None and title >= match_cfg.title_match:
+    if best is not None and title_status(best) is FieldStatus.MATCH:
         differences = [
             f
             for name in _JUDGED_FIELDS
@@ -145,6 +160,11 @@ def decide(
             else title
         )
         reason = "Title matches, but " + "; ".join(_difference(f) for f in differences) + "."
+        if versions and versions > 1 and all(f.field in _VERSION_FIELDS for f in differences):
+            reason += (
+                f" (Google Scholar lists this work with {versions} versions; "
+                "this may be a different version.)"
+            )
         return Decision(
             Verdict.METADATA_MISMATCH,
             round(confidence, 4),
@@ -152,10 +172,10 @@ def decide(
             tuple(f.field for f in differences),
         )
 
-    if best is not None and title >= match_cfg.title_reject and _garbled_title(best, cfg):
+    if best is not None and in_middle_band(best, fields, match_cfg):
+        candidate = best.candidate
         reason = (
-            f"Closest record \u201c{best.candidate.title}\u201d has the same authors and year "
-            "but a different title."
+            f"Title differs from the closest real paper: '{candidate.title}' ({candidate.year})."
         )
         return Decision(Verdict.METADATA_MISMATCH, best.confidence, reason, (FieldName.TITLE,))
 
@@ -174,18 +194,6 @@ def decide(
         f"\u201c{best.candidate.title}\u201d ({round(title * 100)}% similar)."
     )
     return Decision(Verdict.NOT_FOUND, round(confidence, 4), reason)
-
-
-def _garbled_title(best: MatchResult, cfg: VerdictConfig) -> bool:
-    """Ambiguous title, but the people and the year leave no doubt it is this work."""
-    authors = best.field(FieldName.AUTHORS)
-    authors_agree = (
-        authors is not None
-        and authors.score is not None
-        and authors.score >= cfg.ambiguous_title_mismatch_authors
-    )
-    year_agrees = _status(best, FieldName.YEAR) in (FieldStatus.MATCH, FieldStatus.PARTIAL)
-    return authors_agree and year_agrees
 
 
 def integrity_score(counts: Mapping[Verdict, int], cfg: ScoreConfig = SCORE) -> float | None:

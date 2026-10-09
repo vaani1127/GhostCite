@@ -5,15 +5,23 @@ import pytest
 from ghostcite.config import MatchConfig
 from ghostcite.match.normalize import fold, main_title, surname_key, tokens
 from ghostcite.match.score import (
+    agreement,
     best_match,
     combine,
     compare_authors,
     compare_doi,
     compare_venue,
     compare_year,
+    first_author_agrees,
+    in_middle_band,
+    is_title_match,
     match_candidate,
+    same_words,
+    title_overlap,
     title_similarity,
+    title_status,
     venue_similarity,
+    versions_of,
 )
 from ghostcite.models import (
     Author,
@@ -26,6 +34,7 @@ from ghostcite.models import (
 )
 
 RESNET = "Deep residual learning for image recognition"
+ATTENTION = "Attention is all you need"
 NEURIPS = "Advances in neural information processing systems"
 
 
@@ -265,7 +274,7 @@ def test_best_match_prefers_the_original_over_lookalikes() -> None:
     original = _candidate(cited_by=274_507)
     other = _candidate(title="Tensor product attention is all you need", year=2026)
     results = [match_candidate(fields, c) for c in (notes, other, original)]
-    best = best_match(results)
+    best = best_match(results, fields)
     assert best is not None
     assert best.candidate.cited_by == 274_507
 
@@ -274,5 +283,99 @@ def test_best_match_falls_back_to_closest_title() -> None:
     fields = ParsedFields(title="Attention is all you need")
     far = match_candidate(fields, _candidate(title="Completely different topic"))
     near = match_candidate(fields, _candidate(title="Attention is mostly what you need"))
-    assert best_match([far, near]) is near
-    assert best_match([]) is None
+    assert best_match([far, near], fields) is near
+    assert best_match([], fields) is None
+
+
+# ---------------------------------------------------------------- words, overlap, versions
+
+
+@pytest.mark.parametrize(
+    ("cited", "found", "expected"),
+    [
+        ("Attention is all you need", "attention is all you need.", True),
+        (RESNET, RESNET.replace("recognition", "recognitoin"), True),  # typo
+        ("Pre-training of deep transformers", "Pretraining of deep transformers", True),
+        ("Optimisation for deep networks", "Optimization for deep networks", True),
+        ("Attention is all we need", "Attention is all you need", False),  # replaced word
+        ("Attention is all you need now", "Attention is all you need", False),  # added word
+        ("Deep residual networks for image recognition", RESNET, False),
+        ("", "Anything", False),
+    ],
+)
+def test_same_words(cited: str, found: str, expected: bool) -> None:
+    assert same_words(cited, found) is expected
+
+
+def test_a_replaced_word_is_never_a_title_match() -> None:
+    # Character similarity sits right at the threshold (0.898); the word check decides.
+    assert title_similarity("Attention is all we need", "Attention is all you need") >= 0.85
+    assert not is_title_match("Attention is all we need", "Attention is all you need")
+    assert is_title_match("Wings of Fire", "Wings of Fire: An Autobiography")
+
+
+@pytest.mark.parametrize(
+    ("cited", "found", "minimum", "maximum"),
+    [
+        ("Attention is all we need for sequence transduction", ATTENTION, 0.85, 1.0),
+        ("Quantum gradient folding for multilingual citation graphs", ATTENTION, 0.0, 0.5),
+        ("Deep learning", "Deep learning for audio classification", 0.0, 0.6),  # too short to align
+        ("", "Anything", 0.0, 0.0),
+    ],
+)  # fmt: skip
+def test_title_overlap(cited: str, found: str, minimum: float, maximum: float) -> None:
+    assert minimum <= title_overlap(cited, found) <= maximum
+
+
+def test_first_author_agrees() -> None:
+    vaswani = _candidate()
+    assert first_author_agrees(ParsedFields(authors=_authors("Vaswani", "Hinton")), vaswani)
+    assert not first_author_agrees(ParsedFields(authors=_authors("Shazeer", "Vaswani")), vaswani)
+    assert not first_author_agrees(ParsedFields(), vaswani)
+    assert not first_author_agrees(
+        ParsedFields(authors=_authors("Vaswani")), _candidate(authors=())
+    )
+
+
+def test_reworded_title_lands_in_the_middle_band() -> None:
+    fields = ParsedFields(
+        title="Attention is all we need for sequence transduction",
+        authors=_authors("Vaswani"),
+        year=2017,
+    )
+    result = match_candidate(fields, _candidate())
+    assert title_status(result) is FieldStatus.PARTIAL
+    assert in_middle_band(result, fields)
+    older = fields.model_copy(update={"year": 2014})
+    assert not in_middle_band(match_candidate(older, _candidate()), older)
+
+
+def test_agreement_counts() -> None:
+    fields = ParsedFields(title="Attention is all you need", authors=_authors("Vaswani"), year=2019)
+    assert agreement(match_candidate(fields, _candidate())) == (1, 1)
+
+
+def test_best_match_prefers_the_version_that_agrees_on_most_fields() -> None:
+    fields = ParsedFields(
+        title="Faster R-CNN: Towards real-time object detection",
+        authors=_authors("Ren"),
+        year=2016,
+        venue="IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    )
+    conference = _candidate(
+        title=fields.title, authors=("S Ren", "K He"), year=2015, venue=None, cited_by=61612
+    )
+    journal = _candidate(
+        title=fields.title,
+        authors=("S Ren", "K He"),
+        year=2016,
+        venue="IEEE transactions on pattern analysis and machine intelligence",
+        cited_by=55719,
+        versions=20,
+    )
+    results = [match_candidate(fields, c) for c in (conference, journal)]
+    best = best_match(results, fields)
+    assert best is not None
+    assert best.candidate.year == 2016
+    assert versions_of(results) == 20
+    assert versions_of([]) is None

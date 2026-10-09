@@ -142,6 +142,8 @@ class Candidate(_Frozen):
     """Host or publisher shown with the result, e.g. ``"proceedings.neurips.cc"``."""
     snippet: str | None = None
     cited_by: int | None = Field(default=None, ge=0)
+    versions: int | None = Field(default=None, ge=0)
+    """How many versions (preprint, conference, journal ...) Scholar groups under this work."""
     query: str
     """The exact query string that produced this candidate."""
 

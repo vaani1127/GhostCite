@@ -90,6 +90,20 @@ FIXTURES: dict[str, tuple[str, PlannedQuery]] = {
             Strategy.SCHOLAR_TITLE_AUTHOR,
         ),
     ),
+    "scholar_exact_versions": (
+        "Paper published twice under one title (NeurIPS 2015 and IEEE TPAMI 2016); "
+        "exact-title strategy.",
+        _pick(
+            ParsedFields(
+                title="Faster R-CNN: Towards real-time object detection "
+                "with region proposal networks",
+                authors=(Author(surname="Ren", given="S."),),
+                year=2016,
+                entry_type="article",
+            ),
+            Strategy.SCHOLAR_EXACT_TITLE,
+        ),
+    ),
     "google_fallback_book": (
         "Indian autobiography (a book); Google web fallback strategy.",
         _pick(

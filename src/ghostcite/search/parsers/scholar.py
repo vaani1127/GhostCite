@@ -90,8 +90,9 @@ def parse_summary(summary: str) -> Summary:
     )
 
 
-def _cited_by(result: Mapping[str, Any]) -> int | None:
-    total = as_dict(as_dict(result.get("inline_links")).get("cited_by")).get("total")
+def _inline_total(result: Mapping[str, Any], link: str) -> int | None:
+    """``inline_links.<link>.total`` as a non-negative int (``cited_by`` or ``versions``)."""
+    total = as_dict(as_dict(result.get("inline_links")).get(link)).get("total")
     return total if isinstance(total, int) and not isinstance(total, bool) and total >= 0 else None
 
 
@@ -118,7 +119,8 @@ def parse_scholar(response: Mapping[str, Any], query: str) -> list[Candidate]:
                 venue_truncated=summary.venue_truncated,
                 source=summary.source,
                 snippet=as_str(result.get("snippet")),
-                cited_by=_cited_by(result),
+                cited_by=_inline_total(result, "cited_by"),
+                versions=_inline_total(result, "versions"),
                 query=query,
             )
         )

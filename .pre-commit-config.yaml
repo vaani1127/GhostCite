@@ -48,6 +48,8 @@ repos:
           - jsonschema==4.26.0
           - types-jsonschema==4.26.0.20260518
           - reportlab==5.0.1
+          - pyyaml==6.0.3
+          - types-PyYAML==6.0.12.20260906
           - httpx2==2.13.1
           - requests==2.34.2
 

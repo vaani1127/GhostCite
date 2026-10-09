@@ -31,6 +31,7 @@ from ghostcite.models import (
 )
 
 _MIN_SUBTITLE_MAIN_WORDS = 2
+_MIN_JOINED_PART_CHARS = 3
 _MIN_ABBREVIATION_CHARS = 3
 # Words that say what kind of venue it is, not which one.
 _GENERIC_VENUE_WORDS = frozenset(
@@ -43,22 +44,78 @@ _GENERIC_VENUE_WORDS = frozenset(
 _MIN_VENUE_TOKENS = 2
 
 
-def title_similarity(cited: str, found: str, cfg: MatchConfig = MATCH) -> float:
-    """Similarity of two titles in [0, 1], robust to case, punctuation and word order.
+def _dropped_subtitle(cited: str, found: str) -> bool:
+    """One title is exactly the other's main title ("Wings of Fire" / "...: An Autobiography")."""
+    a, b = fold(cited), fold(found)
+    main_a, main_b = fold(main_title(cited)), fold(main_title(found))
+    dropped = (main_a == b and main_a != a) or (main_b == a and main_b != b)
+    return dropped and len(min(main_a, main_b, key=len).split()) >= _MIN_SUBTITLE_MAIN_WORDS
 
-    When one title is exactly the other's main title (a dropped subtitle, as in
-    "Wings of Fire" against "Wings of Fire: An Autobiography"), the score is raised to
-    ``cfg.subtitle_match_score``.
+
+def title_similarity(cited: str, found: str, cfg: MatchConfig = MATCH) -> float:
+    """Character-level similarity of two titles in [0, 1], robust to case, punctuation and order.
+
+    A dropped subtitle raises the score to ``cfg.subtitle_match_score``.
     """
     a, b = fold(cited), fold(found)
     if not a or not b:
         return 0.0
     score = max(fuzz.ratio(a, b), fuzz.token_sort_ratio(a, b)) / 100
-    main_a, main_b = fold(main_title(cited)), fold(main_title(found))
-    dropped_subtitle = (main_a == b and main_a != a) or (main_b == a and main_b != b)
-    if dropped_subtitle and len(min(main_a, main_b, key=len).split()) >= _MIN_SUBTITLE_MAIN_WORDS:
+    if _dropped_subtitle(cited, found):
         score = max(score, cfg.subtitle_match_score)
     return round(score, 4)
+
+
+def _covered(words: Sequence[str], others: Sequence[str], cfg: MatchConfig) -> bool:
+    """Every word has a counterpart: equal, a close spelling, or part of a joined word."""
+    joined = "".join(others)
+    for word in words:
+        if any(
+            word == other or fuzz.ratio(word, other) / 100 >= cfg.title_word_match
+            for other in others
+        ):
+            continue
+        if len(word) >= _MIN_JOINED_PART_CHARS and word in joined:
+            continue  # "pre training" against "pretraining"
+        return False
+    return True
+
+
+def same_words(cited: str, found: str, cfg: MatchConfig = MATCH) -> bool:
+    """True when both titles use the same significant words, allowing typos.
+
+    Character similarity alone cannot tell a typo ("recognitoin") from a swapped word
+    ("Attention is all *we* need"). A reworded title is a classic hallucination
+    signature, so a title only matches when no significant word is replaced, added
+    or missing.
+    """
+    a, b = tokens(cited, drop_stopwords=True), tokens(found, drop_stopwords=True)
+    return bool(a) and bool(b) and _covered(a, b, cfg) and _covered(b, a, cfg)
+
+
+def is_title_match(cited: str, found: str, cfg: MatchConfig = MATCH) -> bool:
+    """The same title: very similar characters and the same words, or a dropped subtitle."""
+    if _dropped_subtitle(cited, found):
+        return True
+    return title_similarity(cited, found, cfg) >= cfg.title_match and same_words(cited, found, cfg)
+
+
+def title_overlap(cited: str, found: str, cfg: MatchConfig = MATCH) -> float:
+    """How much of one title appears in the other, in [0, 1].
+
+    It is the larger of the full similarity and the best alignment of the shorter title
+    inside the longer one. That catches embellished or reworded versions of a real
+    title ("Attention is all we need for sequence transduction"), which define the middle
+    band. Short titles (fewer than ``cfg.overlap_min_words`` words) use full similarity
+    only, because a two-word title appears inside many unrelated titles.
+    """
+    a, b = fold(cited), fold(found)
+    if not a or not b:
+        return 0.0
+    similarity = title_similarity(cited, found, cfg)
+    if min(len(a.split()), len(b.split())) < cfg.overlap_min_words:
+        return similarity
+    return round(max(similarity, fuzz.partial_ratio(a, b) / 100), 4)
 
 
 def _same_surname(a: str, b: str, cfg: MatchConfig) -> bool:
@@ -219,11 +276,16 @@ def combine(fields: Sequence[FieldMatch], engine: Engine, cfg: MatchConfig = MAT
 def match_candidate(
     fields: ParsedFields, candidate: Candidate, cfg: MatchConfig = MATCH
 ) -> MatchResult:
-    """Compare every field of a citation with one candidate."""
-    title = title_similarity(fields.title or "", candidate.title, cfg)
-    if title >= cfg.title_match:
+    """Compare every field of a citation with one candidate.
+
+    The title is ``MATCH`` only for the same title, ``PARTIAL`` in the middle band (a
+    reworded or embellished version of it), and ``MISMATCH`` otherwise.
+    """
+    cited_title = fields.title or ""
+    title = title_similarity(cited_title, candidate.title, cfg)
+    if is_title_match(cited_title, candidate.title, cfg):
         title_status = FieldStatus.MATCH
-    elif title >= cfg.title_reject:
+    elif title_overlap(cited_title, candidate.title, cfg) >= cfg.title_reject:
         title_status = FieldStatus.PARTIAL
     else:
         title_status = FieldStatus.MISMATCH
@@ -247,23 +309,84 @@ def match_candidate(
     )
 
 
-def best_match(results: Sequence[MatchResult], cfg: MatchConfig = MATCH) -> MatchResult | None:
-    """Pick the candidate that most likely is the cited work.
+def first_author_agrees(
+    fields: ParsedFields, candidate: Candidate, cfg: MatchConfig = MATCH
+) -> bool:
+    """The cited first author is the candidate's first author (surname comparison)."""
+    if not fields.authors or not candidate.authors:
+        return False
+    cited, found = surname_key(fields.authors[0].surname), surname_key(candidate.authors[0])
+    return bool(cited) and bool(found) and _same_surname(cited, found, cfg)
 
-    Among candidates whose title matches, the most confident wins, which separates
-    the original paper from, e.g., "study notes" with the same title. Without any title
-    match, the closest title wins.
+
+def title_status(result: MatchResult) -> FieldStatus:
+    """The title comparison status of ``result``."""
+    field = result.field(FieldName.TITLE)
+    return field.status if field is not None else FieldStatus.UNKNOWN
+
+
+def _title_score(result: MatchResult) -> float:
+    field = result.field(FieldName.TITLE)
+    return field.score if field is not None and field.score is not None else 0.0
+
+
+_JUDGED = (FieldName.AUTHORS, FieldName.YEAR, FieldName.VENUE)
+_AGREEING = (FieldStatus.MATCH, FieldStatus.PARTIAL)
+
+
+def agreement(result: MatchResult) -> tuple[int, int]:
+    """(fields that disagree, fields that agree) among authors, year and venue."""
+    statuses = [f.status for name in _JUDGED if (f := result.field(name)) is not None]
+    return (
+        sum(status is FieldStatus.MISMATCH for status in statuses),
+        sum(status in _AGREEING for status in statuses),
+    )
+
+
+def in_middle_band(result: MatchResult, fields: ParsedFields, cfg: MatchConfig = MATCH) -> bool:
+    """A reworded title whose first author and year (within tolerance) agree."""
+    year = result.field(FieldName.YEAR)
+    return (
+        title_status(result) is FieldStatus.PARTIAL
+        and first_author_agrees(fields, result.candidate, cfg)
+        and year is not None
+        and year.status in _AGREEING
+    )
+
+
+def best_match(
+    results: Sequence[MatchResult], fields: ParsedFields, cfg: MatchConfig = MATCH
+) -> MatchResult | None:
+    """Pick the candidate that most likely is the cited work, from every result on the page.
+
+    A work often appears as several results (preprint, conference and journal versions).
+    Among title-matching candidates, the one that agrees on the most fields wins (fewest
+    disagreements, then most agreements, then confidence and citation count). So a
+    citation of the journal version is verified even when Scholar ranks the conference
+    version first. Without a title match, middle-band candidates whose first author and
+    year agree are preferred, then the closest title.
     """
     if not results:
         return None
-
-    def title_score(result: MatchResult) -> float:
-        field = result.field(FieldName.TITLE)
-        return field.score if field is not None and field.score is not None else 0.0
-
-    matching = [r for r in results if title_score(r) >= cfg.title_match]
+    matching = [r for r in results if title_status(r) is FieldStatus.MATCH]
     if matching:
-        return max(
-            matching, key=lambda r: (r.confidence, title_score(r), r.candidate.cited_by or 0)
-        )
-    return max(results, key=lambda r: (title_score(r), r.confidence))
+
+        def rank(result: MatchResult) -> tuple[int, int, float, int]:
+            disagree, agree = agreement(result)
+            return (-disagree, agree, result.confidence, result.candidate.cited_by or 0)
+
+        return max(matching, key=rank)
+    return max(
+        results,
+        key=lambda r: (in_middle_band(r, fields, cfg), _title_score(r), r.confidence),
+    )
+
+
+def versions_of(results: Sequence[MatchResult]) -> int | None:
+    """Most versions Scholar reports for any title-matching candidate (all are the same work)."""
+    counts = [
+        r.candidate.versions
+        for r in results
+        if title_status(r) is FieldStatus.MATCH and r.candidate.versions is not None
+    ]
+    return max(counts) if counts else None

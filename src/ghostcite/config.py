@@ -130,13 +130,26 @@ class MatchConfig:
     """Scoring of a candidate against a citation."""
 
     title_match: float = 0.90
-    """At or above this normalized similarity, two titles name the same work. Case,
-    punctuation, subtitle-separator and small typo variants of one title score above
-    0.9, while distinct papers that share many words score well below it."""
+    """At or above this character similarity, and with the same significant words (see
+    ``title_word_match``), two titles name the same work. Case, punctuation,
+    subtitle-separator and typo variants of one title score above 0.9, while distinct
+    papers that share many words score well below it."""
+
+    title_word_match: float = 0.80
+    """Two title words count as the same word at or above this similarity, so typos and
+    spelling variants pass ("recognitoin", "optimisation") but a replaced word does not
+    ("we" for "you"). A reworded title is a classic hallucination signature and must
+    never be VERIFIED."""
 
     title_reject: float = 0.70
-    """Below this, the candidate is a different work. Between the two thresholds the
-    match is ambiguous, so the planner tries the next query strategy."""
+    """Lower edge of the middle band, measured as title *overlap* (see
+    ``ghostcite.match.score.title_overlap``). A candidate in the band, with the same first
+    author and year, shows the citation names a real paper with a reworded title
+    (METADATA_MISMATCH). Below the band the candidate is a different work."""
+
+    overlap_min_words: int = 3
+    """Titles shorter than this use full similarity only for the band, because a
+    one- or two-word title ("Deep learning") appears inside countless other titles."""
 
     subtitle_match_score: float = 0.90
     """Score given when one title is exactly the other's main title (a dropped subtitle).
@@ -190,11 +203,6 @@ class VerdictConfig:
     not_found_floor: float = 0.5
     """Lowest NOT_FOUND confidence. The closer the best title, the less sure the verdict:
     confidence = max(floor, not_found_confidence - best_title_similarity / 2)."""
-
-    ambiguous_title_mismatch_authors: float = 1.0
-    """A title in the ambiguous band only counts as a garbled citation of a real paper
-    (METADATA_MISMATCH) when every comparable author matches and the year agrees.
-    Otherwise it is NOT_FOUND."""
 
 
 @dataclass(frozen=True, slots=True)

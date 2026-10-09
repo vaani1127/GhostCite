@@ -236,3 +236,36 @@ def test_progress_bar_on_a_terminal(
     result = runner.invoke(cli.app, ["check", str(refs), "-f", "json"])
     assert result.exit_code == 0
     assert "Checking references" in captured.getvalue()
+
+
+def test_web_command_binds_to_localhost_by_default(monkeypatch: pytest.MonkeyPatch) -> None:
+    import uvicorn
+
+    seen: dict[str, object] = {}
+    monkeypatch.setattr(uvicorn, "run", lambda app, **kwargs: seen.update(kwargs))
+    result = runner.invoke(cli.app, ["web"])
+    assert result.exit_code == 0
+    assert seen["host"] == "127.0.0.1"
+    assert seen["port"] == 8000
+    assert "warning" not in result.output
+
+
+@pytest.mark.parametrize(
+    ("host", "warns"),
+    [
+        ("0.0.0.0", True),  # noqa: S104 - the warning for this bind address is under test
+        ("192.168.1.5", True),
+        ("localhost", False),
+        ("::1", False),
+    ],
+)
+def test_web_command_warns_on_non_loopback(
+    monkeypatch: pytest.MonkeyPatch, host: str, warns: bool
+) -> None:
+    import uvicorn
+
+    monkeypatch.setattr(uvicorn, "run", lambda app, **kwargs: None)
+    result = runner.invoke(cli.app, ["web", "--host", host, "--port", "9000"])
+    assert result.exit_code == 0
+    output = " ".join(result.output.split())  # rich wraps long lines
+    assert ("reachable from other machines" in output) is warns

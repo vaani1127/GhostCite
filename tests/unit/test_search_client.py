@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import random
+import threading
+import time
 from collections.abc import Mapping
 from datetime import UTC, datetime
 from pathlib import Path
@@ -267,3 +269,28 @@ def test_identical_params_are_resent_on_retry(cache: SqliteCache) -> None:
     client.search(PARAMS)
     assert seen == [PARAMS, PARAMS]
     assert all("no_cache" not in params for params in seen)
+
+
+def test_identical_concurrent_requests_are_single_flight(cache: SqliteCache) -> None:
+    calls: list[float] = []
+
+    class SlowTransport(ScriptedTransport):
+        def search(self, params: Mapping[str, str]) -> dict[str, Any]:
+            calls.append(time.monotonic())
+            time.sleep(0.05)
+            return BODY
+
+    budget = SearchBudget(10)
+    client, _ = _client(cache, SlowTransport(), budget)
+    sources: list[ResponseSource] = []
+    threads = [
+        threading.Thread(target=lambda: sources.append(client.search(PARAMS).source))
+        for _ in range(5)
+    ]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+    assert len(calls) == 1
+    assert sorted(sources) == sorted([ResponseSource.LIVE] + [ResponseSource.CACHE] * 4)
+    assert budget.used == 1

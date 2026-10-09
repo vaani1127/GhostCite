@@ -35,7 +35,7 @@ Context: SerpApi India Hackathon 2026, track "Knowledge & Public Interest", dead
 - Before each live run: estimate the cost, check the Account API (counts only), and append `date | purpose | estimated | actual` to `.dev/credits.log` (gitignored). If a run would exceed the cap, stop and ask the user.
 - At least 80 searches must remain unused on the SerpApi account after the eval (for the demo recording and final checks). If the eval would leave fewer than 80, stop and ask the user.
 - Timeouts: 75 s request timeout; a retry after a timeout waits at least 15 s and resends identical params (never `no_cache`). A retry served from SerpApi's cache (original `created_at` older than the send time) is refunded.
-- Used so far: 7 (Checkpoint 3 smoke test, including one timed-out request that was still billed). Planned: eval ≈ 102 (Checkpoint 6), demo bundle 0 (reuses the eval cache). Tune only on cached data. Client-side timeouts can be billed, which is why `SearchClient.credits_used` counts them.
+- Used so far: 8 (7 in the Checkpoint 3 smoke test, 1 for the versions fixture; the Checkpoint 3 total, including one timed-out request that was still billed). Planned: eval ≈ 102 (Checkpoint 6), demo bundle 0 (reuses the eval cache). Tune only on cached data. Client-side timeouts can be billed, which is why `SearchClient.credits_used` counts them.
 - If `SERPAPI_API_KEY` is missing when a live run is needed, stop and tell the user exactly what to do.
 
 ## Approved amendments

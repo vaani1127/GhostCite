@@ -55,11 +55,22 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
   Review the title-similarity choice with eval data.
 
 ## Checkpoint 5 — web and Action
-- [ ] FastAPI app, SSE progress, limits (A3), no-key demo banner (A2)
-- [ ] Templates, JS, CSS (a11y, dark mode, responsive)
-- [ ] action.yml plus an example workflow
-- [ ] Tests
-- [ ] Gates green → STOP
+- [x] User changes before Checkpoint 5: (1) Middle band: a reworded title (overlap >= title_reject) whose first author and year (+-1) agree
+  gives METADATA_MISMATCH "Title differs from the closest real paper: '<title>' (<year>)."; otherwise NOT_FOUND
+  with the closest candidate shown. A title match now also requires the same significant words, so "Attention is all
+  *we* need" (similarity 0.898) can never be VERIFIED. (2) Versions: the candidate agreeing on the most fields
+  wins; a versions note is added for year/venue-only mismatches when versions.total > 1. Real fixture:
+  Faster R-CNN (NeurIPS 2015 and TPAMI 2016), 1 credit.
+- [x] Bugs found while testing: a single pasted "[1] ..." reference kept its marker (it broke the first author);
+  identical concurrent queries double-spent (now single-flight per cache key).
+- [x] FastAPI app (web/app.py, web/jobs.py), SSE progress, limits (A3), no-key demo banner (A2), security headers,
+  uploads read in memory with a streaming size cap (nothing written to disk), content-based type checks
+- [x] Templates, JS, CSS (labels, aria-live, keyboard, focus styles, dark mode with a toggle, responsive)
+- [x] Report page: download buttons for all formats, sorting, back link (the CLI HTML export stays standalone)
+- [x] `ghostcite web` (127.0.0.1 by default, warning for non-loopback); verified as a real process
+- [x] action.yml (composite; inputs via env only; cache restore; SARIF upload; job summary rendered offline)
+  plus docs/examples/ghostcite-workflow.yml; the action script is tested under real bash with a fake CLI
+- [x] Gates green → STOP (586 tests, 99.35% coverage)
 
 ## Checkpoint 6 — evaluation
 - [ ] eval/dataset.jsonl plus validate_dataset.py (Crossref/arXiv)
@@ -75,4 +86,4 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
 - [ ] STOP
 
 ## Credits used
-See `.dev/credits.log` (gitignored). Running total: 7 / 150 (account: 243 left). Keep >= 80 unused on the account after the eval.
+See `.dev/credits.log` (gitignored). Running total: 8 / 150 (account: 242 left). Keep >= 80 unused on the account after the eval.

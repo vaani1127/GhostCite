@@ -96,25 +96,83 @@ def test_long_author_lists_are_shortened_in_reasons() -> None:
     assert "not FakeA, FakeB, FakeC et al." in decision.reason
 
 
-def test_garbled_title_with_same_authors_and_year_is_a_mismatch() -> None:
-    fields = FIELDS.model_copy(update={"title": "Attention is all we need, really"})
+def test_reworded_title_of_a_real_paper_is_a_mismatch_not_verified() -> None:
+    fields = FIELDS.model_copy(
+        update={"title": "Attention is all we need for sequence transduction"}
+    )
     decision = decide(fields, _match(fields), complete=True, incomplete_reason="")
     assert decision.verdict is Verdict.METADATA_MISMATCH
     assert decision.mismatched == (FieldName.TITLE,)
-    assert "same authors and year but a different title" in decision.reason
+    assert decision.reason == (
+        "Title differs from the closest real paper: 'Attention is all you need' (2017)."
+    )
 
 
-def test_ambiguous_title_with_other_authors_is_not_found() -> None:
+def test_one_word_substitution_is_never_verified() -> None:
+    # Character similarity is exactly 0.90 here, but "we" replaced "you".
+    fields = FIELDS.model_copy(update={"title": "Attention is all we need"})
+    decision = decide(fields, _match(fields), complete=True, incomplete_reason="")
+    assert decision.verdict is Verdict.METADATA_MISMATCH
+    assert decision.reason.startswith("Title differs from the closest real paper")
+
+
+def test_middle_band_tolerates_a_one_year_difference() -> None:
+    fields = FIELDS.model_copy(update={"title": "Attention is all we need", "year": 2018})
+    decision = decide(fields, _match(fields), complete=True, incomplete_reason="")
+    assert decision.verdict is Verdict.METADATA_MISMATCH
+
+
+@pytest.mark.parametrize(
+    "update",
+    [
+        {"authors": (Author(surname="Raghunathan"),)},  # first author disagrees
+        {"authors": (Author(surname="Shazeer"), Author(surname="Vaswani"))},  # wrong order
+        {"year": 2021},  # year off by more than one
+        {"authors": ()},  # nothing to confirm the first author
+    ],
+)
+def test_middle_band_without_first_author_and_year_is_not_found(
+    update: dict[str, object],
+) -> None:
     fields = FIELDS.model_copy(
-        update={
-            "title": "Attention is all we need, really",
-            "authors": (Author(surname="Raghunathan"),),
-        }
+        update={"title": "Attention is all we need for sequence transduction", **update}
     )
     decision = decide(fields, _match(fields), complete=True, incomplete_reason="")
     assert decision.verdict is Verdict.NOT_FOUND
-    assert "closest result was “Attention is all you need”" in decision.reason
-    assert 0.5 <= decision.confidence < 0.9
+    assert "closest result was \u201cAttention is all you need\u201d" in decision.reason
+
+
+def test_below_the_band_is_not_found_with_the_closest_candidate() -> None:
+    fields = FIELDS.model_copy(update={"title": "Quantum gradient folding for citation graphs"})
+    decision = decide(fields, _match(fields), complete=True, incomplete_reason="")
+    assert decision.verdict is Verdict.NOT_FOUND
+    assert "the closest result was" in decision.reason
+
+
+def test_versions_note_for_year_or_venue_differences() -> None:
+    fields = FIELDS.model_copy(update={"year": 2019})
+    decision = decide(fields, _match(fields), complete=True, incomplete_reason="", versions=26)
+    assert decision.reason == (
+        "Title matches, but year is 2017, not 2019. "
+        "(Google Scholar lists this work with 26 versions; this may be a different version.)"
+    )
+
+
+@pytest.mark.parametrize(
+    ("update", "versions"),
+    [
+        ({"year": 2019}, 1),  # a single version: nothing to explain
+        ({"year": 2019}, None),
+        ({"authors": (Author(surname="Hinton"), Author(surname="Bengio"))}, 26),  # authors differ
+    ],
+)
+def test_no_versions_note(update: dict[str, object], versions: int | None) -> None:
+    fields = FIELDS.model_copy(update=update)
+    decision = decide(
+        fields, _match(fields), complete=True, incomplete_reason="", versions=versions
+    )
+    assert decision.verdict is Verdict.METADATA_MISMATCH
+    assert "versions" not in decision.reason
 
 
 def test_nothing_found_at_all() -> None:

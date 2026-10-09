@@ -120,3 +120,16 @@ def test_small_numbering_gaps_do_not_merge_references() -> None:
 def test_large_jumps_are_continuation_text() -> None:
     text = "1. First ref, Journal of\n9. Things that wrap, 2019.\n2. Second ref, 2020."
     assert _texts(text) == ["First ref, Journal of 9. Things that wrap, 2019.", "Second ref, 2020."]
+
+
+def test_single_numbered_reference_loses_its_marker() -> None:
+    assert _texts("[1] A. Vaswani, N. Shazeer. Attention is all you need. 2017.") == [
+        "A. Vaswani, N. Shazeer. Attention is all you need. 2017."
+    ]
+    assert _texts("1. Smith J. A title here. 2019.") == ["Smith J. A title here. 2019."]
+
+
+def test_single_reference_with_a_high_number_is_not_treated_as_numbered() -> None:
+    assert _texts("2019. A reference that starts with a year.") == [
+        "2019. A reference that starts with a year."
+    ]

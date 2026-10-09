@@ -42,6 +42,9 @@
   .toolbar button { font: inherit; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
                     background: var(--panel); color: var(--text); cursor: pointer; }
   .toolbar button[aria-pressed="true"] { background: var(--accent); color: var(--panel); border-color: var(--accent); }
+  .toolbar select { font: inherit; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border);
+                    background: var(--panel); color: var(--text); }
+  a.download { padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border); text-decoration: none; }
   .toolbar input { font: inherit; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
                    background: var(--panel); color: var(--text); min-width: 220px; flex: 1; }
   table { width: 100%; border-collapse: collapse; }
@@ -68,8 +71,15 @@
 <body>
 <main>
   <header>
+    {% if home_url %}<p><a href="{{ home_url }}">&larr; Check another document</a></p>{% endif %}
     <h1>GhostCite report: {{ report.source_name }}</h1>
     <p class="meta">Generated {{ report.generated_at.strftime("%Y-%m-%d %H:%M") }} UTC by GhostCite {{ report.tool_version }} &middot; {{ report.mode.value }} mode &middot; {{ report.summary.credits_used }} SerpApi searches used &middot; {{ report.summary.cache_hits }} answered from cache</p>
+    {% if downloads %}
+    <nav class="toolbar" aria-label="Download this report">
+      <span class="muted">Download:</span>
+      {% for label, url in downloads %}<a class="download" href="{{ url }}" download>{{ label }}</a>{% endfor %}
+    </nav>
+    {% endif %}
   </header>
 
   <section class="card summary" aria-labelledby="score-label">
@@ -104,15 +114,21 @@
       {% endfor %}
       <label class="muted" for="search">Search</label>
       <input id="search" type="search" placeholder="Title, author or reason">
+      <label class="muted" for="sort">Sort</label>
+      <select id="sort">
+        <option value="index">Document order</option>
+        <option value="severity">Most serious first</option>
+        <option value="confidence">Lowest confidence first</option>
+      </select>
     </div>
     <p id="shown" class="muted" aria-live="polite"></p>
     <table>
-      <caption class="muted" style="text-align:left">One row per reference, in document order.</caption>
+      <caption class="muted" style="text-align:left">One row per reference.</caption>
       <thead><tr><th scope="col">#</th><th scope="col">Verdict</th><th scope="col">Confidence</th><th scope="col">Cited reference</th><th scope="col">Finding</th></tr></thead>
       <tbody>
       {% for result in report.results %}
       {% set match = result.best_match %}
-      <tr data-verdict="{{ result.verdict.value }}">
+      <tr data-verdict="{{ result.verdict.value }}" data-index="{{ result.reference.index }}" data-severity="{{ severity[result.verdict] }}" data-confidence="{{ result.confidence }}">
         <td class="num">{{ result.reference.index }}</td>
         <td><span class="badge {{ result.verdict.value }}">{{ labels[result.verdict] }}</span></td>
         <td class="num">{{ "%.2f"|format(result.confidence) }}</td>
@@ -177,6 +193,16 @@
     });
   });
   search.addEventListener("input", apply);
+  var sort = document.getElementById("sort");
+  var body = document.querySelector("tbody");
+  sort.addEventListener("change", function () {
+    var key = sort.value;
+    rows.sort(function (a, b) {
+      var primary = Number(a.dataset[key]) - Number(b.dataset[key]);
+      return primary !== 0 ? primary : Number(a.dataset.index) - Number(b.dataset.index);
+    });
+    rows.forEach(function (row) { body.appendChild(row); });
+  });
   apply();
 }());
 </script>

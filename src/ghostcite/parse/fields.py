@@ -59,6 +59,8 @@ _REPORT_HINTS = re.compile(
 )
 
 _MIN_VENUE_CHARS = 3
+# A list marker left on the reference ("[1] ", "(1) ", "1. ") would be read as an author.
+_LEADING_MARKER = re.compile(r"^\s*(?:\[\d{1,4}\]|\(\d{1,4}\)|\d{1,4}\.(?=\s))\s*")
 _MAX_AUTHOR_PREFIX_CHARS = 600
 
 
@@ -243,7 +245,7 @@ def parse_fields(
 ) -> ParsedFields:
     """Extract title, authors, year, venue and DOI from one reference string."""
     doi = find_doi(raw)
-    text = _strip_noise(raw)
+    text = _strip_noise(_LEADING_MARKER.sub("", raw))
     if not text:
         return ParsedFields(doi=doi, confidence=ParseConfidence(doi=1.0 if doi else 0.0))
 

@@ -6,6 +6,7 @@ Exit codes: 0 clean, 1 the ``--fail-on`` threshold was reached, 2 usage or input
 
 from __future__ import annotations
 
+import ipaddress
 import sys
 from enum import StrEnum
 from pathlib import Path
@@ -17,7 +18,7 @@ from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn, T
 from rich.table import Table
 
 from ghostcite import __version__
-from ghostcite.config import INGEST, SEARCH
+from ghostcite.config import INGEST, SEARCH, WEB
 from ghostcite.document import Document, load_document, load_text
 from ghostcite.errors import ExitCode, GhostCiteError, InputError
 from ghostcite.logs import configure_logging
@@ -247,6 +248,39 @@ def check(
 
     if fail_on is not None and problem_count(report) >= fail_on:
         raise typer.Exit(int(ExitCode.CITATIONS_FAILED))
+
+
+def _is_loopback(host: str) -> bool:
+    try:
+        return ipaddress.ip_address(host).is_loopback
+    except ValueError:
+        return host == "localhost"
+
+
+@app.command()
+def web(
+    host: Annotated[
+        str, typer.Option(help="Interface to listen on. Keep the default unless you know why.")
+    ] = WEB.default_host,
+    port: Annotated[
+        int, typer.Option(min=1, max=65535, help="Port to listen on.")
+    ] = WEB.default_port,
+) -> None:
+    """Start the local web UI (http://127.0.0.1:8000 by default)."""
+    import uvicorn
+
+    from ghostcite.web.app import create_app
+
+    stderr = _stderr()
+    if not _is_loopback(host):
+        stderr.print(
+            f"[bold yellow]warning:[/] listening on {host} makes GhostCite reachable from other "
+            "machines. Anyone who can reach it can spend your SerpApi credits (within the web "
+            "UI's limits). Use the default 127.0.0.1 unless you need remote access.",
+            highlight=False,
+        )
+    stderr.print(f"GhostCite web UI: http://{'127.0.0.1' if host == '0.0.0.0' else host}:{port}")  # noqa: S104 - comparison, not a bind
+    uvicorn.run(create_app(), host=host, port=port, log_level="warning")
 
 
 @cache_app.command("stats")

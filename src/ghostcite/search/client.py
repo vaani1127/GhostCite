@@ -41,6 +41,7 @@ from ghostcite.search.backends import (
     search_created_at,
 )
 from ghostcite.search.budget import Budget
+from ghostcite.search.cache import cache_key
 from ghostcite.search.ratelimit import RateLimiter
 from ghostcite.search.sanitize import sanitize_response
 
@@ -100,6 +101,7 @@ class SearchClient:
         self._live = 0
         self._credits = 0
         self._hits = 0
+        self._inflight: dict[str, threading.Lock] = {}
 
     @property
     def offline(self) -> bool:
@@ -129,7 +131,22 @@ class SearchClient:
         return self._store.contains(params)
 
     def search(self, params: Mapping[str, str]) -> SearchResponse:
-        """Answer ``params`` from the store, or with a live search if allowed."""
+        """Answer ``params`` from the store, or with a live search if allowed.
+
+        Identical requests are single-flight. When two references in one document plan
+        the same query (the same paper cited twice with different years, say), the second
+        request waits for the first and is answered from the cache. Two parallel misses
+        would otherwise both pay for a live search.
+        """
+        with self._key_lock(params):
+            return self._search_once(params)
+
+    def _key_lock(self, params: Mapping[str, str]) -> threading.Lock:
+        key = cache_key(params)
+        with self._lock:
+            return self._inflight.setdefault(key, threading.Lock())
+
+    def _search_once(self, params: Mapping[str, str]) -> SearchResponse:
         cached = self._store.get(params)
         if cached is not None:
             with self._lock:

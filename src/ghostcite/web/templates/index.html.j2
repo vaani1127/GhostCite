@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GhostCite: check citations against Google Scholar</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#check-form">Skip to the form</a>
+<header class="top">
+  <div>
+    <p class="brand">GhostCite</p>
+    <p class="tagline">Catch hallucinated and wrong citations with live Google Scholar data.</p>
+  </div>
+  <button type="button" id="theme" class="ghost" aria-label="Switch between light and dark theme">Theme</button>
+</header>
+
+<main>
+  {% if not has_key %}
+  <section class="banner" role="status">
+    <strong>No API key found: demo mode only.</strong>
+    {% if demo_ready %}
+    You can check the bundled sample with recorded Google Scholar results, with no key and no credits needed.
+    {% else %}
+    The demo data is not installed either.
+    {% endif %}
+    To check your own documents, put <code>SERPAPI_API_KEY=...</code> in a <code>.env</code> file and restart <code>ghostcite web</code>.
+  </section>
+  {% endif %}
+
+  <form id="check-form" class="card" novalidate>
+    <h1>Check a reference list</h1>
+    <div class="field">
+      <label for="file">Upload a PDF, .bib or .txt file <span class="muted">(max {{ (cfg.max_upload_bytes // 1048576) }} MiB)</span></label>
+      <input id="file" name="file" type="file" accept=".pdf,.bib,.txt,application/pdf,text/plain">
+    </div>
+    <p class="or" aria-hidden="true">or</p>
+    <div class="field">
+      <label for="text">Paste references (one per line, or a numbered list)</label>
+      <textarea id="text" name="text" rows="8" spellcheck="false" placeholder="[1] A. Vaswani et al., &ldquo;Attention is all you need,&rdquo; NeurIPS, 2017."></textarea>
+    </div>
+
+    <fieldset class="field">
+      <legend>Search mode</legend>
+      <label class="choice">
+        <input type="radio" name="mode" value="live" {% if has_key %}checked{% else %}disabled{% endif %}>
+        <span><strong>Live</strong>: search Google Scholar through SerpApi, up to {{ cfg.per_job_search_cap }} searches per check. Results are cached, so repeats are free.</span>
+      </label>
+      <label class="choice">
+        <input type="radio" name="mode" value="demo" {% if not has_key and demo_ready %}checked{% endif %} {% if not demo_ready %}disabled{% endif %}>
+        <span><strong>Demo</strong>: recorded results for the sample references; no key or credits needed.</span>
+      </label>
+    </fieldset>
+
+    <div class="actions">
+      <button type="submit" id="submit" {% if not has_key and not demo_ready %}disabled{% endif %}>Check citations</button>
+      <button type="button" id="sample" class="secondary" {% if not demo_ready %}disabled{% endif %}>Try the sample</button>
+    </div>
+    <p id="error" class="error" role="alert" hidden></p>
+  </form>
+
+  <section id="progress" class="card" hidden aria-labelledby="progress-heading">
+    <h2 id="progress-heading">Checking references</h2>
+    <progress id="bar" max="1" value="0" aria-describedby="progress-text"></progress>
+    <p id="progress-text" aria-live="polite">Starting&hellip;</p>
+    <ol id="ticks" class="ticks" aria-label="Verdicts so far"></ol>
+  </section>
+</main>
+
+<footer class="muted">
+  GhostCite {{ version }} runs on your machine. Uploads are processed in memory and never stored; there are no cookies and no tracking.
+  Verdicts are deterministic comparisons with Google Scholar data retrieved through SerpApi.
+</footer>
+</body>
+</html>

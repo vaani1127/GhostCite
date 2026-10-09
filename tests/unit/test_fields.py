@@ -262,3 +262,9 @@ def test_overlong_author_lists_stop_the_author_scan() -> None:
     authors = ", ".join(f"Author{chr(65 + i % 26)}{chr(65 + i // 26)} A" for i in range(80))
     fields = parse_fields(f"{authors}. A very long collaboration paper. Physics Letters B. 2012.")
     assert fields.title is not None
+
+
+@pytest.mark.parametrize("marker", ["[1] ", "(1) ", "12. "])
+def test_leading_list_marker_is_not_an_author(marker: str) -> None:
+    fields = parse_fields(marker + 'A. Vaswani, N. Shazeer, "Attention is all you need," 2017.')
+    assert [a.surname for a in fields.authors] == ["Vaswani", "Shazeer"]

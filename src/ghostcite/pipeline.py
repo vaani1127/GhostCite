@@ -20,11 +20,11 @@ from ghostcite.config import MATCH, SEARCH, MatchConfig
 from ghostcite.document import Document
 from ghostcite.errors import BudgetExhaustedError
 from ghostcite.match.normalize import fold, surname_key
-from ghostcite.match.score import best_match, match_candidate
+from ghostcite.match.score import best_match, match_candidate, title_status, versions_of
 from ghostcite.models import (
     Candidate,
     Engine,
-    FieldName,
+    FieldStatus,
     MatchResult,
     Reference,
     ReferenceResult,
@@ -75,11 +75,8 @@ def _candidates(query: PlannedQuery, body: dict[str, object]) -> list[Candidate]
     return parse_scholar(body, query.text)
 
 
-def _title_matched(best: MatchResult | None, cfg: MatchConfig) -> bool:
-    if best is None:
-        return False
-    title = best.field(FieldName.TITLE)
-    return title is not None and (title.score or 0.0) >= cfg.title_match
+def _title_matched(best: MatchResult | None) -> bool:
+    return best is not None and title_status(best) is FieldStatus.MATCH
 
 
 class ReferenceChecker:
@@ -117,8 +114,8 @@ class ReferenceChecker:
             matches.extend(
                 match_candidate(fields, c, self._cfg) for c in _candidates(query, response.body)
             )
-            best = best_match(matches, self._cfg)
-            if _title_matched(best, self._cfg):
+            best = best_match(matches, fields, self._cfg)
+            if _title_matched(best):
                 complete = True  # identity established; earlier misses no longer matter
                 break
 
@@ -127,6 +124,7 @@ class ReferenceChecker:
             best,
             complete=complete,
             incomplete_reason=incomplete_reason,
+            versions=versions_of(matches),
             match_cfg=self._cfg,
         )
         shown = (

@@ -1,0 +1,162 @@
+{
+  "description": "Paper published twice under one title (NeurIPS 2015 and IEEE TPAMI 2016); exact-title strategy.",
+  "strategy": "scholar_exact_title",
+  "params": {
+    "engine": "google_scholar",
+    "q": "\"Faster R-CNN: Towards real-time object detection with region proposal networks\"",
+    "hl": "en",
+    "num": "10"
+  },
+  "response": {
+    "search_metadata": {
+      "id": "6ac870bfbd17314e8c6ddd74",
+      "status": "Success",
+      "created_at": "2026-10-09 04:42:39 UTC",
+      "processed_at": "2026-10-09 04:42:39 UTC",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=%22Faster+R-CNN%3A+Towards+real-time+object+detection+with+region+proposal+networks%22&hl=en&num=10",
+      "total_time_taken": 0.76
+    },
+    "search_parameters": {
+      "engine": "google_scholar",
+      "q": "\"Faster R-CNN: Towards real-time object detection with region proposal networks\"",
+      "hl": "en",
+      "num": "10"
+    },
+    "search_information": {
+      "organic_results_state": "Results for exact spelling",
+      "query_displayed": "\"Faster R-CNN: Towards real-time object detection with region proposal networks\""
+    },
+    "profiles": {
+      "link": "https://scholar.google.com/scholar?lookup=0&q=%22Faster+R-CNN:+Towards+real-time+object+detection+with+region+proposal+networks%22&hl=en&as_sdt=0,36",
+      "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=%22Faster+R-CNN%3A+Towards+real-time+object+detection+with+region+proposal+networks%22"
+    },
+    "organic_results": [
+      {
+        "position": 1,
+        "title": "Faster R-CNN: Towards real-time object detection with region proposal networks",
+        "result_id": "Oq6wOSg6GeQJ",
+        "type": "Pdf",
+        "link": "https://huggingface.co/spaces/jaiganesan/Quik_Querium_AI_Genie/resolve/main/research_papers/1506.01497v3.pdf",
+        "snippet": "Faster R-CNN: Towards real-time object detection with region proposal networks Faster R-CNN: Towards real-time object detection with region proposal networks …",
+        "publication_info": {
+          "summary": "S Ren, K He, R Girshick, J Sun - 2015 - huggingface.co",
+          "authors": [
+            {
+              "name": "S Ren",
+              "link": "https://scholar.google.com/citations?user=AUhj438AAAAJ&hl=en&oi=sra",
+              "author_id": "AUhj438AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=AUhj438AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "K He",
+              "link": "https://scholar.google.com/citations?user=DhtAFkwAAAAJ&hl=en&oi=sra",
+              "author_id": "DhtAFkwAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=DhtAFkwAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "R Girshick",
+              "link": "https://scholar.google.com/citations?user=W8VIEZgAAAAJ&hl=en&oi=sra",
+              "author_id": "W8VIEZgAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=W8VIEZgAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "J Sun",
+              "link": "https://scholar.google.com/citations?user=ALVSZAYAAAAJ&hl=en&oi=sra",
+              "author_id": "ALVSZAYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=ALVSZAYAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "huggingface.co",
+            "file_format": "PDF",
+            "link": "https://huggingface.co/spaces/jaiganesan/Quik_Querium_AI_Genie/resolve/main/research_papers/1506.01497v3.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=Oq6wOSg6GeQJ",
+          "cited_by": {
+            "total": 61612,
+            "link": "https://scholar.google.com/scholar?cites=16436232259506318906&as_sdt=5,36&sciodt=0,36&hl=en",
+            "cites_id": "16436232259506318906",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C36&cites=16436232259506318906&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:Oq6wOSg6GeQJ:scholar.google.com/&scioq=%22Faster+R-CNN:+Towards+real-time+object+detection+with+region+proposal+networks%22&hl=en&as_sdt=0,36",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C36&engine=google_scholar&hl=en&num=10&q=related%3AOq6wOSg6GeQJ%3Ascholar.google.com%2F",
+          "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:Oq6wOSg6GeQJ:scholar.google.com/+%22Faster+R-CNN:+Towards+real-time+object+detection+with+region+proposal+networks%22&hl=en&as_sdt=0,36"
+        }
+      },
+      {
+        "position": 2,
+        "title": "Faster R-CNN: Towards real-time object detection with region proposal networks",
+        "result_id": "imbrcdaPO4wJ",
+        "link": "https://ieeexplore.ieee.org/abstract/document/7485869/",
+        "snippet": "State-of-the-art object detection networks depend on region proposal algorithms to hypothesize object locations. Advances like SPPnet and Fast R-CNN have reduced the running time of these detection networks, exposing region proposal computation as a bottleneck. In this work, we introduce a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts …",
+        "publication_info": {
+          "summary": "S Ren, K He, R Girshick, J Sun - IEEE transactions on pattern …, 2016 - ieeexplore.ieee.org",
+          "authors": [
+            {
+              "name": "S Ren",
+              "link": "https://scholar.google.com/citations?user=AUhj438AAAAJ&hl=en&oi=sra",
+              "author_id": "AUhj438AAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=AUhj438AAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "K He",
+              "link": "https://scholar.google.com/citations?user=DhtAFkwAAAAJ&hl=en&oi=sra",
+              "author_id": "DhtAFkwAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=DhtAFkwAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "R Girshick",
+              "link": "https://scholar.google.com/citations?user=W8VIEZgAAAAJ&hl=en&oi=sra",
+              "author_id": "W8VIEZgAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=W8VIEZgAAAAJ&engine=google_scholar_author&hl=en"
+            },
+            {
+              "name": "J Sun",
+              "link": "https://scholar.google.com/citations?user=ALVSZAYAAAAJ&hl=en&oi=sra",
+              "author_id": "ALVSZAYAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=ALVSZAYAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "academia.edu",
+            "file_format": "PDF",
+            "link": "https://www.academia.edu/download/55289265/1506.01497.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=imbrcdaPO4wJ",
+          "cited_by": {
+            "total": 55719,
+            "link": "https://scholar.google.com/scholar?cites=10104828340132865674&as_sdt=5,36&sciodt=0,36&hl=en",
+            "cites_id": "10104828340132865674",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C36&cites=10104828340132865674&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:imbrcdaPO4wJ:scholar.google.com/&scioq=%22Faster+R-CNN:+Towards+real-time+object+detection+with+region+proposal+networks%22&hl=en&as_sdt=0,36",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C36&engine=google_scholar&hl=en&num=10&q=related%3AimbrcdaPO4wJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 20,
+            "link": "https://scholar.google.com/scholar?cluster=10104828340132865674&hl=en&as_sdt=0,36",
+            "cluster_id": "10104828340132865674",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C36&cluster=10104828340132865674&engine=google_scholar&hl=en"
+          }
+        }
+      }
+    ]
+  }
+}

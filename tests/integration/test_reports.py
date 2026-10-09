@@ -49,7 +49,8 @@ def test_markdown_lists_every_reference(report: Report) -> None:
     assert "**Integrity score: 62.5 / 100**" in text
     assert (
         "| 2 | Metadata mismatch | 1.00 | Attention is all you need "
-        "| Title matches, but year is 2017, not 2019. |" in text
+        "| Title matches, but year is 2017, not 2019. (Google Scholar lists this work "
+        "with 26 versions; this may be a different version.) |" in text
     )
     assert "[Attention is all you need](https://" in text
     assert text.count("\n| ") >= 4 + 5

@@ -28,6 +28,7 @@ def test_every_fixture_documents_its_request() -> None:
         "scholar_exact_attention",
         "scholar_exact_fabricated",
         "scholar_exact_resnet",
+        "scholar_exact_versions",
         "scholar_title_author_perturbed",
     ]
     for name in names:
