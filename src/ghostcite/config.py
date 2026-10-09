@@ -57,9 +57,22 @@ class SearchConfig:
     """A safe default for the 250-searches-per-month free plan: one typical paper fits,
     while a runaway input cannot drain the whole monthly quota."""
 
-    timeout_seconds: float = 30.0
-    """Scholar searches usually return in 2-6 s, and SerpApi retries proxies internally.
-    30 s absorbs slow responses without hanging the CLI for minutes."""
+    timeout_seconds: float = 75.0
+    """Most searches return in 1-15 s, but SerpApi retries proxies internally and can take
+    much longer. A client-side timeout does not stop SerpApi from finishing (and billing)
+    the search, so the timeout is generous: giving up early can cost an extra credit."""
+
+    timeout_retry_delay_seconds: float = 15.0
+    """Minimum wait before retrying after a timeout. If SerpApi was still working on the
+    first request, this gives it time to finish, so the identical retry is answered free
+    from SerpApi's one-hour cache instead of starting (and billing) a second search."""
+
+    cache_detection_margin_seconds: float = 10.0
+    """A retry counts as served from SerpApi's cache when the response's
+    ``search_metadata.created_at`` is at least this much older than the moment the
+    retry was sent. A cached response keeps the original search's metadata, which is
+    at least ``timeout_retry_delay_seconds`` old. The margin is smaller than that delay,
+    which leaves room for a few seconds of clock drift."""
 
     max_retries: int = 3
     """Enough to ride out a transient 5xx or network blip. More retries would mostly
@@ -125,6 +138,18 @@ class MatchConfig:
     """Below this, the candidate is a different work. Between the two thresholds the
     match is ambiguous, so the planner tries the next query strategy."""
 
+    subtitle_match_score: float = 0.90
+    """Score given when one title is exactly the other's main title (a dropped subtitle).
+    It equals ``title_match``: the same work, cited in a common shortened form."""
+
+    surname_match: float = 0.85
+    """Fuzzy threshold for surnames, so transliteration variants ("Muller"/"Mueller",
+    "Chowdhury"/"Choudhury") still count as the same author."""
+
+    partial_year_score: float = 0.8
+    """Score for a year that is off by no more than ``year_tolerance``: probably the
+    preprint and the published version, so it is not counted as fully equal."""
+
     year_tolerance: int = 1
     """Preprints and conference versions often appear a year before the journal version,
     so a difference of one year is not treated as a citation error."""
@@ -153,8 +178,23 @@ class MatchConfig:
     """Google web results carry no structured authors or venue, so a match found only
     there can never be as certain as a Scholar match."""
 
-    confident_stop: float = 0.85
-    """The planner stops spending credits once a candidate reaches this confidence."""
+
+@dataclass(frozen=True, slots=True)
+class VerdictConfig:
+    """How confident each verdict is allowed to be."""
+
+    not_found_confidence: float = 0.9
+    """NOT_FOUND when no search returned anything resembling the title. It is not 1.0,
+    because Scholar has coverage gaps (regional journals, very new papers)."""
+
+    not_found_floor: float = 0.5
+    """Lowest NOT_FOUND confidence. The closer the best title, the less sure the verdict:
+    confidence = max(floor, not_found_confidence - best_title_similarity / 2)."""
+
+    ambiguous_title_mismatch_authors: float = 1.0
+    """A title in the ambiguous band only counts as a garbled citation of a real paper
+    (METADATA_MISMATCH) when every comparable author matches and the year agrees.
+    Otherwise it is NOT_FOUND."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -197,5 +237,6 @@ INGEST = IngestConfig()
 PARSE = ParseConfig()
 SEARCH = SearchConfig()
 MATCH = MatchConfig()
+VERDICT = VerdictConfig()
 SCORE = ScoreConfig()
 WEB = WebConfig()

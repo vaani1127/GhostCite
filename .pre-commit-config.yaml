@@ -46,6 +46,8 @@ repos:
           - pytest-socket==0.8.1
           - hypothesis==6.168.1
           - jsonschema==4.26.0
+          - types-jsonschema==4.26.0.20260518
+          - reportlab==5.0.1
           - httpx2==2.13.1
           - requests==2.34.2
 

@@ -40,11 +40,19 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
   the stricter sanitizer).
 
 ## Checkpoint 4 — match, verdict, reports, CLI
-- [ ] match/normalize.py, match/score.py (fallback cap)
-- [ ] verdict/rules.py, pipeline.py
-- [ ] report: json, markdown, html, sarif (schema-validated)
-- [ ] cli.py incl. --demo, exit codes
-- [ ] Gates green → STOP
+- [x] User changes before Checkpoint 4: 75 s timeout; at least 15 s before a retry after a timeout; identical params; a retry
+  served from SerpApi's cache (original `search_metadata.created_at` older than the send time minus a 10 s margin;
+  verified with a free probe, since SerpApi has no explicit cache flag) is refunded; hl=en is pinned by a test; cap 150, keep >= 80 unused.
+- [x] match/normalize.py, match/score.py (fallback cap, subtitle tolerance, abbreviations, transliteration)
+- [x] verdict/rules.py (6 ordered rules, template reasons, integrity score), pipeline.py (dedupe, parallel, stop at title match)
+- [x] service.py (live/offline/demo, preflight, shared budget), samples.py
+- [x] report: json, markdown, html (self-contained, CSP, escaped), sarif (validated against the vendored OASIS schema)
+- [x] cli.py: check (table/json/md/html/sarif, --output infers the format, stdin, --demo, --offline, --fail-on), cache stats/clear
+- [x] Gates green → STOP (501 tests, 99.49% coverage)
+  Splitter fix: small numbering gaps ([1],[2],[4]) are accepted, so references are no longer merged silently.
+  For Checkpoint 7: add hatch force-include `samples` → `ghostcite/_samples` once samples/ exists (a missing folder breaks the build).
+  For Checkpoint 6: a misquoted title ("Attention is all we need for sequence transduction") scores below title_reject.
+  Review the title-similarity choice with eval data.
 
 ## Checkpoint 5 — web and Action
 - [ ] FastAPI app, SSE progress, limits (A3), no-key demo banner (A2)
@@ -67,4 +75,4 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
 - [ ] STOP
 
 ## Credits used
-See `.dev/credits.log` (gitignored). Running total: 7 / 120 (account: 243 left).
+See `.dev/credits.log` (gitignored). Running total: 7 / 150 (account: 243 left). Keep >= 80 unused on the account after the eval.

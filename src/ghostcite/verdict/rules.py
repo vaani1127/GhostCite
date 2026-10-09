@@ -1,0 +1,203 @@
+"""Deterministic rules that turn match evidence into a verdict and a one-line reason.
+
+The rules, in order:
+
+1. No usable title                                   → UNPARSEABLE (nothing searched)
+2. Best title ≥ ``title_match``, no field mismatch    → VERIFIED
+3. Best title ≥ ``title_match``, some field mismatch  → METADATA_MISMATCH
+4. Title in the ambiguous band, authors and year agree → METADATA_MISMATCH (garbled title)
+5. Otherwise, all planned searches ran                → NOT_FOUND
+6. Otherwise (budget ran out, or offline cache miss)  → SKIPPED_BUDGET
+
+The same evidence always produces the same verdict and reason. No model is involved.
+"""
+
+from __future__ import annotations
+
+from collections.abc import Mapping, Sequence
+from dataclasses import dataclass
+
+from ghostcite.config import MATCH, SCORE, VERDICT, MatchConfig, ScoreConfig, VerdictConfig
+from ghostcite.models import (
+    Engine,
+    FieldMatch,
+    FieldName,
+    FieldStatus,
+    MatchResult,
+    ParsedFields,
+    Verdict,
+)
+
+_JUDGED_FIELDS = (FieldName.AUTHORS, FieldName.YEAR, FieldName.VENUE)
+_MAX_NAMES_SHOWN = 3
+
+
+@dataclass(frozen=True, slots=True)
+class Decision:
+    """A verdict with its confidence, reason and the fields that disagree."""
+
+    verdict: Verdict
+    confidence: float
+    reason: str
+    mismatched: tuple[FieldName, ...] = ()
+
+
+def unparseable(*, malformed_entry: bool = False) -> Decision:
+    """Verdict for a reference without a usable title."""
+    reason = (
+        "The BibTeX entry could not be parsed, so it was not searched."
+        if malformed_entry
+        else "No title could be extracted from this reference, so it was not searched."
+    )
+    return Decision(Verdict.UNPARSEABLE, 1.0, reason)
+
+
+def skipped(reason: str) -> Decision:
+    """Verdict for a reference that could not be fully checked."""
+    return Decision(Verdict.SKIPPED_BUDGET, 0.0, reason)
+
+
+def _title_score(match: MatchResult) -> float:
+    field = match.field(FieldName.TITLE)
+    return field.score if field is not None and field.score is not None else 0.0
+
+
+def _status(match: MatchResult, name: FieldName) -> FieldStatus:
+    field = match.field(name)
+    return field.status if field is not None else FieldStatus.UNKNOWN
+
+
+def _shorten(names: str | None) -> str:
+    parts = [p.strip() for p in (names or "").split(",") if p.strip()]
+    shown = ", ".join(parts[:_MAX_NAMES_SHOWN])
+    return f"{shown} et al." if len(parts) > _MAX_NAMES_SHOWN else shown
+
+
+def _difference(field: FieldMatch) -> str:
+    if field.field is FieldName.AUTHORS:
+        return f"authors are {_shorten(field.found)}, not {_shorten(field.cited)}"
+    return f"{field.field.value} is {field.found}, not {field.cited}"
+
+
+def _join(words: Sequence[str]) -> str:
+    if len(words) <= 1:
+        return "".join(words)
+    return f"{', '.join(words[:-1])} and {words[-1]}"
+
+
+def _verified_reason(match: MatchResult) -> str:
+    agreeing = ["title"] + [
+        name.value
+        for name in _JUDGED_FIELDS
+        if _status(match, name) in (FieldStatus.MATCH, FieldStatus.PARTIAL)
+    ]
+    subject = _join(agreeing).capitalize()
+    verb = "matches" if len(agreeing) == 1 else "match"
+    candidate = match.candidate
+    if candidate.engine is Engine.GOOGLE:
+        unconfirmed = [
+            name.value
+            for name in (FieldName.AUTHORS, FieldName.VENUE)
+            if _status(match, name) is FieldStatus.UNKNOWN
+        ]
+        reason = (
+            f"{subject} {verb} a Google web result. "
+            "Found only via Google web search (not in Google Scholar)"
+        )
+        if unconfirmed:
+            reason += f"; {_join(unconfirmed)} could not be confirmed"
+        return reason + "."
+    reason = f"{subject} {verb} a Google Scholar record"
+    if candidate.cited_by:
+        reason += f" (cited by {candidate.cited_by:,})"
+    if _status(match, FieldName.YEAR) is FieldStatus.PARTIAL:
+        year = match.field(FieldName.YEAR)
+        found = year.found if year is not None else "?"
+        reason += f"; Scholar lists {found}, likely the preprint or published version"
+    return reason + "."
+
+
+def decide(
+    fields: ParsedFields,
+    best: MatchResult | None,
+    *,
+    complete: bool,
+    incomplete_reason: str,
+    match_cfg: MatchConfig = MATCH,
+    cfg: VerdictConfig = VERDICT,
+) -> Decision:
+    """Apply the rules above to the best candidate found for a reference."""
+    if not fields.title:
+        return unparseable()
+    title = _title_score(best) if best is not None else 0.0
+
+    if best is not None and title >= match_cfg.title_match:
+        differences = [
+            f
+            for name in _JUDGED_FIELDS
+            if (f := best.field(name)) and f.status is FieldStatus.MISMATCH
+        ]
+        if not differences:
+            return Decision(Verdict.VERIFIED, best.confidence, _verified_reason(best))
+        confidence = (
+            min(title, match_cfg.fallback_confidence_cap)
+            if best.candidate.engine is Engine.GOOGLE
+            else title
+        )
+        reason = "Title matches, but " + "; ".join(_difference(f) for f in differences) + "."
+        return Decision(
+            Verdict.METADATA_MISMATCH,
+            round(confidence, 4),
+            reason,
+            tuple(f.field for f in differences),
+        )
+
+    if best is not None and title >= match_cfg.title_reject and _garbled_title(best, cfg):
+        reason = (
+            f"Closest record \u201c{best.candidate.title}\u201d has the same authors and year "
+            "but a different title."
+        )
+        return Decision(Verdict.METADATA_MISMATCH, best.confidence, reason, (FieldName.TITLE,))
+
+    if not complete:
+        return skipped(incomplete_reason)
+
+    if best is None:
+        return Decision(
+            Verdict.NOT_FOUND,
+            cfg.not_found_confidence,
+            "No Google Scholar record was found for this title.",
+        )
+    confidence = max(cfg.not_found_floor, cfg.not_found_confidence - title / 2)
+    reason = (
+        "No Google Scholar record matches this title; the closest result was "
+        f"\u201c{best.candidate.title}\u201d ({round(title * 100)}% similar)."
+    )
+    return Decision(Verdict.NOT_FOUND, round(confidence, 4), reason)
+
+
+def _garbled_title(best: MatchResult, cfg: VerdictConfig) -> bool:
+    """Ambiguous title, but the people and the year leave no doubt it is this work."""
+    authors = best.field(FieldName.AUTHORS)
+    authors_agree = (
+        authors is not None
+        and authors.score is not None
+        and authors.score >= cfg.ambiguous_title_mismatch_authors
+    )
+    year_agrees = _status(best, FieldName.YEAR) in (FieldStatus.MATCH, FieldStatus.PARTIAL)
+    return authors_agree and year_agrees
+
+
+def integrity_score(counts: Mapping[Verdict, int], cfg: ScoreConfig = SCORE) -> float | None:
+    """Share of checkable references that are sound, as a percentage.
+
+    ``100 * (verified + mismatch_weight * mismatched) / (verified + mismatched + not_found)``.
+    UNPARSEABLE and SKIPPED_BUDGET references are excluded, because nothing was learned
+    about them. Returns ``None`` when no reference was checkable.
+    """
+    verified = counts.get(Verdict.VERIFIED, 0)
+    mismatched = counts.get(Verdict.METADATA_MISMATCH, 0)
+    checked = verified + mismatched + counts.get(Verdict.NOT_FOUND, 0)
+    if checked == 0:
+        return None
+    return round(100 * (verified + cfg.mismatch_weight * mismatched) / checked, 1)

@@ -47,6 +47,8 @@ _AUTHOR_START = re.compile(
 )
 _SENTENCE_END = re.compile(r"[.)\]]$|\d$")
 _MIN_RUN = 2
+_MAX_NUMBER_GAP = 3
+"""Accept markers up to this many numbers ahead of the expected one."""
 
 
 def _explode_inline_brackets(lines: Sequence[SourceLine]) -> list[SourceLine]:
@@ -71,8 +73,10 @@ def _sequence_starts(numbers: Sequence[int | None]) -> list[int]:
     """Return the indices of lines that open a reference (markers n, n+1, n+2 and so on).
 
     The sequence starts at the first marker numbered 0 or 1 (lists almost always start
-    there), or at the first marker at all. Out-of-sequence markers ("2019." or "12." on a
-    wrapped line) are continuation text and are ignored.
+    there), or at the first marker at all. A small forward gap is accepted, because a
+    list may skip a number (a reference lost at a page break, or an author's slip), and
+    merging two references silently would be worse. Far out-of-sequence markers
+    ("2019." or "12." on a wrapped line) are continuation text and are ignored.
     """
     present = [n for n in numbers if n is not None]
     if not present:
@@ -80,9 +84,9 @@ def _sequence_starts(numbers: Sequence[int | None]) -> list[int]:
     expected = next((n for n in present if n <= 1), present[0])
     starts: list[int] = []
     for index, number in enumerate(numbers):
-        if number == expected:
+        if number is not None and expected <= number <= expected + _MAX_NUMBER_GAP:
             starts.append(index)
-            expected += 1
+            expected = number + 1
     return starts
 
 

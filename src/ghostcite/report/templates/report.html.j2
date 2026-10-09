@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:">
+<meta name="generator" content="GhostCite {{ report.tool_version }}">
+<title>GhostCite report: {{ report.source_name }}</title>
+<style>
+  :root {
+    --bg: #f7f7f9; --panel: #ffffff; --text: #1d1f24; --muted: #5b6070; --border: #dde0e6;
+    --ok: #146c43; --ok-bg: #d8f3e3; --warn: #8a5300; --warn-bg: #fdecc8;
+    --bad: #a1202c; --bad-bg: #fbdcdf; --neutral: #3d4452; --neutral-bg: #e6e8ee;
+    --accent: #3451b2; --focus: #3451b2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #13151a; --panel: #1b1e25; --text: #e7e9ee; --muted: #a2a8b6; --border: #2d323d;
+      --ok: #7ee2a8; --ok-bg: #173826; --warn: #ffd27a; --warn-bg: #3d2f10;
+      --bad: #ff9aa4; --bad-bg: #44191e; --neutral: #c9ceda; --neutral-bg: #2a2f3a;
+      --accent: #9db1ff; --focus: #9db1ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         background: var(--bg); color: var(--text); }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .meta, .muted { color: var(--muted); font-size: 0.9rem; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 16px 0; }
+  .summary { display: grid; grid-template-columns: minmax(180px, 240px) 1fr; gap: 16px; align-items: center; }
+  .score { font-size: 2.4rem; font-weight: 700; line-height: 1; }
+  .counts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-weight: 600; font-size: 0.85rem; white-space: nowrap; }
+  .VERIFIED { color: var(--ok); background: var(--ok-bg); }
+  .METADATA_MISMATCH { color: var(--warn); background: var(--warn-bg); }
+  .NOT_FOUND { color: var(--bad); background: var(--bad-bg); }
+  .UNPARSEABLE, .SKIPPED_BUDGET { color: var(--neutral); background: var(--neutral-bg); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .toolbar button { font: inherit; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+                    background: var(--panel); color: var(--text); cursor: pointer; }
+  .toolbar button[aria-pressed="true"] { background: var(--accent); color: var(--panel); border-color: var(--accent); }
+  .toolbar input { font: inherit; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+                   background: var(--panel); color: var(--text); min-width: 220px; flex: 1; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+  th { font-size: 0.85rem; color: var(--muted); }
+  td.num { text-align: right; white-space: nowrap; }
+  .reason { margin: 0 0 4px; }
+  details summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; margin: 6px 0 0; font-size: 0.9rem; }
+  dt { color: var(--muted); }
+  dd { margin: 0; }
+  .mismatch { color: var(--bad); font-weight: 600; }
+  code { font-size: 0.85rem; overflow-wrap: anywhere; }
+  footer { margin-top: 24px; }
+  @media (max-width: 720px) {
+    .summary { grid-template-columns: 1fr; }
+    thead { display: none; }
+    tr, td { display: block; border: 0; padding: 4px 0; }
+    tr { border-bottom: 1px solid var(--border); padding: 12px 0; }
+    td.num { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>GhostCite report: {{ report.source_name }}</h1>
+    <p class="meta">Generated {{ report.generated_at.strftime("%Y-%m-%d %H:%M") }} UTC by GhostCite {{ report.tool_version }} &middot; {{ report.mode.value }} mode &middot; {{ report.summary.credits_used }} SerpApi searches used &middot; {{ report.summary.cache_hits }} answered from cache</p>
+  </header>
+
+  <section class="card summary" aria-labelledby="score-label">
+    <div>
+      <div id="score-label" class="muted">Integrity score</div>
+      <div class="score">{{ score }}</div>
+      <div class="muted">{{ report.summary.checked }} of {{ report.summary.total }} references checked</div>
+    </div>
+    <div>
+      <div class="counts" role="list" aria-label="References per verdict">
+        {% for verdict in verdicts %}
+        <span role="listitem" class="badge {{ verdict.value }}">{{ labels[verdict] }}: {{ report.summary.counts.get(verdict, 0) }}</span>
+        {% endfor %}
+      </div>
+      <p class="muted">{{ formula }}</p>
+    </div>
+  </section>
+
+  {% if report.warnings %}
+  <section class="card" aria-labelledby="warnings-heading">
+    <h2 id="warnings-heading">Warnings</h2>
+    <ul>{% for warning in report.warnings %}<li>{{ warning }}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  <section class="card" aria-labelledby="refs-heading">
+    <h2 id="refs-heading">References</h2>
+    <div class="toolbar" role="group" aria-label="Filter references">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      {% for verdict in verdicts %}
+      <button type="button" data-filter="{{ verdict.value }}" aria-pressed="false">{{ labels[verdict] }}</button>
+      {% endfor %}
+      <label class="muted" for="search">Search</label>
+      <input id="search" type="search" placeholder="Title, author or reason">
+    </div>
+    <p id="shown" class="muted" aria-live="polite"></p>
+    <table>
+      <caption class="muted" style="text-align:left">One row per reference, in document order.</caption>
+      <thead><tr><th scope="col">#</th><th scope="col">Verdict</th><th scope="col">Confidence</th><th scope="col">Cited reference</th><th scope="col">Finding</th></tr></thead>
+      <tbody>
+      {% for result in report.results %}
+      {% set match = result.best_match %}
+      <tr data-verdict="{{ result.verdict.value }}">
+        <td class="num">{{ result.reference.index }}</td>
+        <td><span class="badge {{ result.verdict.value }}">{{ labels[result.verdict] }}</span></td>
+        <td class="num">{{ "%.2f"|format(result.confidence) }}</td>
+        <td>
+          <strong>{{ cited_title(result) }}</strong>
+          {% if result.reference.key %}<div class="muted"><code>{{ result.reference.key }}</code>{% if result.reference.line %} &middot; line {{ result.reference.line }}{% endif %}</div>{% endif %}
+          <details><summary>Raw reference</summary><p>{{ result.reference.raw }}</p></details>
+        </td>
+        <td>
+          <p class="reason">{{ result.reason }}</p>
+          {% if match %}
+          <details>
+            <summary>Best match and evidence</summary>
+            <dl>
+              <dt>Title</dt><dd>{% set url = safe_url(match.candidate.link) %}{% if url %}<a href="{{ url }}" rel="noopener noreferrer" target="_blank">{{ match.candidate.title }}</a>{% else %}{{ match.candidate.title }}{% endif %}</dd>
+              {% if match.candidate.authors %}<dt>Authors</dt><dd>{{ match.candidate.authors|join(", ") }}{% if match.candidate.authors_truncated %} &hellip;{% endif %}</dd>{% endif %}
+              {% if match.candidate.year %}<dt>Year</dt><dd>{{ match.candidate.year }}</dd>{% endif %}
+              {% if match.candidate.venue %}<dt>Venue</dt><dd>{{ match.candidate.venue }}{% if match.candidate.venue_truncated %} &hellip;{% endif %}</dd>{% endif %}
+              {% if match.candidate.cited_by is not none %}<dt>Cited by</dt><dd>{{ "{:,}".format(match.candidate.cited_by) }}</dd>{% endif %}
+              <dt>Source</dt><dd>{{ match.candidate.engine.value }}{% if match.candidate.source %} &middot; {{ match.candidate.source }}{% endif %}</dd>
+              {% for field in match.fields %}{% if field.status is not sameas FieldStatus.UNKNOWN %}
+              <dt>{{ field.field.value|capitalize }}</dt><dd{% if field.status is sameas FieldStatus.MISMATCH %} class="mismatch"{% endif %}>{{ field.status.value }}{% if field.score is not none %} ({{ "%.0f"|format(field.score * 100) }}%){% endif %}</dd>
+              {% endif %}{% endfor %}
+            </dl>
+          </details>
+          {% endif %}
+          {% if result.queries %}<details><summary>Queries ({{ result.searches_used }} live)</summary><ul>{% for q in result.queries %}<li><code>{{ q }}</code></li>{% endfor %}</ul></details>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="muted">
+    Verdicts are deterministic: GhostCite compares parsed citation fields with live Google Scholar data retrieved through SerpApi. A &ldquo;Not found&rdquo; verdict means no matching record was found; check such references manually before drawing conclusions.
+  </footer>
+</main>
+<script>
+(function () {
+  var rows = Array.prototype.slice.call(document.querySelectorAll("tbody tr"));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+  var search = document.getElementById("search");
+  var shown = document.getElementById("shown");
+  var active = "all";
+  function apply() {
+    var needle = search.value.trim().toLowerCase();
+    var count = 0;
+    rows.forEach(function (row) {
+      var visible = (active === "all" || row.dataset.verdict === active) &&
+        (!needle || row.textContent.toLowerCase().indexOf(needle) !== -1);
+      row.hidden = !visible;
+      if (visible) { count += 1; }
+    });
+    shown.textContent = "Showing " + count + " of " + rows.length + " references.";
+  }
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      active = button.dataset.filter;
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === button)); });
+      apply();
+    });
+  });
+  search.addEventListener("input", apply);
+  apply();
+}());
+</script>
+</body>
+</html>

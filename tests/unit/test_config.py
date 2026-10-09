@@ -17,9 +17,9 @@ def test_title_thresholds_are_ordered() -> None:
     assert 0.0 < MATCH.title_reject < MATCH.title_match <= 1.0
 
 
-def test_fallback_cap_is_below_confident_stop() -> None:
+def test_fallback_cap_is_below_a_title_match() -> None:
     # A Google-only match must never look as certain as a confirmed Scholar match.
-    assert MATCH.fallback_confidence_cap < MATCH.confident_stop
+    assert MATCH.fallback_confidence_cap < MATCH.title_match
 
 
 def test_web_limits_fit_within_global_budget() -> None:
@@ -37,3 +37,8 @@ def test_configs_are_immutable_but_replaceable() -> None:
     tuned = dataclasses.replace(MATCH, title_match=0.92)
     assert isinstance(tuned, MatchConfig)
     assert tuned.title_match == 0.92
+
+
+def test_cache_detection_margin_is_below_the_timeout_retry_delay() -> None:
+    assert 0 < SEARCH.cache_detection_margin_seconds < SEARCH.timeout_retry_delay_seconds
+    assert SEARCH.timeout_seconds == 75.0

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import random
 from collections.abc import Mapping
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +18,7 @@ from ghostcite.search.ratelimit import RateLimiter
 
 PARAMS = {"engine": "google_scholar", "q": '"A title"', "hl": "en"}
 BODY = {"organic_results": [{"title": "A title"}]}
+NOW = datetime(2026, 10, 9, 4, 6, 0, tzinfo=UTC)
 
 
 class ScriptedTransport:
@@ -64,6 +66,7 @@ def _client(
         cfg=SearchConfig(max_retries=3, backoff_base_seconds=1.0, backoff_cap_seconds=4.0),
         sleep=slept.append,
         rng=random.Random(7),  # noqa: S311 - seeded jitter for deterministic tests
+        now=lambda: NOW,
         **kwargs,
     )
     return client, slept
@@ -203,3 +206,64 @@ def test_final_timeout_is_still_counted(cache: SqliteCache) -> None:
     with pytest.raises(SearchServiceError, match="timed out"):
         client.search(PARAMS)
     assert (budget.used, client.credits_used, client.live_searches) == (4, 4, 0)
+
+
+def _body_created(created_at: str) -> dict[str, Any]:
+    return {**BODY, "search_metadata": {"id": "x", "status": "Success", "created_at": created_at}}
+
+
+def test_retry_after_timeout_waits_at_least_the_timeout_delay(cache: SqliteCache) -> None:
+    transport = ScriptedTransport(_timeout(), BODY)
+    client, slept = _client(cache, transport)
+    client.search(PARAMS)
+    assert slept[0] >= 15.0  # SearchConfig default timeout_retry_delay_seconds
+
+
+def test_retry_served_from_serpapi_cache_is_refunded(cache: SqliteCache) -> None:
+    # The first request timed out but finished on SerpApi's side at 04:05:10; the
+    # identical retry sent at 04:06:00 returns that original search (free cache hit).
+    transport = ScriptedTransport(_timeout(), _body_created("2026-10-09 04:05:10 UTC"))
+    budget = SearchBudget(10)
+    client, _ = _client(cache, transport, budget)
+    response = client.search(PARAMS)
+    assert response.source is ResponseSource.LIVE
+    assert (client.live_searches, client.credits_used, budget.used) == (1, 1, 1)
+
+
+def test_fresh_retry_after_timeout_counts_both_attempts(cache: SqliteCache) -> None:
+    transport = ScriptedTransport(_timeout(), _body_created("2026-10-09 04:06:01 UTC"))
+    budget = SearchBudget(10)
+    client, _ = _client(cache, transport, budget)
+    client.search(PARAMS)
+    assert (client.credits_used, budget.used) == (2, 2)
+
+
+def test_recent_response_within_margin_is_not_treated_as_cached(cache: SqliteCache) -> None:
+    # 5 s older than the request: within the 10 s clock-drift margin, so not proof of a cache hit.
+    transport = ScriptedTransport(_timeout(), _body_created("2026-10-09 04:05:55 UTC"))
+    client, _ = _client(cache, transport)
+    client.search(PARAMS)
+    assert client.credits_used == 2
+
+
+def test_cache_detection_only_applies_after_a_timeout(cache: SqliteCache) -> None:
+    # An old created_at on a first-attempt answer is SerpApi's cache from an earlier run:
+    # free on SerpApi's side, but GhostCite cannot prove that, so it is counted (conservative).
+    transport = ScriptedTransport(_body_created("2026-10-09 03:00:00 UTC"))
+    client, _ = _client(cache, transport)
+    client.search(PARAMS)
+    assert client.credits_used == 1
+
+
+def test_identical_params_are_resent_on_retry(cache: SqliteCache) -> None:
+    seen: list[Mapping[str, str]] = []
+
+    class RecordingTransport(ScriptedTransport):
+        def search(self, params: Mapping[str, str]) -> dict[str, Any]:
+            seen.append(dict(params))
+            return super().search(params)
+
+    client, _ = _client(cache, RecordingTransport(_timeout(), BODY))
+    client.search(PARAMS)
+    assert seen == [PARAMS, PARAMS]
+    assert all("no_cache" not in params for params in seen)

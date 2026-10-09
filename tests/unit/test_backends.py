@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -18,8 +19,10 @@ from ghostcite.search.backends import (
     TransportError,
     check_body,
     http_failure,
+    search_created_at,
 )
 from ghostcite.search.cache import cache_key
+from tests.conftest import FIXTURES
 
 SECRET = "0123456789abcdef" * 4  # gitleaks:allow (key-shaped placeholder, not a real key)
 PARAMS = {"engine": "google_scholar", "q": "x"}
@@ -244,3 +247,25 @@ def test_only_timeouts_may_have_been_billed(monkeypatch: pytest.MonkeyPatch) -> 
     with pytest.raises(TransportError) as refused:
         transport.search(PARAMS)
     assert not refused.value.maybe_charged
+
+
+@pytest.mark.parametrize(
+    ("body", "expected"),
+    [
+        (
+            {"search_metadata": {"created_at": "2026-10-09 03:58:50 UTC"}},
+            datetime(2026, 10, 9, 3, 58, 50, tzinfo=UTC),
+        ),
+        ({"search_metadata": {"created_at": "yesterday"}}, None),
+        ({"search_metadata": {"created_at": 12}}, None),
+        ({"search_metadata": "oops"}, None),
+        ({}, None),
+    ],
+)
+def test_search_created_at(body: dict[str, Any], expected: datetime | None) -> None:
+    assert search_created_at(body) == expected
+
+
+def test_created_at_format_matches_recorded_responses() -> None:
+    fixture = json.loads((FIXTURES / "serpapi" / "scholar_exact_attention.json").read_text("utf-8"))
+    assert search_created_at(fixture["response"]) is not None

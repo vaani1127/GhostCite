@@ -48,6 +48,7 @@ dev = [
   "pytest-socket==0.8.1",    # MIT. Blocks outbound network in every test.
   "hypothesis==6.168.1",     # MPL-2.0, test-only (never shipped). Property-based tests.
   "jsonschema==4.26.0",      # MIT. Validates SARIF output against the vendored 2.1.0 schema.
+  "types-jsonschema==4.26.0.20260518", # Apache-2.0. Type stubs for jsonschema (mypy --strict).
   "httpx2==2.13.1",          # BSD-3. Required by Starlette's TestClient (successor to httpx).
   "mypy==2.3.1",             # MIT
   "ruff==0.16.8",            # MIT

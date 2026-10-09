@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import threading
 from collections.abc import Mapping
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Protocol
 
@@ -29,6 +30,7 @@ NO_RESULTS_MESSAGE = "hasn't returned any results"
 """Fragment of SerpApi's ``error`` text for a successful search with zero results."""
 _OUT_OF_SEARCHES = "run out of searches"
 DEMO_BUNDLE_FORMAT = 1
+_CREATED_AT_FORMAT = "%Y-%m-%d %H:%M:%S UTC"
 
 
 class TransportError(Exception):
@@ -92,6 +94,25 @@ def http_failure(status: int, error: str | None) -> GhostCiteError | TransportEr
     if status == 429 or status >= 500 or status < 0:
         return TransportError(f"HTTP {status}: {detail}", retryable=True, status=status)
     return SearchServiceError(f"SerpApi request failed (HTTP {status}): {detail}")
+
+
+def search_created_at(body: Mapping[str, Any]) -> datetime | None:
+    """When SerpApi originally ran this search, from ``search_metadata.created_at``.
+
+    A response served from SerpApi's one-hour cache carries the *original* search's
+    metadata (same ``id``, original ``created_at``). This was verified by repeating a
+    recorded request, which was free and returned identical metadata. SerpApi has no
+    explicit "cached" flag, so comparing this time with the request time is how a cache
+    hit is recognized. The format is ``"2026-10-09 03:58:50 UTC"``.
+    """
+    metadata = body.get("search_metadata")
+    created = metadata.get("created_at") if isinstance(metadata, dict) else None
+    if not isinstance(created, str):
+        return None
+    try:
+        return datetime.strptime(created, _CREATED_AT_FORMAT).replace(tzinfo=UTC)
+    except ValueError:
+        return None
 
 
 def check_body(body: object) -> dict[str, Any]:

@@ -103,3 +103,20 @@ def test_large_numbered_list() -> None:
     assert len(refs) == 250
     assert refs[-1].text == "Author250 A. Title 250. Venue, 2020."
     assert refs[-1].line == 250
+
+
+def test_small_numbering_gaps_do_not_merge_references() -> None:
+    text = (
+        "[1] First ref, 2019.\n[2] Second ref, 2020.\n[4] Fourth ref, 2021.\n[5] Fifth ref, 2022."
+    )
+    assert _texts(text) == [
+        "First ref, 2019.",
+        "Second ref, 2020.",
+        "Fourth ref, 2021.",
+        "Fifth ref, 2022.",
+    ]
+
+
+def test_large_jumps_are_continuation_text() -> None:
+    text = "1. First ref, Journal of\n9. Things that wrap, 2019.\n2. Second ref, 2020."
+    assert _texts(text) == ["First ref, Journal of 9. Things that wrap, 2019.", "Second ref, 2020."]

@@ -12,6 +12,11 @@ Order of operations for one request:
    the reserved credit for the retry. A timeout may have been billed even though no
    answer arrived, so that credit counts as spent and the retry must reserve a new one.
    This keeps ``--max-searches`` a true upper bound on billed searches.
+   To avoid paying twice, the retry after a timeout waits at least
+   ``timeout_retry_delay_seconds`` and resends exactly the same parameters (``no_cache``
+   is never used). If SerpApi finished the first request in the meantime, the retry is
+   answered free from its one-hour cache. That case is recognized from the response's
+   original ``created_at``, and the retry's credit is refunded.
 6. The sanitized response is cached.
 """
 
@@ -22,13 +27,19 @@ import threading
 import time
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass
+from datetime import UTC, datetime, timedelta
 from enum import StrEnum
 from typing import Any
 
 from ghostcite.config import SEARCH, SearchConfig
 from ghostcite.errors import BudgetExhaustedError, SearchServiceError
 from ghostcite.logs import get_logger
-from ghostcite.search.backends import ResponseStore, Transport, TransportError
+from ghostcite.search.backends import (
+    ResponseStore,
+    Transport,
+    TransportError,
+    search_created_at,
+)
 from ghostcite.search.budget import Budget
 from ghostcite.search.ratelimit import RateLimiter
 from ghostcite.search.sanitize import sanitize_response
@@ -75,6 +86,7 @@ class SearchClient:
         cfg: SearchConfig = SEARCH,
         sleep: Callable[[float], None] = time.sleep,
         rng: random.Random | None = None,
+        now: Callable[[], datetime] = lambda: datetime.now(tz=UTC),
     ) -> None:
         self._store = store
         self._transport = transport
@@ -82,6 +94,7 @@ class SearchClient:
         self._limiter = limiter
         self._cfg = cfg
         self._sleep = sleep
+        self._now = now
         self._rng = rng or random.Random()  # noqa: S311 - jitter, not cryptography
         self._lock = threading.Lock()
         self._live = 0
@@ -155,15 +168,18 @@ class SearchClient:
         self, transport: Transport, params: Mapping[str, str], reservation: _Reservation
     ) -> dict[str, Any]:
         attempt = 0
+        after_timeout = False
         while True:
             if self._limiter is not None:
                 self._limiter.acquire()
+            sent_at = self._now()
             try:
                 body = transport.search(params)
             except TransportError as exc:
                 attempt += 1
                 if exc.maybe_charged:
                     self._spend(reservation)
+                    after_timeout = True
                 if not exc.retryable or attempt > self._cfg.max_retries:
                     raise SearchServiceError(
                         f"SerpApi request failed after {attempt} attempt(s): {exc.message}"
@@ -173,11 +189,27 @@ class SearchClient:
                         raise BudgetExhaustedError(_BUDGET_EXHAUSTED) from None
                     reservation.held = True
                 delay = self._backoff(attempt - 1)
+                if exc.maybe_charged:
+                    delay = max(delay, self._cfg.timeout_retry_delay_seconds)
                 _log.warning(
                     "retrying search in %.1fs after: %s", delay, exc.message,
                     extra={"attempt": attempt},
                 )  # fmt: skip
                 self._sleep(delay)
                 continue
+            if after_timeout and self._served_from_serpapi_cache(body, sent_at):
+                # The timed-out request finished on SerpApi's side and was billed there;
+                # this identical retry was answered free from SerpApi's cache. The retry's
+                # credit stays unspent and is refunded by search().
+                _log.info("retry was served from SerpApi's cache; no extra credit used")
+                return body
             self._spend(reservation)
             return body
+
+    def _served_from_serpapi_cache(self, body: Mapping[str, Any], sent_at: datetime) -> bool:
+        """True when the response was created well before this request was sent."""
+        created = search_created_at(body)
+        if created is None:
+            return False
+        margin = timedelta(seconds=self._cfg.cache_detection_margin_seconds)
+        return created < sent_at - margin

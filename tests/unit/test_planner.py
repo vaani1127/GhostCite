@@ -76,3 +76,11 @@ def test_quotes_are_stripped_and_long_titles_cut_at_a_word() -> None:
 def test_language_and_page_size_come_from_config() -> None:
     query = plan_queries(_fields(), SearchConfig(language="hi", results_per_query=20))[0]
     assert (query.params["hl"], query.params["num"]) == ("hi", "20")
+
+
+def test_scholar_requests_pin_english_and_never_bypass_serpapi_cache() -> None:
+    queries = plan_queries(_fields(entry_type="book"))
+    for query in queries:
+        assert query.params["hl"] == "en"
+        assert "no_cache" not in query.params
+    assert queries[-1].params["gl"] == "in"

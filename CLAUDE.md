@@ -31,8 +31,10 @@ Context: SerpApi India Hackathon 2026, track "Knowledge & Public Interest", dead
 - Status codes: 400 bad param, 401 bad key, 403 account, 429 hourly limit or out of searches, 5xx server. The 200 message "Google hasn't returned any results for this query." means no candidates.
 - Scholar result fields: `title, link, result_id, type, snippet, publication_info.summary, publication_info.authors[name, author_id], inline_links.cited_by.total, inline_links.versions.cluster_id`.
 
-## Credits (hard cap: 120 live searches for the whole project)
+## Credits (hard cap: 150 live searches for the whole project; raised from 120 by the user on 2026-10-09)
 - Before each live run: estimate the cost, check the Account API (counts only), and append `date | purpose | estimated | actual` to `.dev/credits.log` (gitignored). If a run would exceed the cap, stop and ask the user.
+- At least 80 searches must remain unused on the SerpApi account after the eval (for the demo recording and final checks). If the eval would leave fewer than 80, stop and ask the user.
+- Timeouts: 75 s request timeout; a retry after a timeout waits at least 15 s and resends identical params (never `no_cache`). A retry served from SerpApi's cache (original `created_at` older than the send time) is refunded.
 - Used so far: 7 (Checkpoint 3 smoke test, including one timed-out request that was still billed). Planned: eval ≈ 102 (Checkpoint 6), demo bundle 0 (reuses the eval cache). Tune only on cached data. Client-side timeouts can be billed, which is why `SearchClient.credits_used` counts them.
 - If `SERPAPI_API_KEY` is missing when a live run is needed, stop and tell the user exactly what to do.
 
