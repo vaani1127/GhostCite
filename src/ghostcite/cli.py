@@ -7,6 +7,7 @@ Exit codes: 0 clean, 1 the ``--fail-on`` threshold was reached, 2 usage or input
 from __future__ import annotations
 
 import ipaddress
+import os
 import sys
 from enum import StrEnum
 from pathlib import Path
@@ -50,6 +51,8 @@ _VERDICT_STYLES = {
     Verdict.SKIPPED_BUDGET: "dim",
 }
 _MAX_TITLE_CHARS = 60
+CONTAINER_ENV = "GHOSTCITE_IN_CONTAINER"
+"""Set to 1 by the Docker image, where the web UI must bind 0.0.0.0 to be published."""
 
 
 class Format(StrEnum):
@@ -272,7 +275,16 @@ def web(
     from ghostcite.web.app import create_app
 
     stderr = _stderr()
-    if not _is_loopback(host):
+    if not _is_loopback(host) and os.environ.get(CONTAINER_ENV) == "1":
+        # Inside the Docker image a non-loopback bind is required for port publishing. The
+        # container cannot see how the port is published, so explain instead of warning.
+        stderr.print(
+            f"note: listening on {host} inside the container. This address is internal to "
+            "the container; compose.yaml publishes it on 127.0.0.1 only. Publishing it on "
+            "another interface would let others spend your SerpApi credits.",
+            highlight=False,
+        )
+    elif not _is_loopback(host):
         stderr.print(
             f"[bold yellow]warning:[/] listening on {host} makes GhostCite reachable from other "
             "machines. Anyone who can reach it can spend your SerpApi credits (within the web "

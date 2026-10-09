@@ -102,12 +102,25 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
 - [x] Wilson intervals on every rate; counts only below n=5
 - [x] Gates green → STOP
 
-## Checkpoint 7 — docs and final verification
-- [ ] README, docs/*, LICENSE, CONTRIBUTING, CoC, SECURITY, CHANGELOG, templates
-- [ ] Dockerfile, compose.yaml
-- [ ] samples/
-- [ ] Fresh-venv quickstart check, all gates, secret/PII scan, hackathon checklist
-- [ ] STOP
+## Checkpoint 7 Part B — docs and final verification (feature freeze, 0 live searches)
+- [x] README (zero-key path first, SerpApi usage, mermaid, v2 headline with CIs, limitations, story, roadmap, AI
+  disclosure, badges), docs/ARCHITECTURE.md, docs/DEMO_SCRIPT.md, docs/SUBMISSION.md (no personal details)
+- [x] CONTRIBUTING, CODE_OF_CONDUCT (Contributor Covenant 2.1 adaptation; reports via private advisory), SECURITY,
+  CHANGELOG, issue templates (bug, feature, config) and PR template
+- [x] Dockerfile (slim, multi-stage, non-root, healthcheck, no key) and compose.yaml (127.0.0.1:8000 only, env_file
+  optional, named cache volume, read-only rootfs). GHOSTCITE_IN_CONTAINER=1 turns the 0.0.0.0 warning into an
+  explanation. Compose validated with `config --quiet`; image build not run (Docker engine was not running).
+- [x] samples/sample.pdf from scripts/make_sample_pdf.py (reproducible bytes); same 11 references and verdicts as
+  sample.txt; demo bundle rebuilt offline (unchanged, 15 responses); tests/integration/test_samples.py
+- [x] The 4 demo-script references are in the local cache with the expected verdicts (checked offline)
+- [x] Full-history scans: gitleaks over all 7 commits clean; PII scan of every added line found only false positives;
+  all commit addresses are GitHub noreply
+- [x] Fresh copy + fresh venv following the README on Windows with Python 3.13 and no key: `pip install .`,
+  `ghostcite check --demo` (72.7, 0 searches), `--offline` on sample.pdf, web UI demo (banner, hints, sample report,
+  live refused with 400), then `pip install -e ".[dev]"` and `tasks.py check`. First run on 3.13: 5 failures + 2 errors
+  from unclosed SQLite connections in two test fixtures (Python 3.13 sqlite3 emits ResourceWarning). Fixed the fixtures
+  (test-only); rerun 775 passed, 99.19%. Added 3.13 to the CI matrix, classifiers and badge.
+- [x] STOP
 
 ## Credits used
 See `.dev/credits.log` (gitignored). Running total (logged runs): 121 / 150 (account: 126 left after v2; an unexplained 3-search drop between 04:43 and 08:33 UTC is noted in the log, and every live path now logs). Keep >= 80 unused on the account after the eval.

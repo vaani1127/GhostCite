@@ -1,0 +1,24 @@
+# docker compose up --build  ->  http://127.0.0.1:8000
+#
+# Put SERPAPI_API_KEY in .env (copy .env.example). Without it the UI runs in demo mode.
+services:
+  ghostcite:
+    build: .
+    image: ghostcite:local
+    env_file:
+      - path: .env
+        required: false # demo mode works without a key
+    ports:
+      # Published on localhost only: other machines cannot reach the UI or spend credits.
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ghostcite-cache:/cache # search cache and credits log survive restarts
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+
+volumes:
+  ghostcite-cache:

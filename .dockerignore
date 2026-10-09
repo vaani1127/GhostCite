@@ -13,3 +13,15 @@
 htmlcov/
 dist/
 build/
+
+# Not needed in the image (keeps the build context small and free of local notes)
+.github/
+docs/
+eval/
+tests/
+scripts/
+*.md
+!README.md
+GhostCite_Handoff_Context.md
+ghostcite-report.*
+*.sarif

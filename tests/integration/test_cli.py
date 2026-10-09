@@ -247,6 +247,23 @@ def test_web_command_binds_to_localhost_by_default(monkeypatch: pytest.MonkeyPat
     assert "warning" not in result.output
 
 
+def test_web_command_in_container_explains_instead_of_warning(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import uvicorn
+
+    seen: dict[str, object] = {}
+    monkeypatch.setattr(uvicorn, "run", lambda app, **kwargs: seen.update(kwargs))
+    monkeypatch.setenv(cli.CONTAINER_ENV, "1")
+    result = runner.invoke(cli.app, ["web", "--host", "0.0.0.0"])  # noqa: S104 - under test
+    output = " ".join(result.output.split())
+    assert result.exit_code == 0
+    assert seen["host"] == "0.0.0.0"  # noqa: S104
+    assert "internal to the container" in output
+    assert "publishes it on 127.0.0.1 only" in output
+    assert "reachable from other machines" not in output
+
+
 @pytest.mark.parametrize(
     ("host", "warns"),
     [

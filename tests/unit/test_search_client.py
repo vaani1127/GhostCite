@@ -3,7 +3,7 @@ from __future__ import annotations
 import random
 import threading
 import time
-from collections.abc import Mapping
+from collections.abc import Iterator, Mapping
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -50,8 +50,9 @@ class CountingLimiter(RateLimiter):
 
 
 @pytest.fixture
-def cache(tmp_path: Path) -> SqliteCache:
-    return SqliteCache(tmp_path, ttl_seconds=3600)
+def cache(tmp_path: Path) -> Iterator[SqliteCache]:
+    with SqliteCache(tmp_path, ttl_seconds=3600) as store:
+        yield store
 
 
 def _client(

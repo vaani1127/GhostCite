@@ -1,0 +1,22 @@
+name: Feature request
+description: A new citation style, source, report format or workflow.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: >-
+        If it changes matching or verdict rules, say how it could be checked against the
+        evaluation without touching the frozen held-out set.
+  - type: textarea
+    id: examples
+    attributes:
+      label: Example references (no personal data)
+      render: text

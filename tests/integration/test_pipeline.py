@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from pathlib import Path
 
 import pytest
@@ -28,8 +29,9 @@ from tests.helpers import (
 
 
 @pytest.fixture
-def cache(tmp_path: Path) -> SqliteCache:
-    return SqliteCache(tmp_path / "cache", ttl_seconds=3600)
+def cache(tmp_path: Path) -> Iterator[SqliteCache]:
+    with SqliteCache(tmp_path / "cache", ttl_seconds=3600) as store:
+        yield store
 
 
 def _live(cache: SqliteCache, transport: FixtureTransport, budget: int = 50) -> SearchClient:

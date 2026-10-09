@@ -12,6 +12,7 @@ Context: SerpApi India Hackathon 2026, track "Knowledge & Public Interest", dead
 - Use `.\.venv\Scripts\python.exe` (3.12 locally; 3.11+ supported). Install only into this venv. The shell is PowerShell; CI runs on ubuntu-latest, so everything must work on both.
 - **No git write commands** (add, commit, push, reset, checkout, rebase, stash…). Read-only `git status` / `git diff` are fine. The branch is `main`. Suggested commit messages never carry a `Co-Authored-By` or any other AI attribution trailer; AI use is disclosed in the README instead.
 - **Never read or print `.env`.** The API key comes only from the environment or `.env`, is never logged or echoed, and is redacted from every log line and exception.
+- **Never run commands that print environment values**, such as `docker compose config` without `--quiet`, `env`, `printenv`, `set`, or `Get-ChildItem Env:`. They expand `.env` and print the real key. (A `docker compose config` run on 2026-10-10 exposed the key, which then had to be rotated.)
 
 ## Quality bar
 - src layout `src/ghostcite/`, one concern per module, fully typed, small pure functions, docstrings on all public API, comments explain *why*.
