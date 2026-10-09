@@ -14,6 +14,7 @@ from datetime import UTC, datetime
 from ghostcite.redact import redact
 
 LOGGER_NAME = "ghostcite"
+_NOISY_LIBRARIES = ("pypdf", "bibtexparser")
 
 # Attributes every LogRecord has. Anything else was passed through ``extra=`` and is
 # emitted as a structured field.
@@ -70,3 +71,7 @@ def configure_logging(level: str = "WARNING", *, json_format: bool = False) -> N
     logger.addHandler(handler)
     logger.setLevel(level.upper())
     logger.propagate = False
+    # These libraries log recoverable input problems (damaged PDF objects, malformed BibTeX
+    # blocks) that GhostCite already reports to the user in its own words.
+    for noisy in _NOISY_LIBRARIES:
+        logging.getLogger(noisy).setLevel(logging.ERROR)

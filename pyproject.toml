@@ -112,8 +112,8 @@ plugins = ["pydantic.mypy"]
 warn_unreachable = true
 
 [[tool.mypy.overrides]]
-# The official SerpApi client and pytest-socket ship without type information.
-module = ["serpapi", "serpapi.*", "pytest_socket"]
+# These packages ship without type information.
+module = ["serpapi", "serpapi.*", "pytest_socket", "reportlab", "reportlab.*"]
 ignore_missing_imports = true
 
 [tool.pydantic-mypy]

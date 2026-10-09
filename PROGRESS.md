@@ -16,11 +16,14 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
 - [x] Gates green → STOP (ruff, format, mypy --strict, 49 tests, 99.7% coverage, all pre-commit hooks)
 
 ## Checkpoint 2 — ingest and parse
-- [ ] ingest/text.py, ingest/bibtex.py (malformed entry reporting, line numbers)
-- [ ] ingest/pdf.py (section detection, two-column, hyphenation, headers/footers, scanned PDF error)
-- [ ] parse/split.py, parse/fields.py, parse/names.py with per-field confidence
-- [ ] Generated PDF fixtures; unit and property tests; edge cases
-- [ ] Gates green → STOP
+- [x] ingest/text.py, ingest/bibtex.py (malformed entry reporting, line numbers)
+- [x] ingest/pdf.py (section detection, two-column, hyphenation, headers/footers, scanned PDF error)
+- [x] parse/split.py, parse/fields.py, parse/names.py with per-field confidence; parse/cleanup.py; ingest/sections.py
+- [x] document.py: content-based format detection, size/count limits, safe file names
+- [x] PDFs generated in tests (tests/pdf_factory.py, reportlab); unit and Hypothesis property tests; edge cases
+- [x] Gates green → STOP (237 tests, 99.37% coverage, all hooks)
+  Note: the Write tool turns `\uXXXX` escapes into literal characters. After writing a file, scan it for
+  non-ASCII characters and re-escape the code lines (ruff RUF001 flags ambiguous ones).
 
 ## Checkpoint 3 — search
 - [ ] cache.py, budget.py, ratelimit.py, account.py (preflight)

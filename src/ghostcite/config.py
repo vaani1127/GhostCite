@@ -44,8 +44,9 @@ class ParseConfig:
     """Accept next year's date because "in press" and early-access articles carry it."""
 
     min_title_chars: int = 10
-    """A shorter "title" is almost always a parsing fragment, and searching it would
-    waste a credit on noise."""
+    """Minimum number of letters in a title. A shorter "title" is almost always a parsing
+    fragment, and searching it would waste a credit on noise. Real short titles such as
+    "Deep learning" (12 letters) still pass."""
 
 
 @dataclass(frozen=True, slots=True)
