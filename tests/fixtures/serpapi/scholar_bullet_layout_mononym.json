@@ -1,0 +1,80 @@
+{
+  "description": "Bullet layout: single-name author (Bose) glued to a German venue.",
+  "strategy": "scholar_exact_title",
+  "params": {
+    "engine": "google_scholar",
+    "q": "\"Plancks Gesetz und Lichtquantenhypothese\"",
+    "hl": "en",
+    "num": "10"
+  },
+  "response": {
+    "search_metadata": {
+      "id": "6ac8a9ae8d50e62e0bbd5d44",
+      "status": "Success",
+      "created_at": "2026-10-09 08:45:34 UTC",
+      "processed_at": "2026-10-09 08:45:34 UTC",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=%22Plancks+Gesetz+und+Lichtquantenhypothese%22&hl=en&num=10",
+      "total_time_taken": 2.54
+    },
+    "search_parameters": {
+      "engine": "google_scholar",
+      "q": "\"Plancks Gesetz und Lichtquantenhypothese\"",
+      "hl": "en",
+      "num": "10"
+    },
+    "search_information": {
+      "organic_results_state": "Results for exact spelling",
+      "query_displayed": "\"Plancks Gesetz und Lichtquantenhypothese\""
+    },
+    "profiles": {
+      "link": "https://scholar.google.com/scholar?lookup=0&q=%22Plancks+Gesetz+und+Lichtquantenhypothese%22&hl=en&as_sdt=0,36",
+      "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=%22Plancks+Gesetz+und+Lichtquantenhypothese%22"
+    },
+    "organic_results": [
+      {
+        "position": 1,
+        "title": "Plancks gesetz und lichtquantenhypothese",
+        "result_id": "XpkXxaQJEHkJ",
+        "link": "https://link.springer.com/article/10.1007/BF01327326",
+        "snippet": "Der Phasenraum eines Lichtquants in bezug auf ein gegebenes Volumen wird in „Zellen“ von der Größe h3 aufgeteilt. Die Zahl der möglichen Verteilungen der Lichtquanten einer makroskopisch definierten Strahlung unter diese Zellen liefert die Entropie und damit alle thermodynamischen Eigenschaften der Strahlung.",
+        "publication_info": {
+          "summary": "BoseZeitschrift für Physik, 1924•Springer",
+          "authors": [
+            {
+              "name": "Bose"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "PDF",
+            "link": null
+          },
+          {
+            "title": "uni-muenchen.de",
+            "file_format": "PDF",
+            "link": "https://homepages.physik.uni-muenchen.de/~vondelft/Lehre/09qm/lec15-16-BoseEinsteinCondensation/Bose1924.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=XpkXxaQJEHkJ",
+          "cited_by": {
+            "total": 3177,
+            "link": "https://scholar.google.com/scholar?cites=8723483081502595422&as_sdt=5,36&sciodt=0,36&hl=en",
+            "cites_id": "8723483081502595422",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C36&cites=8723483081502595422&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:XpkXxaQJEHkJ:scholar.google.com/&scioq=%22Plancks+Gesetz+und+Lichtquantenhypothese%22&hl=en&as_sdt=0,36",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C36&engine=google_scholar&hl=en&num=10&q=related%3AXpkXxaQJEHkJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 6,
+            "link": "https://scholar.google.com/scholar?cluster=8723483081502595422&hl=en&as_sdt=0,36",
+            "cluster_id": "8723483081502595422",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C36&cluster=8723483081502595422&engine=google_scholar&hl=en"
+          }
+        }
+      }
+    ]
+  }
+}

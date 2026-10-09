@@ -268,3 +268,39 @@ def test_overlong_author_lists_stop_the_author_scan() -> None:
 def test_leading_list_marker_is_not_an_author(marker: str) -> None:
     fields = parse_fields(marker + 'A. Vaswani, N. Shazeer, "Attention is all you need," 2017.')
     assert [a.surname for a in fields.authors] == ["Vaswani", "Shazeer"]
+
+
+def test_comma_separated_style_ends_an_unquoted_title_at_the_comma() -> None:
+    fields = parse_fields(
+        "Rao, C.R. (1973), Linear statistical inference and its applications, Wiley.",
+        current_year=YEAR,
+    )
+    assert fields.title == "Linear statistical inference and its applications"
+    assert fields.venue == "Wiley"
+
+
+@pytest.mark.parametrize(
+    ("venue", "expected"),
+    [
+        ("Wiley", "book"),
+        ("John Wiley & Sons", "book"),
+        ("Routledge", "book"),
+        ("Harvard University", "book"),
+        ("S. Chand", "book"),
+        ("Wiley Interdisciplinary Reviews", None),
+        ("Springer Journal of Mathematics", None),
+        ("Nature", None),
+    ],
+)
+def test_publisher_only_venue_marks_a_book(venue: str, expected: str | None) -> None:
+    assert guess_entry_type("A reference without other hints", venue) == expected
+
+
+def test_ieee_book_style_with_comma_after_the_author() -> None:
+    fields = parse_fields(
+        "J. Bhagwati, India in transition: Freeing the economy. Oxford University Press, 1993.",
+        current_year=YEAR,
+    )
+    assert fields.title == "India in transition: Freeing the economy"
+    assert [a.surname for a in fields.authors] == ["Bhagwati"]
+    assert fields.entry_type == "book"

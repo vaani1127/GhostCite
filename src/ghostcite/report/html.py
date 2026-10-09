@@ -13,7 +13,13 @@ from urllib.parse import urlparse
 from jinja2 import Environment, PackageLoader, select_autoescape
 
 from ghostcite.models import FieldStatus, Report, Verdict
-from ghostcite.report.summary import SCORE_FORMULA, VERDICT_LABELS, cited_title, score_text
+from ghostcite.report.summary import (
+    MODE_LABELS,
+    SCORE_FORMULA,
+    VERDICT_LABELS,
+    cited_title,
+    score_text,
+)
 
 # Sort order for "most serious first": fabricated, then wrong metadata, then unchecked.
 _SEVERITY = {
@@ -58,6 +64,7 @@ def render_html(
         severity=_SEVERITY,
         report=report,
         labels=VERDICT_LABELS,
+        mode_label=MODE_LABELS[report.mode],
         verdicts=list(Verdict),
         score=score_text(report),
         formula=SCORE_FORMULA,

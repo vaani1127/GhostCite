@@ -16,7 +16,6 @@ from pydantic import SecretStr
 
 from ghostcite.config import WEB, SearchConfig, WebConfig
 from ghostcite.errors import SearchServiceError
-from ghostcite.search.backends import DEMO_BUNDLE_FORMAT
 from ghostcite.service import TransportFactory
 from ghostcite.settings import Settings
 from ghostcite.web.app import DemoFiles, create_app
@@ -25,8 +24,8 @@ from tests.helpers import (
     FABRICATED,
     RESNET,
     FixtureTransport,
+    demo_bundle_payload,
     numbered,
-    recorded_responses,
 )
 
 SAMPLE_BIB = (
@@ -47,7 +46,7 @@ def demo(tmp_path: Path) -> DemoFiles:
     sample = tmp_path / "sample.bib"
     sample.write_text(SAMPLE_BIB, encoding="utf-8")
     bundle = tmp_path / "bundle.json"
-    payload = {"format": DEMO_BUNDLE_FORMAT, "responses": recorded_responses()}
+    payload = demo_bundle_payload()
     bundle.write_text(json.dumps(payload), encoding="utf-8")
     return DemoFiles(sample=sample, bundle=bundle)
 
@@ -109,14 +108,19 @@ def test_index_with_key(client: TestClient) -> None:
     assert "No API key found" not in page.text
     assert 'value="live" checked' in page.text
     assert "Try the sample" in page.text
+    assert "LLM-written papers cite papers that do not exist." in page.text
+    assert page.text.count('class="step-n"') == 3
+    assert "Unavailable" not in page.text
 
 
 def test_index_without_key_offers_demo(tmp_path: Path, demo: DemoFiles) -> None:
     with _client(tmp_path, demo, key=False) as client:
         page = client.get("/").text
     assert "No API key found: demo mode only." in page
-    assert 'value="live" disabled' in page
+    assert 'value="live" disabled aria-describedby="live-hint"' in page
+    assert 'id="live-hint" class="hint">Unavailable: no <code>SERPAPI_API_KEY</code>' in page
     assert 'value="demo" checked' in page
+    assert 'id="sample" class="secondary" >' in page
 
 
 def test_index_without_key_or_demo(tmp_path: Path) -> None:
@@ -126,6 +130,9 @@ def test_index_without_key_or_demo(tmp_path: Path) -> None:
         status = client.get("/api/status").json()
     assert "The demo data is not installed either." in page
     assert 'id="submit" disabled' in page
+    for hint in ("sample-hint", "demo-hint", "submit-hint"):
+        assert f'aria-describedby="{hint}"' in page
+        assert f'id="{hint}" class="hint">Unavailable' in page
     assert status["demo_available"] is False
 
 

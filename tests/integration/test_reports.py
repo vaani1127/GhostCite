@@ -12,6 +12,7 @@ from ghostcite.pipeline import check_document
 from ghostcite.report import OutputFormat, render
 from ghostcite.report.html import safe_url
 from ghostcite.report.sarif import FINGERPRINT_KEY
+from ghostcite.report.summary import MODE_LABELS
 from ghostcite.search.budget import SearchBudget
 from ghostcite.search.cache import SqliteCache
 from ghostcite.search.client import SearchClient
@@ -86,7 +87,10 @@ def test_html_is_self_contained_and_escaped(tmp_path: Path) -> None:
 
 def test_html_contains_scores_filters_and_evidence(report: Report) -> None:
     html = render(report, OutputFormat.HTML)
-    assert "62.5 / 100" in html
+    assert 'class="score" aria-label="62.5 / 100">62.5<small> / 100</small>' in html
+    assert f"<dt>Run mode</dt><dd>{MODE_LABELS[report.mode]}</dd>" in html
+    assert f"<dt>SerpApi credits used</dt><dd>{report.summary.credits_used}</dd>" in html
+    assert 'class="badge UNPARSEABLE zero"' in html
     assert 'data-filter="NOT_FOUND"' in html
     assert 'rel="noopener noreferrer"' in html
     assert "Found only via Google web search" in html

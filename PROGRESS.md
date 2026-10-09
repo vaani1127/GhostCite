@@ -73,10 +73,21 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
 - [x] Gates green → STOP (586 tests, 99.35% coverage)
 
 ## Checkpoint 6 — evaluation
-- [ ] eval/dataset.jsonl plus validate_dataset.py (Crossref/arXiv)
-- [ ] eval/run.py; live eval in batches with credit logging
-- [ ] Cache-only tuning; record fixtures; demo bundle
-- [ ] Gates green → STOP
+- [x] Guard tests for harmless title differences (tests/unit/test_title_variants.py): dropped subtitle, "…" truncation,
+  hyphenation and spacing, British/American spelling, "2"/"two", LaTeX and curly quotes. All VERIFY; no threshold lowered.
+- [x] eval/dataset.jsonl: 67 rows (47 real incl. 19 Indian, 20 fabricated in 5 perturbation types). validate_dataset.py
+  checked all against Crossref/arXiv: 67 passed, 0 dropped.
+- [x] Family-level stratified split, seed 20261009: 28 tuning / 39 test. Four reference styles plus a BibTeX run.
+- [x] eval/run.py: replay (default, eval/responses.json), --cache, --live (preflight, --reserve 80), --record.
+- [x] Held-out first run preserved (eval/results_heldout_first_run.*): false alarms 6/28 (21.4%), detection 8/11 (72.7%).
+  Six of nine failures came from Scholar's new bullet summary layout; fixed with fixtures and tests. Post-fix rerun
+  (not held-out): 1/28 and 11/11. docs/EVALUATION.md lists every failure with its cause.
+- [x] samples/ (sample.bib, sample.txt) and demo bundle (15 trimmed, sanitized responses); wheel ships samples.
+- [x] Repo URL: vaani1127/GhostCite everywhere.
+- [x] Web UI polish: hero line, how-it-works strip, inline hints on disabled controls, one-click demo (Demo mode with
+  no input runs the sample), report summary card (score, verdict chips, mode, credits), shared 1080px width, theme
+  sync between pages. Checked at 1366x768 and 1920x1080 in both themes with headless Edge.
+- [x] Gates green → STOP
 
 ## Checkpoint 7 — docs and final verification
 - [ ] README, docs/*, LICENSE, CONTRIBUTING, CoC, SECURITY, CHANGELOG, templates
@@ -86,4 +97,4 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
 - [ ] STOP
 
 ## Credits used
-See `.dev/credits.log` (gitignored). Running total: 8 / 150 (account: 242 left). Keep >= 80 unused on the account after the eval.
+See `.dev/credits.log` (gitignored). Running total (logged runs): 92 / 150 (account: 155 left; an unexplained 3-search drop between 04:43 and 08:33 UTC is noted in the log). Keep >= 80 unused on the account after the eval.

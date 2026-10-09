@@ -1,0 +1,647 @@
+{
+  "cs-breiman-2001": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Random Forests",
+      "first_author": "Breiman",
+      "year": 2001,
+      "source": "crossref"
+    }
+  },
+  "cs-devlin-2019": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "first_author": "Devlin",
+      "year": 2019,
+      "source": "crossref"
+    }
+  },
+  "cs-goodfellow-2020": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Generative adversarial networks",
+      "first_author": "Goodfellow",
+      "year": 2020,
+      "source": "crossref"
+    }
+  },
+  "cs-he-2016": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Deep Residual Learning for Image Recognition",
+      "first_author": "He",
+      "year": 2016,
+      "source": "crossref"
+    }
+  },
+  "cs-hochreiter-1997": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Long Short-Term Memory",
+      "first_author": "Hochreiter",
+      "year": 1997,
+      "source": "crossref"
+    }
+  },
+  "cs-kingma-2014": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Adam: A Method for Stochastic Optimization",
+      "first_author": "Kingma",
+      "year": 2014,
+      "source": "arxiv"
+    }
+  },
+  "cs-krizhevsky-2017": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "ImageNet classification with deep convolutional neural networks",
+      "first_author": "Krizhevsky",
+      "year": 2017,
+      "source": "crossref"
+    }
+  },
+  "cs-lecun-2015": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Deep learning",
+      "first_author": "LeCun",
+      "year": 2015,
+      "source": "crossref"
+    }
+  },
+  "cs-ronneberger-2015": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+      "first_author": "Ronneberger",
+      "year": 2015,
+      "source": "crossref"
+    }
+  },
+  "cs-vaswani-2017": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Attention Is All You Need",
+      "first_author": "Vaswani",
+      "year": 2017,
+      "source": "arxiv"
+    }
+  },
+  "eco-akerlof-1970": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The Market for \"Lemons\": Quality Uncertainty and the Market Mechanism",
+      "first_author": "Akerlof",
+      "year": 1970,
+      "source": "crossref"
+    }
+  },
+  "eco-black-1973": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The Pricing of Options and Corporate Liabilities",
+      "first_author": "Black",
+      "year": 1973,
+      "source": "crossref"
+    }
+  },
+  "eco-davis-1989": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology",
+      "first_author": "Davis",
+      "year": 1989,
+      "source": "crossref"
+    }
+  },
+  "eco-fama-1993": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Common risk factors in the returns on stocks and bonds",
+      "first_author": "Fama",
+      "year": 1993,
+      "source": "crossref"
+    }
+  },
+  "eco-fornell-1981": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Evaluating Structural Equation Models with Unobservable Variables and Measurement Error",
+      "first_author": "Fornell",
+      "year": 1981,
+      "source": "crossref"
+    }
+  },
+  "eco-jensen-1976": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Theory of the firm: Managerial behavior, agency costs and ownership structure",
+      "first_author": "Jensen",
+      "year": 1976,
+      "source": "crossref"
+    }
+  },
+  "eco-kahneman-1979": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Prospect Theory: An Analysis of Decision under Risk",
+      "first_author": "Kahneman",
+      "year": 1979,
+      "source": "crossref"
+    }
+  },
+  "eco-markowitz-1952": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "PORTFOLIO SELECTION*",
+      "first_author": "Markowitz",
+      "year": 1952,
+      "source": "crossref"
+    }
+  },
+  "eco-solow-1956": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "A Contribution to the Theory of Economic Growth",
+      "first_author": "Solow",
+      "year": 1956,
+      "source": "crossref"
+    }
+  },
+  "fab-authors-devlin": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-authors-kumar": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-authors-livak": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-authors-markowitz": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-invented-credit": {
+    "ok": true,
+    "problems": [],
+    "notes": [
+      "closest Crossref title similarity 0.63"
+    ],
+    "record": null
+  },
+  "fab-invented-graphs": {
+    "ok": true,
+    "problems": [],
+    "notes": [
+      "closest Crossref title similarity 0.49"
+    ],
+    "record": null
+  },
+  "fab-invented-photonic": {
+    "ok": true,
+    "problems": [],
+    "notes": [
+      "closest Crossref title similarity 0.63"
+    ],
+    "record": null
+  },
+  "fab-invented-sepsis": {
+    "ok": true,
+    "problems": [],
+    "notes": [
+      "closest Crossref title similarity 0.57"
+    ],
+    "record": null
+  },
+  "fab-reword-breiman": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-reword-he": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-reword-jain": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-reword-moher": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-venue-arun": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-venue-bradford": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-venue-fama": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-venue-hochreiter": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-year-deb": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-year-huang": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-year-kahneman": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-year-lecun": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "in-arun-2015": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Financial inclusion: Policies and practices",
+      "first_author": "Arun",
+      "year": 2015,
+      "source": "crossref"
+    }
+  },
+  "in-bhagwati-1993": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "India in Transition",
+      "first_author": "Bhagwati",
+      "year": 1993,
+      "source": "crossref"
+    }
+  },
+  "in-bose-1924": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Plancks Gesetz und Lichtquantenhypothese",
+      "first_author": "Bose",
+      "year": 1924,
+      "source": "crossref"
+    }
+  },
+  "in-chadda-2013": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Indian family systems, collectivistic society and psychotherapy",
+      "first_author": "Chadda",
+      "year": 2013,
+      "source": "crossref"
+    }
+  },
+  "in-chandrasekhar-1931": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The Maximum Mass of Ideal White Dwarfs",
+      "first_author": "Chandrasekhar",
+      "year": 1931,
+      "source": "crossref"
+    }
+  },
+  "in-chandrasekhar-1977": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Liquid crystals of disc-like molecules",
+      "first_author": "Chandrasekhar",
+      "year": 1977,
+      "source": "crossref"
+    }
+  },
+  "in-chockalingam-2013": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Large MIMO Systems",
+      "first_author": "Chockalingam",
+      "year": 2013,
+      "source": "crossref"
+    }
+  },
+  "in-deb-1999": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "An introduction to genetic algorithms",
+      "first_author": "Deb",
+      "year": 1999,
+      "source": "crossref"
+    }
+  },
+  "in-gupta-2011": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Sustainable supply chain management: Review and research opportunities",
+      "first_author": "Gupta",
+      "year": 2011,
+      "source": "crossref"
+    }
+  },
+  "in-gupta-2017": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The Upgraded GMRT:Opening New Windows on the Radio Universe",
+      "first_author": "Gupta",
+      "year": 2017,
+      "source": "crossref"
+    }
+  },
+  "in-jain-2004": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Measuring Service Quality: Servqual vs. Servperf Scales",
+      "first_author": "Jain",
+      "year": 2004,
+      "source": "crossref"
+    }
+  },
+  "in-kumar-2011": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Receiver operating characteristic (ROC) curve for medical researchers",
+      "first_author": "Kumar",
+      "year": 2011,
+      "source": "crossref"
+    }
+  },
+  "in-murthy-2017": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "National mental health survey of India 2015–2016",
+      "first_author": "Murthy",
+      "year": 2017,
+      "source": "crossref"
+    }
+  },
+  "in-padhy-2011": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Drug repositioning: Re-investigating existing drugs for new therapeutic indications",
+      "first_author": "Padhy",
+      "year": 2011,
+      "source": "crossref"
+    }
+  },
+  "in-raman-1928": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "A New Type of Secondary Radiation",
+      "first_author": "RAMAN",
+      "year": 1928,
+      "source": "crossref"
+    }
+  },
+  "in-rao-1973": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Linear Statistical Inference and its Applications",
+      "first_author": "Rao",
+      "year": 1973,
+      "source": "crossref"
+    }
+  },
+  "in-sen-1970": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The Impossibility of a Paretian Liberal",
+      "first_author": "Sen",
+      "year": 1970,
+      "source": "crossref"
+    }
+  },
+  "in-sen-2009": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The Idea of Justice",
+      "first_author": "SEN",
+      "year": 2009,
+      "source": "crossref"
+    }
+  },
+  "in-surappa-2003": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Aluminium matrix composites: Challenges and opportunities",
+      "first_author": "Surappa",
+      "year": 2003,
+      "source": "crossref"
+    }
+  },
+  "med-bradford-1976": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "A rapid and sensitive method for the quantitation of microgram quantities of protein utilizing the principle of protein-dye binding",
+      "first_author": "Bradford",
+      "year": 1976,
+      "source": "crossref"
+    }
+  },
+  "med-dersimonian-1986": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Meta-analysis in clinical trials",
+      "first_author": "DerSimonian",
+      "year": 1986,
+      "source": "crossref"
+    }
+  },
+  "med-higgins-2002": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Quantifying heterogeneity in a meta‐analysis",
+      "first_author": "Higgins",
+      "year": 2002,
+      "source": "crossref"
+    }
+  },
+  "med-huang-2020": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+      "first_author": "Huang",
+      "year": 2020,
+      "source": "crossref"
+    }
+  },
+  "med-livak-2001": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Analysis of Relative Gene Expression Data Using Real-Time Quantitative PCR and the 2−ΔΔCT Method",
+      "first_author": "Livak",
+      "year": 2001,
+      "source": "crossref"
+    }
+  },
+  "med-lowry-1951": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "PROTEIN MEASUREMENT WITH THE FOLIN PHENOL REAGENT",
+      "first_author": "Lowry",
+      "year": 1951,
+      "source": "crossref"
+    }
+  },
+  "med-moher-2009": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Preferred Reporting Items for Systematic Reviews and Meta-Analyses: The PRISMA Statement",
+      "first_author": "Moher",
+      "year": 2009,
+      "source": "crossref"
+    }
+  },
+  "med-polack-2020": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Safety and Efficacy of the BNT162b2 mRNA Covid-19 Vaccine",
+      "first_author": "Polack",
+      "year": 2020,
+      "source": "crossref"
+    }
+  },
+  "med-zhu-2020": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "A Novel Coronavirus from Patients with Pneumonia in China, 2019",
+      "first_author": "Zhu",
+      "year": 2020,
+      "source": "crossref"
+    }
+  }
+}

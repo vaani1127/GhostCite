@@ -102,13 +102,17 @@
       event.preventDefault();
       var hasFile = fileInput.files.length > 0;
       var hasText = textInput.value.trim().length > 0;
+      var mode = form.querySelector("input[name=mode]:checked");
+      if (!hasFile && !hasText && mode && mode.value === "demo") {
+        sample.click();
+        return;
+      }
       if (hasFile === hasText) {
         showError(hasFile ? "Choose either a file or pasted text, not both." : "Upload a file or paste some references first.");
         return;
       }
       var body = new FormData();
       if (hasFile) { body.append("file", fileInput.files[0]); } else { body.append("text", textInput.value); }
-      var mode = form.querySelector("input[name=mode]:checked");
       body.append("mode", mode ? mode.value : "live");
       send(body);
     });

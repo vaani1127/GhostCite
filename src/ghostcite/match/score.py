@@ -14,11 +14,12 @@ Every field comparison yields a :class:`FieldMatch` with a status:
 from __future__ import annotations
 
 from collections.abc import Sequence
+from dataclasses import dataclass
 
 from rapidfuzz import fuzz
 
 from ghostcite.config import MATCH, MatchConfig
-from ghostcite.match.normalize import fold, main_title, surname_key, tokens
+from ghostcite.match.normalize import STOPWORDS, canonical_words, main_title, surname_key, tokens
 from ghostcite.models import (
     Author,
     Candidate,
@@ -31,6 +32,9 @@ from ghostcite.models import (
 )
 
 _MIN_SUBTITLE_MAIN_WORDS = 2
+_MIN_SINGLE_WORD_MAIN_TITLE = 4
+"""A one-word short title ("BERT", "Adam") counts only with at least this many letters."""
+_ELLIPSES = ("\u2026", "...")
 _MIN_JOINED_PART_CHARS = 3
 _MIN_ABBREVIATION_CHARS = 3
 # Words that say what kind of venue it is, not which one.
@@ -44,58 +48,123 @@ _GENERIC_VENUE_WORDS = frozenset(
 _MIN_VENUE_TOKENS = 2
 
 
-def _dropped_subtitle(cited: str, found: str) -> bool:
-    """One title is exactly the other's main title ("Wings of Fire" / "...: An Autobiography")."""
-    a, b = fold(cited), fold(found)
-    main_a, main_b = fold(main_title(cited)), fold(main_title(found))
-    dropped = (main_a == b and main_a != a) or (main_b == a and main_b != b)
-    return dropped and len(min(main_a, main_b, key=len).split()) >= _MIN_SUBTITLE_MAIN_WORDS
+@dataclass(frozen=True, slots=True)
+class _TitleForm:
+    """A title reduced to canonical words, remembering whether it was cut short."""
+
+    words: tuple[str, ...]
+    main: tuple[str, ...]
+    """Canonical words of the main title (before any subtitle)."""
+    truncated: bool
+
+
+def _title_form(title: str) -> _TitleForm:
+    text = title.strip()
+    truncated = False
+    for mark in _ELLIPSES:
+        if text.endswith(mark):
+            text, truncated = text[: -len(mark)].rstrip(" ,;:-"), True
+            break
+    return _TitleForm(
+        tuple(canonical_words(text)), tuple(canonical_words(main_title(text))), truncated
+    )
+
+
+def _aligned(cited: _TitleForm, found: _TitleForm) -> tuple[list[str], list[str]]:
+    """Word lists to compare; a truncated title is compared with the other's prefix."""
+    a, b = list(cited.words), list(found.words)
+    if found.truncated and len(b) < len(a):
+        a = _cut_like(a, b)
+    if cited.truncated and len(a) < len(b):
+        b = _cut_like(b, a)
+    return a, b
+
+
+def _cut_like(full: list[str], truncated: list[str]) -> list[str]:
+    """``full`` cut to the length of ``truncated``, whose last word may be cut mid-word."""
+    prefix = full[: len(truncated)]
+    if (
+        truncated
+        and prefix
+        and prefix[-1] != truncated[-1]
+        and prefix[-1].startswith(truncated[-1])
+    ):
+        prefix[-1] = truncated[-1]  # "quantitative" seen as "quanti..."
+    return prefix
+
+
+def _dropped_subtitle(cited: _TitleForm, found: _TitleForm) -> bool:
+    """One title is exactly the other's main title ("BERT" / "BERT: Pre-training ...")."""
+    short = cited if cited.main == found.words else found if found.main == cited.words else None
+    if short is None or short.main == short.words or cited.words == found.words:
+        return False
+    main = short.main
+    return len(main) >= _MIN_SUBTITLE_MAIN_WORDS or (
+        len(main) == 1 and len(main[0]) >= _MIN_SINGLE_WORD_MAIN_TITLE
+    )
+
+
+def _similarity(a: Sequence[str], b: Sequence[str]) -> float:
+    left, right = " ".join(a), " ".join(b)
+    if not left or not right:
+        return 0.0
+    return max(fuzz.ratio(left, right), fuzz.token_sort_ratio(left, right)) / 100
 
 
 def title_similarity(cited: str, found: str, cfg: MatchConfig = MATCH) -> float:
-    """Character-level similarity of two titles in [0, 1], robust to case, punctuation and order.
+    """Character-level similarity of two titles in [0, 1], on canonical words.
 
-    A dropped subtitle raises the score to ``cfg.subtitle_match_score``.
+    Case, punctuation, word order, hyphenation, number words, British spelling and
+    LaTeX remnants do not count as differences. A title truncated with an ellipsis is
+    compared with the same length of the other title. A dropped subtitle raises the
+    score to ``cfg.subtitle_match_score``.
     """
-    a, b = fold(cited), fold(found)
-    if not a or not b:
-        return 0.0
-    score = max(fuzz.ratio(a, b), fuzz.token_sort_ratio(a, b)) / 100
-    if _dropped_subtitle(cited, found):
+    a_form, b_form = _title_form(cited), _title_form(found)
+    score = _similarity(*_aligned(a_form, b_form))
+    if score and _dropped_subtitle(a_form, b_form):
         score = max(score, cfg.subtitle_match_score)
     return round(score, 4)
+
+
+def _same_word(word: str, other: str, cfg: MatchConfig) -> bool:
+    """Equal, or a close spelling. Words with digits must be equal: "2stream" is not "3stream"."""
+    if word == other:
+        return True
+    if any(ch.isdigit() for ch in word + other):
+        return False
+    return fuzz.ratio(word, other) / 100 >= cfg.title_word_match
 
 
 def _covered(words: Sequence[str], others: Sequence[str], cfg: MatchConfig) -> bool:
     """Every word has a counterpart: equal, a close spelling, or part of a joined word."""
     joined = "".join(others)
     for word in words:
-        if any(
-            word == other or fuzz.ratio(word, other) / 100 >= cfg.title_word_match
-            for other in others
-        ):
+        if any(_same_word(word, other, cfg) for other in others):
             continue
         if len(word) >= _MIN_JOINED_PART_CHARS and word in joined:
-            continue  # "pre training" against "pretraining"
+            continue  # "pre training" against "pretraining", or a word cut by truncation
         return False
     return True
 
 
 def same_words(cited: str, found: str, cfg: MatchConfig = MATCH) -> bool:
-    """True when both titles use the same significant words, allowing typos.
+    """True when both titles use the same significant words, allowing typos and variants.
 
     Character similarity alone cannot tell a typo ("recognitoin") from a swapped word
     ("Attention is all *we* need"). A reworded title is a classic hallucination
     signature, so a title only matches when no significant word is replaced, added
-    or missing.
+    or missing. Words are compared in canonical form (see
+    :func:`ghostcite.match.normalize.canonical_words`), so legitimate variants pass.
     """
-    a, b = tokens(cited, drop_stopwords=True), tokens(found, drop_stopwords=True)
+    a, b = _aligned(_title_form(cited), _title_form(found))
+    a = [w for w in a if w not in STOPWORDS]
+    b = [w for w in b if w not in STOPWORDS]
     return bool(a) and bool(b) and _covered(a, b, cfg) and _covered(b, a, cfg)
 
 
 def is_title_match(cited: str, found: str, cfg: MatchConfig = MATCH) -> bool:
-    """The same title: very similar characters and the same words, or a dropped subtitle."""
-    if _dropped_subtitle(cited, found):
+    """The same title: very similar and with the same words, or a dropped subtitle."""
+    if _dropped_subtitle(_title_form(cited), _title_form(found)):
         return True
     return title_similarity(cited, found, cfg) >= cfg.title_match and same_words(cited, found, cfg)
 
@@ -109,13 +178,13 @@ def title_overlap(cited: str, found: str, cfg: MatchConfig = MATCH) -> float:
     band. Short titles (fewer than ``cfg.overlap_min_words`` words) use full similarity
     only, because a two-word title appears inside many unrelated titles.
     """
-    a, b = fold(cited), fold(found)
+    a, b = _aligned(_title_form(cited), _title_form(found))
     if not a or not b:
         return 0.0
     similarity = title_similarity(cited, found, cfg)
-    if min(len(a.split()), len(b.split())) < cfg.overlap_min_words:
+    if min(len(a), len(b)) < cfg.overlap_min_words:
         return similarity
-    return round(max(similarity, fuzz.partial_ratio(a, b) / 100), 4)
+    return round(max(similarity, fuzz.partial_ratio(" ".join(a), " ".join(b)) / 100), 4)
 
 
 def _same_surname(a: str, b: str, cfg: MatchConfig) -> bool:
@@ -157,8 +226,18 @@ def compare_authors(
     )
 
 
-def compare_year(cited: int | None, found: int | None, cfg: MatchConfig = MATCH) -> FieldMatch:
-    """Equal years match; a difference within ``year_tolerance`` is a partial match."""
+def compare_year(
+    cited: int | None,
+    found: int | None,
+    cfg: MatchConfig = MATCH,
+    *,
+    editions: bool = False,
+) -> FieldMatch:
+    """Equal years match; a difference within ``year_tolerance`` is a partial match.
+
+    With ``editions`` (book citations) any difference is partial: books are reprinted
+    and re-issued, and Scholar often lists a later edition of the cited one.
+    """
     if cited is None or found is None:
         return FieldMatch(
             field=FieldName.YEAR,
@@ -169,7 +248,7 @@ def compare_year(cited: int | None, found: int | None, cfg: MatchConfig = MATCH)
     delta = abs(cited - found)
     if delta == 0:
         status, score = FieldStatus.MATCH, 1.0
-    elif delta <= cfg.year_tolerance:
+    elif delta <= cfg.year_tolerance or editions:
         status, score = FieldStatus.PARTIAL, cfg.partial_year_score
     else:
         status, score = FieldStatus.MISMATCH, 0.0
@@ -186,20 +265,25 @@ def _abbreviation_overlap(short: list[str], long: list[str]) -> float:
     """Share of ``short`` tokens that match ``long`` tokens in order.
 
     Abbreviations count as matches: "adv neural inf process syst" against
-    "advances in neural information processing systems" scores 1.0.
+    "advances in neural information processing systems" scores 1.0. Both must start
+    with the same word, so "finance" is not an abbreviation of "handbook finance".
     """
+    if not short or not long or not _same_abbreviated(short[0], long[0]):
+        return 0.0
     position = matched = 0
     for token in short:
         for index in range(position, len(long)):
-            word = long[index]
-            if token == word or (
-                len(token) >= _MIN_ABBREVIATION_CHARS
-                and (word.startswith(token) or token.startswith(word))
-            ):
+            if _same_abbreviated(token, long[index]):
                 matched += 1
                 position = index + 1
                 break
     return matched / len(short) if short else 0.0
+
+
+def _same_abbreviated(token: str, word: str) -> bool:
+    return token == word or (
+        len(token) >= _MIN_ABBREVIATION_CHARS and (word.startswith(token) or token.startswith(word))
+    )
 
 
 def venue_similarity(cited: str, found: str) -> float:
@@ -208,12 +292,24 @@ def venue_similarity(cited: str, found: str) -> float:
     if not a or not b:
         return 0.0
     short, long = (a, b) if len(a) <= len(b) else (b, a)
-    fuzzy = fuzz.token_set_ratio(" ".join(a), " ".join(b)) / 100
+    # token_sort, not token_set: a set ratio scores any subset as identical, which
+    # would equate "Handbook of finance" with "The Journal of Finance".
+    fuzzy = fuzz.token_sort_ratio(" ".join(a), " ".join(b)) / 100
     return round(max(fuzzy, _abbreviation_overlap(short, long)), 4)
 
 
-def compare_venue(cited: str | None, found: str | None, cfg: MatchConfig = MATCH) -> FieldMatch:
-    """Venue agreement. Acronyms and one-word venues are only judged when they are equal."""
+def compare_venue(
+    cited: str | None,
+    found: str | None,
+    cfg: MatchConfig = MATCH,
+    *,
+    publisher: bool = False,
+) -> FieldMatch:
+    """Venue agreement. Acronyms and one-word venues are only judged when they are equal.
+
+    With ``publisher`` (book citations) the cited venue is a publisher, which Scholar
+    rarely shows, so a difference is never treated as a mismatch.
+    """
     if not cited or not found:
         return FieldMatch(
             field=FieldName.VENUE, status=FieldStatus.UNKNOWN, cited=cited, found=found
@@ -222,7 +318,7 @@ def compare_venue(cited: str | None, found: str | None, cfg: MatchConfig = MATCH
     judgeable = min(len(_venue_tokens(cited)), len(_venue_tokens(found))) >= _MIN_VENUE_TOKENS
     if score >= cfg.venue_match:
         status = FieldStatus.MATCH
-    elif judgeable:
+    elif judgeable and not publisher:
         status = FieldStatus.MISMATCH
     else:
         status = FieldStatus.UNKNOWN  # "NeurIPS" vs "Advances in neural ...": cannot judge
@@ -282,6 +378,7 @@ def match_candidate(
     reworded or embellished version of it), and ``MISMATCH`` otherwise.
     """
     cited_title = fields.title or ""
+    book = fields.entry_type in cfg.edition_entry_types
     title = title_similarity(cited_title, candidate.title, cfg)
     if is_title_match(cited_title, candidate.title, cfg):
         title_status = FieldStatus.MATCH
@@ -298,8 +395,8 @@ def match_candidate(
             found=candidate.title,
         ),
         compare_authors(fields.authors, candidate.authors, candidate.authors_truncated, cfg),
-        compare_year(fields.year, candidate.year, cfg),
-        compare_venue(fields.venue, candidate.venue, cfg),
+        compare_year(fields.year, candidate.year, cfg, editions=book),
+        compare_venue(fields.venue, candidate.venue, cfg, publisher=book),
         compare_doi(fields.doi, candidate),
     )
     return MatchResult(

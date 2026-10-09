@@ -197,3 +197,47 @@ def test_knowledge_graph_with_single_author_key_and_date() -> None:
     }
     [graph] = parse_google(response, "q", current_year=2026)
     assert (graph.authors, graph.year, graph.link) == (("Premchand",), 1936, None)
+
+
+BULLET = "\u2022"
+BULLET_CASES = {
+    "glued_without_names": (
+        f"MK SurappaSadhana, 2003{BULLET}Springer",
+        [],
+        _summary(("MK Surappa",), "Sadhana", 2003, "Springer"),
+    ),
+    "year_glued_to_author": (
+        f"J Bhagwati1993{BULLET}academic.oup.com",
+        ["J Bhagwati"],
+        _summary(("J Bhagwati",), None, 1993, "academic.oup.com"),
+    ),
+    "structured_names_win_over_camel_case": (
+        f"Y LeCun, Y BengioNature, 2015{BULLET}nature.com",
+        ["Y LeCun", "Y Bengio"],
+        _summary(("Y LeCun", "Y Bengio"), "Nature", 2015, "nature.com"),
+    ),
+    "ellipses_on_both_sides": (
+        f"A Vaswani, N Shazeer{ELLIPSIS}Advances in neural {ELLIPSIS}, 2017{BULLET}neurips.cc",
+        [],
+        _summary(
+            ("A Vaswani", "N Shazeer"),
+            "Advances in neural",
+            2017,
+            "neurips.cc",
+            authors_cut=True,
+            venue_cut=True,
+        ),
+    ),
+    "no_junction": (
+        f"lowercase only text{BULLET}example.org",
+        [],
+        _summary(("lowercase only text",), None, None, "example.org"),
+    ),
+}
+
+
+@pytest.mark.parametrize(
+    ("summary", "names", "expected"), BULLET_CASES.values(), ids=BULLET_CASES.keys()
+)
+def test_bullet_layout_summaries(summary: str, names: list[str], expected: Summary) -> None:
+    assert parse_summary(summary, names) == expected

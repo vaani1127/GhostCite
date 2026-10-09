@@ -12,7 +12,6 @@ from typer.testing import CliRunner
 
 from ghostcite import cli, service
 from ghostcite.errors import SearchServiceError
-from ghostcite.search.backends import DEMO_BUNDLE_FORMAT
 from ghostcite.settings import API_KEY_ENV
 from tests.helpers import (
     ATTENTION,
@@ -20,8 +19,8 @@ from tests.helpers import (
     FABRICATED,
     WRONG_YEAR,
     FixtureTransport,
+    demo_bundle_payload,
     numbered,
-    recorded_responses,
 )
 
 runner = CliRunner()
@@ -163,9 +162,7 @@ def test_demo_without_a_file_uses_the_bundled_sample(
         encoding="utf-8",
     )
     bundle = tmp_path / "bundle.json"
-    bundle.write_text(
-        json.dumps({"format": DEMO_BUNDLE_FORMAT, "responses": recorded_responses()}), "utf-8"
-    )
+    bundle.write_text(json.dumps(demo_bundle_payload()), "utf-8")
     monkeypatch.setattr(cli, "sample_path", lambda name: sample)
     monkeypatch.setattr(service, "sample_path", lambda name: bundle)
     result = runner.invoke(cli.app, ["check", "--demo", "-f", "json", "-q"])
@@ -217,7 +214,7 @@ def test_cache_commands(transport: FixtureTransport, refs: Path) -> None:
     assert aborted.exit_code == 1
     cleared = runner.invoke(cli.app, ["cache", "clear", "--yes"])
     assert cleared.exit_code == 0
-    assert "Removed 6 cached responses." in cleared.output
+    assert "Removed 7 cached responses." in cleared.output
 
 
 def test_verbose_flag_is_accepted(transport: FixtureTransport, refs: Path) -> None:

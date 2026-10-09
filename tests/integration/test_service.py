@@ -10,7 +10,6 @@ from ghostcite.config import SearchConfig
 from ghostcite.document import load_text
 from ghostcite.errors import InputError, InsufficientCreditsError
 from ghostcite.models import RunMode, Verdict
-from ghostcite.search.backends import DEMO_BUNDLE_FORMAT
 from ghostcite.search.budget import SearchBudget
 from ghostcite.search.cache import SqliteCache
 from ghostcite.service import (
@@ -26,8 +25,8 @@ from tests.helpers import (
     FABRICATED,
     RESNET,
     FixtureTransport,
+    demo_bundle_payload,
     numbered,
-    recorded_responses,
 )
 
 
@@ -119,9 +118,7 @@ def test_offline_mode_never_needs_a_key(tmp_path: Path) -> None:
 
 def test_demo_mode_reads_the_bundle(tmp_path: Path) -> None:
     bundle = tmp_path / "bundle.json"
-    bundle.write_text(
-        json.dumps({"format": DEMO_BUNDLE_FORMAT, "responses": recorded_responses()}), "utf-8"
-    )
+    bundle.write_text(json.dumps(demo_bundle_payload()), "utf-8")
     no_key = Settings(api_key=None, cache_dir=tmp_path / "cache")
     report = run_check(
         load_text(numbered(ATTENTION)), no_key, RunOptions(mode=RunMode.DEMO, demo_bundle=bundle)

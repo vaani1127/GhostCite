@@ -20,7 +20,13 @@ from ghostcite.config import MATCH, SEARCH, MatchConfig
 from ghostcite.document import Document
 from ghostcite.errors import BudgetExhaustedError
 from ghostcite.match.normalize import fold, surname_key
-from ghostcite.match.score import best_match, match_candidate, title_status, versions_of
+from ghostcite.match.score import (
+    agreement,
+    best_match,
+    match_candidate,
+    title_status,
+    versions_of,
+)
 from ghostcite.models import (
     Candidate,
     Engine,
@@ -61,12 +67,17 @@ ProgressCallback = Callable[[Progress], None]
 
 
 def dedupe_key(reference: Reference) -> str:
-    """References with the same key are the same citation and are searched once."""
+    """References with the same key are the same citation, checked once.
+
+    Every parsed field takes part. Two citations of one paper that differ in any field
+    (venue, a co-author, year) are different citations, and each gets its own verdict.
+    """
     fields = reference.fields
     if not fields.title:
         return "raw:" + fold(reference.raw)
-    first = surname_key(fields.authors[0].surname) if fields.authors else ""
-    return f"{fold(fields.title)}|{first}|{fields.year or ''}"
+    authors = ",".join(surname_key(a.surname) for a in fields.authors)
+    parts = (fold(fields.title), authors, str(fields.year or ""), fold(fields.venue or ""))
+    return "|".join((*parts, fields.doi or "", fields.entry_type or ""))
 
 
 def _candidates(query: PlannedQuery, body: dict[str, object]) -> list[Candidate]:
@@ -75,8 +86,14 @@ def _candidates(query: PlannedQuery, body: dict[str, object]) -> list[Candidate]
     return parse_scholar(body, query.text)
 
 
-def _title_matched(best: MatchResult | None) -> bool:
-    return best is not None and title_status(best) is FieldStatus.MATCH
+def _confident(best: MatchResult | None) -> bool:
+    """A title match on which no field disagrees: no further search can improve on it.
+
+    A title match that disagrees on a field is not final. Scholar often lists a work
+    several times (preprint, journal, reprint), and the next strategy can surface the
+    version the citation means, which avoids a false alarm.
+    """
+    return best is not None and title_status(best) is FieldStatus.MATCH and agreement(best)[0] == 0
 
 
 class ReferenceChecker:
@@ -115,7 +132,7 @@ class ReferenceChecker:
                 match_candidate(fields, c, self._cfg) for c in _candidates(query, response.body)
             )
             best = best_match(matches, fields, self._cfg)
-            if _title_matched(best):
+            if _confident(best):
                 complete = True  # identity established; earlier misses no longer matter
                 break
 

@@ -1,0 +1,2714 @@
+{
+ "format": 1,
+ "generated": "2026-10-09",
+ "entries": [
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"Adaptive Ayurvedic biomarker panels for early sepsis triage in rural Rajasthan\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9a80bbc38504c61cede",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:28 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"Adaptive Ayurvedic biomarker panels for early sepsis triage in rural Rajasthan\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [],
+    "error": "Google hasn't returned any results for this query."
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"An introduction to genetic algorithms\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9ac19c5f61683292f1e",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:32 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"An introduction to genetic algorithms\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "An introduction to genetic algorithms",
+      "result_id": "alKEq27lhbsJ",
+      "link": "https://link.springer.com/article/10.1007/bf02823145",
+      "snippet": "Genetic algorithms (GAs) are search and optimization tools, which work differently compared to classical search and optimization methods. Because of their broad applicability, ease of …",
+      "publication_info": {
+       "summary": "K Deb - Sadhana, 1999 - Springer",
+       "authors": [
+        {
+         "name": "K Deb"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 620
+       },
+       "versions": {
+        "total": 10
+       }
+      }
+     },
+     {
+      "position": 2,
+      "title": "An introduction to genetic algorithms",
+      "result_id": "6hD-RSYDmj4J",
+      "link": "https://www.whitman.edu/documents/Academics/Mathematics/2014/carrjk.pdf",
+      "snippet": "Genetic algorithms are a type of optimization algorithm, meaning they are used to find the maximum or minimum of a function. In this paper we introduce, illustrate, and discuss genetic …",
+      "publication_info": {
+       "summary": "J Carr - Senior Project, 2014 - whitman.edu",
+       "authors": [
+        {
+         "name": "J Carr"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 318
+       },
+       "versions": {
+        "total": 4
+       }
+      }
+     },
+     {
+      "position": 3,
+      "title": "An introduction to genetic algorithms",
+      "result_id": "1VLbMlD5ATQJ",
+      "link": "https://direct.mit.edu/books/monograph/4675/",
+      "snippet": "This book introduces the rapidly growing field of genetic algorithms (GAs). Its purpose is to describe in depth some of the most interesting work in this field rather than to attempt a …",
+      "publication_info": {
+       "summary": "M Mitchell - 1996 - direct.mit.edu",
+       "authors": [
+        {
+         "name": "M Mitchell"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 21260
+       },
+       "versions": {
+        "total": 38
+       }
+      }
+     },
+     {
+      "position": 4,
+      "title": "Genetic algorithms",
+      "result_id": "G6OqC-p4eD0J",
+      "link": "https://link.springer.com/chapter/10.1007/978-1-4614-6940-7_4",
+      "snippet": "Genetic algorithms (GAs) are search methods based on principles of natural selection and genetics (Fraser 1957; Bremermann 1958; Holland 1975). We start with a brief introduction of …",
+      "publication_info": {
+       "summary": "K Sastry, DE Goldberg, G Kendall - Search methodologies: Introductory …, 2013 - Springer",
+       "authors": [
+        {
+         "name": "K Sastry"
+        },
+        {
+         "name": "DE Goldberg"
+        },
+        {
+         "name": "G Kendall"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 884
+       },
+       "versions": {
+        "total": 21
+       }
+      }
+     },
+     {
+      "position": 5,
+      "title": "An introduction to genetic algorithms",
+      "result_id": "RQDaiC1iFVEJ",
+      "link": "https://www.researchgate.net/profile/Scott-Thede/publication/228609251_An_introduction_to_genetic_algorithms/links/00b7d52cdb71f1e8bf000000/An-introduction-to-genetic-algorithms.pdf",
+      "snippet": "A genetic algorithm is one of a class of algorithms that searches a solution space for the optimal solution to a problem. This search is done in a fashion that mimics the operation of …",
+      "publication_info": {
+       "summary": "SM Thede - Journal of Computing Sciences in Colleges, 2004 - researchgate.net",
+       "authors": [
+        {
+         "name": "SM Thede"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 180
+       },
+       "versions": {
+        "total": 4
+       }
+      }
+     },
+     {
+      "position": 6,
+      "title": "An introduction to genetic algorithms for scientists and engineers",
+      "result_id": "1pBzdL0B1ggJ",
+      "link": "https://books.google.com/books?hl=en&lr=&id=IKtIDQAAQBAJ&oi=fnd&pg=PR3&dq=%22An+introduction+to+genetic+algorithms%22&ots=A4K_HPc66x&sig=GEPEH9ex5eXn8j4arWoE22OA53k",
+      "snippet": "This invaluable book has been designed to be useful to most practising scientists and engineers, whatever their field and however rusty their mathematics and programming might be. …",
+      "publication_info": {
+       "summary": "DA Coley - 1999 - books.google.com",
+       "authors": [
+        {
+         "name": "DA Coley"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 1802
+       },
+       "versions": {
+        "total": 8
+       }
+      }
+     },
+     {
+      "position": 7,
+      "title": "Genetic algorithms",
+      "result_id": "4LeFQVjyPm8J",
+      "link": "https://link.springer.com/chapter/10.1007/978-1-4419-1665-5_5",
+      "snippet": "Genetic algorithms (GAs) have become popular as a means of solving hard combinatorial optimization problems. The first part of this chapter briefly traces their history, explains the …",
+      "publication_info": {
+       "summary": "CR Reeves - Handbook of metaheuristics, 2010 - Springer",
+       "authors": [
+        {
+         "name": "CR Reeves"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 914
+       },
+       "versions": {
+        "total": 22
+       }
+      }
+     },
+     {
+      "position": 8,
+      "title": "An introduction to genetic algorithms for numerical optimization",
+      "result_id": "QsxdBrA7JewJ",
+      "link": "https://www.researchgate.net/profile/Paul-Charbonneau-2/publication/228608597_An_Introduction_to_Genetic_Algorithms_for_Numerical_Optimization/links/00b7d52e850cf73f10000000/An-Introduction-to-Genetic-Algorithms-for-Numerical-Optimization.pdf",
+      "snippet": "This paper is an introduction to genetic algorithm-based numerical optimization. Section 1 establishes the distinction between local and global optimization and the meaning of …",
+      "publication_info": {
+       "summary": "P Charbonneau - NCAR Technical Note, 2002 - researchgate.net",
+       "authors": [
+        {
+         "name": "P Charbonneau"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 181
+       },
+       "versions": {
+        "total": 2
+       }
+      }
+     },
+     {
+      "position": 9,
+      "title": "An introduction to genetic algorithms for electromagnetics",
+      "result_id": "MMv9xoZnaQoJ",
+      "link": "https://ieeexplore.ieee.org/abstract/document/382334/",
+      "snippet": "This article is a tutorial on using genetic algorithms to optimize antenna and scattering patterns. Genetic algorithms are \"global\" numerical-optimization methods, patterned after the …",
+      "publication_info": {
+       "summary": "RL Haupt - IEEE Antennas and propagation magazine, 1995 - ieeexplore.ieee.org",
+       "authors": [
+        {
+         "name": "RL Haupt"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 1134
+       },
+       "versions": {
+        "total": 12
+       }
+      }
+     },
+     {
+      "position": 10,
+      "title": "An introduction to genetic algorithms and evolution strategies",
+      "result_id": "W0MVgNzEjvQJ",
+      "link": "https://www.ceas3.uc.edu/ret/archive/2017/ret/docs/readings/Project%203/Project%203_%20Introduction%20to%20Genetic%20Algorithms.pdf",
+      "snippet": "Genetic Algorithms and Evolution Strategies represent two of the three major Evolutionary Algorithms. This paper examines the history, theory and mathematical background …",
+      "publication_info": {
+       "summary": "M Dianati, I Song, M Treiber - 2002 - ceas3.uc.edu",
+       "authors": [
+        {
+         "name": "M Dianati"
+        },
+        {
+         "name": "I Song"
+        },
+        {
+         "name": "M Treiber"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 157
+       },
+       "versions": {
+        "total": 3
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"Attention is all you need\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac86573827031e78246fce7",
+     "status": "Success",
+     "created_at": "2026-10-09 03:54:27 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"Attention is all you need\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Attention is all you need",
+      "result_id": "5Gohgn6QFikJ",
+      "link": "https://proceedings.neurips.cc/paper_files/paper/7181-attention-is",
+      "snippet": "The dominant sequence transduction models are based on complex recurrent orconvolutional neural networks in an encoder and decoder configuration. The best performing such …",
+      "publication_info": {
+       "summary": "A Vaswani, N Shazeer, N Parmar… - Advances in neural …, 2017 - proceedings.neurips.cc",
+       "authors": [
+        {
+         "name": "A Vaswani"
+        },
+        {
+         "name": "N Shazeer"
+        },
+        {
+         "name": "N Parmar"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 274507
+       },
+       "versions": {
+        "total": 26
+       }
+      }
+     },
+     {
+      "position": 2,
+      "title": "Is Attention All You Need?",
+      "result_id": "QEhbjTxy5DIJ",
+      "link": "https://link.springer.com/chapter/10.1007/978-3-031-84300-6_13",
+      "snippet": "… Attention is All You Need [61] introduced the transformer, a general-purpose architecture for … From the standpoint of neuroscience, Attention is All You Need represents a puzzle: is it …",
+      "publication_info": {
+       "summary": "P Mineault - From Human Attention to Computational Attention: A …, 2025 - Springer",
+       "authors": [
+        {
+         "name": "P Mineault"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 15
+       },
+       "versions": {
+        "total": 3
+       }
+      }
+     },
+     {
+      "position": 3,
+      "title": "Tensor product attention is all you need",
+      "result_id": "aqnvuPb5wZEJ",
+      "link": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/a301ec7cb9e07dc050403e2eb11d0041-Abstract-Conference.html",
+      "snippet": "Scaling language models to handle longer input sequences typically necessitates large key-value (KV) caches, resulting in substantial memory overhead during inference. In this paper, …",
+      "publication_info": {
+       "summary": "Y Zhang, Y Liu, H Yuan, Z Qin… - Advances in Neural …, 2026 - proceedings.neurips.cc",
+       "authors": [
+        {
+         "name": "Y Zhang"
+        },
+        {
+         "name": "Y Liu"
+        },
+        {
+         "name": "H Yuan"
+        },
+        {
+         "name": "Z Qin"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 57
+       },
+       "versions": {
+        "total": 8
+       }
+      }
+     },
+     {
+      "position": 4,
+      "title": "Attention is all you need? When responsiveness short-circuits responsibility",
+      "result_id": "Ldld3hkekvcJ",
+      "link": "https://link.springer.com/article/10.1007/s00146-025-02700-4",
+      "snippet": "When researchers introduced the Transformer architec‑ture in 2017, they titled their paper “Attention Is All You Need”(Vaswani et al. 2017). That phrase, originally meant to describe a …",
+      "publication_info": {
+       "summary": "E Sezgin - AI & SOCIETY, 2026 - Springer",
+       "authors": [
+        {
+         "name": "E Sezgin"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 1
+       },
+       "versions": {
+        "total": 4
+       }
+      }
+     },
+     {
+      "position": 5,
+      "title": "Transmla: Multi-head latent attention is all you need",
+      "result_id": "fdPtg3sENccJ",
+      "link": "https://arxiv.org/abs/2502.07864",
+      "snippet": "In this paper, we present TransMLA, a framework that seamlessly converts any GQA-based pre-trained model into an MLA-based model. Our approach enables direct compatibility with …",
+      "publication_info": {
+       "summary": "F Meng, P Tang, X Tang, Z Yao, X Sun… - arXiv preprint arXiv …, 2025 - arxiv.org",
+       "authors": [
+        {
+         "name": "F Meng"
+        },
+        {
+         "name": "P Tang"
+        },
+        {
+         "name": "X Tang"
+        },
+        {
+         "name": "Z Yao"
+        },
+        {
+         "name": "X Sun"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 54
+       },
+       "versions": {
+        "total": 2
+       }
+      }
+     },
+     {
+      "position": 6,
+      "title": "Attention is all you need (in the brain): semantic contextualization in human hippocampus",
+      "result_id": "LyTqLUAYuKoJ",
+      "link": "https://www.biorxiv.org/content/10.1101/2025.06.23.661103.abstract",
+      "snippet": "In natural language, word meanings are contextualized, that is, modified by meanings of nearby words. Inspired by self-attention mechanisms in transformer-based large language …",
+      "publication_info": {
+       "summary": "KA Katlowitz, JL Belanger, T Ismail, AG Chavez… - bioRxiv, 2025 - biorxiv.org",
+       "authors": [
+        {
+         "name": "KA Katlowitz"
+        },
+        {
+         "name": "JL Belanger"
+        },
+        {
+         "name": "T Ismail"
+        },
+        {
+         "name": "AG Chavez"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 16
+       },
+       "versions": {
+        "total": 5
+       }
+      }
+     },
+     {
+      "position": 7,
+      "title": "Revolutionizing Vision: A Deep Dive into “Attention Is All You Need” and Its Impact on AI and Machine Learning",
+      "result_id": "U5ran8El3vsJ",
+      "link": "https://www.researchgate.net/profile/Anthony-Paul-2/publication/394854371_Revolutionizing_Vision_A_Deep_Dive_into_Attention_Is_All_You_Need_and_Its_Impact_on_AI_and_Machine_Learning/links/68a90aed1bee4d42a2421f20/Revolutionizing-Vision-A-Deep-Dive-into-Attention-Is-All-You-Need-and-Its-Impact-on-AI-and-Machine-Learning.pdf",
+      "snippet": "… qualitative and analytical methods to examine the technical composition, evolution, and real-world implications of the Transformer architecture in the paper \"Attention Is All You Need\". …",
+      "publication_info": {
+       "summary": "AL Paul - researchgate.net",
+       "authors": [
+        {
+         "name": "AL Paul"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 1
+       }
+      }
+     },
+     {
+      "position": 8,
+      "title": "Attention is all you need until you need retention",
+      "result_id": "he-44SI9mh4J",
+      "link": "https://arxiv.org/abs/2501.09166",
+      "snippet": "… This section extends the “Attention Is All You Need” framework by adding a Retention Layer that stores and recalls patterns across time—akin to social learning concept of retention [19]. …",
+      "publication_info": {
+       "summary": "MM Yaslioglu - arXiv preprint arXiv:2501.09166, 2025 - arxiv.org",
+       "authors": [
+        {
+         "name": "MM Yaslioglu"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 6
+       }
+      }
+     },
+     {
+      "position": 9,
+      "title": "Attention is all you need in speech separation",
+      "result_id": "BwvwD2whQ64J",
+      "link": "https://ieeexplore.ieee.org/abstract/document/9413901/",
+      "snippet": "Recurrent Neural Networks (RNNs) have long been the dominant architecture in sequence-to-sequence learning. RNNs, however, are inherently sequential models that do not allow …",
+      "publication_info": {
+       "summary": "C Subakan, M Ravanelli, S Cornell… - ICASSP 2021-2021 …, 2021 - ieeexplore.ieee.org",
+       "authors": [
+        {
+         "name": "C Subakan"
+        },
+        {
+         "name": "M Ravanelli"
+        },
+        {
+         "name": "S Cornell"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 1143
+       },
+       "versions": {
+        "total": 8
+       }
+      }
+     },
+     {
+      "position": 10,
+      "title": "Moral attention is all you need",
+      "result_id": "Gw9Y36Qw-mIJ",
+      "link": "https://www.tandfonline.com/doi/abs/10.1080/14746700.2025.2472118",
+      "snippet": "What do artificial intelligence (AI) developers need from moral theology? Moral theology situates human response to revelation within a broad social, religious, and cultural context. …",
+      "publication_info": {
+       "summary": "M Graves - Theology and Science, 2025 - Taylor & Francis",
+       "authors": [
+        {
+         "name": "M Graves"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 10
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9ad7ec02957e8222c5f",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:33 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+      "result_id": "7NKyfdVxssUJ",
+      "link": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext?os=vbKn42TQHo&ref=app",
+      "snippet": "A recent cluster of pneumonia cases in Wuhan, China, was caused by a novel betacoronavirus, the 2019 novel coronavirus (2019-nCoV). We report the epidemiological, clinical, laboratory, and radiological characteristics and treatment and clinical outcomes of these patients.\nAll patients with suspected 2019-nCoV were admitted to a designated hospital in Wuhan. We prospectively collected and analysed data on patients with laboratory-confirmed 2019-nCoV infection by real-time RT-PCR and next-generation sequencing. Data were obtained with standardised data collection forms shared by WHO and the International Severe Acute Respiratory and Emerging Infection Consortium from electronic medical records. Researchers also directly communicated with patients or their families to ascertain epidemiological and symptom data. Outcomes were also compared between patients who had been admitted to the intensive care unit (ICU) and those who had not.\nBy Jan 2, 2020, 41 admitted hospital patients had been identified as having laboratory-confirmed 2019-nCoV infection. Most of the infected patients were men (30 [73%] of 41); less than half had underlying diseases (13 [32%]), including diabetes (eight [20%]), hypertension (six [15%]), and cardiovascular disease (six [15%]). Median age was 49·0 years (IQR 41·0–58·0). 27 (66%) of 41 patients had been exposed to Huanan seafood market. One family cluster was found. Common symptoms at onset of illness were fever (40 [98%] of 41 patients), cough (31 [76%]), and myalgia or fatigue (18 [44%]); less common symptoms were sputum production (11 [28%] of 39), headache (three [8%] of 38), haemoptysis (two [5%] of 39), and diarrhoea (one [3%] of 38). Dyspnoea developed in 22 (55%) of 40 patients (median time from illness onset to dyspnoea 8·0 days [IQR 5·0–13·0]). 26 (63%) of 41 patients had lymphopenia. All 41 patients had pneumonia with abnormal findings on chest CT. Complications included acute respiratory distress syndrome (12 [29%]), RNAaemia (six [15%]), acute cardiac injury (five [12%]) and secondary infection (four [10%]). 13 (32%) patients were admitted to an ICU and six (15%) died. Compared with non-ICU patients, ICU patients had higher plasma levels of IL2, IL7, IL10, GSCF, IP10, MCP1, MIP1A, and TNFα.\nThe 2019-nCoV infection caused clusters of severe respiratory illness similar to severe acute respiratory syndrome coronavirus and was associated with ICU admission and high mortality. Major gaps in our knowledge of the origin, epidemiology, duration of human transmission, and clinical spectrum of disease need fulfilment by future studies.\nMinistry of Science and Technology, Chinese Academy of Medical Sciences, National Natural Science Foundation of China, and Beijing Municipal Science and Technology Commission.",
+      "publication_info": {
+       "summary": "C Huang, Y Wang, X Li, L Ren, J Zhao, Y Hu, L Zhang, G Fan, J Xu, X Gu, Z Cheng, T Yu…The lancet, 2020•thelancet.com",
+       "authors": [
+        {
+         "name": "C Huang"
+        },
+        {
+         "name": "Y Wang"
+        },
+        {
+         "name": "X Li"
+        },
+        {
+         "name": "L Ren"
+        },
+        {
+         "name": "J Zhao"
+        },
+        {
+         "name": "Y Hu"
+        },
+        {
+         "name": "L Zhang"
+        },
+        {
+         "name": "G Fan"
+        },
+        {
+         "name": "J Xu"
+        },
+        {
+         "name": "X Gu"
+        },
+        {
+         "name": "Z Cheng"
+        },
+        {
+         "name": "T Yu"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 67433
+       },
+       "versions": {
+        "total": 69
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"Common risk factors in the returns on stocks and bonds\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9a45e3494325fbb52f2",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:24 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"Common risk factors in the returns on stocks and bonds\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Common risk factors in the returns on stocks and bonds",
+      "result_id": "eVu0yD_s9KsJ",
+      "link": "https://www.sciencedirect.com/science/article/pii/0304405X93900235",
+      "snippet": "This paper identifies five common risk factors in the returns on stocks and bonds. There are three stock-market factors: an overall market factor and factors related to firm size and book-to…",
+      "publication_info": {
+       "summary": "EF Fama, KR French - Journal of financial economics, 1993 - Elsevier",
+       "authors": [
+        {
+         "name": "EF Fama"
+        },
+        {
+         "name": "KR French"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 37962
+       },
+       "versions": {
+        "total": 34
+       }
+      }
+     },
+     {
+      "position": 2,
+      "title": "Common risk factors in the returns on stocks and bonds",
+      "result_id": "Ldo0FygTq_oJ",
+      "link": "https://www.academia.edu/download/59757281/10.1.1.139.589220190616-19731-1oeacir.pdf",
+      "snippet": "This paper identities five common risk factors in the returns on stocks and bonds. There are three stock-market factors: an overall market factor and factors related to firm size and book-to…",
+      "publication_info": {
+       "summary": "T Moussa - academia.edu",
+       "authors": [
+        {
+         "name": "T Moussa"
+        }
+       ]
+      },
+      "inline_links": {}
+     },
+     {
+      "position": 3,
+      "title": "Common Risk Premia for Stocks and Bonds",
+      "result_id": "ZTBmwUSAWRcJ",
+      "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6005434",
+      "snippet": "We investigate risk-return trade-offs in stock and bond markets to develop a new equity market volatility factor of asset returns. Based on nonlinear regressions using equity-bond market …",
+      "publication_info": {
+       "summary": "F Ben Bouheni, C Edirisinghe… - Chanaka and Lahiani …, 2025 - papers.ssrn.com",
+       "authors": [
+        {
+         "name": "F Ben Bouheni"
+        },
+        {
+         "name": "C Edirisinghe"
+        }
+       ]
+      },
+      "inline_links": {}
+     },
+     {
+      "position": 4,
+      "title": "Common risk factors in explaining Canadian equity returns",
+      "result_id": "sCooODk4wZUJ",
+      "link": "https://www.economics.utoronto.ca/public/workingPapers/UT-ECIPA-BERK-00-01.pdf",
+      "snippet": "This paper adopts the Fama and French (1993) methodology for determining the common risk factors in the returns of Canadian stocks. Our results suggest that the three stock market …",
+      "publication_info": {
+       "summary": "MK Berkowitz, J Qiu - University of Toronto. Boehmer, E., J …, 2001 - economics.utoronto.ca",
+       "authors": [
+        {
+         "name": "MK Berkowitz"
+        },
+        {
+         "name": "J Qiu"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 44
+       },
+       "versions": {
+        "total": 5
+       }
+      }
+     },
+     {
+      "position": 5,
+      "title": "Common risk factors in the cross-section of corporate bond returns",
+      "result_id": "3uzi_jvPzOAJ",
+      "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2819910",
+      "snippet": "We investigate the cross-sectional determinants of corporate bond returns and find that downside risk is the strongest predictor of future bond returns. We also introduce common risk …",
+      "publication_info": {
+       "summary": "J Bai, TG Bali, Q Wen - Journal of Financial Economics …, 2016 - papers.ssrn.com",
+       "authors": [
+        {
+         "name": "J Bai"
+        },
+        {
+         "name": "TG Bali"
+        },
+        {
+         "name": "Q Wen"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 461
+       },
+       "versions": {
+        "total": 7
+       }
+      }
+     },
+     {
+      "position": 6,
+      "title": "A common risk factor and the correlation between equity and corporate bond returns: A. Demirovic et al.",
+      "result_id": "Y6WSVuRsXKMJ",
+      "link": "https://link.springer.com/article/10.1057/s41260-020-00151-8",
+      "snippet": "A growing body of literature documents that security prices within and across asset classes behave similarly highlighting the importance of investors’ common expectations about future …",
+      "publication_info": {
+       "summary": "A Demirovic, A Kabiri, D Tuckett, R Nyman - Journal of Asset Management, 2020 - Springer",
+       "authors": [
+        {
+         "name": "A Demirovic"
+        },
+        {
+         "name": "A Kabiri"
+        },
+        {
+         "name": "D Tuckett"
+        },
+        {
+         "name": "R Nyman"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 1
+       },
+       "versions": {
+        "total": 9
+       }
+      }
+     },
+     {
+      "position": 7,
+      "title": "Do common risk factors in the returns on stocks and bonds explain returns on REITs?",
+      "result_id": "0fGB_HJ7BH0J",
+      "link": "https://onlinelibrary.wiley.com/doi/abs/10.1111/1540-6229.00717",
+      "snippet": "The monthly returns on equity and mortgage real estate investment trusts (REITs) are analyzed over the period July 1976 to December 1992. The results indicate that risk premiums on …",
+      "publication_info": {
+       "summary": "JD Peterson, CH Hsieh - Real Estate Economics, 1997 - Wiley Online Library",
+       "authors": [
+        {
+         "name": "JD Peterson"
+        },
+        {
+         "name": "CH Hsieh"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 297
+       },
+       "versions": {
+        "total": 9
+       }
+      }
+     },
+     {
+      "position": 8,
+      "title": "The risk and return from factors",
+      "result_id": "ZKDCLCnACxQJ",
+      "link": "https://www.cambridge.org/core/journals/journal-of-financial-and-quantitative-analysis/article/risk-and-return-from-factors/08AEBF6C0CD09C1C04EF2477AAFDFA5C",
+      "snippet": "The ability to identify which factors best capture systematic return covariation is central to applications of multifactor pricing models. This paper uses a common data set to evaluate the …",
+      "publication_info": {
+       "summary": "LKC Chan, J Karceski, J Lakonishok - Journal of financial and …, 1998 - cambridge.org",
+       "authors": [
+        {
+         "name": "LKC Chan"
+        },
+        {
+         "name": "J Karceski"
+        },
+        {
+         "name": "J Lakonishok"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 575
+       },
+       "versions": {
+        "total": 24
+       }
+      }
+     },
+     {
+      "position": 9,
+      "title": "Can common risk factors explain infrastructure equity returns? Evidence from European capital markets",
+      "result_id": "8ILcPKVaQksJ",
+      "link": "https://www.tandfonline.com/doi/abs/10.1080/09599916.2016.1169211",
+      "snippet": "… Common risk factors in the returns on stocks and bonds. Journal of Financial Economics, 33, 3–56. doi:http://dx.doi.org/10.1016/0304-405X(93)90023-5 Fama, EF, & French, KR (1996). …",
+      "publication_info": {
+       "summary": "D Wurstbauer, S Lang, C Rothballer… - Journal of ProPerty …, 2016 - Taylor & Francis",
+       "authors": [
+        {
+         "name": "D Wurstbauer"
+        },
+        {
+         "name": "S Lang"
+        },
+        {
+         "name": "C Rothballer"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 6
+       },
+       "versions": {
+        "total": 7
+       }
+      }
+     },
+     {
+      "position": 10,
+      "title": "On risk factors of the stock–bond correlation",
+      "result_id": "T3RAsIEWeAYJ",
+      "link": "https://onlinelibrary.wiley.com/doi/abs/10.1111/infi.12369",
+      "snippet": "The correlation between stock and bond returns, which went from positive in the 1980–1990s to negative in the 2000–2010s, is analysed with a model that simultaneously determines …",
+      "publication_info": {
+       "summary": "M Pericoli - International Finance, 2020 - Wiley Online Library",
+       "authors": [
+        {
+         "name": "M Pericoli"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 14
+       },
+       "versions": {
+        "total": 6
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"Deep residual learning for visual image recognition tasks\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9aa6561a6a7b6d4e84f",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:30 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"Deep residual learning for visual image recognition tasks\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Deep residual learning for image recognition. InProc",
+      "result_id": "mcSFcLfG7fgJ",
+      "snippet": "",
+      "publication_info": {
+       "summary": "K He, X Zhang, S Ren, J Sun - IEEE Conference on Computer Vision and Pattern …",
+       "authors": [
+        {
+         "name": "K He"
+        },
+        {
+         "name": "X Zhang"
+        },
+        {
+         "name": "S Ren"
+        },
+        {
+         "name": "J Sun"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 147
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a7035c4bf440f6dcc4e1",
+     "status": "Success",
+     "created_at": "2026-10-09 08:34:11 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement",
+      "result_id": "NSKmPCyYC0oJ",
+      "link": "https://www.acpjournals.org/doi/abs/10.7326/0003-4819-151-4-200908180-00135",
+      "snippet": "Moher and colleagues introduce PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses), an update of the QUOROM guidelines for reporting systematic …",
+      "publication_info": {
+       "summary": "D Moher, A Liberati, J Tetzlaff, DG Altman… - Annals of internal …, 2009 - acpjournals.org",
+       "authors": [
+        {
+         "name": "D Moher"
+        },
+        {
+         "name": "A Liberati"
+        },
+        {
+         "name": "J Tetzlaff"
+        },
+        {
+         "name": "DG Altman"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 147944
+       },
+       "versions": {
+        "total": 49
+       }
+      }
+     },
+     {
+      "position": 2,
+      "title": "Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement",
+      "result_id": "ikepDZVh8KYJ",
+      "link": "https://www.sciencedirect.com/science/article/pii/S1743919110000403",
+      "snippet": "Systematic reviews and meta-analyses have become increasingly important in health care. Clinicians read them to keep up to date with their field, 1, 2 and they are often used as a …",
+      "publication_info": {
+       "summary": "D Moher, A Liberati, J Tetzlaff, DG Altman… - International journal of …, 2010 - Elsevier",
+       "authors": [
+        {
+         "name": "D Moher"
+        },
+        {
+         "name": "A Liberati"
+        },
+        {
+         "name": "J Tetzlaff"
+        },
+        {
+         "name": "DG Altman"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 13330
+       },
+       "versions": {
+        "total": 2
+       }
+      }
+     },
+     {
+      "position": 3,
+      "title": "Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement",
+      "result_id": "7jz47Lc1iY8J",
+      "link": "https://www.academia.edu/download/94240822/prisma_BMJ.pdf",
+      "snippet": "for the PRISMA Group david moher and colleagues introduce PRISMA, an update of the QUOROM guidelines for reporting systematic reviews and meta-analyses Identify the report as a …",
+      "publication_info": {
+       "summary": "G Stewart - Annals of internal medicine, 2009 - academia.edu",
+       "authors": [
+        {
+         "name": "G Stewart"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 831
+       }
+      }
+     },
+     {
+      "position": 4,
+      "title": "Evaluations of the uptake and impact of the Preferred Reporting Items for Systematic reviews and Meta-Analyses (PRISMA) Statement and extensions: a scoping …",
+      "result_id": "voy8wei_nsQJ",
+      "link": "https://link.springer.com/article/10.1186/s13643-017-0663-8",
+      "snippet": "… Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement. … Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement. …",
+      "publication_info": {
+       "summary": "MJ Page, D Moher - Systematic reviews, 2017 - Springer",
+       "authors": [
+        {
+         "name": "MJ Page"
+        },
+        {
+         "name": "D Moher"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 963
+       },
+       "versions": {
+        "total": 11
+       }
+      }
+     },
+     {
+      "position": 5,
+      "title": "Preferred reporting items for systematic review and meta-analysis protocols (PRISMA-P) 2015 statement",
+      "result_id": "D616c2LXrfUJ",
+      "link": "https://link.springer.com/article/10.1186/2046-4053-4-1",
+      "snippet": "Systematic reviews should build on a protocol that describes the rationale, hypothesis, and planned methods of the review; few reviews report whether a protocol exists. Detailed, well-…",
+      "publication_info": {
+       "summary": "D Moher, L Shamseer, M Clarke, D Ghersi, A Liberati… - Systematic reviews, 2015 - Springer",
+       "authors": [
+        {
+         "name": "D Moher"
+        },
+        {
+         "name": "L Shamseer"
+        },
+        {
+         "name": "M Clarke"
+        },
+        {
+         "name": "D Ghersi"
+        },
+        {
+         "name": "A Liberati"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 26285
+       },
+       "versions": {
+        "total": 49
+       }
+      }
+     },
+     {
+      "position": 6,
+      "title": "Preferred reporting items for systematic reviews and meta‐analyses in ecology and evolutionary biology: a PRISMA extension",
+      "result_id": "BEcKUuPVpEAJ",
+      "link": "https://onlinelibrary.wiley.com/doi/abs/10.1111/brv.12721",
+      "snippet": "Since the early 1990s, ecologists and evolutionary biologists have aggregated primary research using meta‐analytic methods to understand ecological and evolutionary phenomena. …",
+      "publication_info": {
+       "summary": "RE O'Dea, M Lagisz, MD Jennions… - Biological …, 2021 - Wiley Online Library",
+       "authors": [
+        {
+         "name": "RE O'Dea"
+        },
+        {
+         "name": "M Lagisz"
+        },
+        {
+         "name": "MD Jennions"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 903
+       },
+       "versions": {
+        "total": 14
+       }
+      }
+     },
+     {
+      "position": 7,
+      "title": "Preferred reporting items for a systematic review and meta-analysis of diagnostic test accuracy studies: the PRISMA-DTA statement",
+      "result_id": "AuyUtuKp8E0J",
+      "link": "https://jamanetwork.com/journals/jama/article-abstract/2670259",
+      "snippet": "Importance Systematic reviews of diagnostic test accuracy synthesize data from primary diagnostic studies that have evaluated the accuracy of 1 or more index tests against a reference …",
+      "publication_info": {
+       "summary": "MDF McInnes, D Moher, BD Thombs, TA McGrath… - Jama, 2018 - jamanetwork.com",
+       "authors": [
+        {
+         "name": "MDF McInnes"
+        },
+        {
+         "name": "D Moher"
+        },
+        {
+         "name": "BD Thombs"
+        },
+        {
+         "name": "TA McGrath"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 3538
+       },
+       "versions": {
+        "total": 22
+       }
+      }
+     },
+     {
+      "position": 8,
+      "title": "Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement (Chinese edition)",
+      "result_id": "yMvGgf0_NvYJ",
+      "link": "https://iris.unimo.it/handle/11380/1281373",
+      "snippet": "Preferred reporting items for systematic reviews and meta-analyses: The PRISMA statement (Chinese edition) … Preferred reporting items for systematic reviews and meta-analyses: The …",
+      "publication_info": {
+       "summary": "D Moher, A Liberati, J Tetzlaff, DG Altman… - ZHONGXIYI JIEHE …, 2009 - iris.unimo.it",
+       "authors": [
+        {
+         "name": "D Moher"
+        },
+        {
+         "name": "A Liberati"
+        },
+        {
+         "name": "J Tetzlaff"
+        },
+        {
+         "name": "DG Altman"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 26
+       }
+      }
+     },
+     {
+      "position": 9,
+      "title": "Preferred reporting items for a systematic review and meta-analysis of individual participant data: the PRISMA-IPD statement",
+      "result_id": "eI2Fm4tSMJgJ",
+      "link": "https://jamanetwork.com/journals/jama/article-abstract/2279718",
+      "snippet": "Importance Systematic reviews and meta-analyses of individual participant data (IPD) aim to collect, check, and reanalyze individual-level data from all studies addressing a particular …",
+      "publication_info": {
+       "summary": "LA Stewart, M Clarke, M Rovers, RD Riley… - Jama, 2015 - jamanetwork.com",
+       "authors": [
+        {
+         "name": "LA Stewart"
+        },
+        {
+         "name": "M Clarke"
+        },
+        {
+         "name": "M Rovers"
+        },
+        {
+         "name": "RD Riley"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 2394
+       },
+       "versions": {
+        "total": 17
+       }
+      }
+     },
+     {
+      "position": 10,
+      "title": "Reporting quality of systematic reviews and meta-analyses of otorhinolaryngologic articles based on the PRISMA statement",
+      "result_id": "K9U4kW6ECf4J",
+      "link": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0136540",
+      "snippet": "Background Systematic reviews (SRs) and meta-analyses (MAs) provide the highest possible level of evidence. However, poor conduct or reporting of SRs and MAs may reduce their …",
+      "publication_info": {
+       "summary": "JPM Peters, L Hooft, W Grolman, I Stegeman - PloS one, 2015 - journals.plos.org",
+       "authors": [
+        {
+         "name": "JPM Peters"
+        },
+        {
+         "name": "L Hooft"
+        },
+        {
+         "name": "W Grolman"
+        },
+        {
+         "name": "I Stegeman"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 138
+       },
+       "versions": {
+        "total": 18
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"Prospect theory: An analysis of decision under risk\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a6fa9a1f2c28006d52f7",
+     "status": "Success",
+     "created_at": "2026-10-09 08:34:02 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"Prospect theory: An analysis of decision under risk\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Prospect theory: An analysis of decision under risk",
+      "result_id": "09xHZBSy0wIJ",
+      "link": "https://www.worldscientific.com/doi/abs/10.1142/9789814417358_0006",
+      "snippet": "This paper presents a critique of expected utility theory as a descriptive model of decision making under risk, and develops an alternative model, called prospect theory. Choices among …",
+      "publication_info": {
+       "summary": "D Kahneman, A Tversky - Handbook of the fundamentals of financial …, 2013 - World Scientific",
+       "authors": [
+        {
+         "name": "D Kahneman"
+        },
+        {
+         "name": "A Tversky"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 99732
+       },
+       "versions": {
+        "total": 53
+       }
+      }
+     },
+     {
+      "position": 2,
+      "title": "Prospect theory: An analysis of decision under risk",
+      "result_id": "tvpkeQ2DL-wJ",
+      "link": "http://hassler-j.iies.su.se/COURSES/NewPrefs/Papers/KahnemanTversky%20Ec%2079.pdf",
+      "snippet": "This paper presents a critique of expected utility theory as a descriptive model of decisión making under risk, and develops an alternative model, called prospect theory. Choices among …",
+      "publication_info": {
+       "summary": "D Kai-Ineman, A Tversky - Econometrica, 1979 - hassler-j.iies.su.se",
+       "authors": [
+        {
+         "name": "D Kai-Ineman"
+        },
+        {
+         "name": "A Tversky"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 2742
+       },
+       "versions": {
+        "total": 3
+       }
+      }
+     },
+     {
+      "position": 3,
+      "title": "1Prospect Theory: An Analysis of Decision under Risk1",
+      "result_id": "nMHBxMTBaUIJ",
+      "link": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/129C051568E9B45F2DB47BB1B1A86E1B",
+      "snippet": "Expected utility theory has dominated the analysis of decision making under risk. It has been generally accepted as a normative model of rational choice (Keeney and Raiffa, 1976), and …",
+      "publication_info": {
+       "summary": "D Kahneman, A Tversky - Econometrica, 1979 - cambridge.org",
+       "authors": [
+        {
+         "name": "D Kahneman"
+        },
+        {
+         "name": "A Tversky"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 896
+       },
+       "versions": {
+        "total": 2
+       }
+      }
+     },
+     {
+      "position": 4,
+      "title": "Thirty years of prospect theory in economics: A review and assessment",
+      "result_id": "DURdv2JNvAMJ",
+      "link": "https://www.aeaweb.org/articles?id=10.1257/jep.27.1.173",
+      "snippet": "… Econometrica titled “Prospect Theory: An Analysis of Decision under Risk.” The paper accomplished two things. It collected in one place a series of simple but compelling …",
+      "publication_info": {
+       "summary": "NC Barberis - Journal of economic perspectives, 2013 - aeaweb.org",
+       "authors": [
+        {
+         "name": "NC Barberis"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 2518
+       },
+       "versions": {
+        "total": 23
+       }
+      }
+     },
+     {
+      "position": 5,
+      "title": "Prospect theory on the brain? Toward a cognitive neuroscience of decision under risk",
+      "result_id": "xeO0KSmclaEJ",
+      "link": "https://www.sciencedirect.com/science/article/pii/S0926641005000182",
+      "snippet": "… Tversky, Prospect theory: An analysis of decision under risk. Econometrica, 4 (1979) 263–291; A. Tversky, D. …",
+      "publication_info": {
+       "summary": "C Trepel, CR Fox, RA Poldrack - Cognitive brain research, 2005 - Elsevier",
+       "authors": [
+        {
+         "name": "C Trepel"
+        },
+        {
+         "name": "CR Fox"
+        },
+        {
+         "name": "RA Poldrack"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 610
+       },
+       "versions": {
+        "total": 8
+       }
+      }
+     },
+     {
+      "position": 6,
+      "title": "An introduction to prospect theory",
+      "result_id": "7Bmq21E0CyEJ",
+      "link": "https://www.jstor.org/stable/3791677",
+      "snippet": "Prospect theory has emerged as a leading alternative to expected utility as a theory of decision under risk and has very recently begun to attract attention in the literature on international …",
+      "publication_info": {
+       "summary": "JS Levy - Political psychology, 1992 - JSTOR",
+       "authors": [
+        {
+         "name": "JS Levy"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 914
+       },
+       "versions": {
+        "total": 6
+       }
+      }
+     },
+     {
+      "position": 7,
+      "title": "Prospect theory, risk preference, and the law",
+      "result_id": "maxpfQy4rkkJ",
+      "link": "https://scholarship.law.vanderbilt.edu/faculty-publications/705/",
+      "snippet": "To understand how people behave in an uncertain world-and to make viable recommendations about how the law should try to shape that behavior-legal scholars must employ a model …",
+      "publication_info": {
+       "summary": "C Guthrie - Northwestern University Law Review, 2003 - scholarship.law.vanderbilt.edu",
+       "authors": [
+        {
+         "name": "C Guthrie"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 292
+       },
+       "versions": {
+        "total": 9
+       }
+      }
+     },
+     {
+      "position": 8,
+      "title": "Decision-making under uncertainty–A field study of cumulative prospect theory",
+      "result_id": "UzIXcDefZWYJ",
+      "link": "https://www.sciencedirect.com/science/article/pii/S0378426609000041",
+      "snippet": "… Prospect theory: An analysis of decision under risk. Econometrica 47, 263–291; Tversky, A., Kahneman, D., 1981. The framing of decisions and the psychology of choice. …",
+      "publication_info": {
+       "summary": "G Gurevich, D Kliger, O Levy - Journal of Banking & Finance, 2009 - Elsevier",
+       "authors": [
+        {
+         "name": "G Gurevich"
+        },
+        {
+         "name": "D Kliger"
+        },
+        {
+         "name": "O Levy"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 178
+       },
+       "versions": {
+        "total": 6
+       }
+      }
+     },
+     {
+      "position": 9,
+      "title": "Prospect theory versus expected utility theory: Assumptions, predictions, intuition and modelling of risk attitudes",
+      "result_id": "JTMMWyxterkJ",
+      "link": "https://cejsh.icm.edu.pl/cejsh/element/bwmeta1.element.oai-journals-pan-pl-106527/c/oai-journals-pan-pl-106527_full-text_mainFile.pdf",
+      "snippet": "The main focus of this tutorial/review is on presenting Prospect Theory in the context of the still ongoing debate between the behavioral (mainly descriptive) and the classical (mainly …",
+      "publication_info": {
+       "summary": "M Lewandowski - … European Journal of Economic Modelling and …, 2017 - cejsh.icm.edu.pl",
+       "authors": [
+        {
+         "name": "M Lewandowski"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 54
+       },
+       "versions": {
+        "total": 13
+       }
+      }
+     },
+     {
+      "position": 10,
+      "title": "Decision under risk",
+      "result_id": "_XWR8Oywe6MJ",
+      "link": "https://books.google.com/books?hl=en&lr=&id=s73eYl1DRHUC&oi=fnd&pg=PA399&dq=%22Prospect+theory:+An+analysis+of+decision+under+risk%22&ots=ngSwmEkhfl&sig=7De6XAMamkHB-_8fuBG3R-K_FUk",
+      "snippet": "… Kahneman and Tversky’s (1979)“Prospect theory: An analysis of decision under risk” is the second most cited paper in economics during the period, 1975–2000 (Coupé, in press; …",
+      "publication_info": {
+       "summary": "G Wu, J Zhang, R Gonzalez - Blackwell handbook of judgment …, 2004 - books.google.com",
+       "authors": [
+        {
+         "name": "G Wu"
+        },
+        {
+         "name": "J Zhang"
+        },
+        {
+         "name": "R Gonzalez"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 285
+       },
+       "versions": {
+        "total": 8
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"Receiver operating characteristic (ROC) curve for medical researchers\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9a6acb3e425c1f73d4d",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:26 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"Receiver operating characteristic (ROC) curve for medical researchers\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Receiver operating characteristic (ROC) curve for medical researchers",
+      "result_id": "3m3qBz87PfEJ",
+      "link": "https://link.springer.com/article/10.1007/s13312-011-0055-4",
+      "snippet": "Sensitivity and specificity are two components that measure the inherent validity of a diagnostic test for dichotomous outcomes against a gold standard. Receiver operating characteristic (ROC) curve is the plot that depicts the trade-off between the sensitivity and (1-specificity) across a series of cut-off points when the diagnostic test is continuous or on ordinal scale (minimum 5 categories). This is an effective method for assessing the performance of a diagnostic test. The aim of this article is to provide basic conceptual framework and interpretation of ROC analysis to help medical researchers to use it effectively. ROC curve and its important components like area under the curve, sensitivity at specified specificity and vice versa, and partial area under the curve are discussed. Various other issues such as choice between parametric and non-parametric methods, biases that affect the performance of a diagnostic test, sample size for estimating the sensitivity, specificity, and area under ROC curve, and details of commonly used softwares in ROC analysis are also presented.",
+      "publication_info": {
+       "summary": "R Kumar, A IndrayanIndian pediatrics, 2011•Springer",
+       "authors": [
+        {
+         "name": "R Kumar"
+        },
+        {
+         "name": "A Indrayan"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 1226
+       },
+       "versions": {
+        "total": 19
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "\"The idea of justice\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a703311b6569b04080fe",
+     "status": "Success",
+     "created_at": "2026-10-09 08:34:11 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "\"The idea of justice\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "The idea of justice",
+      "result_id": "xPcGwxgMy3EJ",
+      "link": "https://www.tandfonline.com/doi/abs/10.1080/14649880802236540",
+      "snippet": "John Dryden wrote in 1698, in the Epistle to Peter Antony Motteux,‘‘Words, once my stock, are wanting to commend/So great a poet and so good a friend.’’It is not easy to talk about a …",
+      "publication_info": {
+       "summary": "A Sen - Journal of human development, 2008 - Taylor & Francis",
+       "authors": [
+        {
+         "name": "A Sen"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 20163
+       },
+       "versions": {
+        "total": 19
+       }
+      }
+     },
+     {
+      "position": 2,
+      "title": "The idea of justice",
+      "result_id": "VMmCvyiBlSkJ",
+      "link": "https://www.jsscacs.edu.in/sites/default/files/Files/The_idea_of_justice_Amartya_Sen.pdf",
+      "snippet": "‘In the little world in which children have their existence’, says Pip in Charles Dickens’s Great Expectations,‘there is nothing so finely perceived and finely felt, as injustice.’1 I expect Pip …",
+      "publication_info": {
+       "summary": "S Amartya, S Amartya - 2009 - jsscacs.edu.in",
+       "authors": [
+        {
+         "name": "S Amartya"
+        },
+        {
+         "name": "S Amartya"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 405
+       }
+      }
+     },
+     {
+      "position": 3,
+      "title": "The idea of justice: A response",
+      "result_id": "ZH3xvtGABO0J",
+      "link": "https://journals.sagepub.com/doi/abs/10.1177/0191453714553501",
+      "snippet": "… this symposium on my book The Idea of Justice cover a wide … very different concerns connected with the idea of justice. In my … For a more comprehensive account of the idea of justice we …",
+      "publication_info": {
+       "summary": "A Sen - Philosophy & social criticism, 2015 - journals.sagepub.com",
+       "authors": [
+        {
+         "name": "A Sen"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 36
+       },
+       "versions": {
+        "total": 2
+       }
+      }
+     },
+     {
+      "position": 4,
+      "title": "The concept of justice",
+      "result_id": "F7GLMOFCcNUJ",
+      "link": "https://www.cambridge.org/core/journals/philosophy/article/concept-of-justice/ACC649028A0B1F3B4A5AF533FA90B42E",
+      "snippet": "… SINCK the war there has been a revival of interest in the idea of justice and its relation to law. The main contributions have come from the side of jurisprudence among which may be …",
+      "publication_info": {
+       "summary": "M Ginsberg - Philosophy, 1963 - cambridge.org",
+       "authors": [
+        {
+         "name": "M Ginsberg"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 36
+       },
+       "versions": {
+        "total": 4
+       }
+      }
+     },
+     {
+      "position": 5,
+      "title": "Development and the Limits of Amartya Sen's The Idea of Justice",
+      "result_id": "IitEpRPRANUJ",
+      "link": "https://www.tandfonline.com/doi/abs/10.1080/01436597.2011.567008",
+      "snippet": "… The Idea of Justice might therefore change development … But how far does The Idea of Justice pass the test of doing … This review article starts by examining how The Idea of Justice links …",
+      "publication_info": {
+       "summary": "S Deneulin - Third world quarterly, 2011 - Taylor & Francis",
+       "authors": [
+        {
+         "name": "S Deneulin"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 62
+       },
+       "versions": {
+        "total": 11
+       }
+      }
+     },
+     {
+      "position": 6,
+      "title": "On Amartya Sen and the idea of justice",
+      "result_id": "pjECM8PfZyAJ",
+      "link": "https://www.cambridge.org/core/journals/ethics-and-international-affairs/article/on-amartya-sen-and-the-idea-of-justice/EDD6E09C7E4E1C1096F20592F6474A74",
+      "snippet": "… In 2009 Sen published a major book, The Idea of Justice, which summarizes and extends many of the most important themes he has developed over the last quarter century.But before …",
+      "publication_info": {
+       "summary": "C Brown - Ethics & International Affairs, 2010 - cambridge.org",
+       "authors": [
+        {
+         "name": "C Brown"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 69
+       },
+       "versions": {
+        "total": 9
+       }
+      }
+     },
+     {
+      "position": 7,
+      "title": "The origin of justice",
+      "result_id": "enGhIgyIjMcJ",
+      "link": "https://www.jstor.org/stable/20125533",
+      "snippet": "… Whence comes the idea of justice? Have we any right to speak of the idea of justice? Are … Even if we concentrate on J4, it may seem rash to speak of the origin of the idea of justice. …",
+      "publication_info": {
+       "summary": "W Kaufmann - The Review of Metaphysics, 1969 - JSTOR",
+       "authors": [
+        {
+         "name": "W Kaufmann"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 22
+       },
+       "versions": {
+        "total": 6
+       }
+      }
+     },
+     {
+      "position": 8,
+      "title": "Idea of Justice",
+      "result_id": "hVRu6UIr5MEJ",
+      "link": "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/pnlr71&section=33",
+      "snippet": "… We can not conclude these discussions concerning the idea of justice without mentioning one … The idea of justice denotes the possibility as a matter of principle of right behavior in social …",
+      "publication_info": {
+       "summary": "R Stammler - U. Pa. L. Rev., 1922 - HeinOnline",
+       "authors": [
+        {
+         "name": "R Stammler"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 17
+       },
+       "versions": {
+        "total": 2
+       }
+      }
+     },
+     {
+      "position": 9,
+      "title": "The idea of justice",
+      "result_id": "CsMol653jCwJ",
+      "link": "https://www.jstor.org/stable/41410206",
+      "snippet": "Amartya Sen's readers were expecting the second volume of a series of two devoted to rationality, freedom, andjustice. Indeed, itis the program announced by Sen (2002) in the preface …",
+      "publication_info": {
+       "summary": "M Gilardone - 2010 - JSTOR",
+       "authors": [
+        {
+         "name": "M Gilardone"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 17
+       },
+       "versions": {
+        "total": 15
+       }
+      }
+     },
+     {
+      "position": 10,
+      "title": "The complete idea of justice",
+      "result_id": "2ivTLi_J6IsJ",
+      "link": "https://www.jstor.org/stable/1599485",
+      "snippet": "… Perhaps all that it is necessary to say is that we adopt the idea of justice as a standard for ourselves without depending on a model in nature. But the former is unattainable not only …",
+      "publication_info": {
+       "summary": "LL Weinreb - The University of Chicago Law Review, 1984 - JSTOR",
+       "authors": [
+        {
+         "name": "LL Weinreb"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 43
+       },
+       "versions": {
+        "total": 7
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "Adaptive Ayurvedic biomarker panels for early sepsis triage in rural Rajasthan author:\"Menon\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9abf479a31034af54a3",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:31 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "Adaptive Ayurvedic biomarker panels for early sepsis triage in rural Rajasthan author:\"Menon\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [],
+    "error": "Google hasn't returned any results for this query."
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China author:\"Huang\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8abe62efef87fb4eaf31d",
+     "status": "Success",
+     "created_at": "2026-10-09 08:55:02 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China author:\"Huang\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+      "result_id": "7NKyfdVxssUJ",
+      "link": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext?os=vbKn42TQHo&ref=app",
+      "snippet": "A recent cluster of pneumonia cases in Wuhan, China, was caused by a novel betacoronavirus, the 2019 novel coronavirus (2019-nCoV). We report the epidemiological, clinical, laboratory, and radiological characteristics and treatment and clinical outcomes of these patients.\nAll patients with suspected 2019-nCoV were admitted to a designated hospital in Wuhan. We prospectively collected and analysed data on patients with laboratory-confirmed 2019-nCoV infection by real-time RT-PCR and next-generation sequencing. Data were obtained with standardised data collection forms shared by WHO and the International Severe Acute Respiratory and Emerging Infection Consortium from electronic medical records. Researchers also directly communicated with patients or their families to ascertain epidemiological and symptom data. Outcomes were also compared between patients who had been admitted to the intensive care unit (ICU) and those who had not.\nBy Jan 2, 2020, 41 admitted hospital patients had been identified as having laboratory-confirmed 2019-nCoV infection. Most of the infected patients were men (30 [73%] of 41); less than half had underlying diseases (13 [32%]), including diabetes (eight [20%]), hypertension (six [15%]), and cardiovascular disease (six [15%]). Median age was 49·0 years (IQR 41·0–58·0). 27 (66%) of 41 patients had been exposed to Huanan seafood market. One family cluster was found. Common symptoms at onset of illness were fever (40 [98%] of 41 patients), cough (31 [76%]), and myalgia or fatigue (18 [44%]); less common symptoms were sputum production (11 [28%] of 39), headache (three [8%] of 38), haemoptysis (two [5%] of 39), and diarrhoea (one [3%] of 38). Dyspnoea developed in 22 (55%) of 40 patients (median time from illness onset to dyspnoea 8·0 days [IQR 5·0–13·0]). 26 (63%) of 41 patients had lymphopenia. All 41 patients had pneumonia with abnormal findings on chest CT. Complications included acute respiratory distress syndrome (12 [29%]), RNAaemia (six [15%]), acute cardiac injury (five [12%]) and secondary infection (four [10%]). 13 (32%) patients were admitted to an ICU and six (15%) died. Compared with non-ICU patients, ICU patients had higher plasma levels of IL2, IL7, IL10, GSCF, IP10, MCP1, MIP1A, and TNFα.\nThe 2019-nCoV infection caused clusters of severe respiratory illness similar to severe acute respiratory syndrome coronavirus and was associated with ICU admission and high mortality. Major gaps in our knowledge of the origin, epidemiology, duration of human transmission, and clinical spectrum of disease need fulfilment by future studies.\nMinistry of Science and Technology, Chinese Academy of Medical Sciences, National Natural Science Foundation of China, and Beijing Municipal Science and Technology Commission.",
+      "publication_info": {
+       "summary": "C Huang, Y Wang, X Li, L Ren, J Zhao, Y Hu, L Zhang, G Fan, J Xu, X Gu, Z Cheng, T Yu…The lancet, 2020•thelancet.com",
+       "authors": [
+        {
+         "name": "C Huang"
+        },
+        {
+         "name": "Y Wang"
+        },
+        {
+         "name": "X Li"
+        },
+        {
+         "name": "L Ren"
+        },
+        {
+         "name": "J Zhao"
+        },
+        {
+         "name": "Y Hu"
+        },
+        {
+         "name": "L Zhang"
+        },
+        {
+         "name": "G Fan"
+        },
+        {
+         "name": "J Xu"
+        },
+        {
+         "name": "X Gu"
+        },
+        {
+         "name": "Z Cheng"
+        },
+        {
+         "name": "T Yu"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 67433
+       },
+       "versions": {
+        "total": 69
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "Common risk factors in the returns on stocks and bonds author:\"Fama\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9ac8d42f8842552b9cf",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:32 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "Common risk factors in the returns on stocks and bonds author:\"Fama\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Common risk factors in the returns on stocks and bonds",
+      "result_id": "eVu0yD_s9KsJ",
+      "link": "https://www.sciencedirect.com/science/article/pii/0304405X93900235",
+      "snippet": "This paper identifies five common risk factors in the returns on stocks and bonds. There are three stock-market factors: an overall market factor and factors related to firm size and book-to-market equity. There are two bond-market factors, related to maturity and default risks. Stock returns have shared variation due to the stock-market factors, and they are linked to bond returns through shared variation in the bond-market factors. Except for low-grade corporates, the bond-market factors capture the common variation in bond returns. Most important, the five factors seem to explain average returns on stocks and bonds.",
+      "publication_info": {
+       "summary": "EF Fama, KR FrenchJournal of financial economics, 1993•Elsevier",
+       "authors": [
+        {
+         "name": "EF Fama"
+        },
+        {
+         "name": "KR French"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 37962
+       },
+       "versions": {
+        "total": 34
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "Deep residual learning for visual image recognition tasks author:\"He\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9ab1266d73edf3abbf6",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:31 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "Deep residual learning for visual image recognition tasks author:\"He\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Deep residual learning for image recognition",
+      "result_id": "LrPNPdmMzoAJ",
+      "link": "https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html",
+      "snippet": "… Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. …",
+      "publication_info": {
+       "summary": "K He, X Zhang, S Ren, J Sun - … vision and pattern recognition, 2016 - cv-foundation.org",
+       "authors": [
+        {
+         "name": "K He"
+        },
+        {
+         "name": "X Zhang"
+        },
+        {
+         "name": "S Ren"
+        },
+        {
+         "name": "J Sun"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 344109
+       },
+       "versions": {
+        "total": 42
+       }
+      }
+     },
+     {
+      "position": 2,
+      "title": "Identity mappings in deep residual networks",
+      "result_id": "1RdHaA3Rx8IJ",
+      "link": "https://link.springer.com/chapter/10.1007/978-3-319-46493-0_38",
+      "snippet": "… In this paper, we analyze deep residual networks by focusing on creating a “direct” path for propagating information—not only within a residual unit, but through the entire network. Our …",
+      "publication_info": {
+       "summary": "K He, X Zhang, S Ren, J Sun - European conference on computer vision, 2016 - Springer",
+       "authors": [
+        {
+         "name": "K He"
+        },
+        {
+         "name": "X Zhang"
+        },
+        {
+         "name": "S Ren"
+        },
+        {
+         "name": "J Sun"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 15888
+       },
+       "versions": {
+        "total": 8
+       }
+      }
+     },
+     {
+      "position": 3,
+      "title": "Aggregated residual transformations for deep neural networks",
+      "result_id": "dIUM0OjWAaUJ",
+      "link": "https://ieeexplore.ieee.org/abstract/document/8100117/",
+      "snippet": "… -class ImageNet classification task [33]. We follow [14] to construct 50-layer and 101-layer residual networks. We … Deep residual learning for image recognition. In CVPR, 2016. [15] K. …",
+      "publication_info": {
+       "summary": "…, R Girshick, P Dollár, Z Tu, K He - … and pattern recognition …, 2017 - ieeexplore.ieee.org",
+       "authors": [
+        {
+         "name": ""
+        },
+        {
+         "name": "R Girshick"
+        },
+        {
+         "name": "P Dollár"
+        },
+        {
+         "name": "Z Tu"
+        },
+        {
+         "name": "K He"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 17399
+       },
+       "versions": {
+        "total": 9
+       }
+      }
+     },
+     {
+      "position": 4,
+      "title": "Deep residual learning",
+      "result_id": "GlOy8AWg-RsJ",
+      "link": "http://web.cs.ucdavis.edu/~yjlee/teaching/ecs289g-fall2016/xiaoyun.pdf",
+      "snippet": "3x3 conv, 64 3x3 conv, 64, pool/2 3x3 conv, 128 3x3 conv, 128, pool/2 3x3 conv, 256 3x3 conv, 256 3x3 conv, 256 3x3 conv, 256, pool/2 3x3 conv, 512 3x3 conv, 512 3x3 conv, 512 3x3 …",
+      "publication_info": {
+       "summary": "K He, X Zhang, S Ren, J Sun - IEEE TPAMI, 2017 - cs.ucdavis.edu",
+       "authors": [
+        {
+         "name": "K He"
+        },
+        {
+         "name": "X Zhang"
+        },
+        {
+         "name": "S Ren"
+        },
+        {
+         "name": "J Sun"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 11
+       },
+       "versions": {
+        "total": 4
+       }
+      }
+     },
+     {
+      "position": 5,
+      "title": "Lorentzian residual neural networks",
+      "result_id": "ejNu-aIOLRkJ",
+      "link": "https://dl.acm.org/doi/abs/10.1145/3690624.3709292",
+      "snippet": "… In Figure 1, we show the visualization of LResNet and two of … Lorentzian Residual Networks (LResNet), a residual neural … Deep residual learning for image recognition. In CVPR. 770–…",
+      "publication_info": {
+       "summary": "N He, M Yang, R Ying - Proceedings of the 31st ACM SIGKDD …, 2025 - dl.acm.org",
+       "authors": [
+        {
+         "name": "N He"
+        },
+        {
+         "name": "M Yang"
+        },
+        {
+         "name": "R Ying"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 40
+       },
+       "versions": {
+        "total": 4
+       }
+      }
+     },
+     {
+      "position": 6,
+      "title": "Pulmonary nodule classification with deep residual networks",
+      "result_id": "6ZltK0Rc-10J",
+      "link": "https://link.springer.com/article/10.1007/s11548-017-1605-6",
+      "snippet": "… art rival convolutional neural network [19], and (3) an OverFeat network [18] which has proven performance in other image classification tasks. The best variant of our system achieved a …",
+      "publication_info": {
+       "summary": "A Nibali, Z He, D Wollersheim - … journal of computer assisted radiology and …, 2017 - Springer",
+       "authors": [
+        {
+         "name": "A Nibali"
+        },
+        {
+         "name": "Z He"
+        },
+        {
+         "name": "D Wollersheim"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 352
+       },
+       "versions": {
+        "total": 6
+       }
+      }
+     },
+     {
+      "position": 7,
+      "title": "Spatial residual for underwater object detection",
+      "result_id": "CBdsaC-v0SUJ",
+      "link": "https://ieeexplore.ieee.org/abstract/document/10916506/",
+      "snippet": "… ing network depth, often through deep residual networks (ResNet). These networks use the … Sun, “Deep residual learning for image recognition,” in Proceedings of the IEEE conference …",
+      "publication_info": {
+       "summary": "J Zhou, Z He, D Zhang, S Liu, X Fu… - … Transactions on Pattern …, 2025 - ieeexplore.ieee.org",
+       "authors": [
+        {
+         "name": "J Zhou"
+        },
+        {
+         "name": "Z He"
+        },
+        {
+         "name": "D Zhang"
+        },
+        {
+         "name": "S Liu"
+        },
+        {
+         "name": "X Fu"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 107
+       },
+       "versions": {
+        "total": 5
+       }
+      }
+     },
+     {
+      "position": 8,
+      "title": "Sketch recognition with deep visual-sequential fusion model",
+      "result_id": "tXcGuOOUOFoJ",
+      "link": "https://dl.acm.org/doi/abs/10.1145/3123266.3123321",
+      "snippet": "… to extract the visual features of sketches. Due to the impressive performance and the exibility of network con guration, residual networks are adopted in each branch. ese deep features …",
+      "publication_info": {
+       "summary": "JY He, X Wu, YG Jiang, B Zhao, Q Peng - Proceedings of the 25th ACM …, 2017 - dl.acm.org",
+       "authors": [
+        {
+         "name": "JY He"
+        },
+        {
+         "name": "X Wu"
+        },
+        {
+         "name": "YG Jiang"
+        },
+        {
+         "name": "B Zhao"
+        },
+        {
+         "name": "Q Peng"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 41
+       },
+       "versions": {
+        "total": 2
+       }
+      }
+     },
+     {
+      "position": 9,
+      "title": "Robust 3D Image Recognition via Fractional-Order Laguerre Moments and Deep Residual Networks",
+      "result_id": "knYNzYeHi5EJ",
+      "link": "https://journals.sagepub.com/doi/pdf/10.3233/FAIA419#page=145",
+      "snippet": "… in end-to-end learning. To address this issue, we propose a 3D image recognition method that embeds an FLMs-based feature enhancement module into a residual network (ResNet). …",
+      "publication_info": {
+       "summary": "…, C Lu, G Lin, J Wang, B He - Artificial Intelligence and …, 2026 - journals.sagepub.com",
+       "authors": [
+        {
+         "name": ""
+        },
+        {
+         "name": "C Lu"
+        },
+        {
+         "name": "G Lin"
+        },
+        {
+         "name": "J Wang"
+        },
+        {
+         "name": "B He"
+        }
+       ]
+      },
+      "inline_links": {
+       "versions": {
+        "total": 4
+       }
+      }
+     },
+     {
+      "position": 10,
+      "title": "Visual detection application of lightweight convolution and deep residual networks in wood production",
+      "result_id": "9KU7Z6jgtCkJ",
+      "link": "https://onlinelibrary.wiley.com/doi/abs/10.1155/2022/9465433",
+      "snippet": "… Based on the above results, the validity of the production process improvement model proposed by US based on lightweight convolution and deep residual network is demonstrated. …",
+      "publication_info": {
+       "summary": "Z Chen, Z He, B Chao, H Guo - Wireless Communications and …, 2022 - Wiley Online Library",
+       "authors": [
+        {
+         "name": "Z Chen"
+        },
+        {
+         "name": "Z He"
+        },
+        {
+         "name": "B Chao"
+        },
+        {
+         "name": "H Guo"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 7
+       },
+       "versions": {
+        "total": 2
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "params": {
+    "engine": "google_scholar",
+    "q": "Receiver operating characteristic (ROC) curve for medical researchers author:\"Agarwal\"",
+    "hl": "en",
+    "num": "10"
+   },
+   "response": {
+    "search_metadata": {
+     "id": "6ac8a9a8c0d7a33e4d2fdc1c",
+     "status": "Success",
+     "created_at": "2026-10-09 08:45:28 UTC"
+    },
+    "search_parameters": {
+     "engine": "google_scholar",
+     "q": "Receiver operating characteristic (ROC) curve for medical researchers author:\"Agarwal\"",
+     "hl": "en",
+     "num": "10"
+    },
+    "organic_results": [
+     {
+      "position": 1,
+      "title": "Cut‐off values of serum IgE (total and A. fumigatus ‐specific) and eosinophil count in differentiating allergic bronchopulmonary aspergillosis from asthma",
+      "result_id": "PxNKxiWWPpkJ",
+      "link": "https://onlinelibrary.wiley.com/doi/abs/10.1111/myc.12214",
+      "snippet": "… and asthma using receiver operating characteristic analysis. … offs proposed, using cohort studies from other centres as these … Further studies from different centres are required to confirm …",
+      "publication_info": {
+       "summary": "R Agarwal, AN Aggarwal, M Garg, B Saikia… - Mycoses, 2014 - Wiley Online Library",
+       "authors": [
+        {
+         "name": "R Agarwal"
+        },
+        {
+         "name": "AN Aggarwal"
+        },
+        {
+         "name": "M Garg"
+        },
+        {
+         "name": "B Saikia"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 95
+       },
+       "versions": {
+        "total": 9
+       }
+      }
+     },
+     {
+      "position": 2,
+      "title": "Diagnostic accuracy and safety of semirigid thoracoscopy in exudative pleural effusions: a meta-analysis",
+      "result_id": "wINcqSCDhO8J",
+      "link": "https://www.sciencedirect.com/science/article/pii/S0012369215486969",
+      "snippet": "… the curve for the summary receiver operating characteristic … Medical thoracoscopy with the rigid thoracoscope can be … for this study as this was a meta-analysis of published studies. …",
+      "publication_info": {
+       "summary": "R Agarwal, AN Aggarwal, D Gupta - Chest, 2013 - Elsevier",
+       "authors": [
+        {
+         "name": "R Agarwal"
+        },
+        {
+         "name": "AN Aggarwal"
+        },
+        {
+         "name": "D Gupta"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 164
+       },
+       "versions": {
+        "total": 4
+       }
+      }
+     },
+     {
+      "position": 3,
+      "title": "Diagnosing hypertension by intradialytic blood pressure recordings",
+      "result_id": "UdoKcvLps38J",
+      "link": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2518788/",
+      "snippet": "… constructed receiver-operating characteristic (ROC) curves to … Receiver operating-characteristic (ROC) curves for median … BP, there are no studies reported to our knowledge to assess …",
+      "publication_info": {
+       "summary": "R Agarwal, T Metiku, GG Tegegne… - Clinical journal of …, 2008 - pmc.ncbi.nlm.nih.gov",
+       "authors": [
+        {
+         "name": "R Agarwal"
+        },
+        {
+         "name": "T Metiku"
+        },
+        {
+         "name": "GG Tegegne"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 111
+       },
+       "versions": {
+        "total": 16
+       }
+      }
+     },
+     {
+      "position": 4,
+      "title": "Effectiveness of four ultrasonographic parameters as predictors of difficult intubation in patients without anticipated difficult airway",
+      "result_id": "KLQG_Amj0NMJ",
+      "link": "https://synapse.koreamed.org/articles/1156413",
+      "snippet": "… This clinical research was done following the ethical principles for medical research involving human … Receiver operating characteristic curves (AE) showing the usefulness of combined …",
+      "publication_info": {
+       "summary": "R Agarwal, G Jain, A Agarwal… - Korean journal of …, 2021 - synapse.koreamed.org",
+       "authors": [
+        {
+         "name": "R Agarwal"
+        },
+        {
+         "name": "G Jain"
+        },
+        {
+         "name": "A Agarwal"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 50
+       },
+       "versions": {
+        "total": 14
+       }
+      }
+     },
+     {
+      "position": 5,
+      "title": "Validation of Boey's score in predicting morbidity and mortality in peptic perforation peritonitis in Northwestern India",
+      "result_id": "BhrrzaYzQnwJ",
+      "link": "https://journals.lww.com/tg/abstract/2015/10000/validation_of_boey_s_score_in_predicting_morbidity.7.aspx",
+      "snippet": "… observational single centre study conducted at SMS Medical College and Hospital, Jaipur, … Receiver–operating characteristic (ROC) curve analysis demonstrated high predictive value …",
+      "publication_info": {
+       "summary": "A Agarwal, S Jain, LN Meena, SA Jain… - Tropical …, 2015 - journals.lww.com",
+       "authors": [
+        {
+         "name": "A Agarwal"
+        },
+        {
+         "name": "S Jain"
+        },
+        {
+         "name": "LN Meena"
+        },
+        {
+         "name": "SA Jain"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 30
+       },
+       "versions": {
+        "total": 7
+       }
+      }
+     },
+     {
+      "position": 6,
+      "title": "A novel block imaging technique using nine artificial intelligence models for COVID-19 disease classification, characterization and severity measurement in lung …",
+      "result_id": "_JIkEWNylMkJ",
+      "link": "https://link.springer.com/article/10.1007/s10916-021-01707-w",
+      "snippet": "… Several research studies describe the process of identifying COVID-19 based on CT scan … Receiver operating characteristics curve Receiver Operating Characteristics curve shows the …",
+      "publication_info": {
+       "summary": "M Agarwal, L Saba, SK Gupta, A Carriero… - Journal of Medical …, 2021 - Springer",
+       "authors": [
+        {
+         "name": "M Agarwal"
+        },
+        {
+         "name": "L Saba"
+        },
+        {
+         "name": "SK Gupta"
+        },
+        {
+         "name": "A Carriero"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 91
+       },
+       "versions": {
+        "total": 16
+       }
+      }
+     },
+     {
+      "position": 7,
+      "title": "Evaluation of probability of survival using APACHE II & TRISS method in orthopaedic polytrauma patients in a tertiary care centre",
+      "result_id": "EtRWYCA0cSUJ",
+      "link": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4573005/",
+      "snippet": "… After the approval of research committee of the institution, medical records of orthopaedic … results: In the receiver operating characteristic curve analysis, the areas under the curve for …",
+      "publication_info": {
+       "summary": "A Agarwal, A Agrawal… - … and Diagnostic Research …, 2015 - pmc.ncbi.nlm.nih.gov",
+       "authors": [
+        {
+         "name": "A Agarwal"
+        },
+        {
+         "name": "A Agrawal"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 22
+       },
+       "versions": {
+        "total": 6
+       }
+      }
+     },
+     {
+      "position": 8,
+      "title": "Utility of transient elastography (fibroscan) and impact of bariatric surgery on nonalcoholic fatty liver disease (NAFLD) in morbidly obese patients",
+      "result_id": "NZsf28xpDdwJ",
+      "link": "https://www.sciencedirect.com/science/article/pii/S1550728917304070",
+      "snippet": "… steatosis was calculated using receiver operating characteristic (ROC) curve. The optimal cut-off … Our study was not designed to answer this question, and further studies are needed to …",
+      "publication_info": {
+       "summary": "…, R Yadav, SD Gupta, L Agarwal, S Agarwal - Surgery for Obesity and …, 2018 - Elsevier",
+       "authors": [
+        {
+         "name": ""
+        },
+        {
+         "name": "R Yadav"
+        },
+        {
+         "name": "SD Gupta"
+        },
+        {
+         "name": "L Agarwal"
+        },
+        {
+         "name": "S Agarwal"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 132
+       },
+       "versions": {
+        "total": 5
+       }
+      }
+     },
+     {
+      "position": 9,
+      "title": "Prediction of incident heart failure in general practice: the Atherosclerosis Risk in Communities (ARIC) Study",
+      "result_id": "EQr8ALOr0wYJ",
+      "link": "https://www.ahajournals.org/doi/abs/10.1161/CIRCHEARTFAILURE.111.964841",
+      "snippet": "… from laboratory panels and electronic medical records. … as area under the receiver operating characteristic curve (AUC) … impact of risk estimation tools and research in this area will be …",
+      "publication_info": {
+       "summary": "SK Agarwal, LE Chambless, CM Ballantyne… - Circulation: Heart …, 2012 - ahajournals.org",
+       "authors": [
+        {
+         "name": "SK Agarwal"
+        },
+        {
+         "name": "LE Chambless"
+        },
+        {
+         "name": "CM Ballantyne"
+        }
+       ]
+      },
+      "inline_links": {
+       "cited_by": {
+        "total": 337
+       },
+       "versions": {
+        "total": 12
+       }
+      }
+     },
+     {
+      "position": 10,
+      "title": "Diagnostic Accuracy of a Triple-Marker Panel (CA-125, ApoA1, and ApoB) for Epithelial Ovarian Carcinoma: A. Agarwal et al.",
+      "result_id": "E3TvrgwUYzQJ",
+      "link": "https://link.springer.com/article/10.1007/s13224-026-02428-1",
+      "snippet": "… Diagnostic performance was assessed using receiver operating characteristic (ROC) curves… confidential patient information derived from institutional medical records. Any data shared …",
+      "publication_info": {
+       "summary": "A Agarwal, V Jakhar, S Chohan, RP Singh… - The Journal of Obstetrics …, 2026 - Springer",
+       "authors": [
+        {
+         "name": "A Agarwal"
+        },
+        {
+         "name": "V Jakhar"
+        },
+        {
+         "name": "S Chohan"
+        },
+        {
+         "name": "RP Singh"
+        }
+       ]
+      },
+      "inline_links": {
+       "versions": {
+        "total": 3
+       }
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

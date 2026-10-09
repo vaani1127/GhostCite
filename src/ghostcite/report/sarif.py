@@ -17,6 +17,7 @@ from ghostcite.models import ReferenceResult, Report, Verdict
 
 SARIF_SCHEMA = "https://json.schemastore.org/sarif-2.1.0.json"
 FINGERPRINT_KEY = "ghostciteCitation/v1"
+PROJECT_URL = "https://github.com/vaani1127/GhostCite"
 
 
 @dataclass(frozen=True, slots=True)
@@ -127,6 +128,7 @@ def render_sarif(report: Report, artifact_uri: str) -> str:
                 "tool": {
                     "driver": {
                         "name": "GhostCite",
+                        "informationUri": PROJECT_URL,
                         "version": report.tool_version,
                         "semanticVersion": report.tool_version,
                         "rules": rules,

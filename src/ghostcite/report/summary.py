@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 
-from ghostcite.models import ReferenceResult, Report, Verdict
+from ghostcite.models import ReferenceResult, Report, RunMode, Verdict
+
+MODE_LABELS: dict[RunMode, str] = {
+    RunMode.LIVE: "Live (Google Scholar via SerpApi)",
+    RunMode.OFFLINE: "Offline (local cache only)",
+    RunMode.DEMO: "Demo (recorded results)",
+}
 
 VERDICT_LABELS: dict[Verdict, str] = {
     Verdict.VERIFIED: "Verified",

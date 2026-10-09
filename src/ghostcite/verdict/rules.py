@@ -95,7 +95,7 @@ def _join(words: Sequence[str]) -> str:
     return f"{', '.join(words[:-1])} and {words[-1]}"
 
 
-def _verified_reason(match: MatchResult) -> str:
+def _verified_reason(match: MatchResult, book: bool) -> str:
     agreeing = ["title"] + [
         name.value
         for name in _JUDGED_FIELDS
@@ -123,7 +123,8 @@ def _verified_reason(match: MatchResult) -> str:
     if _status(match, FieldName.YEAR) is FieldStatus.PARTIAL:
         year = match.field(FieldName.YEAR)
         found = year.found if year is not None else "?"
-        reason += f"; Scholar lists {found}, likely the preprint or published version"
+        kind = "another edition or reprint" if book else "the preprint or published version"
+        reason += f"; Scholar lists {found}, likely {kind}"
     return reason + "."
 
 
@@ -153,7 +154,8 @@ def decide(
             if (f := best.field(name)) and f.status is FieldStatus.MISMATCH
         ]
         if not differences:
-            return Decision(Verdict.VERIFIED, best.confidence, _verified_reason(best))
+            book = fields.entry_type in match_cfg.edition_entry_types
+            return Decision(Verdict.VERIFIED, best.confidence, _verified_reason(best, book))
         confidence = (
             min(title, match_cfg.fallback_confidence_cap)
             if best.candidate.engine is Engine.GOOGLE

@@ -11,6 +11,7 @@ from ghostcite.models import Author, Engine, ParsedFields
 from ghostcite.search.parsers.google import parse_google
 from ghostcite.search.parsers.scholar import parse_scholar
 from ghostcite.search.planner import Strategy, plan_queries
+from ghostcite.search.sanitize import trim_response
 from tests.conftest import FIXTURES
 
 SERPAPI = FIXTURES / "serpapi"
@@ -25,6 +26,9 @@ def test_every_fixture_documents_its_request() -> None:
     names = sorted(path.stem for path in SERPAPI.glob("*.json"))
     assert names == [
         "google_fallback_book",
+        "scholar_bullet_layout_mononym",
+        "scholar_bullet_layout_profile_author",
+        "scholar_bullet_layout_truncated_authors",
         "scholar_exact_attention",
         "scholar_exact_fabricated",
         "scholar_exact_resnet",
@@ -119,3 +123,61 @@ def test_fixtures_match_what_the_planner_sends_today(
 ) -> None:
     planned = next(q for q in plan_queries(fields) if q.strategy is strategy)
     assert planned.params == _fixture(name)["params"]
+
+
+@pytest.mark.parametrize(
+    ("name", "authors", "truncated", "venue", "year", "source"),
+    [
+        (
+            "scholar_bullet_layout_profile_author",
+            ("FD Davis",),
+            False,
+            "MIS quarterly",
+            1989,
+            "JSTOR",
+        ),
+        (
+            "scholar_bullet_layout_truncated_authors",
+            None,
+            True,
+            "The lancet",
+            2020,
+            "thelancet.com",
+        ),
+        (
+            "scholar_bullet_layout_mononym",
+            ("Bose",),
+            False,
+            "Zeitschrift für Physik",
+            1924,
+            "Springer",
+        ),
+    ],
+)
+def test_bullet_layout_is_parsed(
+    name: str,
+    authors: tuple[str, ...] | None,
+    truncated: bool,
+    venue: str,
+    year: int,
+    source: str,
+) -> None:
+    fixture = _fixture(name)
+    top = parse_scholar(fixture["response"], fixture["params"]["q"])[0]
+    if authors is not None:
+        assert top.authors == authors
+    assert top.authors_truncated is truncated
+    assert (top.venue, top.year, top.source) == (venue, year, source)
+
+
+@pytest.mark.parametrize("path", sorted(SERPAPI.glob("*.json")), ids=lambda p: p.stem)
+def test_trimmed_responses_parse_identically(path: Any) -> None:
+    fixture = json.loads(path.read_text(encoding="utf-8"))
+    query = fixture["params"]["q"]
+    parse = parse_google if fixture["params"]["engine"] == "google" else parse_scholar
+    full = parse(fixture["response"], query)
+    trimmed = parse(trim_response(fixture["response"]), query)
+    assert trimmed == full
+    assert len(json.dumps(trim_response(fixture["response"]))) <= len(
+        json.dumps(fixture["response"])
+    )

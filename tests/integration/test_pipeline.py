@@ -60,9 +60,10 @@ def test_live_run_gives_the_expected_verdicts(cache: SqliteCache) -> None:
     assert book.confidence <= 0.7
     assert "Google web search" in book.reason
 
-    # 1 + 1 + 0 (identical first query, served from GhostCite's cache) + 2 + 3 live calls.
-    assert len(transport.calls) == 7
-    assert report.summary.credits_used == 7
+    # 1 + 1 + 1 (the wrong-year citation's first query is shared with reference 1 and
+    # cached; its year disagrees, so the title + author query also runs) + 2 + 3.
+    assert len(transport.calls) == 8
+    assert report.summary.credits_used == 8
     assert report.summary.counts[Verdict.VERIFIED] == 3
     assert report.summary.integrity_score == pytest.approx(70.0)
 
@@ -238,3 +239,10 @@ def test_wrong_year_on_a_versioned_paper_mentions_the_versions(cache: SqliteCach
     assert result.reason.endswith(
         "(Google Scholar lists this work with 20 versions; this may be a different version.)"
     )
+
+
+def test_citations_differing_only_in_venue_are_not_duplicates() -> None:
+    real = load_text(
+        numbered(ATTENTION, ATTENTION.replace("NeurIPS", "Journal of Imaginary Robotics"))
+    ).references
+    assert dedupe_key(real[0]) != dedupe_key(real[1])

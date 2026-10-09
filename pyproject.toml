@@ -61,8 +61,17 @@ dev = [
 [project.scripts]
 ghostcite = "ghostcite.cli:main"
 
+[project.urls]
+Homepage = "https://github.com/vaani1127/GhostCite"
+Issues = "https://github.com/vaani1127/GhostCite/issues"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/ghostcite"]
+
+# The samples and the demo bundle ship inside the package, so `ghostcite check --demo` and
+# the web UI's sample button work from a plain `pip install` too.
+[tool.hatch.build.targets.wheel.force-include]
+"samples" = "ghostcite/_samples"
 
 [tool.hatch.build.targets.sdist]
 include = ["src/ghostcite", "tests", "README.md", "LICENSE", "CHANGELOG.md"]
@@ -110,7 +119,7 @@ convention = "google"
 python_version = "3.11"
 strict = true
 mypy_path = "src"
-files = ["src", "tests", "scripts", "tasks.py"]
+files = ["src", "tests", "scripts", "eval", "tasks.py"]
 plugins = ["pydantic.mypy"]
 warn_unreachable = true
 

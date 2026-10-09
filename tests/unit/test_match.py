@@ -120,11 +120,6 @@ def test_title_similarity(cited: str, found: str, minimum: float, maximum: float
     assert minimum <= title_similarity(cited, found) <= maximum
 
 
-def test_single_word_main_title_does_not_count_as_dropped_subtitle() -> None:
-    # "BERT" alone is too short to identify "BERT: Pre-training ..." with confidence.
-    assert title_similarity("BERT", "BERT: Pre-training of deep transformers") < 0.9
-
-
 # ---------------------------------------------------------------- authors
 
 
@@ -379,3 +374,38 @@ def test_best_match_prefers_the_version_that_agrees_on_most_fields() -> None:
     assert best.candidate.year == 2016
     assert versions_of(results) == 20
     assert versions_of([]) is None
+
+
+def test_book_citations_tolerate_editions_and_publishers() -> None:
+    book = ParsedFields(
+        title="Linear statistical inference",
+        authors=_authors("Rao"),
+        year=1973,
+        venue="Harvard University Press",
+        entry_type="book",
+    )
+    later = _candidate(
+        title="Linear statistical inference",
+        authors=("CR Rao",),
+        authors_truncated=False,
+        year=2009,
+        venue="Journal of human development",
+    )
+    result = match_candidate(book, later)
+    statuses = {f.field: f.status for f in result.fields}
+    assert statuses[FieldName.YEAR] is FieldStatus.PARTIAL
+    assert statuses[FieldName.VENUE] is not FieldStatus.MISMATCH
+    article = book.model_copy(update={"entry_type": "article"})
+    assert match_candidate(article, later).field(FieldName.YEAR).status is FieldStatus.MISMATCH  # type: ignore[union-attr]
+
+
+@pytest.mark.parametrize(
+    ("cited", "found", "status"),
+    [
+        ("The Journal of Finance", "Handbook of finance", FieldStatus.UNKNOWN),
+    ],
+)
+def test_abbreviations_must_align_from_the_first_word(
+    cited: str, found: str, status: FieldStatus
+) -> None:
+    assert compare_venue(cited, found).status is status

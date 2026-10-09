@@ -163,6 +163,10 @@ class MatchConfig:
     """Score for a year that is off by no more than ``year_tolerance``: probably the
     preprint and the published version, so it is not counted as fully equal."""
 
+    edition_entry_types: frozenset[str] = frozenset({"book"})
+    """Citation types whose year may legitimately differ from Scholar's (reprints and new
+    editions), and whose venue is a publisher rather than a journal."""
+
     year_tolerance: int = 1
     """Preprints and conference versions often appear a year before the journal version,
     so a difference of one year is not treated as a citation error."""

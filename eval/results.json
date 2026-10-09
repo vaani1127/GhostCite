@@ -1,0 +1,507 @@
+{
+  "runs": {
+    "tuning/text": {
+      "rows": 28,
+      "headline": {
+        "real": 19,
+        "fabricated": 9,
+        "false_alarms": 2,
+        "false_alarm_rate": 0.1053,
+        "verified_real": 17,
+        "unchecked_real": 0,
+        "detected": 9,
+        "detection_rate": 1.0,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 9,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.8182,
+        "recall": 1.0,
+        "f1": 0.9
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.6667,
+          "recall": 1.0,
+          "f1": 0.8
+        },
+        "METADATA_MISMATCH": {
+          "tp": 6,
+          "fp": 2,
+          "fn": 1,
+          "precision": 0.75,
+          "recall": 0.8571,
+          "f1": 0.8
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 17,
+          "METADATA_MISMATCH": 2,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 6,
+          "NOT_FOUND": 1,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 1,
+          "detected": 1,
+          "detection_rate": 1.0
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 6,
+        "fabricated": 0,
+        "false_alarms": 0,
+        "false_alarm_rate": 0.0,
+        "verified_real": 6,
+        "unchecked_real": 0,
+        "detected": 0,
+        "detection_rate": null,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "eco-jensen-1976",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 2019, not 1976; venue is Corporate governance, not Journal of Financial Economics. (Google Scholar lists this work with 31 versions; this may be a different version.)",
+          "parsed_title": "Theory of the firm: Managerial behavior, agency costs and ownership structure",
+          "best_match": "Theory of the firm: Managerial behavior, agency costs and ownership structure"
+        },
+        {
+          "id": "eco-markowitz-1952",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1955, not 1952. (Google Scholar lists this work with 54 versions; this may be a different version.)",
+          "parsed_title": "Portfolio selection",
+          "best_match": "Portfolio selection"
+        }
+      ],
+      "class_differences": [
+        {
+          "id": "fab-reword-breiman",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "NOT_FOUND",
+          "reason": "No Google Scholar record matches this title; the closest result was “Pilot study on epidemiology and socioeconomic factors related to malaria in endemic communities of Bangladesh” (39% similar)."
+        }
+      ],
+      "credits_used": 0,
+      "mode": "replay"
+    },
+    "tuning/bibtex": {
+      "rows": 28,
+      "headline": {
+        "real": 19,
+        "fabricated": 9,
+        "false_alarms": 2,
+        "false_alarm_rate": 0.1053,
+        "verified_real": 17,
+        "unchecked_real": 0,
+        "detected": 9,
+        "detection_rate": 1.0,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 9,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.8182,
+        "recall": 1.0,
+        "f1": 0.9
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.6667,
+          "recall": 1.0,
+          "f1": 0.8
+        },
+        "METADATA_MISMATCH": {
+          "tp": 6,
+          "fp": 2,
+          "fn": 1,
+          "precision": 0.75,
+          "recall": 0.8571,
+          "f1": 0.8
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 17,
+          "METADATA_MISMATCH": 2,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 6,
+          "NOT_FOUND": 1,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 1,
+          "detected": 1,
+          "detection_rate": 1.0
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 6,
+        "fabricated": 0,
+        "false_alarms": 0,
+        "false_alarm_rate": 0.0,
+        "verified_real": 6,
+        "unchecked_real": 0,
+        "detected": 0,
+        "detection_rate": null,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "eco-jensen-1976",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 2019, not 1976; venue is Corporate governance, not Journal of Financial Economics. (Google Scholar lists this work with 31 versions; this may be a different version.)",
+          "parsed_title": "Theory of the firm: Managerial behavior, agency costs and ownership structure",
+          "best_match": "Theory of the firm: Managerial behavior, agency costs and ownership structure"
+        },
+        {
+          "id": "eco-markowitz-1952",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1955, not 1952. (Google Scholar lists this work with 54 versions; this may be a different version.)",
+          "parsed_title": "Portfolio selection",
+          "best_match": "Portfolio selection"
+        }
+      ],
+      "class_differences": [
+        {
+          "id": "fab-reword-breiman",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "NOT_FOUND",
+          "reason": "No Google Scholar record matches this title; the closest result was “Pilot study on epidemiology and socioeconomic factors related to malaria in endemic communities of Bangladesh” (39% similar)."
+        }
+      ],
+      "credits_used": 0,
+      "mode": "replay"
+    },
+    "test/text": {
+      "rows": 39,
+      "headline": {
+        "real": 28,
+        "fabricated": 11,
+        "false_alarms": 1,
+        "false_alarm_rate": 0.0357,
+        "verified_real": 27,
+        "unchecked_real": 0,
+        "detected": 11,
+        "detection_rate": 1.0,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 11,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9167,
+        "recall": 1.0,
+        "f1": 0.9565
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "METADATA_MISMATCH": {
+          "tp": 9,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.9,
+          "recall": 1.0,
+          "f1": 0.9474
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 27,
+          "METADATA_MISMATCH": 1,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 9,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 3,
+          "detected": 3,
+          "detection_rate": 1.0
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 13,
+        "fabricated": 5,
+        "false_alarms": 0,
+        "false_alarm_rate": 0.0,
+        "verified_real": 13,
+        "unchecked_real": 0,
+        "detected": 5,
+        "detection_rate": 1.0,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "eco-akerlof-1970",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1978, not 1970. (Google Scholar lists this work with 46 versions; this may be a different version.)",
+          "parsed_title": "The market for “lemons”: Quality uncertainty and the market mechanism",
+          "best_match": "The market for “lemons”: Quality uncertainty and the market mechanism"
+        }
+      ],
+      "class_differences": [],
+      "credits_used": 0,
+      "mode": "replay"
+    },
+    "test/bibtex": {
+      "rows": 39,
+      "headline": {
+        "real": 28,
+        "fabricated": 11,
+        "false_alarms": 1,
+        "false_alarm_rate": 0.0357,
+        "verified_real": 27,
+        "unchecked_real": 0,
+        "detected": 11,
+        "detection_rate": 1.0,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 11,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9167,
+        "recall": 1.0,
+        "f1": 0.9565
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "METADATA_MISMATCH": {
+          "tp": 9,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.9,
+          "recall": 1.0,
+          "f1": 0.9474
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 27,
+          "METADATA_MISMATCH": 1,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 9,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 3,
+          "detected": 3,
+          "detection_rate": 1.0
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 13,
+        "fabricated": 5,
+        "false_alarms": 0,
+        "false_alarm_rate": 0.0,
+        "verified_real": 13,
+        "unchecked_real": 0,
+        "detected": 5,
+        "detection_rate": 1.0,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "eco-akerlof-1970",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1978, not 1970. (Google Scholar lists this work with 46 versions; this may be a different version.)",
+          "parsed_title": "The market for “lemons”: Quality uncertainty and the market mechanism",
+          "best_match": "The market for “lemons”: Quality uncertainty and the market mechanism"
+        }
+      ],
+      "class_differences": [],
+      "credits_used": 0,
+      "mode": "replay"
+    }
+  },
+  "seed": 20261009,
+  "dataset": {
+    "validated": 67,
+    "dropped": 0
+  }
+}

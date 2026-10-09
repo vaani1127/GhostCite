@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import json
 import threading
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Protocol
@@ -25,6 +25,7 @@ from pydantic import SecretStr
 from ghostcite.errors import GhostCiteError, InputError, SearchServiceError
 from ghostcite.redact import redact
 from ghostcite.search.cache import cache_key
+from ghostcite.search.sanitize import sanitize_response, trim_response
 
 NO_RESULTS_MESSAGE = "hasn't returned any results"
 """Fragment of SerpApi's ``error`` text for a successful search with zero results."""
@@ -181,15 +182,68 @@ class LiveTransport:
         raise failure from None
 
 
+class RecordingStore:
+    """A read-only view of a store that remembers every response it served.
+
+    Used to build committed replay bundles (the demo bundle, the evaluation responses)
+    from exactly the searches a run needed.
+    """
+
+    def __init__(self, store: ResponseStore) -> None:
+        self._store = store
+        self.served: dict[str, tuple[dict[str, str], dict[str, Any]]] = {}
+
+    def get(self, params: Mapping[str, str]) -> dict[str, Any] | None:
+        """Serve from the wrapped store and remember what was served."""
+        body = self._store.get(params)
+        if body is not None:
+            self.served[cache_key(params)] = (dict(params), body)
+        return body
+
+    def contains(self, params: Mapping[str, str]) -> bool:
+        """True when the wrapped store holds a response for ``params``."""
+        return self._store.contains(params)
+
+    def put(self, params: Mapping[str, str], response: Mapping[str, Any]) -> None:
+        """Refuse writes: recording must not change the underlying store."""
+        raise TypeError("A recording store is read-only.")
+
+    def entries(self) -> list[dict[str, Any]]:
+        """Served searches as ``{"params", "response"}`` entries, in a stable order."""
+        served = sorted(self.served.values(), key=lambda item: (item[0]["engine"], item[0]["q"]))
+        return [{"params": params, "response": body} for params, body in served]
+
+
+def bundle_payload(entries: Sequence[Mapping[str, Any]], generated: str) -> dict[str, Any]:
+    """A replay-bundle file: trimmed, sanitized responses with their readable parameters."""
+    return {
+        "format": DEMO_BUNDLE_FORMAT,
+        "generated": generated,
+        "entries": [
+            {
+                "params": dict(entry["params"]),
+                "response": sanitize_response(trim_response(dict(entry["response"]))),
+            }
+            for entry in entries
+        ],
+    }
+
+
 class DemoBundle:
     """Read-only store backed by the committed, sanitized responses in ``samples/demo_cache``.
 
-    It lets judges run GhostCite end to end without an API key. The bundle maps cache keys
-    to responses, so it answers exactly the queries the planner makes for the samples.
+    It lets judges run GhostCite end to end without an API key. The file lists each bundled
+    search as readable parameters plus the recorded response, so anyone can see exactly
+    which searches the demo replays. It is indexed by cache key when loaded.
     """
 
     def __init__(self, responses: Mapping[str, dict[str, Any]]) -> None:
         self._responses = dict(responses)
+
+    @classmethod
+    def from_entries(cls, entries: Sequence[Mapping[str, Any]]) -> DemoBundle:
+        """Index ``[{"params": {...}, "response": {...}}, ...]`` by cache key."""
+        return cls({cache_key(entry["params"]): dict(entry["response"]) for entry in entries})
 
     @classmethod
     def load(cls, path: Path) -> DemoBundle:
@@ -200,10 +254,15 @@ class DemoBundle:
             raise InputError(f"The demo bundle {path.name} could not be read: {exc}") from exc
         if not isinstance(payload, dict) or payload.get("format") != DEMO_BUNDLE_FORMAT:
             raise InputError(f"The demo bundle {path.name} has an unsupported format.")
-        responses = payload.get("responses")
-        if not isinstance(responses, dict):
-            raise InputError(f"The demo bundle {path.name} contains no responses.")
-        return cls(responses)
+        entries = payload.get("entries")
+        if not isinstance(entries, list) or not all(
+            isinstance(e, dict)
+            and isinstance(e.get("params"), dict)
+            and isinstance(e.get("response"), dict)
+            for e in entries
+        ):
+            raise InputError(f"The demo bundle {path.name} contains no usable entries.")
+        return cls.from_entries(entries)
 
     def __len__(self) -> int:
         return len(self._responses)

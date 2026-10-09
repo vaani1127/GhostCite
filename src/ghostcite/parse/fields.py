@@ -37,7 +37,8 @@ _QUOTED = re.compile(
     r"[\u201c\"\u00ab]\s*(?P<title>[^\u201d\"\u00bb]+?)\s*[,.]?\s*[\u201d\"\u00bb]"
 )
 _BOUNDARY = re.compile(r"[.?!](?=\s+\S|\s*$)")
-_AUTHOR_BREAK = re.compile(r"(?<=\S)[.:](?=\s+\S)")
+# Candidate ends of the author list: ". ", ": " and ", " ("J. Bhagwati, India in transition").
+_AUTHOR_BREAK = re.compile(r"(?<=\S)[.:,](?=\s+\S)")
 _VENUE_LEAD = re.compile(r"^(?:in\s*:|in\b)\s*", re.IGNORECASE)
 _VENUE_END = re.compile(
     r"(?:[,.;:]?\s*)(?:\(|\b(?:vol|volume|no|issue|pp|pages|chapter|ch)\b\.?|\d)", re.IGNORECASE
@@ -51,6 +52,18 @@ _ABBREVIATIONS = frozenset(
 )
 _BOOK_HINTS = re.compile(
     r"\b(?:press|publishers?|publishing|edition|ed\.|isbn|verlag|books?|springer\s+nature)\b",
+    re.IGNORECASE,
+)
+# Academic publishers whose bare name as the venue means a book.
+_PUBLISHER_ONLY = re.compile(
+    r"(?:john\s+)?wiley(?:\s*(?:&|and)\s*sons)?|springer(?:-verlag)?|routledge|sage|elsevier"
+    r"|pearson(?:\s+education)?|mcgraw[\s-]hill|prentice[\s-]hall|macmillan|penguin|crc|"
+    r"academic|addison[\s-]wesley|taylor\s*(?:&|and)\s*francis|mit|s\.?\s*chand|orient\s+blackswan"
+    r"|(?:\w+\s+){1,3}university",
+    re.IGNORECASE,
+)
+_JOURNAL_WORDS = re.compile(
+    r"\b(?:journal|review|transactions|proceedings|letters|quarterly|annals|bulletin|magazine)\b",
     re.IGNORECASE,
 )
 _THESIS_HINTS = re.compile(r"\b(?:thesis|dissertation|ph\.?\s?d\.?|m\.?\s?tech|master'?s)\b", re.I)
@@ -163,11 +176,21 @@ def _title_after_year(text: str, year: _Year | None) -> _Title | None:
         return None
     start = year.end + after.end()
     end = _sentence_end(text, start)
+    if "," in after.group():
+        # "Rao, C.R. (1973), Linear statistical inference, Wiley.": this style separates
+        # its parts with commas, so an unquoted title ends at the next one.
+        comma = text.find(", ", start, end)
+        end = comma if comma != -1 else end
     return _Title(text[start:end], start, end, len(lead), 0.85)
 
 
 def _title_after_authors(text: str) -> _Title | None:
-    """Take the longest prefix that is still a clean author list; the title follows it."""
+    """Take the longest prefix that is a clean author list; the title follows it.
+
+    Every candidate break is tried. A prefix can be briefly unclean in the middle of a
+    name ("R. K. Narayan, A" before "A. P. J. Abdul Kalam" is complete), while a prefix
+    that has swallowed title words never becomes a clean name list again.
+    """
     best: tuple[int, int] | None = None
     for match in _AUTHOR_BREAK.finditer(text):
         if match.start() > _MAX_AUTHOR_PREFIX_CHARS:
@@ -175,8 +198,6 @@ def _title_after_authors(text: str) -> _Title | None:
         authors = parse_authors(text[: match.start()])
         if authors.authors and authors.confidence == 1.0:
             best = (match.start(), match.end())
-        elif best is not None:
-            break
     if best is None:
         return None
     start = best[1] + len(text[best[1] :]) - len(text[best[1] :].lstrip())
@@ -229,10 +250,16 @@ def find_venue(after_title: str) -> str | None:
     return venue if len(venue) >= _MIN_VENUE_CHARS else None
 
 
-def guess_entry_type(text: str) -> str | None:
-    """Guess a BibTeX-like type for works Google Scholar indexes poorly (books, theses, reports)."""
+def guess_entry_type(text: str, venue: str | None = None) -> str | None:
+    """Guess a BibTeX-like type for works Google Scholar indexes poorly (books, theses, reports).
+
+    A venue that is only a publisher's name ("Wiley", "Routledge") marks a book, as long
+    as it contains no journal words, because publishers also name journals.
+    """
     if _THESIS_HINTS.search(text):
         return "phdthesis"
+    if venue and _PUBLISHER_ONLY.fullmatch(venue.strip()) and not _JOURNAL_WORDS.search(venue):
+        return "book"
     if _REPORT_HINTS.search(text):
         return "techreport"
     if _BOOK_HINTS.search(text):
@@ -270,7 +297,7 @@ def parse_fields(
         year=year.value if year else None,
         venue=venue,
         doi=doi,
-        entry_type=guess_entry_type(raw),
+        entry_type=guess_entry_type(raw, venue),
         confidence=ParseConfidence(
             title=title.confidence if title is not None else 0.0,
             authors=round(authors.confidence * 0.9, 3) if authors.authors else 0.0,

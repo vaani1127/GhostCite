@@ -1,0 +1,26 @@
+{
+ "status": "ok",
+ "message": {
+  "DOI": "10.2307/j.ctvjnrv7n",
+  "title": [
+   "The Idea of Justice"
+  ],
+  "author": [
+   {
+    "given": "AMARTYA",
+    "family": "SEN"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     2009,
+     9,
+     30
+    ]
+   ]
+  },
+  "container-title": [],
+  "type": "monograph"
+ }
+}

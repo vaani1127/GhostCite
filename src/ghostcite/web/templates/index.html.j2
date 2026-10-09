@@ -12,12 +12,18 @@
 <header class="top">
   <div>
     <p class="brand">GhostCite</p>
-    <p class="tagline">Catch hallucinated and wrong citations with live Google Scholar data.</p>
+    <p class="hero">LLM-written papers cite papers that do not exist. GhostCite checks every reference against live Google Scholar data.</p>
   </div>
   <button type="button" id="theme" class="ghost" aria-label="Switch between light and dark theme">Theme</button>
 </header>
 
 <main>
+  <ol class="steps" aria-label="How it works">
+    <li><span class="step-n" aria-hidden="true">1</span><div><strong>Parse references</strong><span>From a PDF, a .bib file or pasted text: authors, title, year and venue.</span></div></li>
+    <li><span class="step-n" aria-hidden="true">2</span><div><strong>Search Google Scholar via SerpApi</strong><span>Exact title first, then title plus author, with a Google fallback for books.</span></div></li>
+    <li><span class="step-n" aria-hidden="true">3</span><div><strong>Compare fields and explain</strong><span>Each verdict says which field differs from the real paper, and why.</span></div></li>
+  </ol>
+
   {% if not has_key %}
   <section class="banner" role="status">
     <strong>No API key found: demo mode only.</strong>
@@ -31,32 +37,48 @@
   {% endif %}
 
   <form id="check-form" class="card" novalidate>
-    <h1>Check a reference list</h1>
-    <div class="field">
-      <label for="file">Upload a PDF, .bib or .txt file <span class="muted">(max {{ (cfg.max_upload_bytes // 1048576) }} MiB)</span></label>
-      <input id="file" name="file" type="file" accept=".pdf,.bib,.txt,application/pdf,text/plain">
+    <div class="form-head">
+      <h1>Check a reference list</h1>
+      <div class="quick">
+        <button type="button" id="sample" class="secondary" {% if not demo_ready %}disabled aria-describedby="sample-hint"{% endif %}>Try the sample</button>
+        {% if demo_ready %}
+        <p class="hint">One click: a sample bibliography of real and fabricated references, checked against recorded results. No key, no credits.</p>
+        {% else %}
+        <p id="sample-hint" class="hint">Unavailable: the demo data is not installed. Build it with <code>python scripts/build_demo_bundle.py</code>.</p>
+        {% endif %}
+      </div>
     </div>
-    <p class="or" aria-hidden="true">or</p>
-    <div class="field">
-      <label for="text">Paste references (one per line, or a numbered list)</label>
-      <textarea id="text" name="text" rows="8" spellcheck="false" placeholder="[1] A. Vaswani et al., &ldquo;Attention is all you need,&rdquo; NeurIPS, 2017."></textarea>
+    <div class="inputs">
+      <div class="field">
+        <label for="file">Upload a PDF, .bib or .txt file <span class="muted">(max {{ (cfg.max_upload_bytes // 1048576) }} MiB)</span></label>
+        <input id="file" name="file" type="file" accept=".pdf,.bib,.txt,application/pdf,text/plain">
+      </div>
+      <p class="or" aria-hidden="true">or</p>
+      <div class="field">
+        <label for="text">Paste references (one per line, or a numbered list)</label>
+        <textarea id="text" name="text" rows="5" spellcheck="false" placeholder="[1] A. Vaswani et al., &ldquo;Attention is all you need,&rdquo; NeurIPS, 2017."></textarea>
+      </div>
     </div>
 
     <fieldset class="field">
       <legend>Search mode</legend>
-      <label class="choice">
-        <input type="radio" name="mode" value="live" {% if has_key %}checked{% else %}disabled{% endif %}>
-        <span><strong>Live</strong>: search Google Scholar through SerpApi, up to {{ cfg.per_job_search_cap }} searches per check. Results are cached, so repeats are free.</span>
+      <label class="choice{% if not has_key %} off{% endif %}">
+        <input type="radio" name="mode" value="live" {% if has_key %}checked{% else %}disabled aria-describedby="live-hint"{% endif %}>
+        <span><strong>Live</strong>: search Google Scholar through SerpApi, up to {{ cfg.per_job_search_cap }} searches per check. Results are cached, so repeats are free.
+        {% if not has_key %}<span id="live-hint" class="hint">Unavailable: no <code>SERPAPI_API_KEY</code> in <code>.env</code>.</span>{% endif %}</span>
       </label>
-      <label class="choice">
-        <input type="radio" name="mode" value="demo" {% if not has_key and demo_ready %}checked{% endif %} {% if not demo_ready %}disabled{% endif %}>
-        <span><strong>Demo</strong>: recorded results for the sample references; no key or credits needed.</span>
+      <label class="choice{% if not demo_ready %} off{% endif %}">
+        <input type="radio" name="mode" value="demo" {% if not has_key and demo_ready %}checked{% endif %} {% if not demo_ready %}disabled aria-describedby="demo-hint"{% endif %}>
+        <span><strong>Demo</strong>: recorded results for the sample references; no key or credits needed. With no file or text, the sample is checked.
+        {% if not demo_ready %}<span id="demo-hint" class="hint">Unavailable: the demo data is not installed.</span>{% endif %}</span>
       </label>
     </fieldset>
 
     <div class="actions">
-      <button type="submit" id="submit" {% if not has_key and not demo_ready %}disabled{% endif %}>Check citations</button>
-      <button type="button" id="sample" class="secondary" {% if not demo_ready %}disabled{% endif %}>Try the sample</button>
+      <button type="submit" id="submit" {% if not has_key and not demo_ready %}disabled aria-describedby="submit-hint"{% endif %}>Check citations</button>
+      {% if not has_key and not demo_ready %}
+      <p id="submit-hint" class="hint">Unavailable: add an API key, or install the demo data, to run a check.</p>
+      {% endif %}
     </div>
     <p id="error" class="error" role="alert" hidden></p>
   </form>

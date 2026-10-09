@@ -1,0 +1,84 @@
+{
+  "description": "Bullet layout (2026-10-09): author glued to venue, profile author listed.",
+  "strategy": "scholar_exact_title",
+  "params": {
+    "engine": "google_scholar",
+    "q": "\"Perceived usefulness, perceived ease of use, and user acceptance of information technology\"",
+    "hl": "en",
+    "num": "10"
+  },
+  "response": {
+    "search_metadata": {
+      "id": "6ac8a9a37ec029bacc369a8b",
+      "status": "Success",
+      "created_at": "2026-10-09 08:45:23 UTC",
+      "processed_at": "2026-10-09 08:45:23 UTC",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=%22Perceived+usefulness%2C+perceived+ease+of+use%2C+and+user+acceptance+of+information+technology%22&hl=en&num=10",
+      "total_time_taken": 1.59
+    },
+    "search_parameters": {
+      "engine": "google_scholar",
+      "q": "\"Perceived usefulness, perceived ease of use, and user acceptance of information technology\"",
+      "hl": "en",
+      "num": "10"
+    },
+    "search_information": {
+      "organic_results_state": "Results for exact spelling",
+      "query_displayed": "\"Perceived usefulness, perceived ease of use, and user acceptance of information technology\""
+    },
+    "profiles": {
+      "link": "https://scholar.google.com/scholar?lookup=0&q=%22Perceived+usefulness,+perceived+ease+of+use,+and+user+acceptance+of+information+technology%22&hl=en&as_sdt=0,42",
+      "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=%22Perceived+usefulness%2C+perceived+ease+of+use%2C+and+user+acceptance+of+information+technology%22"
+    },
+    "organic_results": [
+      {
+        "position": 1,
+        "title": "Perceived usefulness, perceived ease of use, and user acceptance of information technology",
+        "result_id": "SHjw9C4XSzoJ",
+        "link": "https://www.jstor.org/stable/249008",
+        "snippet": "Valid measurement scales for predicting user acceptance of computers are in short supply. Most subjective measures used in practice are unvalidated, and their relationship to system usage is unknown. The present research develops and validates new scales for two specific variables, perceived usefulness and perceived ease of use, which are hypothesized to be fundamental determinants of user acceptance. Definitions for these two variables were used to develop scale items that were pretested for content validity and then tested for reliability and construct validity in two studies involving a total of 152 users and four application programs. The measures were refined and stream-lined, resulting in two six-item scales with reliabilities of.98 for usefulness and.94 for ease of use. The scales exhibited high convergent, discriminant, and factorial validity. Perceived usefulness was significantly correlated with both self-reported current usage (r=.63, Study 1) and self-predicted future usage (r=.85, Study 2). Perceived ease of use was also significantly correlated with current usage (r=.45, Study 1) and future usage (r=.59, Study 2). In both studies, usefulness had a significantly greater correlation with usage behavior than did ease of use. Regression analyses suggest that perceived ease of use may actually be a causal antecedent to perceived usefulness, as opposed to a parallel, direct determinant of system usage. Implications are drawn for future research on user acceptance.",
+        "publication_info": {
+          "summary": "FD DavisMIS quarterly, 1989•JSTOR",
+          "authors": [
+            {
+              "name": "FD Davis",
+              "link": "https://scholar.google.com/citations?user=rKH2D8MAAAAJ&hl=en&oi=sra",
+              "author_id": "rKH2D8MAAAAJ",
+              "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=rKH2D8MAAAAJ&engine=google_scholar_author&hl=en"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "HTML",
+            "link": null
+          },
+          {
+            "title": "academia.edu",
+            "file_format": "HTML",
+            "link": "https://www.academia.edu/download/50364833/Perceived_Usefulness_Perceived_Ease-of-U20161116-16553-lszuux.pdf"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=SHjw9C4XSzoJ",
+          "html_version": "https://www.academia.edu/download/50364833/Perceived_Usefulness_Perceived_Ease-of-U20161116-16553-lszuux.pdf",
+          "cited_by": {
+            "total": 130389,
+            "link": "https://scholar.google.com/scholar?cites=4200476567898454088&as_sdt=5,42&sciodt=0,42&hl=en",
+            "cites_id": "4200476567898454088",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=5%2C42&cites=4200476567898454088&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:SHjw9C4XSzoJ:scholar.google.com/&scioq=%22Perceived+usefulness,+perceived+ease+of+use,+and+user+acceptance+of+information+technology%22&hl=en&as_sdt=0,42",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C42&engine=google_scholar&hl=en&num=10&q=related%3ASHjw9C4XSzoJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 22,
+            "link": "https://scholar.google.com/scholar?cluster=4200476567898454088&hl=en&as_sdt=0,42",
+            "cluster_id": "4200476567898454088",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C42&cluster=4200476567898454088&engine=google_scholar&hl=en"
+          }
+        }
+      }
+    ]
+  }
+}

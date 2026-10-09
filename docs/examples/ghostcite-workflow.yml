@@ -1,7 +1,7 @@
 # Example: check every .bib file in a repository on pull requests and pushes to main.
-# Copy to .github/workflows/ghostcite.yml in your own repository, add a repository secret
-# named SERPAPI_API_KEY, and replace OWNER/GhostCite with the repository that hosts
-# GhostCite (pin a release tag or commit SHA in production).
+# Copy to .github/workflows/ghostcite.yml in your own repository and add a repository
+# secret named SERPAPI_API_KEY. For production, pin a release tag or a commit SHA
+# instead of @main.
 name: Citation check
 
 on:
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: OWNER/GhostCite@main
+      - uses: vaani1127/GhostCite@main
         with:
           serpapi-api-key: ${{ secrets.SERPAPI_API_KEY }}
           files: "**/*.bib"

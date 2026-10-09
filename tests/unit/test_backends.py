@@ -16,12 +16,14 @@ from ghostcite.search.backends import (
     DEMO_BUNDLE_FORMAT,
     DemoBundle,
     LiveTransport,
+    RecordingStore,
     TransportError,
+    bundle_payload,
     check_body,
     http_failure,
     search_created_at,
 )
-from ghostcite.search.cache import cache_key
+from ghostcite.search.cache import SqliteCache
 from tests.conftest import FIXTURES
 
 SECRET = "0123456789abcdef" * 4  # gitleaks:allow (key-shaped placeholder, not a real key)
@@ -204,7 +206,7 @@ def test_demo_bundle_round_trip(tmp_path: Path) -> None:
     body = {"organic_results": [{"title": "T"}]}
     path = _write_bundle(
         tmp_path / "demo.json",
-        {"format": DEMO_BUNDLE_FORMAT, "responses": {cache_key(PARAMS): body}},
+        {"format": DEMO_BUNDLE_FORMAT, "entries": [{"params": PARAMS, "response": body}]},
     )
     bundle = DemoBundle.load(path)
     assert len(bundle) == 1
@@ -219,7 +221,8 @@ def test_demo_bundle_round_trip(tmp_path: Path) -> None:
     ("payload", "message"),
     [
         ({"format": 99, "responses": {}}, "unsupported format"),
-        ({"format": DEMO_BUNDLE_FORMAT, "responses": []}, "no responses"),
+        ({"format": DEMO_BUNDLE_FORMAT, "entries": "nope"}, "no usable entries"),
+        ({"format": DEMO_BUNDLE_FORMAT, "entries": [{"params": {}}]}, "no usable entries"),
         (["not", "an", "object"], "unsupported format"),
     ],
 )
@@ -269,3 +272,22 @@ def test_search_created_at(body: dict[str, Any], expected: datetime | None) -> N
 def test_created_at_format_matches_recorded_responses() -> None:
     fixture = json.loads((FIXTURES / "serpapi" / "scholar_exact_attention.json").read_text("utf-8"))
     assert search_created_at(fixture["response"]) is not None
+
+
+def test_recording_store_and_bundle_payload(tmp_path: Path) -> None:
+    with SqliteCache(tmp_path, 3600) as cache:
+        cache.put(PARAMS, {"organic_results": [{"title": "T", "extra": "dropped"}], "api_key": "x"})
+        store = RecordingStore(cache)
+        assert store.get({**PARAMS, "q": "missing"}) is None
+        assert store.get(PARAMS) is not None
+        assert store.contains(PARAMS)
+        with pytest.raises(TypeError, match="read-only"):
+            store.put(PARAMS, {})
+        payload = bundle_payload(store.entries(), "2026-10-09")
+    assert payload["format"] == DEMO_BUNDLE_FORMAT
+    [entry] = payload["entries"]
+    assert entry["params"] == PARAMS
+    assert entry["response"]["organic_results"] == [{"title": "T"}]
+    assert "api_key" not in json.dumps(payload)
+    bundle = DemoBundle.from_entries(payload["entries"])
+    assert bundle.get(PARAMS) == entry["response"]

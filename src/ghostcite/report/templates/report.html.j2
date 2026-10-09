@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:">
 <meta name="generator" content="GhostCite {{ report.tool_version }}">
 <title>GhostCite report: {{ report.source_name }}</title>
+<script>try { var t = localStorage.getItem("ghostcite-theme"); if (t) { document.documentElement.setAttribute("data-theme", t); } } catch (e) {}</script>
 <style>
   :root {
     --bg: #f7f7f9; --panel: #ffffff; --text: #1d1f24; --muted: #5b6070; --border: #dde0e6;
@@ -14,25 +15,47 @@
     --accent: #3451b2; --focus: #3451b2;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --bg: #13151a; --panel: #1b1e25; --text: #e7e9ee; --muted: #a2a8b6; --border: #2d323d;
       --ok: #7ee2a8; --ok-bg: #173826; --warn: #ffd27a; --warn-bg: #3d2f10;
       --bad: #ff9aa4; --bad-bg: #44191e; --neutral: #c9ceda; --neutral-bg: #2a2f3a;
       --accent: #9db1ff; --focus: #9db1ff;
     }
   }
+  :root[data-theme="dark"] {
+    --bg: #13151a; --panel: #1b1e25; --text: #e7e9ee; --muted: #a2a8b6; --border: #2d323d;
+    --ok: #7ee2a8; --ok-bg: #173826; --warn: #ffd27a; --warn-bg: #3d2f10;
+    --bad: #ff9aa4; --bad-bg: #44191e; --neutral: #c9ceda; --neutral-bg: #2a2f3a;
+    --accent: #9db1ff; --focus: #9db1ff;
+  }
+  html { color-scheme: light dark; }
+  :root[data-theme="light"] { color-scheme: light; }
+  :root[data-theme="dark"] { color-scheme: dark; }
   * { box-sizing: border-box; }
   body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
          background: var(--bg); color: var(--text); }
-  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+  main { max-width: 1080px; margin: 0 auto; padding: 28px 24px 48px; }
+  .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .head p { margin: 0 0 8px; }
+  button.theme { font: inherit; font-weight: 600; padding: 6px 12px; border-radius: 8px; cursor: pointer;
+                 border: 1px solid var(--border); background: transparent; color: var(--accent); }
   h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 0 0 12px; }
+  .find { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-left: auto; }
   .meta, .muted { color: var(--muted); font-size: 0.9rem; }
   a { color: var(--accent); }
   :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 16px 0; }
-  .summary { display: grid; grid-template-columns: minmax(180px, 240px) 1fr; gap: 16px; align-items: center; }
-  .score { font-size: 2.4rem; font-weight: 700; line-height: 1; }
+  .summary { display: grid; grid-template-columns: auto 1fr auto; gap: 20px 32px; align-items: center; padding: 22px 24px; }
+  .score { font-size: 3.6rem; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+  .score small { font-size: 1.1rem; font-weight: 600; color: var(--muted); letter-spacing: 0; }
   .counts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .counts .badge { font-size: 0.95rem; padding: 4px 14px; }
+  .counts .zero { opacity: 0.5; }
+  .stats { display: grid; grid-template-columns: max-content max-content; gap: 4px 14px; margin: 0; font-size: 0.95rem; }
+  .stats dt { color: var(--muted); }
+  .stats dd { margin: 0; font-weight: 600; }
+  .formula { grid-column: 1 / -1; margin: 0; font-size: 0.85rem; }
   .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-weight: 600; font-size: 0.85rem; white-space: nowrap; }
   .VERIFIED { color: var(--ok); background: var(--ok-bg); }
   .METADATA_MISMATCH { color: var(--warn); background: var(--warn-bg); }
@@ -46,8 +69,8 @@
                     background: var(--panel); color: var(--text); }
   a.download { padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border); text-decoration: none; }
   .toolbar input { font: inherit; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
-                   background: var(--panel); color: var(--text); min-width: 220px; flex: 1; }
-  table { width: 100%; border-collapse: collapse; }
+                   background: var(--panel); color: var(--text); width: 240px; max-width: 100%; }
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
   th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--border); }
   th { font-size: 0.85rem; color: var(--muted); }
   td.num { text-align: right; white-space: nowrap; }
@@ -59,9 +82,12 @@
   .mismatch { color: var(--bad); font-weight: 600; }
   code { font-size: 0.85rem; overflow-wrap: anywhere; }
   footer { margin-top: 24px; }
-  @media (max-width: 720px) {
+  @media (max-width: 860px) {
     .summary { grid-template-columns: 1fr; }
-    thead { display: none; }
+  }
+  @media (max-width: 720px) {
+    table { table-layout: auto; }
+    colgroup, thead { display: none; }
     tr, td { display: block; border: 0; padding: 4px 0; }
     tr { border-bottom: 1px solid var(--border); padding: 12px 0; }
     td.num { text-align: left; }
@@ -71,9 +97,14 @@
 <body>
 <main>
   <header>
-    {% if home_url %}<p><a href="{{ home_url }}">&larr; Check another document</a></p>{% endif %}
-    <h1>GhostCite report: {{ report.source_name }}</h1>
-    <p class="meta">Generated {{ report.generated_at.strftime("%Y-%m-%d %H:%M") }} UTC by GhostCite {{ report.tool_version }} &middot; {{ report.mode.value }} mode &middot; {{ report.summary.credits_used }} SerpApi searches used &middot; {{ report.summary.cache_hits }} answered from cache</p>
+    <div class="head">
+      <div>
+        {% if home_url %}<p><a href="{{ home_url }}">&larr; Check another document</a></p>{% endif %}
+        <h1>GhostCite report: {{ report.source_name }}</h1>
+        <p class="meta">Generated {{ report.generated_at.strftime("%Y-%m-%d %H:%M") }} UTC by GhostCite {{ report.tool_version }}</p>
+      </div>
+      <button type="button" id="theme" class="theme" aria-label="Switch between light and dark theme">Theme</button>
+    </div>
     {% if downloads %}
     <nav class="toolbar" aria-label="Download this report">
       <span class="muted">Download:</span>
@@ -85,17 +116,22 @@
   <section class="card summary" aria-labelledby="score-label">
     <div>
       <div id="score-label" class="muted">Integrity score</div>
-      <div class="score">{{ score }}</div>
+      {% set value = report.summary.integrity_score %}
+      <div class="score" aria-label="{{ score }}">{% if value is none %}n/a{% else %}{{ "%g"|format(value) }}<small> / 100</small>{% endif %}</div>
       <div class="muted">{{ report.summary.checked }} of {{ report.summary.total }} references checked</div>
     </div>
-    <div>
-      <div class="counts" role="list" aria-label="References per verdict">
-        {% for verdict in verdicts %}
-        <span role="listitem" class="badge {{ verdict.value }}">{{ labels[verdict] }}: {{ report.summary.counts.get(verdict, 0) }}</span>
-        {% endfor %}
-      </div>
-      <p class="muted">{{ formula }}</p>
+    <div class="counts" role="list" aria-label="References per verdict">
+      {% for verdict in verdicts %}
+      {% set n = report.summary.counts.get(verdict, 0) %}
+      <span role="listitem" class="badge {{ verdict.value }}{% if not n %} zero{% endif %}">{{ labels[verdict] }}: {{ n }}</span>
+      {% endfor %}
     </div>
+    <dl class="stats">
+      <dt>Run mode</dt><dd>{{ mode_label }}</dd>
+      <dt>SerpApi credits used</dt><dd>{{ report.summary.credits_used }}</dd>
+      <dt>Answered from cache</dt><dd>{{ report.summary.cache_hits }}</dd>
+    </dl>
+    <p class="formula muted">{{ formula }}</p>
   </section>
 
   {% if report.warnings %}
@@ -112,18 +148,21 @@
       {% for verdict in verdicts %}
       <button type="button" data-filter="{{ verdict.value }}" aria-pressed="false">{{ labels[verdict] }}</button>
       {% endfor %}
-      <label class="muted" for="search">Search</label>
-      <input id="search" type="search" placeholder="Title, author or reason">
-      <label class="muted" for="sort">Sort</label>
-      <select id="sort">
-        <option value="index">Document order</option>
-        <option value="severity">Most serious first</option>
-        <option value="confidence">Lowest confidence first</option>
-      </select>
+      <span class="find">
+        <label class="muted" for="search">Search</label>
+        <input id="search" type="search" placeholder="Title, author or reason">
+        <label class="muted" for="sort">Sort</label>
+        <select id="sort">
+          <option value="index">Document order</option>
+          <option value="severity">Most serious first</option>
+          <option value="confidence">Lowest confidence first</option>
+        </select>
+      </span>
     </div>
     <p id="shown" class="muted" aria-live="polite"></p>
     <table>
       <caption class="muted" style="text-align:left">One row per reference.</caption>
+      <colgroup><col style="width:3.5em"><col style="width:11em"><col style="width:6.5em"><col style="width:40%"><col></colgroup>
       <thead><tr><th scope="col">#</th><th scope="col">Verdict</th><th scope="col">Confidence</th><th scope="col">Cited reference</th><th scope="col">Finding</th></tr></thead>
       <tbody>
       {% for result in report.results %}
@@ -169,6 +208,13 @@
 </main>
 <script>
 (function () {
+  document.getElementById("theme").addEventListener("click", function () {
+    var root = document.documentElement;
+    var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var next = (root.getAttribute("data-theme") || (dark ? "dark" : "light")) === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("ghostcite-theme", next); } catch (e) {}
+  });
   var rows = Array.prototype.slice.call(document.querySelectorAll("tbody tr"));
   var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
   var search = document.getElementById("search");

@@ -74,3 +74,12 @@ def numbered(*references: str) -> str:
         body = reference.split("] ", 1)[1] if reference.startswith("[") else reference
         lines.append(f"[{index}] {body}")
     return "\n".join(lines)
+
+
+def demo_bundle_payload() -> dict[str, Any]:
+    """A demo bundle (current file format) holding every recorded fixture."""
+    entries = []
+    for path in sorted((FIXTURES / "serpapi").glob("*.json")):
+        fixture = json.loads(path.read_text(encoding="utf-8"))
+        entries.append({"params": fixture["params"], "response": fixture["response"]})
+    return {"format": 1, "entries": entries}

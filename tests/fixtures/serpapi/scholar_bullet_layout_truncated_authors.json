@@ -1,0 +1,115 @@
+{
+  "description": "Bullet layout: truncated author list followed by an ellipsis and the venue.",
+  "strategy": "scholar_exact_title",
+  "params": {
+    "engine": "google_scholar",
+    "q": "\"Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China\"",
+    "hl": "en",
+    "num": "10"
+  },
+  "response": {
+    "search_metadata": {
+      "id": "6ac8a9ad7ec02957e8222c5f",
+      "status": "Success",
+      "created_at": "2026-10-09 08:45:33 UTC",
+      "processed_at": "2026-10-09 08:45:33 UTC",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=%22Clinical+features+of+patients+infected+with+2019+novel+coronavirus+in+Wuhan%2C+China%22&hl=en&num=10",
+      "total_time_taken": 1.7
+    },
+    "search_parameters": {
+      "engine": "google_scholar",
+      "q": "\"Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China\"",
+      "hl": "en",
+      "num": "10"
+    },
+    "search_information": {
+      "organic_results_state": "Results for exact spelling",
+      "query_displayed": "\"Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China\""
+    },
+    "profiles": {
+      "link": "https://scholar.google.com/scholar?lookup=0&q=%22Clinical+features+of+patients+infected+with+2019+novel+coronavirus+in+Wuhan,+China%22&hl=en&as_sdt=0,18",
+      "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=%22Clinical+features+of+patients+infected+with+2019+novel+coronavirus+in+Wuhan%2C+China%22"
+    },
+    "organic_results": [
+      {
+        "position": 1,
+        "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+        "result_id": "7NKyfdVxssUJ",
+        "type": "Html",
+        "link": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext?os=vbKn42TQHo&ref=app",
+        "snippet": "A recent cluster of pneumonia cases in Wuhan, China, was caused by a novel betacoronavirus, the 2019 novel coronavirus (2019-nCoV). We report the epidemiological, clinical, laboratory, and radiological characteristics and treatment and clinical outcomes of these patients.\nAll patients with suspected 2019-nCoV were admitted to a designated hospital in Wuhan. We prospectively collected and analysed data on patients with laboratory-confirmed 2019-nCoV infection by real-time RT-PCR and next-generation sequencing. Data were obtained with standardised data collection forms shared by WHO and the International Severe Acute Respiratory and Emerging Infection Consortium from electronic medical records. Researchers also directly communicated with patients or their families to ascertain epidemiological and symptom data. Outcomes were also compared between patients who had been admitted to the intensive care unit (ICU) and those who had not.\nBy Jan 2, 2020, 41 admitted hospital patients had been identified as having laboratory-confirmed 2019-nCoV infection. Most of the infected patients were men (30 [73%] of 41); less than half had underlying diseases (13 [32%]), including diabetes (eight [20%]), hypertension (six [15%]), and cardiovascular disease (six [15%]). Median age was 49·0 years (IQR 41·0–58·0). 27 (66%) of 41 patients had been exposed to Huanan seafood market. One family cluster was found. Common symptoms at onset of illness were fever (40 [98%] of 41 patients), cough (31 [76%]), and myalgia or fatigue (18 [44%]); less common symptoms were sputum production (11 [28%] of 39), headache (three [8%] of 38), haemoptysis (two [5%] of 39), and diarrhoea (one [3%] of 38). Dyspnoea developed in 22 (55%) of 40 patients (median time from illness onset to dyspnoea 8·0 days [IQR 5·0–13·0]). 26 (63%) of 41 patients had lymphopenia. All 41 patients had pneumonia with abnormal findings on chest CT. Complications included acute respiratory distress syndrome (12 [29%]), RNAaemia (six [15%]), acute cardiac injury (five [12%]) and secondary infection (four [10%]). 13 (32%) patients were admitted to an ICU and six (15%) died. Compared with non-ICU patients, ICU patients had higher plasma levels of IL2, IL7, IL10, GSCF, IP10, MCP1, MIP1A, and TNFα.\nThe 2019-nCoV infection caused clusters of severe respiratory illness similar to severe acute respiratory syndrome coronavirus and was associated with ICU admission and high mortality. Major gaps in our knowledge of the origin, epidemiology, duration of human transmission, and clinical spectrum of disease need fulfilment by future studies.\nMinistry of Science and Technology, Chinese Academy of Medical Sciences, National Natural Science Foundation of China, and Beijing Municipal Science and Technology Commission.",
+        "publication_info": {
+          "summary": "C Huang, Y Wang, X Li, L Ren, J Zhao, Y Hu, L Zhang, G Fan, J Xu, X Gu, Z Cheng, T Yu…The lancet, 2020•thelancet.com",
+          "authors": [
+            {
+              "name": "C Huang"
+            },
+            {
+              "name": "Y Wang"
+            },
+            {
+              "name": "X Li"
+            },
+            {
+              "name": "L Ren"
+            },
+            {
+              "name": "J Zhao"
+            },
+            {
+              "name": "Y Hu"
+            },
+            {
+              "name": "L Zhang"
+            },
+            {
+              "name": "G Fan"
+            },
+            {
+              "name": "J Xu"
+            },
+            {
+              "name": "X Gu"
+            },
+            {
+              "name": "Z Cheng"
+            },
+            {
+              "name": "T Yu"
+            }
+          ]
+        },
+        "resources": [
+          {
+            "title": "",
+            "file_format": "HTML",
+            "link": null
+          },
+          {
+            "title": "thelancet.com",
+            "file_format": "HTML",
+            "link": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext?os=vbKn42TQHo&ref=app"
+          }
+        ],
+        "inline_links": {
+          "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=7NKyfdVxssUJ",
+          "html_version": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext?os=vbKn42TQHo&ref=app",
+          "cited_by": {
+            "total": 67433,
+            "link": "https://scholar.google.com/scholar?cites=14245573733077144300&as_sdt=4000005&sciodt=0,18&hl=en",
+            "cites_id": "14245573733077144300",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=4000005&cites=14245573733077144300&engine=google_scholar&hl=en"
+          },
+          "related_pages_link": "https://scholar.google.com/scholar?q=related:7NKyfdVxssUJ:scholar.google.com/&scioq=%22Clinical+features+of+patients+infected+with+2019+novel+coronavirus+in+Wuhan,+China%22&hl=en&as_sdt=0,18",
+          "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C18&engine=google_scholar&hl=en&num=10&q=related%3A7NKyfdVxssUJ%3Ascholar.google.com%2F",
+          "versions": {
+            "total": 69,
+            "link": "https://scholar.google.com/scholar?cluster=14245573733077144300&hl=en&as_sdt=0,18",
+            "cluster_id": "14245573733077144300",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C18&cluster=14245573733077144300&engine=google_scholar&hl=en"
+          }
+        }
+      }
+    ]
+  }
+}

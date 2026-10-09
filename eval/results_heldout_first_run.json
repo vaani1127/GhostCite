@@ -1,0 +1,663 @@
+{
+  "runs": {
+    "tuning/text": {
+      "rows": 28,
+      "headline": {
+        "real": 19,
+        "fabricated": 9,
+        "false_alarms": 1,
+        "false_alarm_rate": 0.0526,
+        "verified_real": 18,
+        "unchecked_real": 0,
+        "detected": 9,
+        "detection_rate": 1.0,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 9,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9,
+        "recall": 1.0,
+        "f1": 0.9474
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667
+        },
+        "METADATA_MISMATCH": {
+          "tp": 5,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.8333,
+          "recall": 0.7143,
+          "f1": 0.7692
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 18,
+          "METADATA_MISMATCH": 1,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 5,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 1,
+          "detected": 1,
+          "detection_rate": 1.0
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 6,
+        "fabricated": 0,
+        "false_alarms": 0,
+        "false_alarm_rate": 0.0,
+        "verified_real": 6,
+        "unchecked_real": 0,
+        "detected": 0,
+        "detection_rate": null,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "eco-markowitz-1952",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1955, not 1952. (Google Scholar lists this work with 54 versions; this may be a different version.)",
+          "parsed_title": "Portfolio selection",
+          "best_match": "Portfolio selection"
+        }
+      ],
+      "class_differences": [
+        {
+          "id": "fab-reword-breiman",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "NOT_FOUND",
+          "reason": "No Google Scholar record matches this title; the closest result was “Pilot study on epidemiology and socioeconomic factors related to malaria in endemic communities of Bangladesh” (39% similar)."
+        },
+        {
+          "id": "fab-reword-moher",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "NOT_FOUND",
+          "reason": "No Google Scholar record matches this title; the closest result was “Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement” (75% similar)."
+        }
+      ],
+      "credits_used": 6,
+      "mode": "live"
+    },
+    "tuning/bibtex": {
+      "rows": 28,
+      "headline": {
+        "real": 19,
+        "fabricated": 9,
+        "false_alarms": 1,
+        "false_alarm_rate": 0.0526,
+        "verified_real": 18,
+        "unchecked_real": 0,
+        "detected": 9,
+        "detection_rate": 1.0,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 9,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9,
+        "recall": 1.0,
+        "f1": 0.9474
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667
+        },
+        "METADATA_MISMATCH": {
+          "tp": 5,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.8333,
+          "recall": 0.7143,
+          "f1": 0.7692
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 18,
+          "METADATA_MISMATCH": 1,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 5,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 1,
+          "detected": 1,
+          "detection_rate": 1.0
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 6,
+        "fabricated": 0,
+        "false_alarms": 0,
+        "false_alarm_rate": 0.0,
+        "verified_real": 6,
+        "unchecked_real": 0,
+        "detected": 0,
+        "detection_rate": null,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "eco-markowitz-1952",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1955, not 1952. (Google Scholar lists this work with 54 versions; this may be a different version.)",
+          "parsed_title": "Portfolio selection",
+          "best_match": "Portfolio selection"
+        }
+      ],
+      "class_differences": [
+        {
+          "id": "fab-reword-breiman",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "NOT_FOUND",
+          "reason": "No Google Scholar record matches this title; the closest result was “Pilot study on epidemiology and socioeconomic factors related to malaria in endemic communities of Bangladesh” (39% similar)."
+        },
+        {
+          "id": "fab-reword-moher",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "NOT_FOUND",
+          "reason": "No Google Scholar record matches this title; the closest result was “Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement” (75% similar)."
+        }
+      ],
+      "credits_used": 0,
+      "mode": "live"
+    },
+    "test/text": {
+      "rows": 39,
+      "headline": {
+        "real": 28,
+        "fabricated": 11,
+        "false_alarms": 6,
+        "false_alarm_rate": 0.2143,
+        "verified_real": 22,
+        "unchecked_real": 0,
+        "detected": 8,
+        "detection_rate": 0.7273,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 8,
+        "fp": 6,
+        "fn": 3,
+        "precision": 0.5714,
+        "recall": 0.7273,
+        "f1": 0.64
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667
+        },
+        "METADATA_MISMATCH": {
+          "tp": 5,
+          "fp": 5,
+          "fn": 4,
+          "precision": 0.5,
+          "recall": 0.5556,
+          "f1": 0.5263
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 22,
+          "METADATA_MISMATCH": 5,
+          "NOT_FOUND": 1,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 3,
+          "METADATA_MISMATCH": 5,
+          "NOT_FOUND": 1,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 3,
+          "detected": 2,
+          "detection_rate": 0.6667
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 0,
+          "detection_rate": 0.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 13,
+        "fabricated": 5,
+        "false_alarms": 3,
+        "false_alarm_rate": 0.2308,
+        "verified_real": 10,
+        "unchecked_real": 0,
+        "detected": 4,
+        "detection_rate": 0.8,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "eco-akerlof-1970",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1978, not 1970. (Google Scholar lists this work with 46 versions; this may be a different version.)",
+          "parsed_title": "The market for “lemons”: Quality uncertainty and the market mechanism",
+          "best_match": "The market for “lemons”: Quality uncertainty and the market mechanism"
+        },
+        {
+          "id": "eco-davis-1989",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but authors are FD DavisMIS quarterly, 1989•JSTOR, not Davis.",
+          "parsed_title": "Perceived usefulness, perceived ease of use, and user acceptance of information technology",
+          "best_match": "Perceived usefulness, perceived ease of use, and user acceptance of information technology"
+        },
+        {
+          "id": "fab-venue-arun",
+          "type": "missed fabrication",
+          "perturbation": "fake_venue",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title and authors match a Google Scholar record (cited by 440).",
+          "parsed_title": "Financial inclusion: Policies and practices",
+          "best_match": "Financial inclusion: Policies and practices"
+        },
+        {
+          "id": "fab-venue-fama",
+          "type": "missed fabrication",
+          "perturbation": "fake_venue",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title and authors match a Google Scholar record (cited by 37,962).",
+          "parsed_title": "Common risk factors in the returns on stocks and bonds",
+          "best_match": "Common risk factors in the returns on stocks and bonds"
+        },
+        {
+          "id": "fab-year-huang",
+          "type": "missed fabrication",
+          "perturbation": "wrong_year",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title and authors match a Google Scholar record (cited by 67,433).",
+          "parsed_title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+          "best_match": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China"
+        },
+        {
+          "id": "in-bhagwati-1993",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "NOT_FOUND",
+          "reason": "No Google Scholar record matches this title; the closest result was “India in transition: Freeing the economy” (88% similar).",
+          "parsed_title": "J. Bhagwati, India in transition: Freeing the economy",
+          "best_match": "India in transition: Freeing the economy"
+        },
+        {
+          "id": "in-bose-1924",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but authors are BoseZeitschrift für Physik, 1924•Springer, not Bose.",
+          "parsed_title": "Plancks Gesetz und Lichtquantenhypothese",
+          "best_match": "Plancks gesetz und lichtquantenhypothese"
+        },
+        {
+          "id": "in-surappa-2003",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but authors are MK SurappaSadhana, 2003•Springer, not Surappa.",
+          "parsed_title": "Aluminium matrix composites: Challenges and opportunities",
+          "best_match": "Aluminium matrix composites: Challenges and opportunities"
+        },
+        {
+          "id": "med-livak-2001",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title differs from the closest real paper: 'Analysis of relative gene expression data using real-time quantitative PCR and the 2− ΔΔCT method' (2001).",
+          "parsed_title": "Analysis of relative gene expression data using real-time quantitative PCR and the 2(-Delta Delta C(T)) method",
+          "best_match": "Analysis of relative gene expression data using real-time quantitative PCR and the 2− ΔΔCT method"
+        }
+      ],
+      "class_differences": [
+        {
+          "id": "fab-authors-livak",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "NOT_FOUND",
+          "reason": "No Google Scholar record matches this title; the closest result was “Analysis of relative gene expression data using real-time quantitative PCR and the 2− ΔΔCT method” (100% similar)."
+        }
+      ],
+      "credits_used": 49,
+      "mode": "live"
+    },
+    "test/bibtex": {
+      "rows": 39,
+      "headline": {
+        "real": 28,
+        "fabricated": 11,
+        "false_alarms": 5,
+        "false_alarm_rate": 0.1786,
+        "verified_real": 23,
+        "unchecked_real": 0,
+        "detected": 8,
+        "detection_rate": 0.7273,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 8,
+        "fp": 5,
+        "fn": 3,
+        "precision": 0.6154,
+        "recall": 0.7273,
+        "f1": 0.6667
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.6667,
+          "recall": 1.0,
+          "f1": 0.8
+        },
+        "METADATA_MISMATCH": {
+          "tp": 5,
+          "fp": 5,
+          "fn": 4,
+          "precision": 0.5,
+          "recall": 0.5556,
+          "f1": 0.5263
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 23,
+          "METADATA_MISMATCH": 5,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 3,
+          "METADATA_MISMATCH": 5,
+          "NOT_FOUND": 1,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 3,
+          "detected": 2,
+          "detection_rate": 0.6667
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 0,
+          "detection_rate": 0.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 13,
+        "fabricated": 5,
+        "false_alarms": 2,
+        "false_alarm_rate": 0.1538,
+        "verified_real": 11,
+        "unchecked_real": 0,
+        "detected": 4,
+        "detection_rate": 0.8,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "eco-akerlof-1970",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1978, not 1970. (Google Scholar lists this work with 46 versions; this may be a different version.)",
+          "parsed_title": "The market for “lemons”: Quality uncertainty and the market mechanism",
+          "best_match": "The market for “lemons”: Quality uncertainty and the market mechanism"
+        },
+        {
+          "id": "eco-davis-1989",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but authors are FD DavisMIS quarterly, 1989•JSTOR, not Davis.",
+          "parsed_title": "Perceived usefulness, perceived ease of use, and user acceptance of information technology",
+          "best_match": "Perceived usefulness, perceived ease of use, and user acceptance of information technology"
+        },
+        {
+          "id": "fab-venue-arun",
+          "type": "missed fabrication",
+          "perturbation": "fake_venue",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title and authors match a Google Scholar record (cited by 440).",
+          "parsed_title": "Financial inclusion: Policies and practices",
+          "best_match": "Financial inclusion: Policies and practices"
+        },
+        {
+          "id": "fab-venue-fama",
+          "type": "missed fabrication",
+          "perturbation": "fake_venue",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title and authors match a Google Scholar record (cited by 37,962).",
+          "parsed_title": "Common risk factors in the returns on stocks and bonds",
+          "best_match": "Common risk factors in the returns on stocks and bonds"
+        },
+        {
+          "id": "fab-year-huang",
+          "type": "missed fabrication",
+          "perturbation": "wrong_year",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title and authors match a Google Scholar record (cited by 67,433).",
+          "parsed_title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+          "best_match": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China"
+        },
+        {
+          "id": "in-bose-1924",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but authors are BoseZeitschrift für Physik, 1924•Springer, not Bose.",
+          "parsed_title": "Plancks Gesetz und Lichtquantenhypothese",
+          "best_match": "Plancks gesetz und lichtquantenhypothese"
+        },
+        {
+          "id": "in-surappa-2003",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but authors are MK SurappaSadhana, 2003•Springer, not Surappa.",
+          "parsed_title": "Aluminium matrix composites: Challenges and opportunities",
+          "best_match": "Aluminium matrix composites: Challenges and opportunities"
+        },
+        {
+          "id": "med-livak-2001",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title differs from the closest real paper: 'Analysis of relative gene expression data using real-time quantitative PCR and the 2− ΔΔCT method' (2001).",
+          "parsed_title": "Analysis of relative gene expression data using real-time quantitative PCR and the 2(-Delta Delta C(T)) method",
+          "best_match": "Analysis of relative gene expression data using real-time quantitative PCR and the 2− ΔΔCT method"
+        }
+      ],
+      "class_differences": [
+        {
+          "id": "fab-authors-livak",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "NOT_FOUND",
+          "reason": "No Google Scholar record matches this title; the closest result was “Analysis of relative gene expression data using real-time quantitative PCR and the 2− ΔΔCT method” (100% similar)."
+        }
+      ],
+      "credits_used": 1,
+      "mode": "live"
+    }
+  },
+  "seed": 20261009,
+  "dataset": {
+    "validated": 67,
+    "dropped": 0
+  }
+}
