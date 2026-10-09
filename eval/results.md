@@ -6,26 +6,28 @@ Dataset: 67 validated references (0 dropped by validation). Split seed 20261009.
 
 ### Test split, raw reference strings
 
-39 references, 0 live searches in this run.
+39 references, 0 live searches in this run. Rates show counts and a 95% Wilson interval.
 
-| Subset | Real | False alarms | False alarm rate | Fabricated | Detected | Detection rate | Unchecked |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| All | 28 | 1 | 3.6% | 11 | 11 | 100.0% | 0 |
-| Indian journals and books | 13 | 0 | 0.0% | 5 | 5 | 100.0% | 0 |
+| Subset | False alarms on real references | Detection of fabricated references | Unchecked |
+| --- | --- | --- | ---: |
+| All | 1/28 = 3.6% [0.6, 17.7] | 11/11 = 100.0% [74.1, 100.0] | 0 |
+| Indian journals and books | 0/13 = 0.0% [0.0, 22.8] | 5/5 = 100.0% [56.6, 100.0] | 0 |
 
-| Perturbation | Rows | Detected | Detection rate |
-| --- | ---: | ---: | ---: |
-| reworded title | 2 | 2 | 100.0% |
-| swapped authors | 2 | 2 | 100.0% |
-| wrong year | 3 | 3 | 100.0% |
-| fake venue | 2 | 2 | 100.0% |
-| invented | 2 | 2 | 100.0% |
+Detection per perturbation type (counts only when fewer than 5 rows):
+
+| Perturbation | Detected |
+| --- | --- |
+| reworded title | 2/2 |
+| swapped authors | 2/2 |
+| wrong year | 3/3 |
+| fake venue | 2/2 |
+| invented | 2/2 |
 
 | Class | Precision | Recall | F1 |
-| --- | ---: | ---: | ---: |
-| Flagged (any problem) | 91.7% | 100.0% | 95.7% |
-| NOT_FOUND | 100.0% | 100.0% | 100.0% |
-| METADATA_MISMATCH | 90.0% | 100.0% | 94.7% |
+| --- | --- | --- | ---: |
+| Flagged (any problem) | 11/12 = 91.7% [64.6, 98.5] | 11/11 = 100.0% [74.1, 100.0] | 95.7% |
+| NOT_FOUND | 2/2 = 100.0% [34.2, 100.0] | 2/2 = 100.0% [34.2, 100.0] | 100.0% |
+| METADATA_MISMATCH | 9/10 = 90.0% [59.6, 98.2] | 9/9 = 100.0% [70.1, 100.0] | 94.7% |
 
 Confusion matrix (rows: expected, columns: GhostCite):
 
@@ -41,26 +43,28 @@ Failures:
 
 ### Test split, BibTeX
 
-39 references, 0 live searches in this run.
+39 references, 0 live searches in this run. Rates show counts and a 95% Wilson interval.
 
-| Subset | Real | False alarms | False alarm rate | Fabricated | Detected | Detection rate | Unchecked |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| All | 28 | 1 | 3.6% | 11 | 11 | 100.0% | 0 |
-| Indian journals and books | 13 | 0 | 0.0% | 5 | 5 | 100.0% | 0 |
+| Subset | False alarms on real references | Detection of fabricated references | Unchecked |
+| --- | --- | --- | ---: |
+| All | 1/28 = 3.6% [0.6, 17.7] | 11/11 = 100.0% [74.1, 100.0] | 0 |
+| Indian journals and books | 0/13 = 0.0% [0.0, 22.8] | 5/5 = 100.0% [56.6, 100.0] | 0 |
 
-| Perturbation | Rows | Detected | Detection rate |
-| --- | ---: | ---: | ---: |
-| reworded title | 2 | 2 | 100.0% |
-| swapped authors | 2 | 2 | 100.0% |
-| wrong year | 3 | 3 | 100.0% |
-| fake venue | 2 | 2 | 100.0% |
-| invented | 2 | 2 | 100.0% |
+Detection per perturbation type (counts only when fewer than 5 rows):
+
+| Perturbation | Detected |
+| --- | --- |
+| reworded title | 2/2 |
+| swapped authors | 2/2 |
+| wrong year | 3/3 |
+| fake venue | 2/2 |
+| invented | 2/2 |
 
 | Class | Precision | Recall | F1 |
-| --- | ---: | ---: | ---: |
-| Flagged (any problem) | 91.7% | 100.0% | 95.7% |
-| NOT_FOUND | 100.0% | 100.0% | 100.0% |
-| METADATA_MISMATCH | 90.0% | 100.0% | 94.7% |
+| --- | --- | --- | ---: |
+| Flagged (any problem) | 11/12 = 91.7% [64.6, 98.5] | 11/11 = 100.0% [74.1, 100.0] | 95.7% |
+| NOT_FOUND | 2/2 = 100.0% [34.2, 100.0] | 2/2 = 100.0% [34.2, 100.0] | 100.0% |
+| METADATA_MISMATCH | 9/10 = 90.0% [59.6, 98.2] | 9/9 = 100.0% [70.1, 100.0] | 94.7% |
 
 Confusion matrix (rows: expected, columns: GhostCite):
 
@@ -76,26 +80,28 @@ Failures:
 
 ### Tuning split, raw reference strings
 
-28 references, 0 live searches in this run.
+28 references, 0 live searches in this run. Rates show counts and a 95% Wilson interval.
 
-| Subset | Real | False alarms | False alarm rate | Fabricated | Detected | Detection rate | Unchecked |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| All | 19 | 2 | 10.5% | 9 | 9 | 100.0% | 0 |
-| Indian journals and books | 6 | 0 | 0.0% | 0 | 0 | n/a | 0 |
+| Subset | False alarms on real references | Detection of fabricated references | Unchecked |
+| --- | --- | --- | ---: |
+| All | 2/19 = 10.5% [2.9, 31.4] | 9/9 = 100.0% [70.1, 100.0] | 0 |
+| Indian journals and books | 0/6 = 0.0% [0.0, 39.0] | n/a | 0 |
 
-| Perturbation | Rows | Detected | Detection rate |
-| --- | ---: | ---: | ---: |
-| reworded title | 2 | 2 | 100.0% |
-| swapped authors | 2 | 2 | 100.0% |
-| wrong year | 1 | 1 | 100.0% |
-| fake venue | 2 | 2 | 100.0% |
-| invented | 2 | 2 | 100.0% |
+Detection per perturbation type (counts only when fewer than 5 rows):
+
+| Perturbation | Detected |
+| --- | --- |
+| reworded title | 2/2 |
+| swapped authors | 2/2 |
+| wrong year | 1/1 |
+| fake venue | 2/2 |
+| invented | 2/2 |
 
 | Class | Precision | Recall | F1 |
-| --- | ---: | ---: | ---: |
-| Flagged (any problem) | 81.8% | 100.0% | 90.0% |
-| NOT_FOUND | 66.7% | 100.0% | 80.0% |
-| METADATA_MISMATCH | 75.0% | 85.7% | 80.0% |
+| --- | --- | --- | ---: |
+| Flagged (any problem) | 9/11 = 81.8% [52.3, 94.9] | 9/9 = 100.0% [70.1, 100.0] | 90.0% |
+| NOT_FOUND | 2/3 = 66.7% [20.8, 93.9] | 2/2 = 100.0% [34.2, 100.0] | 80.0% |
+| METADATA_MISMATCH | 6/8 = 75.0% [40.9, 92.9] | 6/7 = 85.7% [48.7, 97.4] | 80.0% |
 
 Confusion matrix (rows: expected, columns: GhostCite):
 
@@ -116,26 +122,28 @@ Detected, but with a different verdict than labelled:
 
 ### Tuning split, BibTeX
 
-28 references, 0 live searches in this run.
+28 references, 0 live searches in this run. Rates show counts and a 95% Wilson interval.
 
-| Subset | Real | False alarms | False alarm rate | Fabricated | Detected | Detection rate | Unchecked |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| All | 19 | 2 | 10.5% | 9 | 9 | 100.0% | 0 |
-| Indian journals and books | 6 | 0 | 0.0% | 0 | 0 | n/a | 0 |
+| Subset | False alarms on real references | Detection of fabricated references | Unchecked |
+| --- | --- | --- | ---: |
+| All | 2/19 = 10.5% [2.9, 31.4] | 9/9 = 100.0% [70.1, 100.0] | 0 |
+| Indian journals and books | 0/6 = 0.0% [0.0, 39.0] | n/a | 0 |
 
-| Perturbation | Rows | Detected | Detection rate |
-| --- | ---: | ---: | ---: |
-| reworded title | 2 | 2 | 100.0% |
-| swapped authors | 2 | 2 | 100.0% |
-| wrong year | 1 | 1 | 100.0% |
-| fake venue | 2 | 2 | 100.0% |
-| invented | 2 | 2 | 100.0% |
+Detection per perturbation type (counts only when fewer than 5 rows):
+
+| Perturbation | Detected |
+| --- | --- |
+| reworded title | 2/2 |
+| swapped authors | 2/2 |
+| wrong year | 1/1 |
+| fake venue | 2/2 |
+| invented | 2/2 |
 
 | Class | Precision | Recall | F1 |
-| --- | ---: | ---: | ---: |
-| Flagged (any problem) | 81.8% | 100.0% | 90.0% |
-| NOT_FOUND | 66.7% | 100.0% | 80.0% |
-| METADATA_MISMATCH | 75.0% | 85.7% | 80.0% |
+| --- | --- | --- | ---: |
+| Flagged (any problem) | 9/11 = 81.8% [52.3, 94.9] | 9/9 = 100.0% [70.1, 100.0] | 90.0% |
+| NOT_FOUND | 2/3 = 66.7% [20.8, 93.9] | 2/2 = 100.0% [34.2, 100.0] | 80.0% |
+| METADATA_MISMATCH | 6/8 = 75.0% [40.9, 92.9] | 6/7 = 85.7% [48.7, 97.4] | 80.0% |
 
 Confusion matrix (rows: expected, columns: GhostCite):
 

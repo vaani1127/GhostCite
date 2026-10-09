@@ -1,0 +1,283 @@
+{
+  "runs": {
+    "v2/text": {
+      "rows": 26,
+      "headline": {
+        "real": 16,
+        "fabricated": 10,
+        "false_alarms": 1,
+        "false_alarm_rate": 0.0625,
+        "verified_real": 15,
+        "unchecked_real": 0,
+        "detected": 8,
+        "detection_rate": 0.8,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 8,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.8889,
+        "recall": 0.8,
+        "f1": 0.8421
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "METADATA_MISMATCH": {
+          "tp": 6,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.8571,
+          "recall": 0.75,
+          "f1": 0.8
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 15,
+          "METADATA_MISMATCH": 1,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 2,
+          "METADATA_MISMATCH": 6,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 0,
+          "detection_rate": 0.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 7,
+        "fabricated": 5,
+        "false_alarms": 0,
+        "false_alarm_rate": 0.0,
+        "verified_real": 7,
+        "unchecked_real": 0,
+        "detected": 4,
+        "detection_rate": 0.8,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "fab-venue-gadagkar",
+          "type": "missed fabrication",
+          "perturbation": "fake_venue",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title, authors and year match a Google Scholar record (cited by 59).",
+          "parsed_title": "Social insects and social amoebae",
+          "best_match": "Social insects and social amoebae"
+        },
+        {
+          "id": "fab-venue-myers",
+          "type": "missed fabrication",
+          "perturbation": "fake_venue",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title, authors and year match a Google Scholar record (cited by 45,206).",
+          "parsed_title": "Biodiversity hotspots for conservation priorities",
+          "best_match": "Biodiversity hotspots for conservation priorities"
+        },
+        {
+          "id": "soc-granovetter-1973",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1977, not 1973; venue is Social networks, not American Journal of Sociology. (Google Scholar lists this work with 94 versions; this may be a different version.)",
+          "parsed_title": "The strength of weak ties",
+          "best_match": "The strength of weak ties"
+        }
+      ],
+      "class_differences": [],
+      "credits_used": 29,
+      "mode": "live"
+    },
+    "v2/bibtex": {
+      "rows": 26,
+      "headline": {
+        "real": 16,
+        "fabricated": 10,
+        "false_alarms": 1,
+        "false_alarm_rate": 0.0625,
+        "verified_real": 15,
+        "unchecked_real": 0,
+        "detected": 8,
+        "detection_rate": 0.8,
+        "unchecked_fabricated": 0
+      },
+      "flagged_binary": {
+        "tp": 8,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.8889,
+        "recall": 0.8,
+        "f1": 0.8421
+      },
+      "classes": {
+        "NOT_FOUND": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "METADATA_MISMATCH": {
+          "tp": 6,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.8571,
+          "recall": 0.75,
+          "f1": 0.8
+        }
+      },
+      "confusion": {
+        "VERIFIED": {
+          "VERIFIED": 15,
+          "METADATA_MISMATCH": 1,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "METADATA_MISMATCH": {
+          "VERIFIED": 2,
+          "METADATA_MISMATCH": 6,
+          "NOT_FOUND": 0,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        },
+        "NOT_FOUND": {
+          "VERIFIED": 0,
+          "METADATA_MISMATCH": 0,
+          "NOT_FOUND": 2,
+          "UNPARSEABLE": 0,
+          "SKIPPED_BUDGET": 0
+        }
+      },
+      "per_perturbation": {
+        "reworded_title": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "swapped_authors": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "wrong_year": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        },
+        "fake_venue": {
+          "rows": 2,
+          "detected": 0,
+          "detection_rate": 0.0
+        },
+        "invented": {
+          "rows": 2,
+          "detected": 2,
+          "detection_rate": 1.0
+        }
+      },
+      "indian_subset": {
+        "real": 7,
+        "fabricated": 5,
+        "false_alarms": 0,
+        "false_alarm_rate": 0.0,
+        "verified_real": 7,
+        "unchecked_real": 0,
+        "detected": 4,
+        "detection_rate": 0.8,
+        "unchecked_fabricated": 0
+      },
+      "failures": [
+        {
+          "id": "fab-venue-gadagkar",
+          "type": "missed fabrication",
+          "perturbation": "fake_venue",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title, authors and year match a Google Scholar record (cited by 59).",
+          "parsed_title": "Social insects and social amoebae",
+          "best_match": "Social insects and social amoebae"
+        },
+        {
+          "id": "fab-venue-myers",
+          "type": "missed fabrication",
+          "perturbation": "fake_venue",
+          "expected": "METADATA_MISMATCH",
+          "verdict": "VERIFIED",
+          "reason": "Title, authors and year match a Google Scholar record (cited by 45,206).",
+          "parsed_title": "Biodiversity hotspots for conservation priorities",
+          "best_match": "Biodiversity hotspots for conservation priorities"
+        },
+        {
+          "id": "soc-granovetter-1973",
+          "type": "false alarm",
+          "perturbation": null,
+          "expected": "VERIFIED",
+          "verdict": "METADATA_MISMATCH",
+          "reason": "Title matches, but year is 1977, not 1973; venue is Social networks, not American Journal of Sociology. (Google Scholar lists this work with 94 versions; this may be a different version.)",
+          "parsed_title": "The strength of weak ties",
+          "best_match": "The strength of weak ties"
+        }
+      ],
+      "class_differences": [],
+      "credits_used": 0,
+      "mode": "live"
+    }
+  },
+  "dataset_name": "v2",
+  "seed": 20261009,
+  "dataset": {
+    "validated": 26,
+    "dropped": 0
+  },
+  "dataset_sha256": "sha256:e7e752544795eeabbd24b2a66f94ccbef04660b4bc341a6d6d22a83cf8888604"
+}

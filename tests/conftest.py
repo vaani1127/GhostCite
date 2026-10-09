@@ -14,7 +14,7 @@ from pathlib import Path
 import pytest
 from hypothesis import settings
 
-from ghostcite.settings import API_KEY_ENV, CACHE_DIR_ENV
+from ghostcite.settings import API_KEY_ENV, CACHE_DIR_ENV, CREDITS_LOG_ENV
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -28,4 +28,5 @@ settings.load_profile("ghostcite")
 def _isolated_environment(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv(API_KEY_ENV, raising=False)
     monkeypatch.setenv(CACHE_DIR_ENV, str(tmp_path / "cache"))
+    monkeypatch.delenv(CREDITS_LOG_ENV, raising=False)
     monkeypatch.chdir(tmp_path)

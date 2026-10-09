@@ -89,6 +89,19 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
   sync between pages. Checked at 1366x768 and 1920x1080 in both themes with headless Edge.
 - [x] Gates green → STOP
 
+## Checkpoint 7 Part A — frozen held-out evaluation v2
+- [x] eval/dataset_v2.jsonl: 26 rows (16 real: 9 international in new fields, 7 Indian; 10 fabricated, 2 per type),
+  no paper shared with v1 (enforced by tests/unit/test_eval_datasets.py), all 26 validated against Crossref
+- [x] Frozen before any search: sha256:e7e75254...8604 in docs/EVALUATION.md and eval/run.py (run refuses on change)
+- [x] Run once (estimate 39, cap 40): 29 searches. False alarms 1/16 = 6.2% [1.1, 28.3], detection 8/10 = 80.0%
+  [49.0, 94.3]; Indian 0/7 and 4/5. Failures: Granovetter 1977 reprint; two fake venues missed (one-word real venue
+  not judged). Not fixed (freeze). Replay: eval/responses_v2.json (29 responses), verified identical.
+- [x] Every live path (CLI, web, eval) appends to the credits log via ghostcite.credits; tests for both
+- [x] Hygiene scan covers eval/, samples/, tests/fixtures/ (keys, e-mails, archive links, endpoint keys, CRLF)
+- [x] LF line endings: writers use newline="\n"; 20 CRLF data files converted
+- [x] Wilson intervals on every rate; counts only below n=5
+- [x] Gates green → STOP
+
 ## Checkpoint 7 — docs and final verification
 - [ ] README, docs/*, LICENSE, CONTRIBUTING, CoC, SECURITY, CHANGELOG, templates
 - [ ] Dockerfile, compose.yaml
@@ -97,4 +110,4 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
 - [ ] STOP
 
 ## Credits used
-See `.dev/credits.log` (gitignored). Running total (logged runs): 92 / 150 (account: 155 left; an unexplained 3-search drop between 04:43 and 08:33 UTC is noted in the log). Keep >= 80 unused on the account after the eval.
+See `.dev/credits.log` (gitignored). Running total (logged runs): 121 / 150 (account: 126 left after v2; an unexplained 3-search drop between 04:43 and 08:33 UTC is noted in the log, and every live path now logs). Keep >= 80 unused on the account after the eval.

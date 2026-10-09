@@ -128,6 +128,7 @@ def create_app(
             mode=mode,
             max_searches=cfg.per_job_search_cap,
             demo_bundle=demo_files.bundle if demo_files is not None else None,
+            surface="web",
         )
         extra: dict[str, Any] = {}
         if transport_factory is not None:

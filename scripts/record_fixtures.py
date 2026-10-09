@@ -126,7 +126,7 @@ def _log_credits(purpose: str, estimated: int, actual: int, before: int, after: 
         f"{stamp} | {purpose} | estimated={estimated} | actual={actual} "
         f"| account_left_before={before} | account_left_after={after}\n"
     )
-    with CREDITS_LOG.open("a", encoding="utf-8") as log:
+    with CREDITS_LOG.open("a", encoding="utf-8", newline="\n") as log:
         log.write(line)
 
 
@@ -163,7 +163,8 @@ def main() -> int:
                 "response": sanitize_response(response.body),
             }
             path = FIXTURE_DIR / f"{name}.json"
-            path.write_text(json.dumps(fixture, indent=2, ensure_ascii=False) + "\n", "utf-8")
+            text = json.dumps(fixture, indent=2, ensure_ascii=False) + "\n"
+            path.write_text(text, encoding="utf-8", newline="\n")
             print(f"  {name}: {response.source.value} -> {path.relative_to(ROOT)}")
 
     after = fetch_quota(transport)

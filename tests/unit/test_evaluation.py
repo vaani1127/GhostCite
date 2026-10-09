@@ -12,7 +12,14 @@ from pydantic import ValidationError
 from ghostcite.document import load_document, load_text
 from ghostcite.evaluation.dataset import EvalRow, Kind, Perturbation, load_dataset
 from ghostcite.evaluation.metrics import Outcome, summarize
-from ghostcite.evaluation.report import HELD_OUT_NOTE, POST_FIX_NOTE, to_markdown
+from ghostcite.evaluation.report import (
+    HELD_OUT_NOTE,
+    HELD_OUT_V2_NOTE,
+    POST_FIX_NOTE,
+    rate_text,
+    to_markdown,
+    wilson,
+)
 from ghostcite.evaluation.split import Split, split_rows
 from ghostcite.evaluation.styles import Style, assign_styles, render, to_bibtex
 from ghostcite.evaluation.validate import (
@@ -288,7 +295,7 @@ def test_metrics_and_report() -> None:
         {"dataset": {"validated": 6, "dropped": 0}, "seed": 1, "runs": {"test/text": summary}}
     )
     assert "Test split, raw reference strings" in markdown
-    assert "| Indian journals and books | 1 | 1 | 100.0% |" in markdown
+    assert "| Indian journals and books | 1/1 = 100.0% [20.7, 100.0] |" in markdown
     assert "`eco-real-flagged` (false alarm)" in markdown
     assert "Detected, but with a different verdict" in markdown
 
@@ -305,3 +312,38 @@ def test_report_without_failures() -> None:
     assert HELD_OUT_NOTE in to_markdown(
         {"dataset": {"validated": 1, "dropped": 0}, "seed": 1, "runs": {}}, HELD_OUT_NOTE
     )
+
+
+@pytest.mark.parametrize(
+    ("k", "n", "low", "high"),
+    [(6, 28, 0.102, 0.395), (8, 11, 0.434, 0.903), (0, 13, 0.0, 0.228), (11, 11, 0.741, 1.0)],
+)
+def test_wilson_interval(k: int, n: int, low: float, high: float) -> None:
+    interval = wilson(k, n)
+    assert interval is not None
+    assert interval[0] == pytest.approx(low, abs=0.001)
+    assert interval[1] == pytest.approx(high, abs=0.001)
+
+
+def test_rate_text_shows_counts_and_hides_small_n_percentages() -> None:
+    assert wilson(0, 0) is None
+    assert rate_text(0, 0) == "n/a"
+    assert rate_text(2, 19) == "2/19 = 10.5% [2.9, 31.4]"
+    assert rate_text(2, 3, min_n=5) == "2/3"
+
+
+def test_v2_results_name_the_frozen_dataset() -> None:
+    summary = summarize([_outcome(_row(), Verdict.VERIFIED)])
+    summary["credits_used"] = 3
+    markdown = to_markdown(
+        {
+            "dataset": {"validated": 1, "dropped": 0},
+            "seed": 1,
+            "dataset_sha256": "abc123",
+            "runs": {"v2/text": summary},
+        },
+        HELD_OUT_V2_NOTE,
+    )
+    assert "SHA-256 `abc123`" in markdown
+    assert "### Held-out v2, raw reference strings" in markdown
+    assert "Split seed" not in markdown

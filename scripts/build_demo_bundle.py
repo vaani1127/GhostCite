@@ -55,7 +55,9 @@ def main() -> int:
     payload = bundle_payload(store.entries(), datetime.now(tz=UTC).strftime("%Y-%m-%d"))
     target = SAMPLES / DEMO_BUNDLE
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(payload, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    target.write_text(
+        json.dumps(payload, indent=1, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n"
+    )
     print(f"Wrote {len(payload['entries'])} responses to {target.relative_to(SAMPLES.parent)}")
     return 0
 

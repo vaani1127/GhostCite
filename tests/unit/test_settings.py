@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from ghostcite.redact import REDACTED, redact
-from ghostcite.settings import API_KEY_ENV, CACHE_DIR_ENV, load_settings
+from ghostcite.settings import API_KEY_ENV, CACHE_DIR_ENV, CREDITS_LOG_ENV, load_settings
 
 
 def test_no_key_anywhere(tmp_path: Path) -> None:
@@ -66,3 +66,15 @@ def test_reads_process_environment_by_default() -> None:
     # The autouse fixture sets GHOSTCITE_CACHE_DIR in os.environ.
     settings = load_settings()
     assert settings.cache_dir.name == "cache"
+
+
+def test_credits_log_location(tmp_path: Path) -> None:
+    none = tmp_path / "none"
+    cache = tmp_path / "cache"
+    plain = load_settings(environ={CACHE_DIR_ENV: str(cache)}, dotenv_path=none)
+    assert plain.credits_log == cache / "credits.log"
+    (tmp_path / ".dev").mkdir()
+    checkout = load_settings(environ={CACHE_DIR_ENV: str(cache)}, dotenv_path=none)
+    assert checkout.credits_log == tmp_path / ".dev" / "credits.log"
+    chosen = load_settings(environ={CREDITS_LOG_ENV: str(tmp_path / "x.log")}, dotenv_path=none)
+    assert chosen.credits_log == tmp_path / "x.log"

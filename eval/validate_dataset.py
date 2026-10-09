@@ -1,16 +1,18 @@
-"""Validate eval/dataset.jsonl against Crossref and arXiv (free APIs; no SerpApi credits).
+"""Validate an evaluation dataset against Crossref and arXiv (free APIs; no SerpApi credits).
 
 Usage::
 
-    python eval/validate_dataset.py
+    python eval/validate_dataset.py                  # eval/dataset.jsonl
+    python eval/validate_dataset.py --dataset v2     # eval/dataset_v2.jsonl
 
-Writes ``eval/dataset_validation.json``. ``eval/run.py`` only evaluates rows marked ok.
-Requests identify GhostCite with a plain User-Agent (no e-mail address) and are paced
-politely.
+Writes ``eval/dataset_validation.json`` (or ``eval/dataset_v2_validation.json``).
+``eval/run.py`` only evaluates rows marked ok. Requests identify GhostCite with a plain
+User-Agent (no e-mail address) and are paced politely.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 import time
@@ -23,6 +25,10 @@ from ghostcite.evaluation.validate import to_json, validate_rows
 ROOT = Path(__file__).resolve().parent
 USER_AGENT = "GhostCite-eval/0.1 (+https://github.com/vaani1127/GhostCite)"
 PAUSE_SECONDS = 0.5
+DATASETS = {
+    "v1": ("dataset.jsonl", "dataset_validation.json"),
+    "v2": ("dataset_v2.jsonl", "dataset_v2_validation.json"),
+}
 
 
 def fetch(url: str) -> str:
@@ -34,11 +40,17 @@ def fetch(url: str) -> str:
     return body.decode("utf-8")
 
 
-def main() -> int:
-    rows = load_dataset(ROOT / "dataset.jsonl")
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0] if __doc__ else None)
+    parser.add_argument("--dataset", choices=sorted(DATASETS), default="v1")
+    args = parser.parse_args(argv)
+    rows_file, validation_file = DATASETS[args.dataset]
+    rows = load_dataset(ROOT / rows_file)
     results = validate_rows(rows, fetch)
-    (ROOT / "dataset_validation.json").write_text(
-        json.dumps(to_json(results), indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    (ROOT / validation_file).write_text(
+        json.dumps(to_json(results), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
     )
     failed = {row_id: r for row_id, r in results.items() if not r.ok}
     print(f"{len(results) - len(failed)} of {len(results)} rows validated.")

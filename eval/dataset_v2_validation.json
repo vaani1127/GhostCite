@@ -1,0 +1,242 @@
+{
+  "chem-becke-1993": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Density-functional thermochemistry. III. The role of exact exchange",
+      "first_author": "Becke",
+      "year": 1993,
+      "source": "crossref"
+    }
+  },
+  "earth-rockstrom-2009": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "A safe operating space for humanity",
+      "first_author": "Rockström",
+      "year": 2009,
+      "source": "crossref"
+    }
+  },
+  "eco-hardin-1968": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The Tragedy of the Commons",
+      "first_author": "Hardin",
+      "year": 1968,
+      "source": "crossref"
+    }
+  },
+  "eco-myers-2000": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Biodiversity hotspots for conservation priorities",
+      "first_author": "Myers",
+      "year": 2000,
+      "source": "crossref"
+    }
+  },
+  "fab-authors-granovetter": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-authors-pai": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-invented-groundwater": {
+    "ok": true,
+    "problems": [],
+    "notes": [
+      "closest Crossref title similarity 0.63"
+    ],
+    "record": null
+  },
+  "fab-invented-membranes": {
+    "ok": true,
+    "problems": [],
+    "notes": [
+      "closest Crossref title similarity 0.56"
+    ],
+    "record": null
+  },
+  "fab-reword-andrade": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-reword-benjamini": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-venue-gadagkar": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-venue-myers": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-year-novoselov": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "fab-year-patwardhan": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": null
+  },
+  "in-ali-2016": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Basic statistical tools in research and data analysis",
+      "first_author": "Ali",
+      "year": 2016,
+      "source": "crossref"
+    }
+  },
+  "in-andrade-2019": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The P Value and Statistical Significance: Misunderstandings, Explanations, Challenges, and Alternatives",
+      "first_author": "Andrade",
+      "year": 2019,
+      "source": "crossref"
+    }
+  },
+  "in-dreze-2013": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "An Uncertain Glory",
+      "first_author": "Drèze",
+      "year": 2013,
+      "source": "crossref"
+    }
+  },
+  "in-gadagkar-1994": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Social insects and social amoebae",
+      "first_author": "Gadagkar",
+      "year": 1994,
+      "source": "crossref"
+    }
+  },
+  "in-gupta-2018": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Synthesis and properties of graphene and its 2D inorganic analogues with potential applications",
+      "first_author": "Gupta",
+      "year": 2018,
+      "source": "crossref"
+    }
+  },
+  "in-pai-2014": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Development of a new high spatial resolution (0.25° × 0.25°) long period  (1901-2010) daily gridded rainfall data set over India and its  comparison with existing data sets over the region",
+      "first_author": "Pai",
+      "year": 2014,
+      "source": "crossref"
+    }
+  },
+  "in-patwardhan-2010": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Ayurveda and integrative medicine: Riding a tiger",
+      "first_author": "Patwardhan",
+      "year": 2010,
+      "source": "crossref"
+    }
+  },
+  "mat-novoselov-2004": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Electric Field Effect in Atomically Thin Carbon Films",
+      "first_author": "Novoselov",
+      "year": 2004,
+      "source": "crossref"
+    }
+  },
+  "psy-baron-1986": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The moderator–mediator variable distinction in social psychological research: Conceptual, strategic, and statistical considerations.",
+      "first_author": "Baron",
+      "year": 1986,
+      "source": "crossref"
+    }
+  },
+  "soc-granovetter-1973": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "The Strength of Weak Ties",
+      "first_author": "Granovetter",
+      "year": 1973,
+      "source": "crossref"
+    }
+  },
+  "stat-benjamini-1995": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing",
+      "first_author": "Benjamini",
+      "year": 1995,
+      "source": "crossref"
+    }
+  },
+  "stat-dempster-1977": {
+    "ok": true,
+    "problems": [],
+    "notes": [],
+    "record": {
+      "title": "Maximum Likelihood from Incomplete Data Via the\n                    EM\n                    Algorithm",
+      "first_author": "Dempster",
+      "year": 1977,
+      "source": "crossref"
+    }
+  }
+}

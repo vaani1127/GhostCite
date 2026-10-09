@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Protocol
 
 from ghostcite.config import SEARCH, SearchConfig
+from ghostcite.credits import log_live_run
 from ghostcite.document import Document
 from ghostcite.errors import InputError
 from ghostcite.models import Report, RunMode
@@ -66,6 +67,8 @@ class RunOptions:
     concurrency: int = SEARCH.concurrency
     demo_bundle: Path | None = None
     """Override the demo bundle location (tests); defaults to the bundled samples."""
+    surface: str = "cli"
+    """Which front end started the run ("cli", "web", "eval"); recorded in the credits log."""
 
 
 def uncached_references(document: Document, store: ResponseStore) -> int:
@@ -102,6 +105,7 @@ def run_check(
     ``shared_budget`` adds a cap that several runs share (the web UI's global budget) on
     top of this run's own ``max_searches``.
     """
+    account_left: int | None = None
     with ExitStack() as stack:
         if options.mode is RunMode.DEMO:
             bundle_path = options.demo_bundle or sample_path(DEMO_BUNDLE)
@@ -113,17 +117,28 @@ def run_check(
             if options.mode is RunMode.OFFLINE:
                 client = SearchClient(cache, None, SearchBudget(0), cfg=cfg)
             else:
-                client = _live_client(
+                client, account_left = _live_client(
                     document, settings, options, cache, shared_budget, transport_factory, cfg
                 )
-        report = check_document(
-            document,
-            client,
-            mode=options.mode,
-            concurrency=options.concurrency,
-            progress=progress,
-        )
-    return report  # noqa: RET504 - returned outside the with: mypy treats ExitStack as able to swallow
+        try:
+            report = check_document(
+                document,
+                client,
+                mode=options.mode,
+                concurrency=options.concurrency,
+                progress=progress,
+            )
+        finally:
+            # Logged even when the run fails part-way, because searches may have been spent.
+            if options.mode is RunMode.LIVE:
+                log_live_run(
+                    settings.credits_log,
+                    surface=options.surface,
+                    searches=client.credits_used,
+                    references=len(document.references),
+                    account_left=account_left,
+                )
+    return report
 
 
 def _live_client(
@@ -134,18 +149,21 @@ def _live_client(
     shared_budget: Budget | None,
     transport_factory: TransportFactory,
     cfg: SearchConfig,
-) -> SearchClient:
+) -> tuple[SearchClient, int | None]:
+    """The live client, and the account's searches left when the Account API was asked."""
     transport = transport_factory(settings, cfg)
     limit = options.max_searches
     limiter = None
+    account_left = None
     estimate = estimate_searches(uncached_references(document, cache), options.max_searches, cfg)
     if estimate > 0:
         quota = fetch_quota(transport)
         check_quota(quota, estimate)
+        account_left = quota.searches_left
         limit = min(limit, quota.searches_left)
         rate = pacing_rate(quota, cfg)
         limiter = RateLimiter(rate) if rate else None
     budget: Budget = SearchBudget(limit)
     if shared_budget is not None:
         budget = CombinedBudget([budget, shared_budget])
-    return SearchClient(cache, transport, budget, limiter=limiter, cfg=cfg)
+    return SearchClient(cache, transport, budget, limiter=limiter, cfg=cfg), account_left

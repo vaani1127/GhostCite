@@ -1,14 +1,16 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from pathlib import Path
+from typing import Any
 
 import pytest
 from pydantic import SecretStr
 
 from ghostcite.config import SearchConfig
 from ghostcite.document import load_text
-from ghostcite.errors import InputError, InsufficientCreditsError
+from ghostcite.errors import InputError, InsufficientCreditsError, SearchServiceError
 from ghostcite.models import RunMode, Verdict
 from ghostcite.search.budget import SearchBudget
 from ghostcite.search.cache import SqliteCache
@@ -78,6 +80,53 @@ def test_fully_cached_runs_skip_the_account_api(settings: Settings) -> None:
     report = run_check(document, settings, RunOptions(), transport_factory=_factory(second))
     assert (second.account_calls, second.calls) == (0, [])
     assert report.summary.cache_hits == 1
+
+
+def test_live_runs_append_to_the_credits_log(tmp_path: Path) -> None:
+    log = tmp_path / "logs" / "credits.log"
+    logged = Settings(api_key=SecretStr("test-key-not-real"), cache_dir=tmp_path, credits_log=log)
+    document = load_text(numbered(ATTENTION, RESNET))
+    for surface in ("web", "cli"):
+        run_check(
+            document,
+            logged,
+            RunOptions(surface=surface),
+            transport_factory=_factory(FixtureTransport()),
+        )
+    first, second = log.read_text(encoding="utf-8").splitlines()
+    assert first.endswith("| live run (web) | searches=2 | references=2 | account_left_before=200")
+    assert second.endswith(
+        "| live run (cli) | searches=0 | references=2 "
+        "| account_left_before=not checked (all cached)"
+    )
+    assert "test-key-not-real" not in first + second
+    assert "Attention" not in first + second
+
+
+class _FailingTransport(FixtureTransport):
+    def search(self, params: Mapping[str, str]) -> dict[str, Any]:
+        raise SearchServiceError("SerpApi refused the request (HTTP 403): test")
+
+
+def test_failed_live_runs_are_still_logged(tmp_path: Path) -> None:
+    log = tmp_path / "credits.log"
+    logged = Settings(api_key=SecretStr("test-key-not-real"), cache_dir=tmp_path, credits_log=log)
+    transport = _FailingTransport()
+    with pytest.raises(SearchServiceError):
+        run_check(
+            load_text(numbered(ATTENTION)),
+            logged,
+            RunOptions(),
+            transport_factory=_factory(transport),
+        )
+    assert "| live run (cli) | searches=0 |" in log.read_text(encoding="utf-8")
+
+
+def test_offline_and_demo_runs_are_not_logged(tmp_path: Path) -> None:
+    log = tmp_path / "credits.log"
+    logged = Settings(api_key=None, cache_dir=tmp_path, credits_log=log)
+    run_check(load_text(numbered(ATTENTION)), logged, RunOptions(mode=RunMode.OFFLINE))
+    assert not log.exists()
 
 
 def test_shared_budget_caps_several_runs(settings: Settings) -> None:
