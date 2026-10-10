@@ -10,6 +10,7 @@ All notable changes to this project are documented here. The format follows
 - Hosted demo mode (`GHOSTCITE_HOSTED_DEMO=true`): the server refuses every live check with
   HTTP 403, and the UI selects Demo, disables Live with a hint and says it is a hosted copy.
 - `render.yaml` Blueprint for a demo-only deployment on Render's free tier, with no SerpApi key.
+  The sample demo runs at https://ghostcite-demo.onrender.com.
 - The container listens on `PORT` when set (else 8000); the progress stream sends
   keep-alive comments and disables proxy buffering.
 

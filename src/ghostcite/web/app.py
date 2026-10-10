@@ -25,8 +25,8 @@ from ghostcite import __version__
 from ghostcite.config import WEB, WebConfig
 from ghostcite.document import Document, load_document
 from ghostcite.errors import GhostCiteError, InputError
-from ghostcite.models import Report, RunMode
-from ghostcite.pipeline import Progress
+from ghostcite.models import Report, RunMode, Verdict
+from ghostcite.pipeline import DEMO_MISS_REASON, Progress
 from ghostcite.report import OutputFormat, render
 from ghostcite.report.html import render_html
 from ghostcite.samples import DEMO_BUNDLE, SAMPLE_BIB, samples_dir
@@ -47,6 +47,9 @@ _EVENT_POLL_SECONDS = 0.2
 _HEARTBEAT_SECONDS = 15.0
 """Send an SSE comment this often while a job is quiet, so proxies keep the stream open."""
 PROJECT_URL = "https://github.com/vaani1127/GhostCite"
+HOSTED_SKIP_REASON = (
+    "Not checked in the hosted sample demo. Run GhostCite locally to check this reference live."
+)
 HOSTED_DEMO_MESSAGE = (
     "This hosted copy runs in demo mode only. Run GhostCite locally with your own SerpApi "
     f"key for live checks: {PROJECT_URL}"
@@ -110,6 +113,20 @@ async def _read_limited(upload: UploadFile, limit: int) -> bytes:
     return bytes(data)
 
 
+def _hosted_reasons(report: Report) -> Report:
+    """Point visitors of the hosted demo to a local run for references outside the sample.
+
+    Only the wording of the reason changes; the verdict stays SKIPPED.
+    """
+    results = tuple(
+        result.model_copy(update={"reason": HOSTED_SKIP_REASON})
+        if result.verdict is Verdict.SKIPPED_BUDGET and result.reason == DEMO_MISS_REASON
+        else result
+        for result in report.results
+    )
+    return report.model_copy(update={"results": results})
+
+
 def create_app(
     settings: Settings | None = None,
     cfg: WebConfig = WEB,
@@ -143,9 +160,10 @@ def create_app(
         extra: dict[str, Any] = {}
         if transport_factory is not None:
             extra["transport_factory"] = transport_factory
-        return run_check(
+        report = run_check(
             document, resolved, options, progress=progress, shared_budget=shared, **extra
         )
+        return _hosted_reasons(report) if resolved.hosted_demo else report
 
     jobs = JobManager(runner, cfg)
 

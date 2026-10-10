@@ -20,10 +20,6 @@ authors, year and venue, and explains every verdict in one plain sentence:
 
 There is no LLM anywhere in the pipeline. Verdicts are deterministic and reproducible.
 
-**Hosted demo:** <https://ghostcite.vaaniprashar.tech>. It runs in demo mode only. The
-first load can take about a minute because the free instance sleeps when idle. Live
-checks need a local run with your own SerpApi key (below).
-
 ## Try it in 30 seconds (no API key)
 
 GhostCite ships with recorded Google Scholar responses for a sample bibliography of real
@@ -42,6 +38,11 @@ ghostcite web                    # open http://127.0.0.1:8000 and click "Try the
 
 Expected result: 6 verified, 4 metadata mismatches, 1 not found, integrity score
 72.7 / 100, 0 searches used. Python 3.11 or newer is required.
+
+**Try the sample online.** Sample demo online: <https://ghostcite-demo.onrender.com>
+(recorded results for the sample bibliography; the free instance may take about a minute
+to wake up). For live checks on your own references, run GhostCite locally with your
+SerpApi key.
 
 ## Check your own references
 

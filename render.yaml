@@ -1,4 +1,4 @@
-# Render Blueprint for the public GhostCite demo at https://ghostcite.vaaniprashar.tech
+# Render Blueprint for the public GhostCite sample demo at https://ghostcite-demo.onrender.com
 #
 # The hosted copy is DEMO-ONLY ON PURPOSE. GHOSTCITE_HOSTED_DEMO=true makes the server
 # refuse every live check (HTTP 403), and this file defines NO SerpApi key variable, so
@@ -14,8 +14,6 @@ services:
     dockerContext: .
     healthCheckPath: /api/status
     autoDeploy: true
-    domains:
-      - ghostcite.vaaniprashar.tech
     envVars:
       - key: GHOSTCITE_HOSTED_DEMO
         value: "true"

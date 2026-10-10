@@ -52,6 +52,8 @@ _OFFLINE_REASON = {
     RunMode.DEMO: "Not checked: this reference is not part of the bundled demo data.",
     RunMode.LIVE: "Not checked: no search result was available.",
 }
+DEMO_MISS_REASON = _OFFLINE_REASON[RunMode.DEMO]
+"""Reason given to a reference that the demo bundle has no response for."""
 
 
 @dataclass(frozen=True, slots=True)

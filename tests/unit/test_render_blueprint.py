@@ -23,7 +23,9 @@ def _service() -> dict[str, Any]:
 def test_blueprint_is_a_free_docker_web_service() -> None:
     service = _service()
     assert (service["type"], service["runtime"], service["plan"]) == ("web", "docker", "free")
-    assert "ghostcite.vaaniprashar.tech" in service["domains"]
+    # Served at https://ghostcite-demo.onrender.com; no custom domain to keep verified.
+    assert "domains" not in service
+    assert service["name"] == "ghostcite-demo"
 
 
 def test_blueprint_is_demo_only_and_has_no_key() -> None:

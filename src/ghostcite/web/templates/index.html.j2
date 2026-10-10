@@ -26,10 +26,10 @@
 
   {% if hosted %}
   <section class="banner" role="status">
-    <strong>This hosted copy runs in demo mode only.</strong>
-    Run GhostCite locally with your own SerpApi key for live checks:
-    <a href="{{ project_url }}" rel="noopener noreferrer">{{ project_url }}</a>.
-    Try the sample here; pasted references that are not in the sample are shown as Skipped.
+    <strong>Hosted sample demo:</strong> press Try the sample to see GhostCite check a bibliography
+    of real and fabricated references using recorded Google Scholar results. To check your own
+    references live, run GhostCite locally with your SerpApi key (about 2 minutes):
+    <a href="{{ project_url }}" rel="noopener noreferrer">{{ project_url }}</a>
   </section>
   {% elif not has_key %}
   <section class="banner" role="status">

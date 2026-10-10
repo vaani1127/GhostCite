@@ -99,7 +99,7 @@ history with the gitleaks binary. Fake keys in tests carry narrow inline
 | --- | --- | --- |
 | Your machine | `pip install .` then `ghostcite web` (127.0.0.1:8000) | Yes, with your key in `.env` |
 | Docker | `docker compose up --build`. The container listens on `0.0.0.0:8000` internally; compose publishes it on `127.0.0.1:8000` only, with the cache in a named volume. | Yes, with your key in `.env` |
-| Hosted demo | [Render](https://render.com) free tier from `render.yaml`, at <https://ghostcite.vaaniprashar.tech> | **No: demo only, on purpose** |
+| Hosted demo | [Render](https://render.com) free tier from `render.yaml`, at <https://ghostcite-demo.onrender.com> | **No: demo only, on purpose** |
 
 How the hosted demo works:
 * **The demo-only rule is enforced on the server.** `render.yaml` sets
@@ -110,8 +110,9 @@ How the hosted demo works:
   * The UI disables Live with a visible hint and selects Demo by default, so pressing
     "Check citations" with no input shows the sample report.
 * **Unsupported references.** References that are not in the bundled demo data come back
-  **Skipped**, with "Not checked: this reference is not part of the bundled demo data.",
-  never an error.
+  **Skipped**, never an error. Locally the reason is "Not checked: this reference is not part of
+  the bundled demo data." On the hosted copy it reads "Not checked in the hosted sample
+  demo. Run GhostCite locally to check this reference live." Only the wording differs.
 * **Port.** Render sets `PORT`, and the container listens on `${PORT:-8000}`. The Docker
   healthcheck uses the same port, and Render's own health check calls `/api/status`.
 * **Behind Render's HTTPS proxy.**

@@ -17,10 +17,17 @@ from pydantic import SecretStr
 from ghostcite.config import WEB, SearchConfig, WebConfig
 from ghostcite.errors import SearchServiceError
 from ghostcite.models import RunMode
+from ghostcite.pipeline import DEMO_MISS_REASON
 from ghostcite.service import TransportFactory
 from ghostcite.settings import Settings
 from ghostcite.web import app as web_app
-from ghostcite.web.app import HOSTED_DEMO_MESSAGE, PROJECT_URL, DemoFiles, create_app
+from ghostcite.web.app import (
+    HOSTED_DEMO_MESSAGE,
+    HOSTED_SKIP_REASON,
+    PROJECT_URL,
+    DemoFiles,
+    create_app,
+)
 from tests.helpers import (
     ATTENTION,
     FABRICATED,
@@ -395,7 +402,9 @@ def test_hosted_index_offers_only_demo(tmp_path: Path, demo: DemoFiles) -> None:
     with _client(tmp_path, demo, hosted=True) as client:  # a key is set, on purpose
         page = client.get("/").text
         status = client.get("/api/status").json()
-    assert "This hosted copy runs in demo mode only." in page
+    assert "Hosted sample demo:" in page
+    assert "press Try the sample to see GhostCite check a bibliography" in page
+    assert "run GhostCite locally with your SerpApi key (about 2 minutes)" in page
     assert "Run GhostCite locally with your own SerpApi key for live checks" in page
     assert f'href="{PROJECT_URL}"' in page
     assert 'value="live" disabled aria-describedby="live-hint"' in page
@@ -447,7 +456,20 @@ def test_hosted_pasted_references_are_skipped_with_a_reason(
     assert status["state"] == "done"
     (result,) = report["results"]
     assert result["verdict"] == "SKIPPED_BUDGET"
-    assert "not part of the bundled demo data" in result["reason"]
+    assert result["reason"] == HOSTED_SKIP_REASON
+    assert result["reason"] == (
+        "Not checked in the hosted sample demo. Run GhostCite locally to check this reference live."
+    )
+
+
+def test_local_demo_keeps_the_bundle_reason(tmp_path: Path, demo: DemoFiles) -> None:
+    text = numbered('J. Smith, "A completely arbitrary paper about soil microbes," X, 2020.')
+    with _client(tmp_path, demo) as client:
+        job = _submit(client, text=text, mode="demo").json()
+        _wait(client, job["job_id"])
+        report = client.get(f"/api/jobs/{job['job_id']}/report.json").json()
+    (result,) = report["results"]
+    assert (result["verdict"], result["reason"]) == ("SKIPPED_BUDGET", DEMO_MISS_REASON)
 
 
 def test_hosted_job_runner_never_runs_live(tmp_path: Path, demo: DemoFiles) -> None:
