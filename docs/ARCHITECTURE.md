@@ -92,3 +92,36 @@ history with the gitleaks binary. Fake keys in tests carry narrow inline
 5. `rules.py`: METADATA_MISMATCH, with the reason "Title matches, but year is 2015, not
    2019. (Google Scholar lists this work with 20 versions; this may be a different
    version.)"
+
+## Deployment
+
+| Where | How | Live checks |
+| --- | --- | --- |
+| Your machine | `pip install .` then `ghostcite web` (127.0.0.1:8000) | Yes, with your key in `.env` |
+| Docker | `docker compose up --build`. The container listens on `0.0.0.0:8000` internally; compose publishes it on `127.0.0.1:8000` only, with the cache in a named volume. | Yes, with your key in `.env` |
+| Hosted demo | [Render](https://render.com) free tier from `render.yaml`, at <https://ghostcite.vaaniprashar.tech> | **No: demo only, on purpose** |
+
+How the hosted demo works:
+* **The demo-only rule is enforced on the server.** `render.yaml` sets
+  `GHOSTCITE_HOSTED_DEMO=true` and defines no SerpApi key variable. With the flag on:
+  * `POST /api/check` answers HTTP 403 to every live request, even if a key were
+    configured.
+  * The job runner refuses live mode as a second guard.
+  * The UI disables Live with a visible hint and selects Demo by default, so pressing
+    "Check citations" with no input shows the sample report.
+* **Unsupported references.** References that are not in the bundled demo data come back
+  **Skipped**, with "Not checked: this reference is not part of the bundled demo data.",
+  never an error.
+* **Port.** Render sets `PORT`, and the container listens on `${PORT:-8000}`. The Docker
+  healthcheck uses the same port, and Render's own health check calls `/api/status`.
+* **Behind Render's HTTPS proxy.**
+  * All links, redirects and API URLs are relative, and the app never builds URLs from the
+    request's scheme or host, so no proxy-header handling is needed.
+  * The Server-Sent Events progress stream sends `X-Accel-Buffering: no` and a keep-alive
+    comment every 15 seconds while a job is quiet, so proxies neither buffer nor close it.
+  * The security headers and upload limits are the same as for a local run.
+* **Storage.** The free instance has no persistent disk. The cache directory `/cache` is
+  owned by the non-root user and lives in the container filesystem. Demo runs never write
+  to it.
+* **Cold starts.** The free instance sleeps when idle, so the first request after a pause
+  can take about a minute.

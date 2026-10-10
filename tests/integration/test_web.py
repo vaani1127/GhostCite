@@ -16,9 +16,11 @@ from pydantic import SecretStr
 
 from ghostcite.config import WEB, SearchConfig, WebConfig
 from ghostcite.errors import SearchServiceError
+from ghostcite.models import RunMode
 from ghostcite.service import TransportFactory
 from ghostcite.settings import Settings
-from ghostcite.web.app import DemoFiles, create_app
+from ghostcite.web import app as web_app
+from ghostcite.web.app import HOSTED_DEMO_MESSAGE, PROJECT_URL, DemoFiles, create_app
 from tests.helpers import (
     ATTENTION,
     FABRICATED,
@@ -51,9 +53,11 @@ def demo(tmp_path: Path) -> DemoFiles:
     return DemoFiles(sample=sample, bundle=bundle)
 
 
-def _settings(tmp_path: Path, *, key: bool = True) -> Settings:
+def _settings(tmp_path: Path, *, key: bool = True, hosted: bool = False) -> Settings:
     return Settings(
-        api_key=SecretStr("test-key-not-real") if key else None, cache_dir=tmp_path / "cache"
+        api_key=SecretStr("test-key-not-real") if key else None,
+        cache_dir=tmp_path / "cache",
+        hosted_demo=hosted,
     )
 
 
@@ -68,10 +72,11 @@ def _client(
     transport: FixtureTransport | None = None,
     *,
     key: bool = True,
+    hosted: bool = False,
     cfg: WebConfig = WEB,
 ) -> TestClient:
     app = create_app(
-        _settings(tmp_path, key=key),
+        _settings(tmp_path, key=key, hosted=hosted),
         cfg,
         demo=demo,
         transport_factory=_factory(transport or FixtureTransport()),
@@ -108,6 +113,8 @@ def test_index_with_key(client: TestClient) -> None:
     assert "No API key found" not in page.text
     assert 'value="live" checked' in page.text
     assert "Try the sample" in page.text
+    assert "runs on your machine" in page.text
+    assert "hosted demo copy" not in page.text
     assert "LLM-written papers cite papers that do not exist." in page.text
     assert page.text.count('class="step-n"') == 3
     assert "Unavailable" not in page.text
@@ -379,3 +386,99 @@ def test_unknown_jobs_and_formats(client: TestClient) -> None:
     job = _submit(client, text=numbered(ATTENTION), mode="live").json()
     _wait(client, job["job_id"])
     assert client.get(f"/api/jobs/{job['job_id']}/report.exe").status_code == 404
+
+
+# ---------------------------------------------------------------- hosted demo
+
+
+def test_hosted_index_offers_only_demo(tmp_path: Path, demo: DemoFiles) -> None:
+    with _client(tmp_path, demo, hosted=True) as client:  # a key is set, on purpose
+        page = client.get("/").text
+        status = client.get("/api/status").json()
+    assert "This hosted copy runs in demo mode only." in page
+    assert "Run GhostCite locally with your own SerpApi key for live checks" in page
+    assert f'href="{PROJECT_URL}"' in page
+    assert 'value="live" disabled aria-describedby="live-hint"' in page
+    assert 'id="live-hint" class="hint">Unavailable on this hosted copy' in page
+    assert 'value="demo" checked' in page
+    assert 'id="sample" class="secondary" >' in page
+    assert "No API key found" not in page
+    assert "This is a hosted demo copy of GhostCite" in page
+    assert "Live checks against Google Scholar need a local run" in page
+    assert "runs on your machine" not in page
+    assert (status["hosted_demo"], status["has_api_key"], status["demo_available"]) == (
+        True,
+        False,
+        True,
+    )
+
+
+def test_hosted_refuses_live_checks_even_with_a_key(tmp_path: Path, demo: DemoFiles) -> None:
+    transport = FixtureTransport()
+    with _client(tmp_path, demo, transport, hosted=True) as client:
+        pasted = _submit(client, text=numbered(ATTENTION), mode="live")
+        files = {"file": ("refs.bib", SAMPLE_BIB.encode(), "application/x-bibtex")}
+        uploaded = client.post("/api/check", files=files, data={"mode": "live"})
+        default_mode = _submit(client, text=numbered(ATTENTION))  # mode defaults to live
+    for response in (pasted, uploaded, default_mode):
+        assert response.status_code == 403
+        assert response.json()["error"] == HOSTED_DEMO_MESSAGE
+    assert (transport.calls, transport.account_calls) == ([], 0)
+
+
+def test_hosted_sample_runs_in_one_click(tmp_path: Path, demo: DemoFiles) -> None:
+    with _client(tmp_path, demo, hosted=True) as client:
+        job = _submit(client, sample="true", mode="demo").json()
+        status = _wait(client, job["job_id"])
+        page = client.get(job["report_url"])
+    assert status["state"] == "done"
+    assert page.status_code == 200
+    assert "Demo (recorded results)" in page.text
+
+
+def test_hosted_pasted_references_are_skipped_with_a_reason(
+    tmp_path: Path, demo: DemoFiles
+) -> None:
+    text = numbered('J. Smith, "A completely arbitrary paper about soil microbes," X, 2020.')
+    with _client(tmp_path, demo, hosted=True) as client:
+        job = _submit(client, text=text, mode="demo").json()
+        status = _wait(client, job["job_id"])
+        report = client.get(f"/api/jobs/{job['job_id']}/report.json").json()
+    assert status["state"] == "done"
+    (result,) = report["results"]
+    assert result["verdict"] == "SKIPPED_BUDGET"
+    assert "not part of the bundled demo data" in result["reason"]
+
+
+def test_hosted_job_runner_never_runs_live(tmp_path: Path, demo: DemoFiles) -> None:
+    from ghostcite.document import load_text
+
+    transport = FixtureTransport()
+    with _client(tmp_path, demo, transport, hosted=True) as client:
+        app: Any = client.app
+        job = app.state.jobs.submit(load_text(numbered(ATTENTION)), RunMode.LIVE)
+        status = _wait(client, job.id)
+    assert status["state"] == "failed"
+    assert "demo mode only" in status["error"]
+    assert transport.calls == []
+
+
+def test_progress_stream_sends_heartbeats_and_is_not_buffered(
+    tmp_path: Path, demo: DemoFiles, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(web_app, "_EVENT_POLL_SECONDS", 0.01)
+    monkeypatch.setattr(web_app, "_HEARTBEAT_SECONDS", 0.02)
+
+    class SlowTransport(FixtureTransport):
+        def search(self, params: Any) -> dict[str, Any]:
+            time.sleep(0.3)
+            return super().search(params)
+
+    with _client(tmp_path, demo, SlowTransport()) as client:
+        job = _submit(client, text=numbered(ATTENTION), mode="live").json()
+        with client.stream("GET", job["events_url"]) as stream:
+            headers = stream.headers
+            body = "".join(stream.iter_text())
+    assert headers["x-accel-buffering"] == "no"
+    assert ": keep-alive" in body
+    assert "event: done" in body

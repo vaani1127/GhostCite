@@ -280,8 +280,9 @@ def web(
         # container cannot see how the port is published, so explain instead of warning.
         stderr.print(
             f"note: listening on {host} inside the container. This address is internal to "
-            "the container; compose.yaml publishes it on 127.0.0.1 only. Publishing it on "
-            "another interface would let others spend your SerpApi credits.",
+            "the container; compose.yaml publishes it on 127.0.0.1 only, and a hosting "
+            "platform reaches it only through its own HTTPS proxy. Publishing it on another "
+            "interface would let others spend your SerpApi credits.",
             highlight=False,
         )
     elif not _is_loopback(host):

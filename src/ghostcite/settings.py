@@ -16,12 +16,16 @@ from dotenv import dotenv_values
 from platformdirs import user_cache_dir
 from pydantic import SecretStr
 
+from ghostcite.errors import InputError
 from ghostcite.redact import register_secret
 
 API_KEY_ENV = "SERPAPI_API_KEY"
 CACHE_DIR_ENV = "GHOSTCITE_CACHE_DIR"
 CREDITS_LOG_ENV = "GHOSTCITE_CREDITS_LOG"
 CREDITS_LOG_NAME = "credits.log"
+HOSTED_DEMO_ENV = "GHOSTCITE_HOSTED_DEMO"
+_TRUE = frozenset({"1", "true", "yes", "on"})
+_FALSE = frozenset({"", "0", "false", "no", "off"})
 
 
 @dataclass(frozen=True, slots=True)
@@ -33,6 +37,9 @@ class Settings:
     credits_log: Path | None = None
     """Where live runs record their search usage (see :mod:`ghostcite.credits`); ``None``
     disables the log."""
+    hosted_demo: bool = False
+    """A public, demo-only deployment: the web UI refuses every live check, even when a
+    key happens to be configured (``GHOSTCITE_HOSTED_DEMO=true``)."""
 
     @property
     def has_api_key(self) -> bool:
@@ -68,7 +75,18 @@ def load_settings(
         api_key=SecretStr(raw_key) if raw_key else None,
         cache_dir=cache_dir,
         credits_log=_credits_log(merged.get(CREDITS_LOG_ENV, "").strip(), cache_dir),
+        hosted_demo=_flag(HOSTED_DEMO_ENV, merged.get(HOSTED_DEMO_ENV, "")),
     )
+
+
+def _flag(name: str, raw: str) -> bool:
+    """Parse a true/false setting; an unrecognised value is an error, never a guess."""
+    value = raw.strip().lower()
+    if value in _TRUE:
+        return True
+    if value in _FALSE:
+        return False
+    raise InputError(f"{name} must be true or false.")
 
 
 def _credits_log(configured: str, cache_dir: Path) -> Path:

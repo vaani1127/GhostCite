@@ -24,7 +24,14 @@
     <li><span class="step-n" aria-hidden="true">3</span><div><strong>Compare fields and explain</strong><span>Each verdict says which field differs from the real paper, and why.</span></div></li>
   </ol>
 
-  {% if not has_key %}
+  {% if hosted %}
+  <section class="banner" role="status">
+    <strong>This hosted copy runs in demo mode only.</strong>
+    Run GhostCite locally with your own SerpApi key for live checks:
+    <a href="{{ project_url }}" rel="noopener noreferrer">{{ project_url }}</a>.
+    Try the sample here; pasted references that are not in the sample are shown as Skipped.
+  </section>
+  {% elif not has_key %}
   <section class="banner" role="status">
     <strong>No API key found: demo mode only.</strong>
     {% if demo_ready %}
@@ -65,7 +72,8 @@
       <label class="choice{% if not has_key %} off{% endif %}">
         <input type="radio" name="mode" value="live" {% if has_key %}checked{% else %}disabled aria-describedby="live-hint"{% endif %}>
         <span><strong>Live</strong>: search Google Scholar through SerpApi, up to {{ cfg.per_job_search_cap }} searches per check. Results are cached, so repeats are free.
-        {% if not has_key %}<span id="live-hint" class="hint">Unavailable: no <code>SERPAPI_API_KEY</code> in <code>.env</code>.</span>{% endif %}</span>
+        {% if hosted %}<span id="live-hint" class="hint">Unavailable on this hosted copy: it runs in demo mode only. Run GhostCite locally with your own SerpApi key for live checks.</span>
+        {% elif not has_key %}<span id="live-hint" class="hint">Unavailable: no <code>SERPAPI_API_KEY</code> in <code>.env</code>.</span>{% endif %}</span>
       </label>
       <label class="choice{% if not demo_ready %} off{% endif %}">
         <input type="radio" name="mode" value="demo" {% if not has_key and demo_ready %}checked{% endif %} {% if not demo_ready %}disabled aria-describedby="demo-hint"{% endif %}>
@@ -92,8 +100,13 @@
 </main>
 
 <footer class="muted">
+  {% if hosted %}
+  This is a hosted demo copy of GhostCite {{ version }}. Uploads are processed in memory and never stored; there are no cookies and no tracking.
+  Live checks against Google Scholar need a local run with your own SerpApi key (<a href="{{ project_url }}" rel="noopener noreferrer">see the README</a>).
+  {% else %}
   GhostCite {{ version }} runs on your machine. Uploads are processed in memory and never stored; there are no cookies and no tracking.
   Verdicts are deterministic comparisons with Google Scholar data retrieved through SerpApi.
+  {% endif %}
 </footer>
 </body>
 </html>

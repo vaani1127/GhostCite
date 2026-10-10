@@ -29,8 +29,9 @@ WORKDIR /home/ghostcite
 VOLUME ["/cache"]
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD ["python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/status', timeout=4)"]
+    CMD ["python", "-c", "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:%s/api/status' % os.environ.get('PORT', '8000'), timeout=4)"]
 # 0.0.0.0 is container-internal: it is needed so Docker can publish the port, and
 # compose.yaml publishes it on 127.0.0.1 only. GHOSTCITE_IN_CONTAINER=1 makes the CLI
-# explain this instead of printing the remote-access warning.
-CMD ["ghostcite", "web", "--host", "0.0.0.0", "--port", "8000"]
+# explain this instead of printing the remote-access warning. Hosting platforms such as
+# Render set PORT; without it (docker compose) the server listens on 8000.
+CMD ["sh", "-c", "exec ghostcite web --host 0.0.0.0 --port \"${PORT:-8000}\""]

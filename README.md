@@ -20,6 +20,10 @@ authors, year and venue, and explains every verdict in one plain sentence:
 
 There is no LLM anywhere in the pipeline. Verdicts are deterministic and reproducible.
 
+**Hosted demo:** <https://ghostcite.vaaniprashar.tech>. It runs in demo mode only. The
+first load can take about a minute because the free instance sleeps when idle. Live
+checks need a local run with your own SerpApi key (below).
+
 ## Try it in 30 seconds (no API key)
 
 GhostCite ships with recorded Google Scholar responses for a sample bibliography of real

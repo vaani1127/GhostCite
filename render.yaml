@@ -1,0 +1,21 @@
+# Render Blueprint for the public GhostCite demo at https://ghostcite.vaaniprashar.tech
+#
+# The hosted copy is DEMO-ONLY ON PURPOSE. GHOSTCITE_HOSTED_DEMO=true makes the server
+# refuse every live check (HTTP 403), and this file defines NO SerpApi key variable, so
+# a public instance can never spend anyone's search credits. Live checks need a local
+# run with your own key (see README.md).
+services:
+  - type: web
+    name: ghostcite-demo
+    runtime: docker
+    plan: free # the free instance sleeps when idle; the first request can take ~1 minute
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/status
+    autoDeploy: true
+    domains:
+      - ghostcite.vaaniprashar.tech
+    envVars:
+      - key: GHOSTCITE_HOSTED_DEMO
+        value: "true"

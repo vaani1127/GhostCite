@@ -44,6 +44,13 @@ _DOWNLOAD_LABELS = {
 }
 _CHUNK = 64 * 1024
 _EVENT_POLL_SECONDS = 0.2
+_HEARTBEAT_SECONDS = 15.0
+"""Send an SSE comment this often while a job is quiet, so proxies keep the stream open."""
+PROJECT_URL = "https://github.com/vaani1127/GhostCite"
+HOSTED_DEMO_MESSAGE = (
+    "This hosted copy runs in demo mode only. Run GhostCite locally with your own SerpApi "
+    f"key for live checks: {PROJECT_URL}"
+)
 _SECURITY_HEADERS = {
     "Content-Security-Policy": (
         "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; "
@@ -124,6 +131,9 @@ def create_app(
         shared: SearchBudget | None,
         progress: Callable[[Progress], None],
     ) -> Report:
+        if resolved.hosted_demo and mode is not RunMode.DEMO:
+            # Second guard behind the HTTP check: a hosted demo never builds a live client.
+            raise InputError(HOSTED_DEMO_MESSAGE)
         options = RunOptions(
             mode=mode,
             max_searches=cfg.per_job_search_cap,
@@ -167,10 +177,15 @@ def create_app(
     def demo_ready() -> bool:
         return demo_files is not None and demo_files.available
 
+    # In a hosted demo, live checks are off even if a key happens to be configured.
+    live_enabled = resolved.has_api_key and not resolved.hosted_demo
+
     @app.get("/", response_class=HTMLResponse)
     def index() -> str:
         return templates.get_template("index.html.j2").render(
-            has_key=resolved.has_api_key,
+            has_key=live_enabled,
+            hosted=resolved.hosted_demo,
+            project_url=PROJECT_URL,
             demo_ready=demo_ready(),
             cfg=cfg,
             version=__version__,
@@ -180,7 +195,8 @@ def create_app(
     def status() -> dict[str, Any]:
         return {
             "version": __version__,
-            "has_api_key": resolved.has_api_key,
+            "has_api_key": live_enabled,
+            "hosted_demo": resolved.hosted_demo,
             "demo_available": demo_ready(),
             "limits": {
                 "max_upload_bytes": cfg.max_upload_bytes,
@@ -229,6 +245,8 @@ def create_app(
                 413, f"The upload is larger than the {cfg.max_upload_bytes // 2**20} MiB limit."
             )
         run_mode = RunMode.DEMO if sample or mode == RunMode.DEMO.value else RunMode.LIVE
+        if run_mode is RunMode.LIVE and resolved.hosted_demo:
+            return _error(403, HOSTED_DEMO_MESSAGE)
         if run_mode is RunMode.DEMO and not demo_ready():
             return _error(503, "Demo data is not available in this install.")
         if run_mode is RunMode.LIVE and not resolved.has_api_key:
@@ -282,6 +300,7 @@ def create_app(
 
         async def stream() -> AsyncIterator[str]:
             sent = 0
+            quiet = 0.0
             while True:
                 events, finished = job.events_since(sent)
                 for event in events:
@@ -289,9 +308,16 @@ def create_app(
                 sent += len(events)
                 if finished and not events:
                     return
+                quiet = 0.0 if events else quiet + _EVENT_POLL_SECONDS
+                if quiet >= _HEARTBEAT_SECONDS:
+                    quiet = 0.0
+                    yield ": keep-alive\n\n"
                 await asyncio.sleep(_EVENT_POLL_SECONDS)
 
-        return StreamingResponse(stream(), media_type="text/event-stream")
+        # Reverse proxies (Render, nginx) must not buffer the progress stream.
+        return StreamingResponse(
+            stream(), media_type="text/event-stream", headers={"X-Accel-Buffering": "no"}
+        )
 
     def finished_report(job_id: str) -> Report | Response:
         job = jobs.get(job_id)

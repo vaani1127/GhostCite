@@ -124,3 +124,12 @@ Read `CLAUDE.md` first. Tick a task as soon as it is done and its tests pass.
 
 ## Credits used
 See `.dev/credits.log` (gitignored). Running total (logged runs): 121 / 150 (account: 126 left after v2; an unexplained 3-search drop between 04:43 and 08:33 UTC is noted in the log, and every live path now logs). Keep >= 80 unused on the account after the eval.
+
+## Hosted demo (Render, ghostcite.vaaniprashar.tech)
+- [x] GHOSTCITE_HOSTED_DEMO setting (strict true/false); live checks refused with 403 server side and in the job runner;
+  UI: Demo checked, Live disabled with hint, hosted banner and footer; pasted references in demo mode are Skipped
+- [x] Container listens on `${PORT:-8000}`; healthcheck follows PORT; render.yaml (free, docker, /api/status, no key)
+- [x] SSE keep-alive + X-Accel-Buffering: no; all URLs relative, so no proxy-header handling needed
+- [x] Image built and run locally with GHOSTCITE_HOSTED_DEMO=true PORT=10000: healthy, non-root (10001), /cache writable,
+  live 403, sample report 72.7, pasted reference Skipped; without PORT it still serves on 8000
+- [x] Gates green (793 tests, 99.20%); 0 live searches

@@ -2,8 +2,17 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
+from ghostcite.errors import InputError
 from ghostcite.redact import REDACTED, redact
-from ghostcite.settings import API_KEY_ENV, CACHE_DIR_ENV, CREDITS_LOG_ENV, load_settings
+from ghostcite.settings import (
+    API_KEY_ENV,
+    CACHE_DIR_ENV,
+    CREDITS_LOG_ENV,
+    HOSTED_DEMO_ENV,
+    load_settings,
+)
 
 
 def test_no_key_anywhere(tmp_path: Path) -> None:
@@ -78,3 +87,29 @@ def test_credits_log_location(tmp_path: Path) -> None:
     assert checkout.credits_log == tmp_path / ".dev" / "credits.log"
     chosen = load_settings(environ={CREDITS_LOG_ENV: str(tmp_path / "x.log")}, dotenv_path=none)
     assert chosen.credits_log == tmp_path / "x.log"
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("true", True),
+        (" TRUE ", True),
+        ("1", True),
+        ("yes", True),
+        ("false", False),
+        ("0", False),
+        ("", False),
+    ],
+)
+def test_hosted_demo_flag(tmp_path: Path, raw: str, expected: bool) -> None:
+    settings = load_settings(environ={HOSTED_DEMO_ENV: raw}, dotenv_path=tmp_path / "none")
+    assert settings.hosted_demo is expected
+
+
+def test_hosted_demo_is_off_by_default(tmp_path: Path) -> None:
+    assert load_settings(environ={}, dotenv_path=tmp_path / "none").hosted_demo is False
+
+
+def test_hosted_demo_rejects_unclear_values(tmp_path: Path) -> None:
+    with pytest.raises(InputError, match="GHOSTCITE_HOSTED_DEMO must be true or false"):
+        load_settings(environ={HOSTED_DEMO_ENV: "maybe"}, dotenv_path=tmp_path / "none")

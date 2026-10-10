@@ -20,6 +20,11 @@ hackathon.
 
 **Demo video:** *[paste the unlisted video link]*
 
+**Hosted demo:** https://ghostcite.vaaniprashar.tech. It runs in demo mode only with
+recorded Google Scholar responses, so it never spends search credits. The first load can
+take about a minute because the free instance sleeps when idle. Live checks need a local
+run with your own SerpApi key (see the README).
+
 ---
 
 ### One-line summary
